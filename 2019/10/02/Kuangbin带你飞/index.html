@@ -25,11 +25,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '7.4.0',
     exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Kuangbin带你飞[基础DP]题目HDU 1024Max Sum Plus Plus 给定一个长度为n的序列，分成m段不相交叉的子段，使得他们的和最大。  ​        首先可以用简单的二维DP数组实现。即$dp[i][j]$表示前j个元素的组成i个字段的最大和，字段数的转移有两种一是取下第j个元素作为第i个字段的延续，二是让第j个元素自成一个字段，于是可得转移方程：$${dp[i][j]">
+  <meta name="description" content="Kuangbin带你飞[基础DP] Kuangbin带你飞的日常题单">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kuangbin带你飞[基础DP]">
 <meta property="og:url" content="https://paofyueng.github.io/2019/10/02/Kuangbin带你飞/index.html">
 <meta property="og:site_name" content="寻求力量之旅">
-<meta property="og:description" content="Kuangbin带你飞[基础DP]题目HDU 1024Max Sum Plus Plus 给定一个长度为n的序列，分成m段不相交叉的子段，使得他们的和最大。  ​        首先可以用简单的二维DP数组实现。即$dp[i][j]$表示前j个元素的组成i个字段的最大和，字段数的转移有两种一是取下第j个元素作为第i个字段的延续，二是让第j个元素自成一个字段，于是可得转移方程：$${dp[i][j]">
+<meta property="og:description" content="Kuangbin带你飞[基础DP] Kuangbin带你飞的日常题单">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-10-02T04:36:33.970Z">
+<meta property="og:updated_time" content="2019-10-02T07:41:39.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kuangbin带你飞[基础DP]">
-<meta name="twitter:description" content="Kuangbin带你飞[基础DP]题目HDU 1024Max Sum Plus Plus 给定一个长度为n的序列，分成m段不相交叉的子段，使得他们的和最大。  ​        首先可以用简单的二维DP数组实现。即$dp[i][j]$表示前j个元素的组成i个字段的最大和，字段数的转移有两种一是取下第j个元素作为第i个字段的延续，二是让第j个元素自成一个字段，于是可得转移方程：$${dp[i][j]">
+<meta name="twitter:description" content="Kuangbin带你飞[基础DP] Kuangbin带你飞的日常题单">
   <link rel="canonical" href="https://paofyueng.github.io/2019/10/02/Kuangbin带你飞/">
 
 
@@ -214,7 +214,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Paof Yueng">
       <meta itemprop="description" content="PAOFBLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-02 04:36:33" itemprop="dateModified" datetime="2019-10-02T04:36:33Z">2019-10-02</time>
+                <time title="修改时间：2019-10-02 07:41:39" itemprop="dateModified" datetime="2019-10-02T07:41:39Z">2019-10-02</time>
               </span>
             
           
@@ -264,14 +264,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Kuangbin带你飞-基础DP"><a href="#Kuangbin带你飞-基础DP" class="headerlink" title="Kuangbin带你飞[基础DP]"></a>Kuangbin带你飞[基础DP]</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h3 id="HDU-1024"><a href="#HDU-1024" class="headerlink" title="HDU 1024"></a>HDU 1024</h3><h4 id="Max-Sum-Plus-Plus"><a href="#Max-Sum-Plus-Plus" class="headerlink" title="Max Sum Plus Plus"></a>Max Sum Plus Plus</h4><blockquote>
+        <h1 id="Kuangbin带你飞-基础DP"><a href="#Kuangbin带你飞-基础DP" class="headerlink" title="Kuangbin带你飞[基础DP]"></a>Kuangbin带你飞[基础DP]</h1><blockquote>
+<p>Kuangbin带你飞的日常题单</p>
+</blockquote>
+<a id="more"></a>        
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="HDU-1024-Max-Sum-Plus-Plus"><a href="#HDU-1024-Max-Sum-Plus-Plus" class="headerlink" title="HDU 1024 Max Sum Plus Plus"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1024" target="_blank" rel="noopener">HDU 1024 Max Sum Plus Plus</a></h4><blockquote>
 <p>给定一个长度为n的序列，分成m段不相交叉的子段，使得他们的和最大。</p>
 </blockquote>
-<p>​        首先可以用简单的二维DP数组实现。即$dp[i][j]$表示前j个元素的组成i个字段的最大和，字段数的转移有两种一是取下第j个元素作为第i个字段的延续，二是让第j个元素自成一个字段，于是可得转移方程：$${dp[i][j]=max\lbrace dp[i][j-1]+a[j],dp[i-1][t]+a[j]\rbrace(t\leq j)}$$                                                                           </p>
-<p>​        我们可以存下$dp[i-1][t]$的最大值优化，具体步骤为通过m次循环省去第一维的空间，在第i次循环内$max[j]$表示为前j个元素中最大的i段字段和。<a id="more"></a></p>
-<p>$${dp[j]=max\lbrace dp[j-1]+a[j],Max[j-1]+a[j]\rbrace \Max[j]=max{Max[j-1],dp[j]}}$$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">-1e9</span>;</span><br><span class="line"><span class="keyword">int</span> a[MAX],dp[MAX],Max[MAX];</span><br><span class="line"><span class="keyword">int</span> m,n,mmax; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="built_in">memset</span>(Max,<span class="number">0</span>,<span class="keyword">sizeof</span>(Max));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            mmax=INF;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;n;j++)&#123;</span><br><span class="line">                dp[j]=max(dp[j<span class="number">-1</span>]+a[j],Max[j<span class="number">-1</span>]+a[j]);</span><br><span class="line">                Max[j<span class="number">-1</span>]=mmax;<span class="comment">//Max[j-1]在一次循环内只会用到一次故可以直接更新为下次循环做准备</span></span><br><span class="line">                mmax=max(mmax,dp[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;mmax&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>​        首先可以用简单的二维DP数组实现。即$dp[i][j]$表示前j个元素的组成i个字段的最大和，字段数的转移有两种一是取下第j个元素作为第i个字段的延续，二是让第j个元素自成一个字段，于是可得转移方程：<script type="math/tex">{dp[i][j]=max\lbrace dp[i][j-1]+a[j],dp[i-1][t]+a[j]\rbrace(t\leq j)}</script>                                                                           </p>
+<p>​        我们可以存下$dp[i-1][t]$的最大值优化，具体步骤为通过m次循环省去第一维的空间，在第i次循环内$max[j]$表示为前j个元素中最大的i段字段和。</p>
+<script type="math/tex; mode=display">{dp[j]=max\lbrace dp[j-1]+a[j],Max[j-1]+a[j]\rbrace \\Max[j]=max\{Max[j-1],dp[j]\}}</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">-1e9</span>;</span><br><span class="line"><span class="keyword">int</span> a[MAX],dp[MAX],Max[MAX];</span><br><span class="line"><span class="keyword">int</span> m,n,mmax; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="built_in">memset</span>(Max,<span class="number">0</span>,<span class="keyword">sizeof</span>(Max));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            mmax=INF;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;n;j++)&#123;</span><br><span class="line">                dp[j]=max(dp[j<span class="number">-1</span>]+a[j],Max[j<span class="number">-1</span>]+a[j]);</span><br><span class="line">                Max[j<span class="number">-1</span>]=mmax;<span class="comment">//Max[j-1]在一次循环内只会用到一次故可以直接更新为下次循环做准备</span></span><br><span class="line">                mmax=max(mmax,dp[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;mmax&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -354,13 +356,16 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kuangbin带你飞-基础DP"><span class="nav-number">1.</span> <span class="nav-text">Kuangbin带你飞[基础DP]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU-1024"><span class="nav-number">1.0.2.</span> <span class="nav-text">HDU 1024</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Max-Sum-Plus-Plus"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Max Sum Plus Plus</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kuangbin带你飞-基础DP"><span class="nav-number">1.</span> <span class="nav-text">Kuangbin带你飞[基础DP]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HDU-1024-Max-Sum-Plus-Plus"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">HDU 1024 Max Sum Plus Plus</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
   <p class="site-author-name" itemprop="name">Paof Yueng</p>
   <div class="site-description" itemprop="description">PAOFBLOG</div>
 </div>
@@ -388,6 +393,19 @@
       </div>
     
   </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
 
 
 
@@ -407,11 +425,8 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Paof Yueng</span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
         
 
@@ -439,6 +454,7 @@
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/muse.js?v=7.4.0"></script>
+
 <script src="/js/next-boot.js?v=7.4.0"></script>
 
 
@@ -465,6 +481,58 @@
 
 
 
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
