@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Linux 总复习前言 明天就要考试了，我才刚复习完">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 总复习">
+<meta property="og:url" content="https://paofyueng.github.io/2020/06/23/Linux 总复习/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="Linux 总复习前言 明天就要考试了，我才刚复习完">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-06-22T13:37:14.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 总复习">
+<meta name="twitter:description" content="Linux 总复习前言 明天就要考试了，我才刚复习完">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/06/23/Linux 总复习/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Linux 总复习 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/06/23/Linux 总复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Linux 总复习
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-22 21:33:00 / 修改时间：13:37:14" itemprop="dateCreated datePublished" datetime="2020-06-22T21:33:00Z">2020-06-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux-总复习"><a href="#Linux-总复习" class="headerlink" title="Linux 总复习"></a>Linux 总复习</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>明天就要考试了，我才刚复习完</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Unix-Linux-操作系统介绍"><a href="#Unix-Linux-操作系统介绍" class="headerlink" title="Unix-Linux 操作系统介绍"></a>Unix-Linux 操作系统介绍</h2><ol>
+<li><p>1973 诞生于<strong>贝尔实验室</strong></p>
+</li>
+<li><p>主要版本有<strong>AT&amp;T UNIX System V</strong>与<strong>Berkeley UNIX (BSD)</strong></p>
+</li>
+<li><p>Linux 由<strong>芬兰</strong>人Linus制作</p>
+</li>
+<li><p>虚拟终端</p>
+<p>   UNIX操作系统向系统中的每个用户指定一个<strong>执行环境</strong>，这个环境称为虚拟终端。</p>
+<p>进程</p>
+<p>   UNIX系统通过进程向用户和程序分配资源。</p>
+</li>
+</ol>
+<h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><h3 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>左</td>
+<td>j</td>
+<td>下</td>
+</tr>
+<tr>
+<td>k</td>
+<td>上</td>
+<td>l</td>
+<td>右</td>
+</tr>
+<tr>
+<td>ctrl+b</td>
+<td>屏幕往”后”移动一页</td>
+<td>ctrl+f</td>
+<td>屏幕往”前”移动一页</td>
+</tr>
+<tr>
+<td>ctrl+u</td>
+<td>屏幕往”后”移动半页</td>
+<td>ctrl+d</td>
+<td>屏幕往”前”移动半页</td>
+</tr>
+<tr>
+<td>[RETURN]</td>
+<td>到下一行行首</td>
+<td>G</td>
+<td>到文章结尾</td>
+</tr>
+<tr>
+<td>[BACKSPACE]</td>
+<td>左</td>
+<td>[SPACE]</td>
+<td>右</td>
+</tr>
+<tr>
+<td>$</td>
+<td>到行尾</td>
+<td>0</td>
+<td>到行首</td>
+</tr>
+<tr>
+<td>w</td>
+<td>到下个字开头</td>
+<td>e</td>
+<td>到字尾</td>
+</tr>
+<tr>
+<td>b</td>
+<td>到上个字开头</td>
+<td>$x$l</td>
+<td>到行的第$x$个位点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h3><ol>
+<li>i：光标处开始编辑</li>
+<li>a：光标下一位置开始编辑</li>
+<li>o：下方插入新行开始编辑</li>
+<li>I：行首输入</li>
+<li>A：行尾输入</li>
+<li>O：上方插入新行开始编辑</li>
+<li>esc：退出编辑模式</li>
+</ol>
+<h3 id="编辑文字"><a href="#编辑文字" class="headerlink" title="编辑文字"></a>编辑文字</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>删除后一字符</td>
+<td>X</td>
+<td>删除前一字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除所在行</td>
+<td>yw</td>
+<td>复制字到缓冲区</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制行到缓冲区</td>
+<td>p</td>
+<td>向后粘贴缓冲区字符</td>
+</tr>
+<tr>
+<td>P</td>
+<td>向前粘贴缓冲区字符</td>
+<td>.</td>
+<td>重复操作</td>
+</tr>
+<tr>
+<td>r</td>
+<td>替换所在字符</td>
+<td>R</td>
+<td>替换模式</td>
+</tr>
+<tr>
+<td>u</td>
+<td>撤回操作</td>
+<td>U</td>
+<td>撤销对该行的全部操作</td>
+</tr>
+<tr>
+<td>c</td>
+<td>删除文本且进入编辑模式</td>
+<td><em>number</em>G</td>
+<td>到第<em>number</em>行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="检索文字"><a href="#检索文字" class="headerlink" title="检索文字"></a>检索文字</h3><p>/:向前检索        ?:向后检索</p>
+<h3 id="多文件"><a href="#多文件" class="headerlink" title="多文件"></a>多文件</h3><p>载入文件：vi A B C</p>
+<p>编辑另一文件： :e A</p>
+<p>读另一文件： :r A</p>
+<p>写入另一文件： :[a,b]w A               例：:1,2w A</p>
+<h3 id="操作域"><a href="#操作域" class="headerlink" title="操作域"></a>操作域</h3><p>使用方法：操作符+域</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标识符</th>
+<th>意义</th>
+<th>标识符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$</td>
+<td>到行尾</td>
+<td>0</td>
+<td>到行首</td>
+</tr>
+<tr>
+<td>e/w</td>
+<td>到当前字尾</td>
+<td>b</td>
+<td>到前一字尾</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><ol>
+<li><p>临时缓冲区：删除和复制的内容总被覆盖到唯一的临时缓冲区</p>
+</li>
+<li><p>填充数字编号缓冲区：（类似栈）</p>
+<p>每次<strong>复制</strong>的文本都放入缓冲区<strong>0</strong>；</p>
+<p>每次<strong>删除</strong>的文本都放入缓冲区<strong>1-9</strong>；</p>
+<p>缓冲区1中总是存放最近被删除的内容；</p>
+<p>每次有新内容进入缓冲区1-9时，每个缓冲区的内容都要改变，<strong>依次向后移动</strong>内容。</p>
+<p>使用：”+<em>number</em>+p</p>
+</li>
+<li><p>字母编号缓冲区：（类似数组）</p>
+<p>共26个，使用小写字母a-z命名；</p>
+<p>通过名称引用其内容；</p>
+<p>有新内容进入缓冲区时，不移动缓冲区内容；</p>
+<p>使用之后，缓冲区内容保持不变。</p>
+<p>使用”+<em>character</em>+命令</p>
+</li>
+</ol>
+<h3 id="获取光标位置"><a href="#获取光标位置" class="headerlink" title="获取光标位置"></a>获取光标位置</h3><p>ctrl+g</p>
+<h3 id="定制vi"><a href="#定制vi" class="headerlink" title="定制vi"></a>定制vi</h3><p>布尔选项：</p>
+<p>​    选中： set X            取消：set noX</p>
+<p>数字式选项：</p>
+<p>​    set x=number</p>
+<p>字符串选项</p>
+<p>​    set x=string</p>
+<p>:set all    ——在屏幕上显示所有的选项</p>
+<p>:set         ——只显示修改过的选项</p>
+<p>:set <em>X</em>?   ——显示选项<em>X</em>的值</p>
+<h4 id="布尔选项"><a href="#布尔选项" class="headerlink" title="布尔选项"></a>布尔选项</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoident</td>
+<td>将新行与前一行的行首对齐</td>
+</tr>
+<tr>
+<td>ignorecase</td>
+<td>查询忽略大小写</td>
+</tr>
+<tr>
+<td>magic</td>
+<td>搜索时允许使用元字符</td>
+</tr>
+<tr>
+<td>number</td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td>showmode</td>
+<td>显示当前模式(命令/编辑)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="数字式选项"><a href="#数字式选项" class="headerlink" title="数字式选项"></a>数字式选项</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>report</td>
+<td>通知用户命令所影响的行</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>ctrl+d默认翻动行数</td>
+</tr>
+<tr>
+<td>shiftwidth</td>
+<td>设置缩进长度</td>
+</tr>
+<tr>
+<td>warpmargin</td>
+<td>设置行长</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="宏替换"><a href="#宏替换" class="headerlink" title="宏替换"></a>宏替换</h4><p>:ab 缩写 原语：当输入缩写时自动转换为原语</p>
+<p>:map 按键 操作：当按下按键时自动执行操作             <em>unmap取消</em></p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>vi按照下面顺序寻找 <strong>.exrc</strong>文件：</p>
+<ol>
+<li><p>查找当前工作目录</p>
+</li>
+<li><p>查找主目录</p>
+</li>
+</ol>
+<h3 id="其他vi命令"><a href="#其他vi命令" class="headerlink" title="其他vi命令"></a>其他vi命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:! command</td>
+<td>执行shell命令</td>
+<td>J</td>
+<td>连接行</td>
+</tr>
+<tr>
+<td>vi -r A</td>
+<td>文件崩溃恢复</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   ​    </p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h3 id="文件分类"><a href="#文件分类" class="headerlink" title="文件分类"></a>文件分类</h3><ol>
+<li>普通文件：包含字节序列，如程序代码、数据、文本等。</li>
+<li>目录文件：特殊的普通文件，其内容为关于文件的信息。</li>
+<li>特殊文件：主要是设备文件。每个外部设备对应一个文件。</li>
+</ol>
+<h3 id="root下目录"><a href="#root下目录" class="headerlink" title="root下目录"></a>root下目录</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>存放信息</th>
+<th>目录</th>
+<th>存放信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin</td>
+<td>存放root权限指令</td>
+<td>/dev</td>
+<td>存放设备文件</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>存放用户目录</td>
+<td>/lib64 /lib</td>
+<td>存放启动系统的命令</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>光驱和其他临时文件系统目录</td>
+<td>/proc</td>
+<td>虚拟目录</td>
+</tr>
+<tr>
+<td>/run</td>
+<td>加载了临时文件系统文件的目录</td>
+<td>/tmp</td>
+<td>存放临时文件</td>
+</tr>
+<tr>
+<td>/srv</td>
+<td>存放网络服务</td>
+<td>/var</td>
+<td>存放可能会用的文件，包括cache</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>存放开机会用的档案</td>
+<td>/etc</td>
+<td>存放主要的配置文件</td>
+</tr>
+<tr>
+<td>/media</td>
+<td>挂载可移除的装置</td>
+<td>/opt</td>
+<td>存储第三方软件</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>root用户的主目录</td>
+<td>/sbin</td>
+<td>存放root用户使用的系统设定命令</td>
+</tr>
+<tr>
+<td>/sys</td>
+<td>虚拟文件目录</td>
+<td>/usr</td>
+<td>存放用户主目录和其他目录文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="目录命令"><a href="#目录命令" class="headerlink" title="目录命令"></a>目录命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pwd</td>
+<td>显示当前工作目录</td>
+<td>cd</td>
+<td>改变工作目录</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>显示一个或多个文件内容。</td>
+<td>lp</td>
+<td>将文件发送给打印机。</td>
+</tr>
+<tr>
+<td>lpr</td>
+<td>Linux打印命令。</td>
+<td>cancel</td>
+<td>取消打印命令。</td>
+</tr>
+<tr>
+<td>lpstat</td>
+<td>获取打印机状态命令。</td>
+<td>rm</td>
+<td>获取打印机状态命令。</td>
+</tr>
+<tr>
+<td>rm -i</td>
+<td>删除前请求确认</td>
+<td>rm -r</td>
+<td>删除指定目录与目录下所有文件与子目录</td>
+</tr>
+<tr>
+<td>view</td>
+<td>只读显示</td>
+<td>pr</td>
+<td>排版输出</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>在已存在文件i节点和新文件名之间创建新链接</td>
+<td>wc</td>
+<td>-l统计行数-w统计字数-c统计字符数</td>
+</tr>
+<tr>
+<td>head</td>
+<td>-n显示前n行；-c字符计数</td>
+<td>tail</td>
+<td>-n显示前n行；-c字符计数</td>
+</tr>
+<tr>
+<td>cut</td>
+<td>截取指定字段。-f域分割；-c字符数；-d；指定分隔符</td>
+<td>paste</td>
+<td>逐行连接文件，将两个或多个文件的域连接到一起</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="ls："><a href="#ls：" class="headerlink" title="ls："></a>ls：</h4><p>功能：显示目录内信息</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>显示所有文件</td>
+<td>-C</td>
+<td>多列显示</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>目录名后+/，可执行文件后+*</td>
+<td>-l</td>
+<td>显示详细信息</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>页宽显示</td>
+<td>-R</td>
+<td>循环显示</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>以块为单位显示文件大小</td>
+<td>-i</td>
+<td>查看i结点号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="pg，more与less："><a href="#pg，more与less：" class="headerlink" title="pg，more与less："></a>pg，more与less：</h4><p>pg功能：读文件</p>
+<p>more功能：另起一页读文件</p>
+<p>less功能：同more，但允许文件中向前移动</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>不需要回车结束单命令</td>
+<td>-s</td>
+<td>反白显示信息与提示</td>
+</tr>
+<tr>
+<td>-num</td>
+<td>设置每屏行数</td>
+<td>-p</td>
+<td>修改提示符</td>
+</tr>
+<tr>
+<td>+num</td>
+<td>从num行开始显示</td>
+<td>+/pattern</td>
+<td>从第一个含pattern的行开始显示</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="cp："><a href="#cp：" class="headerlink" title="cp："></a>cp：</h4><p>功能：复制文件</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>若文件重名则创建备份后覆盖</td>
+<td>-i</td>
+<td>如已存在则需要确认</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>目录复制至新目录</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="mv："><a href="#mv：" class="headerlink" title="mv："></a>mv：</h4><p>功能：移到文件</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>若文件重名则创建备份后覆盖</td>
+<td>-i</td>
+<td>如已存在则需要确认</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>如果目标文件已经存在，就删除目标文件。</td>
+<td>-v</td>
+<td>解释操作。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="find"><a href="#find" class="headerlink" title="find:"></a>find:</h4><p>功能：查找文件</p>
+<p>-：以内    +：以外</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-name</td>
+<td>文件名查找</td>
+<td>-size+-n</td>
+<td>文件大小查找</td>
+</tr>
+<tr>
+<td>-type</td>
+<td>文件类型查找</td>
+<td>-atime+-n</td>
+<td>最后访问日期查找</td>
+</tr>
+<tr>
+<td>-mtime+-n</td>
+<td>最后修改日期查找</td>
+<td>-newer</td>
+<td>查找更新文件</td>
+</tr>
+<tr>
+<td>-print</td>
+<td>输出路径</td>
+<td>-exec command {} \;</td>
+<td>找到后执行命令</td>
+</tr>
+<tr>
+<td>-ok command {} \;</td>
+<td>执行前需确认</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><p>例：drw-r—r—  1  david  student  48  Jun 25  12:28   memos</p>
+<p>第一列，字符串类型，10个字符组成：drw-r—r— </p>
+<p>第1个字符是<strong>文件类型</strong>：“d”是目录，“-”是普通文件，“b”是块设备文件，“c”是字符设备文件，“l”是链接文件。</p>
+<p>第2-10字符是<strong>文件访问模式</strong>，3个字符一组，描述了三类用户的权限。第一组是文件所有者权限，第二组是同组用户权限，第三组是其他用户权限。</p>
+<p>第二列，数字类型：1                              该文件的<strong>链接数</strong>。可以使用ln命令查看链接情况。</p>
+<p>第三列，字符串类型：david                    文件的<strong>所有者</strong>。</p>
+<p>第四列，字符串类型：student                 文件的<strong>所属的组</strong>。每个用户有一个用户ID和组ID，由系统管理员分配。</p>
+<p>第五列，数字类型：48                            文件的大小，单位为字节。</p>
+<p>第四列，日期时间类型：Jun 25  12:28   文件上一次修改的日期和时间。</p>
+<p>第四列，字符串类型：memos                 文件的名称。</p>
+<p>普通文件默认权限为777，目录文件默认权限为666，创建时实际权限为默认权限减去umask</p>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><h4 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h4><p>>>     追加重定向 </p>
+<p>>       覆盖重定向</p>
+<h4 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h4><p>命令格式：</p>
+<p><em>command</em> &lt; <em>filename</em>     正常使用</p>
+<p><em>command</em> &lt;&lt; <em>filename</em>   脚本文件中使用</p>
+<h3 id="正则表达式与通配符"><a href="#正则表达式与通配符" class="headerlink" title="正则表达式与通配符"></a>正则表达式与通配符</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>含义</th>
+<th>元字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>匹配新行字符以外的字符</td>
+<td>^</td>
+<td>匹配行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配行尾</td>
+<td>\&lt;</td>
+<td>匹配词首</td>
+</tr>
+<tr>
+<td>></td>
+<td>匹配词尾</td>
+<td>[list]</td>
+<td>匹配list内的字符</td>
+</tr>
+<tr>
+<td><sup><a href="#fn_list" id="reffn_list">list</a></sup></td>
+<td>不匹配list中的字符</td>
+<td>()</td>
+<td>视作单元</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>交变，匹配选择之一</td>
+<td>\</td>
+<td>引用，字面解释元字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配任意次</td>
+<td>+</td>
+<td>匹配一次或多次</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配0次或1次</td>
+<td>{n}</td>
+<td>匹配n次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配次数$n\leq x\leq m$其中n，m可忽略</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="用户与组"><a href="#用户与组" class="headerlink" title="用户与组"></a>用户与组</h2><ol>
+<li><p>UID</p>
+<p>root账户：0</p>
+<p>系统用户：1-499</p>
+<p>普通用户：500-60000</p>
+</li>
+<li><p>用户信息存放于/etc/passwd，加密后口令存放于/etc/shadow，组信息存放于/etc/group</p>
+</li>
+<li><p>who am i显示当前终端最初登录的帐户;whoami显示当前终端当前用户</p>
+</li>
+<li><p>su 切换用户，参数缺省时切换至root</p>
+</li>
+</ol>
+<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><p>真正的硬件终端基本上已经看不到了，现在所说的终端、伪终端都是软件仿真终端(即终端模拟软件)</p>
+<p>一些连接了键盘和显示器的系统中，我们可以接触到运行在内核态的软件仿真终端(tty1-tty6)</p>
+<p>通过 SSH 等方式建立的连接中使用的都是伪终端</p>
+<p>伪终端是运行在用户态的软件仿真终端。</p>
+<h2 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h2><ol>
+<li><p>SHELL种类：BASH/KSH/SH/CSH/TCSH</p>
+</li>
+<li><p>退出SHELL：ctrl+d</p>
+</li>
+<li><p>终止前台进程：ctrl+c</p>
+</li>
+<li><p>. filename 与 exec filename 不会创建子shell。</p>
+</li>
+<li><p>./filename;$filename;`filename` 会创建子shell</p>
+</li>
+<li><p>echo：将消息及参数显示在用户终端上</p>
+<p>消除转义</p>
+<p>\：转义后方字符</p>
+<p>“：特例有$ ` “，保留空白符</p>
+<p>‘：消除一切特殊含义</p>
+</li>
+<li><p>set：查看当前使用的shell变量</p>
+</li>
+<li><p>unset：删除shell变量</p>
+</li>
+<li><p>shell标准变量</p>
+<p>HOME：用户主目录</p>
+<p>PATH：设置shell定位命令（程序）时所要查找的目录序列，路径串中以冒号分隔。</p>
+<p>PS1：命令行提示符</p>
+<p>| 转义序列 | 显示内容        | 转义序列 | 显示内容             |<br>| ———— | ———————- | ———— | —————————— |<br>| \u       | 用户名          | \h       | 主机名               |<br>| \W       | 最底层工作目录  | \$       | root时显示#其余显示$ |<br>| \s       | 当前的shell环境 | \w       | 完整工作路径         |<br>| \d       | 日期            | \t       | 时间                 |<br>| !       | 命令序号        |          |                      |</p>
+<p>PS2:命令换行时显示前缀</p>
+<p>CDPATH：cd可达的快捷入口</p>
+<p>SHELL：当前shell</p>
+<p>TERM：当前终端类型</p>
+<p>TZ：时区信息</p>
+</li>
+<li><p>其他元字符</p>
+<p>``：执行反引号内命令</p>
+<p>;：顺序执行命令</p>
+<p>()：命令编组</p>
+<p>&amp;：后台执行</p>
+<p>|：管道，前者输出为后者输入</p>
+</li>
+<li><p>其他命令</p>
+<p>| 命令  | 功能                     | 命令   | 功能                      |<br>| ——- | ———————————— | :——- | ————————————- |<br>| sleep | 延时                     | ps     | 显示活动进程              |<br>| nohup | 用户退出时不关闭后台进程 | kill   | 终止进程                  |<br>| tee   | 输出到屏幕同时保存       | grep   | 搜索文档内信息            |<br>| sort  | 排序命令                 | export | 使变量可用于子SHELL       |<br>| alias | 为命令起别名             | ualias | 取消别名(\可用于屏蔽别名) |</p>
+</li>
+<li><p>系统配置文件：/etc/profile</p>
+<p>用户配置文件：~/.profile</p>
+<p>子shell死亡时唤醒父shell</p>
+</li>
+</ol>
+<h2 id="SHELL编程"><a href="#SHELL编程" class="headerlink" title="SHELL编程"></a>SHELL编程</h2><ol>
+<li><h1 id="用于注释"><a href="#用于注释" class="headerlink" title="用于注释"></a>用于注释</h1></li>
+<li><h1 id="用于确定后续代码发送路径，即修改编译器。"><a href="#用于确定后续代码发送路径，即修改编译器。" class="headerlink" title="!用于确定后续代码发送路径，即修改编译器。"></a>!用于确定后续代码发送路径，即修改编译器。</h1></li>
+<li><p>变量无需声明，只需定义</p>
+</li>
+<li><p>命令行参数</p>
+<p>| 变量 | 含义                 | 变量     | 含义         |<br>| —— | —————————— | ———— | —————— |<br>| $0   | 脚本文件名           | \$1-\$9  | 九个参数     |<br>| $#   | 参数个数             | \$@、\$* | 包含所有参数 |<br>| $?   | 最后一个命令退出状态 | \$\$     | pid          |</p>
+</li>
+</ol>
+<ol>
+<li><p>命令</p>
+<p>| 命令  | 功能                                     | 命令 | 功能     |<br>| ——- | ———————————————————— | —— | ———— |<br>| chmod | 设置权限                                 | .    | 执行程序 |<br>| read  | 读取变量(多出的变量全部加入最后一个变量) | exit | 终止程序 |</p>
+</li>
+<li><p>条件控制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ]</span><br><span class="line">then</span><br><span class="line">	commands</span><br><span class="line">elif</span><br><span class="line">	commands</span><br><span class="line">else</span><br><span class="line">	commands</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span>[ condition ]是test命令的一种特殊形式</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>test操作符</p>
+<p>| 操作符 | 含义                     | 操作符 | 含义                     |<br>| ——— | ———————————— | ——— | ———————————— |<br>| -eq    | 判等                     | -ne    | 判不等                   |<br>| -gt    | 大于                     | -ge    | 大于等于                 |<br>| -lt    | 小于                     | -le    | 小于等于                 |<br>| -a     | 逻辑与                   | -o     | 逻辑或                   |<br>| !      | 逻辑非                   | =      | 字符串判等               |<br>| !=     | 字符串判不等             | -n     | 字符串是否包含           |<br>| -z     | 判断是否空串             | -r     | 文件是否存在且可读       |<br>| -w     | 文件是否存在且可写       | -s     | 文件是否存在且长度非0    |<br>| -f     | 文件是否存在且是普通文件 | -d     | 文件是否存在且是目录文件 |</p>
+<p>缩写为[]，但若缩写为[[]]括号内可不需转义符。</p>
+</li>
+</ol>
+</li>
+<li><p>expr：</p>
+<p>expr 参数1 操作符 参数2（空格必须存在）</p>
+<p>| 操作符 | 含义     | 操作符 | 含义 |<br>| ——— | ———— | ——— | —— |<br>| +      | 加       | -      | 减   |<br>| \*    | 乘       | /      | 除   |<br>| \\%    | 取模     | =      | 判等 |<br>| !=     | 判不等   | \\&lt;    | 小于 |<br>| \\&lt;=   | 小于等于 | \>    | 大于 |<br>| \>=   | 大于等于 |        |      |</p>
+</li>
+<li><p>let：</p>
+<p>可用于整数运算例 let x=x+1</p>
+<p>缩写为(())</p>
+</li>
+<li><p>循环结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for x in 1 2 3</span><br><span class="line">do</span><br><span class="line">	commands</span><br><span class="line">done</span><br><span class="line">while [ condition ]</span><br><span class="line">do</span><br><span class="line">	commands</span><br><span class="line">done</span><br><span class="line">until [ condition ]</span><br><span class="line">do </span><br><span class="line">	commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>df</td>
+<td>显示未用磁盘空间</td>
+<td>du</td>
+<td>统计磁盘使用情况</td>
+</tr>
+<tr>
+<td>banner</td>
+<td>显示标题</td>
+<td>at</td>
+<td>指定时间执行</td>
+</tr>
+<tr>
+<td>type</td>
+<td>显示命令类型</td>
+<td>time</td>
+<td>统计程序运行时间</td>
+</tr>
+<tr>
+<td>calendar</td>
+<td>提醒</td>
+<td>finger</td>
+<td>显示用户的详细信息</td>
+</tr>
+<tr>
+<td>ccrypt -e</td>
+<td>加密</td>
+<td>ccrypt -d</td>
+<td>解密</td>
+</tr>
+<tr>
+<td>compress</td>
+<td>压缩</td>
+<td>uncompress</td>
+<td>解压</td>
+</tr>
+<tr>
+<td>telnet</td>
+<td>连接远程服务器</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>存档和分发文件</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>存档合并</td>
+<td>c</td>
+<td>建立新存档</td>
+</tr>
+<tr>
+<td>d</td>
+<td>比较存档与当下区别</td>
+<td>—delete</td>
+<td>删除存档</td>
+</tr>
+<tr>
+<td>r</td>
+<td>附加到存档解为</td>
+<td>t</td>
+<td>列出存档目录</td>
+</tr>
+<tr>
+<td>u</td>
+<td>新存档覆盖</td>
+<td>x</td>
+<td>从存档中展开</td>
+</tr>
+<tr>
+<td>v</td>
+<td>详细显示处理文件</td>
+<td>f</td>
+<td>指定存档与设备</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>建立连接</td>
+<td>close</td>
+<td>关闭连接返回本地ftp</td>
+</tr>
+<tr>
+<td>quit/bye</td>
+<td>关闭连接返回shell</td>
+<td>ascii</td>
+<td>文本模式</td>
+</tr>
+<tr>
+<td>binary</td>
+<td>二进制模式</td>
+<td>get</td>
+<td>下载</td>
+</tr>
+<tr>
+<td>mget</td>
+<td>下载多个</td>
+<td>put</td>
+<td>上传</td>
+</tr>
+<tr>
+<td>mput</td>
+<td>上传多个</td>
+<td>cd</td>
+<td>到服务器目录</td>
+</tr>
+<tr>
+<td>lcd</td>
+<td>到本地目录</td>
+<td>dir/ls</td>
+<td>列出服务器目录内容</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示服务期目录名</td>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除指定文件</td>
+<td>mdelete</td>
+<td>删除多个文件</td>
+</tr>
+<tr>
+<td>？</td>
+<td>帮助内容</td>
+<td>!</td>
+<td>临时切换shell</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>传送一个数据库显示一个#</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/17/离散数学II笔记/" rel="next" title="离散数学II笔记">
+                  <i class="fa fa-chevron-left"></i> 离散数学II笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-总复习"><span class="nav-number">1.</span> <span class="nav-text">Linux 总复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unix-Linux-操作系统介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Unix-Linux 操作系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">vi编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#光标移动"><span class="nav-number">1.3.1.</span> <span class="nav-text">光标移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入模式"><span class="nav-number">1.3.2.</span> <span class="nav-text">插入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑文字"><span class="nav-number">1.3.3.</span> <span class="nav-text">编辑文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索文字"><span class="nav-number">1.3.4.</span> <span class="nav-text">检索文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">多文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作域"><span class="nav-number">1.3.6.</span> <span class="nav-text">操作域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区"><span class="nav-number">1.3.7.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取光标位置"><span class="nav-number">1.3.8.</span> <span class="nav-text">获取光标位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制vi"><span class="nav-number">1.3.9.</span> <span class="nav-text">定制vi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔选项"><span class="nav-number">1.3.9.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字式选项"><span class="nav-number">1.3.9.2.</span> <span class="nav-text">数字式选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏替换"><span class="nav-number">1.3.9.3.</span> <span class="nav-text">宏替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">1.3.9.4.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他vi命令"><span class="nav-number">1.3.10.</span> <span class="nav-text">其他vi命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">1.4.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件分类"><span class="nav-number">1.4.1.</span> <span class="nav-text">文件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root下目录"><span class="nav-number">1.4.2.</span> <span class="nav-text">root下目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录命令"><span class="nav-number">1.4.3.</span> <span class="nav-text">目录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls："><span class="nav-number">1.4.3.1.</span> <span class="nav-text">ls：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pg，more与less："><span class="nav-number">1.4.3.2.</span> <span class="nav-text">pg，more与less：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp："><span class="nav-number">1.4.3.3.</span> <span class="nav-text">cp：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv："><span class="nav-number">1.4.3.4.</span> <span class="nav-text">mv：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">1.4.3.5.</span> <span class="nav-text">find:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">1.4.4.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-number">1.4.5.</span> <span class="nav-text">重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出重定向"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入重定向"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">输入重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式与通配符"><span class="nav-number">1.4.6.</span> <span class="nav-text">正则表达式与通配符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户与组"><span class="nav-number">1.5.</span> <span class="nav-text">用户与组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端"><span class="nav-number">1.6.</span> <span class="nav-text">终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL"><span class="nav-number">1.7.</span> <span class="nav-text">SHELL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL编程"><span class="nav-number">1.8.</span> <span class="nav-text">SHELL编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于注释"><span class="nav-number">2.</span> <span class="nav-text">用于注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于确定后续代码发送路径，即修改编译器。"><span class="nav-number">3.</span> <span class="nav-text">!用于确定后续代码发送路径，即修改编译器。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#其他命令"><span class="nav-number">3.1.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">3.1.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">3.1.2.</span> <span class="nav-text">FTP</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>
