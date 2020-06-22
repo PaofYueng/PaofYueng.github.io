@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="Linux 总复习前言 明天就要考试了，我才刚复习完">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-06-22T14:31:45.853Z">
+<meta property="og:updated_time" content="2020-06-22T14:51:26.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 总复习">
 <meta name="twitter:description" content="Linux 总复习前言 明天就要考试了，我才刚复习完">
@@ -237,7 +237,7 @@
                 
               
 
-              <time title="创建时间：2020-06-22 21:33:00 / 修改时间：14:31:45" itemprop="dateCreated datePublished" datetime="2020-06-22T21:33:00Z">2020-06-22</time>
+              <time title="创建时间：2020-06-22 21:33:00 / 修改时间：14:51:26" itemprop="dateCreated datePublished" datetime="2020-06-22T21:33:00Z">2020-06-22</time>
             </span>
           
             
@@ -932,7 +932,7 @@
 <td>视作单元</td>
 </tr>
 <tr>
-<td>&amp;#124</td>
+<td><code>&#124;</code></td>
 <td>交变，匹配选择之一</td>
 <td>\</td>
 <td>引用，字面解释元字符</td>
@@ -999,13 +999,57 @@
 <p>HOME：用户主目录</p>
 <p>PATH：设置shell定位命令（程序）时所要查找的目录序列，路径串中以冒号分隔。</p>
 <p>PS1：命令行提示符</p>
-<p>| 转义序列 | 显示内容        | 转义序列 | 显示内容             |<br>| ———— | ———————- | ———— | —————————— |<br>| \u       | 用户名          | \h       | 主机名               |<br>| \W       | 最底层工作目录  | \$       | root时显示#其余显示$ |<br>| \s       | 当前的shell环境 | \w       | 完整工作路径         |<br>| \d       | 日期            | \t       | 时间                 |<br>| !       | 命令序号        |          |                      |</p>
-<p>PS2:命令换行时显示前缀</p>
-<p>CDPATH：cd可达的快捷入口</p>
-<p>SHELL：当前shell</p>
-<p>TERM：当前终端类型</p>
-<p>TZ：时区信息</p>
 </li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>显示内容</th>
+<th>转义序列</th>
+<th>显示内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\u</td>
+<td>用户名</td>
+<td>\h</td>
+<td>主机名</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>最底层工作目录</td>
+<td>\$</td>
+<td>root时显示#其余显示$</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>当前的shell环境</td>
+<td>\w</td>
+<td>完整工作路径</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>日期</td>
+<td>\t</td>
+<td>时间</td>
+</tr>
+<tr>
+<td>!</td>
+<td>命令序号</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   PS2:命令换行时显示前缀</p>
+<p>   CDPATH：cd可达的快捷入口</p>
+<p>   SHELL：当前shell</p>
+<p>   TERM：当前终端类型</p>
+<p>   TZ：时区信息</p>
+<ol>
 <li><p>其他元字符</p>
 <p>``：执行反引号内命令</p>
 <p>;：顺序执行命令</p>
@@ -1014,49 +1058,246 @@
 <p>|：管道，前者输出为后者输入</p>
 </li>
 <li><p>其他命令</p>
-<p>| 命令  | 功能                     | 命令   | 功能                      |<br>| ——- | ———————————— | :——- | ————————————- |<br>| sleep | 延时                     | ps     | 显示活动进程              |<br>| nohup | 用户退出时不关闭后台进程 | kill   | 终止进程                  |<br>| tee   | 输出到屏幕同时保存       | grep   | 搜索文档内信息            |<br>| sort  | 排序命令                 | export | 使变量可用于子SHELL       |<br>| alias | 为命令起别名             | ualias | 取消别名(\可用于屏蔽别名) |</p>
 </li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th style="text-align:left">命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sleep</td>
+<td>延时</td>
+<td style="text-align:left">ps</td>
+<td>显示活动进程</td>
+</tr>
+<tr>
+<td>nohup</td>
+<td>用户退出时不关闭后台进程</td>
+<td style="text-align:left">kill</td>
+<td>终止进程</td>
+</tr>
+<tr>
+<td>tee</td>
+<td>输出到屏幕同时保存</td>
+<td style="text-align:left">grep</td>
+<td>搜索文档内信息</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>排序命令</td>
+<td style="text-align:left">export</td>
+<td>使变量可用于子SHELL</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>为命令起别名</td>
+<td style="text-align:left">ualias</td>
+<td>取消别名(\可用于屏蔽别名)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
 <li><p>系统配置文件：/etc/profile</p>
 <p>用户配置文件：~/.profile</p>
 <p>子shell死亡时唤醒父shell</p>
 </li>
 </ol>
-<h2 id="SHELL编程"><a href="#SHELL编程" class="headerlink" title="SHELL编程"></a>SHELL编程</h2><ol>
-<li><p>#用于注释</p>
-</li>
-<li><p>#!用于确定后续代码发送路径，即修改编译器。</p>
-</li>
-<li><p>变量无需声明，只需定义</p>
-</li>
-<li><p>命令行参数</p>
-<p>| 变量 | 含义                 | 变量     | 含义         |<br>| —— | —————————— | ———— | —————— |<br>| $0   | 脚本文件名           | \$1-\$9  | 九个参数     |<br>| $#   | 参数个数             | \$@、\$* | 包含所有参数 |<br>| $?   | 最后一个命令退出状态 | \$\$     | pid          |</p>
-</li>
-</ol>
-<ol>
-<li><p>命令</p>
-<p>| 命令  | 功能                                     | 命令 | 功能     |<br>| ——- | ———————————————————— | —— | ———— |<br>| chmod | 设置权限                                 | .    | 执行程序 |<br>| read  | 读取变量(多出的变量全部加入最后一个变量) | exit | 终止程序 |</p>
-</li>
-<li><p>条件控制</p>
+<h2 id="SHELL编程"><a href="#SHELL编程" class="headerlink" title="SHELL编程"></a>SHELL编程</h2><h1 id="用于注释"><a href="#用于注释" class="headerlink" title="用于注释"></a>用于注释</h1><h1 id="用于确定后续代码发送路径，即修改编译器。"><a href="#用于确定后续代码发送路径，即修改编译器。" class="headerlink" title="!用于确定后续代码发送路径，即修改编译器。"></a>!用于确定后续代码发送路径，即修改编译器。</h1><p>变量无需声明，只需定义</p>
+<p>命令行参数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>脚本文件名</td>
+<td>\$1-\$9</td>
+<td>九个参数</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>参数个数</td>
+<td>\$@、\$*</td>
+<td>包含所有参数</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>最后一个命令退出状态</td>
+<td>\$\$</td>
+<td>pid</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td>设置权限</td>
+<td>.</td>
+<td>执行程序</td>
+</tr>
+<tr>
+<td>read</td>
+<td>读取变量(多出的变量全部加入最后一个变量)</td>
+<td>exit</td>
+<td>终止程序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>条件控制</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ]</span><br><span class="line">then</span><br><span class="line">	commands</span><br><span class="line">elif</span><br><span class="line">	commands</span><br><span class="line">else</span><br><span class="line">	commands</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span>[ condition ]是test命令的一种特殊形式</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>test操作符</p>
-<p>| 操作符 | 含义                     | 操作符 | 含义                     |<br>| ——— | ———————————— | ——— | ———————————— |<br>| -eq    | 判等                     | -ne    | 判不等                   |<br>| -gt    | 大于                     | -ge    | 大于等于                 |<br>| -lt    | 小于                     | -le    | 小于等于                 |<br>| -a     | 逻辑与                   | -o     | 逻辑或                   |<br>| !      | 逻辑非                   | =      | 字符串判等               |<br>| !=     | 字符串判不等             | -n     | 字符串是否包含           |<br>| -z     | 判断是否空串             | -r     | 文件是否存在且可读       |<br>| -w     | 文件是否存在且可写       | -s     | 文件是否存在且长度非0    |<br>| -f     | 文件是否存在且是普通文件 | -d     | 文件是否存在且是目录文件 |</p>
-<p>缩写为[]，但若缩写为[[]]括号内可不需转义符。</p>
-</li>
-</ol>
-</li>
-<li><p>expr：</p>
+<p>test操作符</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+<th>操作符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-eq</td>
+<td>判等</td>
+<td>-ne</td>
+<td>判不等</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>逻辑与</td>
+<td>-o</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑非</td>
+<td>=</td>
+<td>字符串判等</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>字符串判不等</td>
+<td>-n</td>
+<td>字符串是否包含</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>判断是否空串</td>
+<td>-r</td>
+<td>文件是否存在且可读</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>文件是否存在且可写</td>
+<td>-s</td>
+<td>文件是否存在且长度非0</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>文件是否存在且是普通文件</td>
+<td>-d</td>
+<td>文件是否存在且是目录文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>缩写为[]，但若缩写为[[]]括号内可不需转义符。
+</code></pre><p>expr：</p>
 <p>expr 参数1 操作符 参数2（空格必须存在）</p>
-<p>| 操作符 | 含义     | 操作符 | 含义 |<br>| ——— | ———— | ——— | —— |<br>| +      | 加       | -      | 减   |<br>| \*    | 乘       | /      | 除   |<br>| \\%    | 取模     | =      | 判等 |<br>| !=     | 判不等   | \\&lt;    | 小于 |<br>| \\&lt;=   | 小于等于 | \>    | 大于 |<br>| \>=   | 大于等于 |        |      |</p>
-</li>
-<li><p>let：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+<th>操作符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加</td>
+<td>-</td>
+<td>减</td>
+</tr>
+<tr>
+<td>\*</td>
+<td>乘</td>
+<td>/</td>
+<td>除</td>
+</tr>
+<tr>
+<td>\\%</td>
+<td>取模</td>
+<td>=</td>
+<td>判等</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>判不等</td>
+<td>\\&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>\\&lt;=</td>
+<td>小于等于</td>
+<td>\></td>
+<td>大于</td>
+</tr>
+<tr>
+<td>\>=</td>
+<td>大于等于</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>let：</p>
 <p>可用于整数运算例 let x=x+1</p>
 <p>缩写为(())</p>
-</li>
-<li><p>循环结构</p>
+<p>循环结构</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for x in 1 2 3</span><br><span class="line">do</span><br><span class="line">	commands</span><br><span class="line">done</span><br><span class="line">while [ condition ]</span><br><span class="line">do</span><br><span class="line">	commands</span><br><span class="line">done</span><br><span class="line">until [ condition ]</span><br><span class="line">do </span><br><span class="line">	commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><div class="table-container">
 <table>
 <thead>
@@ -1328,7 +1569,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-总复习"><span class="nav-number">1.</span> <span class="nav-text">Linux 总复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unix-Linux-操作系统介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Unix-Linux 操作系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">vi编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#光标移动"><span class="nav-number">1.3.1.</span> <span class="nav-text">光标移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入模式"><span class="nav-number">1.3.2.</span> <span class="nav-text">插入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑文字"><span class="nav-number">1.3.3.</span> <span class="nav-text">编辑文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索文字"><span class="nav-number">1.3.4.</span> <span class="nav-text">检索文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">多文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作域"><span class="nav-number">1.3.6.</span> <span class="nav-text">操作域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区"><span class="nav-number">1.3.7.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取光标位置"><span class="nav-number">1.3.8.</span> <span class="nav-text">获取光标位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制vi"><span class="nav-number">1.3.9.</span> <span class="nav-text">定制vi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔选项"><span class="nav-number">1.3.9.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字式选项"><span class="nav-number">1.3.9.2.</span> <span class="nav-text">数字式选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏替换"><span class="nav-number">1.3.9.3.</span> <span class="nav-text">宏替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">1.3.9.4.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他vi命令"><span class="nav-number">1.3.10.</span> <span class="nav-text">其他vi命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">1.4.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件分类"><span class="nav-number">1.4.1.</span> <span class="nav-text">文件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root下目录"><span class="nav-number">1.4.2.</span> <span class="nav-text">root下目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录命令"><span class="nav-number">1.4.3.</span> <span class="nav-text">目录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls："><span class="nav-number">1.4.3.1.</span> <span class="nav-text">ls：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pg，more与less："><span class="nav-number">1.4.3.2.</span> <span class="nav-text">pg，more与less：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp："><span class="nav-number">1.4.3.3.</span> <span class="nav-text">cp：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv："><span class="nav-number">1.4.3.4.</span> <span class="nav-text">mv：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">1.4.3.5.</span> <span class="nav-text">find:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">1.4.4.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-number">1.4.5.</span> <span class="nav-text">重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出重定向"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入重定向"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">输入重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式与通配符"><span class="nav-number">1.4.6.</span> <span class="nav-text">正则表达式与通配符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户与组"><span class="nav-number">1.5.</span> <span class="nav-text">用户与组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端"><span class="nav-number">1.6.</span> <span class="nav-text">终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL"><span class="nav-number">1.7.</span> <span class="nav-text">SHELL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL编程"><span class="nav-number">1.8.</span> <span class="nav-text">SHELL编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他命令"><span class="nav-number">1.9.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">1.9.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">1.9.2.</span> <span class="nav-text">FTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验题重点题归纳"><span class="nav-number">1.10.</span> <span class="nav-text">实验题重点题归纳</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-总复习"><span class="nav-number">1.</span> <span class="nav-text">Linux 总复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unix-Linux-操作系统介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Unix-Linux 操作系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">vi编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#光标移动"><span class="nav-number">1.3.1.</span> <span class="nav-text">光标移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入模式"><span class="nav-number">1.3.2.</span> <span class="nav-text">插入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑文字"><span class="nav-number">1.3.3.</span> <span class="nav-text">编辑文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索文字"><span class="nav-number">1.3.4.</span> <span class="nav-text">检索文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">多文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作域"><span class="nav-number">1.3.6.</span> <span class="nav-text">操作域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区"><span class="nav-number">1.3.7.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取光标位置"><span class="nav-number">1.3.8.</span> <span class="nav-text">获取光标位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制vi"><span class="nav-number">1.3.9.</span> <span class="nav-text">定制vi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔选项"><span class="nav-number">1.3.9.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字式选项"><span class="nav-number">1.3.9.2.</span> <span class="nav-text">数字式选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏替换"><span class="nav-number">1.3.9.3.</span> <span class="nav-text">宏替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">1.3.9.4.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他vi命令"><span class="nav-number">1.3.10.</span> <span class="nav-text">其他vi命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">1.4.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件分类"><span class="nav-number">1.4.1.</span> <span class="nav-text">文件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root下目录"><span class="nav-number">1.4.2.</span> <span class="nav-text">root下目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录命令"><span class="nav-number">1.4.3.</span> <span class="nav-text">目录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls："><span class="nav-number">1.4.3.1.</span> <span class="nav-text">ls：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pg，more与less："><span class="nav-number">1.4.3.2.</span> <span class="nav-text">pg，more与less：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp："><span class="nav-number">1.4.3.3.</span> <span class="nav-text">cp：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv："><span class="nav-number">1.4.3.4.</span> <span class="nav-text">mv：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">1.4.3.5.</span> <span class="nav-text">find:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">1.4.4.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-number">1.4.5.</span> <span class="nav-text">重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出重定向"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入重定向"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">输入重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式与通配符"><span class="nav-number">1.4.6.</span> <span class="nav-text">正则表达式与通配符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户与组"><span class="nav-number">1.5.</span> <span class="nav-text">用户与组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端"><span class="nav-number">1.6.</span> <span class="nav-text">终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL"><span class="nav-number">1.7.</span> <span class="nav-text">SHELL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL编程"><span class="nav-number">1.8.</span> <span class="nav-text">SHELL编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于注释"><span class="nav-number">2.</span> <span class="nav-text">用于注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于确定后续代码发送路径，即修改编译器。"><span class="nav-number">3.</span> <span class="nav-text">!用于确定后续代码发送路径，即修改编译器。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#其他命令"><span class="nav-number">3.1.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">3.1.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">3.1.2.</span> <span class="nav-text">FTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验题重点题归纳"><span class="nav-number">3.2.</span> <span class="nav-text">实验题重点题归纳</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
