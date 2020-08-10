@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="微机系统笔记">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微机系统笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/08/07/微机系统笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="微机系统笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-08-10T14:53:05.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微机系统笔记">
+<meta name="twitter:description" content="微机系统笔记">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/08/07/微机系统笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>微机系统笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/07/微机系统笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">微机系统笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-06 16:51:35" itemprop="dateCreated datePublished" datetime="2020-08-06T16:51:35Z">2020-08-06</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-10 14:53:05" itemprop="dateModified" datetime="2020-08-10T14:53:05Z">2020-08-10</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="微机系统笔记"><a href="#微机系统笔记" class="headerlink" title="微机系统笔记"></a>微机系统笔记</h1><a id="more"></a>
+<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
+<li>冯诺依曼模型</li>
+<li>五类计算机：巨型机、大型机、中型机、小型机、微机</li>
+<li>微机特点：集成度高、体积小、重量轻、耗电省、可 靠性高、结构灵活、价格低廉、维护方便、应用面广。 </li>
+<li>三种总线：数据总线DB、地址总线AD、控制总线CB。</li>
+<li>字长：计算机一次能处理的二进制位数，一般是字节的倍数</li>
+<li>主频：即时钟频率</li>
+<li>主存容量：b二进制单位、B字节单位</li>
+<li><strong>存储速度</strong>：存储时间-一次存储器操作所用时间，存储周期-两次存储操作开始的间隔时间</li>
+<li>运算速度：常用MIPS</li>
+<li>CISC-RISC</li>
+</ol>
+<h2 id="16位微处理器Intel-8086"><a href="#16位微处理器Intel-8086" class="headerlink" title="16位微处理器Intel 8086"></a>16位微处理器Intel 8086</h2><p>基础特点：16位、CISC、数据总线16位、地址总线20位</p>
+<p><strong>EU-执行单元、BIU总线接口单元</strong></p>
+<p>8088在8086的基础上削减了数据总线的宽度</p>
+<h3 id="BIU"><a href="#BIU" class="headerlink" title="BIU"></a>BIU</h3><p>组成：<br>    ① 四个段寄存器：代码段、数据段、堆栈段、附加段<br>    ② 16位指令指针<br>    ③ 6字节的指令队列，可缓存八个指令<br>    ④ 总线控制逻辑<br>    ⑤ 20位地址加法器即：十六位的段地址左移四位+IP</p>
+<p>功能：<br>    取指令、形成物理地址、传送数据</p>
+<p>当指令队列出现两个空字节时会去按CS:IP形成20位物理地址取两个字节的指令。</p>
+<h3 id="EU"><a href="#EU" class="headerlink" title="EU"></a>EU</h3><p>组成:<br>    ① 16bit ALU<br>    ② 十六位标志寄存器<br>    ③ EU控制电路<br>    ④ 8个16位通用寄存器</p>
+<p>功能：<br>    从BIU中读指令并执行，形成物理地址，送数据与按照结果修改标志寄存器内容。</p>
+<p>CPU的14个16位寄存器：<br>① AX、BX、CX、DX：其中可分别调用高八位与低八位，例AH、AL。<br>② 堆栈指针寄存器SP，基址指针寄存器BP，源变址寄存器SI、目的变址寄存器DI。<br>③ 指令指针IP、状态标志<br>④ 代码段寄存器CS、数据段寄存器DS、堆栈段寄存器SS、附加段寄存器ES</p>
+<p>1）AX累加器，Accumulator Register<br>2）BX基址寄存器，Base Register<br>3）CX计数器，Counter<br>4）DX数据寄存器，Data Register</p>
+<p>1） SP堆栈指针，Stack Pointer，栈顶指针<br>2） BP基址指针，Base Pointer，堆栈段内数据区的基址<br>3） SI源变址寄存器，Source Index，源串指针，指向数据段源串操作数<br>4） DI目的变址寄存器，Destination Index， 目的串指针，指示在附加段中一个目的串操作数的位置。  </p>
+<p>CS代码段寄存器，Code Segment，存放当前执行程序的段起始地址<br>SS堆栈段寄存器，Stack Segment，存放当前堆栈段的段起始地址<br>DS数据段寄存器，Data Segment，存放当前数据段的段起始地址<br>ES附加段寄存器，Extra Segment，存放当前附加段的段起始地址 </p>
+<p>IP存放指令的偏移量，CS:IP即是所需指令地址，受保护只可由BIU修改</p>
+<p><strong>标志寄存器</strong>：十六位只用到了九位，分三种</p>
+<p>状态位<br>1）<strong>CF进位</strong>，Carry Flag：结果有进位或借位，CF=1，否则CF=0。<br>2）PF奇偶，Parity Flag：低8位结果为偶数个1，PF=1，否则PF=0。<br>3）AF辅助进位，Auxiliary Carry Flag：D3有进位或借位，AF=1，否 则AF=0。<br>4）<strong>ZF零标志</strong>，Zero Flag：结果为0，ZF=1，否则ZF=0。<br>5）<strong>SF符号位</strong>，Sign Flag：结果为正，SF=0，否则SF=1。<br>6）<strong>OF溢出标位</strong>，Overflow Flag：有符号数算术运算，结果超出其所能 表示的数值范围，OF=1，否则OF=0。</p>
+<p>控制位<br>1）DF方向标志，Direction Flag：数据串操作地址修改方向控制，增址DF=0，减址DF=1。<br>2）IF中断允许，Interrupt Enable Flag： IF=1，允许<strong>可屏蔽中断</strong>（开中断），IF=0，关中断。<br>3）TF陷阱标志，Trap Flag： TF=1，<strong>单步</strong>方式，每执行 一条指令自动产生一次类型为1的内部中断，使操作者可 以逐条指令检查，TF=0，正常。  </p>
+<p>重要引脚<br>INTR：可屏蔽中断请求信号，高电平有效<br>NMI：非屏蔽中断请求信号，上升沿有效<br>RD：读选通<br>WR：写信号<br>MN/MX：最小/最大模式<br>BHE：高八位数据允许<br>M/IO：存储器/输入输出控制</p>
+<p>总线周期：读写一次的时长<br>指令周期：执行一次指令的时长</p>
+<h3 id="总线周期"><a href="#总线周期" class="headerlink" title="总线周期"></a>总线周期</h3><p>T1-CPU发地址<br>T2-撤地址发控制信号<br>T3-收发数据<br>T4-完成读写</p>
+<p>最小模式</p>
+<p>读周期</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>T1</th>
+<th>T2</th>
+<th>T3</th>
+<th>TW</th>
+<th>T4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M/IO</td>
+<td>依情况而定</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A19~A16</td>
+<td>地址输出</td>
+<td>状态输出</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BHE</td>
+<td>允许即低电平</td>
+<td>不允许</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AD15-AD0</td>
+<td>地址输出</td>
+<td>地址输出</td>
+<td>数据输入</td>
+<td>数据输入</td>
+<td>数据数入</td>
+</tr>
+<tr>
+<td>RD</td>
+<td>不允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>ALE</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>DEN</td>
+<td>不允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>写周期</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>T1</th>
+<th>T2</th>
+<th>T3</th>
+<th>TW</th>
+<th>T4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M/IO</td>
+<td>依情况而定</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A19~A16</td>
+<td>地址输出</td>
+<td>状态输出</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BHE</td>
+<td>允许即低电平</td>
+<td>不允许</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AD15-AD0</td>
+<td>地址输出</td>
+<td>地址输出</td>
+<td>数据输出</td>
+<td>数据输出</td>
+<td>数据输出</td>
+</tr>
+<tr>
+<td>WR</td>
+<td>不允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>ALE</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>DEN</td>
+<td>不允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p>20位地址线，可直接寻址1M字节，支持字（16bit）数据存取<br>对齐字：在偶数地址中开始存放。读写时，只需一个总线周期。<br>非对齐字：在奇数地址中开始存放。读写时，需两个总线周期。</p>
+<p>由于存储器均是16位的，无法满足地址线提供的功能，8086采取段式存储，段内地址连续且独立。</p>
+<p>物理地址=段寄存器×16  +  段内偏移量 </p>
+<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p>8086 的中断分类：<br>    外部中断：外部中断源引起的中断，INTR，NMI。<br>    内部中断：由内部软件中断指令产生，或者在某些特定条件下，由CPU 本身触发产生。<br>    • 内部中断有两类:<br>        软件中断：中断指令INT  n，溢出中断指令INTO，断点中断指令INT3/<br>        软件陷阱：除法错误中断，单步中断。<br>• 中断向量：中断服务程序的起始地址。一个中断向量占4个存储单元。<br>    中断向量地址=中断类型码×4<br>• 软件中断特点：<br>    1）不受IF控制<br>    2）不读取中断向量<br>    3）优先权高 • 中断优先级：（高）除法错误→软件中断→NMI→INTR→单步（低） </p>
+<h2 id="Pentium"><a href="#Pentium" class="headerlink" title="Pentium"></a>Pentium</h2><h3 id="基本结构寄存器"><a href="#基本结构寄存器" class="headerlink" title="基本结构寄存器"></a>基本结构寄存器</h3><p>通用寄存器与控制寄存器除了扩展到32位其余无区别<br>段寄存器追加了两个附加段寄存器</p>
+<p>标志寄存器：<br>VM：虚拟8086方式，保护方式下， VM=1，CPU工作在虚拟8086模式。<br>AC：对齐检查，AC=1，当访问地址 出现对齐错误时，产生异常中断17。<br>VIF：虚拟中断标志，在虚拟方式下， VIF是IF的虚拟映像。<br>VIP：虚拟中断挂起，指示虚拟中断 是否挂起，为虚拟方式提供中断信息<br>ID：标识标志，ID=1，表示该CPU支 持CPUID指令，该指令提供厂商、产 品系列等信息。<br>RF：恢复标志，RF=1，即使遇到断点或 调试故障，也不产生异常中断1（单步）， 成功执行指令时，RF自动清0。<br>NT：嵌套任务，保护方式下，NT=1，当 前执行的任务嵌套在另一个任务中， NT=0，无嵌套。<br>IOPL：I/O特权级，保护方式下，为I/O 寻址操作设置最小保护级，0-3，0为最高 优先级，CPL≥IOPL（CPL数值上小于等 于IOPL）时，I/O指令才能执行，否则产 生异常。只有特权级为0级的程序才能修 改IOPL。<br>其余与8086相同</p>
+<p>4个系统地址寄存器：全局描述符表寄存器GDTR、中断描 述符表寄存器IDTR、局部描述符表寄存器LDTR、任务状态寄存器TR。</p>
+<p>GDT： global descriptor table，全局描述符表，操作系统使用的段描述符 和各项任务共用的段描述符放在一起组成的表。整个系统一个。<br>LDT： local descriptor table，局部描述符表，某项任务专用的所有的各种 段描述符放在一起构成的表。每个任务各有一个。 •<br>IDT：中断描述符表，一种特殊的表，它把每个中断向量与描述符联系在 一起，描述符包含中断服务程序入口地址和特性，整个系统一个。<br>GDTR：保存GDT开始地址和段长，48位<br>LDTR：保存LDT开始地址和段长、属性，16+64位。<br>IDTR：保存IDT开始地址和段长，48位。 </p>
+<h3 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h3><p>A31～A3：地址总线<br>BE7～BE0：字节允许，对应每个字节，由地址A2-A0产生<br>D63～D0：数据总线。数据读写时，按字节偶校验。<br>D/C：数据/控制。<br>M/IO：存储器/IO。<br>W/R：写/读。<br>NA：下一地址有效，用于支持地址流水线操作。采样到NA 有效的两个时钟周期后，CPU可送出新地址。<br>Cache： Cache控制，指示目前处于Cache周期<br>KEN： Cache允许，有效时，指示进入突发读周期，将外部数据复制到内部Cache<br>INTR：可屏蔽中断请求。<br>NMI：非屏蔽中断请求。<br>HOLD：总线保持请求，请求Pentium停止总线驱动。完成当 前总线周期后让出总线，用HLDA响应。<br>HLDA：总线保持响应，指示Pentium让出总线控制。</p>
+<h3 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h3><p>实地址模式</p>
+<p>兼容8086，1MB存储空间<br>物理地址=段地址×16+偏移地址<br>保留2个物理存储空间：<br>0000:0000H～0000:03FFH：中断向量区，每个中断向量占用4个字节<br>FFFF:0000H～FFFF:000FH：系统初始化区</p>
+<p>保护模式</p>
+<p>4GB物理空间，64TB逻辑空间<br>地址转换即操作系统课程内容<br>特征为特权级，0为最高级，3为最低级，高特权级可以访问低特权级的数据（大于等于）低特权级可以调用高特权级的程序（小于等于） </p>
+<p>虚拟8086模式<br>本质上即软件运行在8086中<br>虚拟8086方式是一个程序的运行方式。实地址方式是处理器的工作方式</p>
+<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h2><h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>指令前缀：说明指令的相关特性。如LOCK、REP、REPE/REPZ、 REPNE/REPNZ<br>段超越前缀：用超越段取代默认段。三种情况禁止段超越：串操作 （ES）、堆栈指令（SS）、代码段（CS）。<br>操作数大小前缀：改变默认的数据长度。16→32， 32→16。<br>地址大小前缀：改变默认的地址长度<br>在实地址、虚拟8086方式下，隐含寻址16位。<br>在保护方式下，隐含寻址由段描述符中的D位确定，D=0默认是16位， D=1默认是32位，操作数大小前缀和地址大小前缀用于改变隐含特性。 </p>
+<p>有效地址的计算公式：EA＝基址  +（变址×比例因子）+  位移量</p>
+<p>基址寄存器 16bit BX、BP 32bit 任何32位通用寄存器<br>变址寄存器 16bit SI、DI 32bit 除ESP以外的任何32位通用寄存器 </p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>PUSHF/POPF 16位标志寄存器进栈/出栈<br>LEA  有效地址送寄存器<br>IN/OUT  输入/输出<br>ADC 带进位加法<br>SBB 带借位减法<br>INC  加1<br>DEC  减1<br>DAA  压缩BCD码加法调整，只对AL处理<br>DAS  压缩BCD码减法调整<br>AAA  非压缩BCD码加法调整<br>AAS 非压缩BCD码减法调整<br>ROL  循环左移<br>ROR  循环右移<br>RCL  带进位循环左移<br>RCR  带进位循环右移<br>CLC   进位位置0，  CF←0<br>STC   进位位置1，  CF←1 </p>
+<h2 id="汇编程序"><a href="#汇编程序" class="headerlink" title="汇编程序"></a>汇编程序</h2><p>汇编-连接-可执行文件</p>
+<p>段定义<br>定义类型 BYTE WORD DWORD PARA PAGE<br>组合类型 PUBLIC STACK COMMON MEMORY PRIVATE<br>字长类型 USE16 USE32<br>类别 DATA CODE STACK EXTRA</p>
+<p>ASSUME 段分配</p>
+<p>$ 地址计数器<br>ORG 设置地址计数器的值</p>
+<p>数据定义<br>DB    定义字节变量<br>DW    定义字变量<br>DD    定义双字变量<br>例：DATA1 DW ‘AB’<br>DUP 重复定义<br>例：DATA1 2 DUP(12H,34H,56H)<br>SEG 返回段地址<br>OFFSET 返回偏移量</p>
+<p>PROC——ENDP 定义子程序</p>
+<p>EQU定义常量（只能定义一次）<br>=    定义常量（可重复定理）<br>?    只分配空间不赋值</p>
+<p>PTR 临时改变类型属性</p>
+<h2 id="奔腾保护模式存储管理"><a href="#奔腾保护模式存储管理" class="headerlink" title="奔腾保护模式存储管理"></a>奔腾保护模式存储管理</h2><p>虚拟地址空间：又称为虚存地址空间，是应用程序员用来编 写程序的地址空间，与此相对应的地址称为虚地址或逻辑地 址。<br>主存地址空间：又称为实存地址空间，是存储、运行程序的 空间，其相应的地址称为主存物理地址或实地址。<br>辅存地址空间：也就是磁盘存储器的地址空间，是用来存放 程序的空间，相应的地址称为辅存地址或磁盘地址。 </p>
+<script type="math/tex; mode=display">
+段描述符\left \{ \begin{array} .段描述符\left \{ \begin{array} .代码段描述符\\堆栈段描述符\\数据段描述符\end{array}\right.\\系统段描述符\left \{ \begin{array} .程序状态段描述符\\局部描述符表描述符\\门描述符\left \{ \begin{array} .调用门描述符\\中断门描述符\\任务门描述符\\陷阱门描述符\end{array}\right.\end{array}\right.\end{array}\right.</script><p>段描述符的组成<br>20位段界限<br>36位段基址<br>1位G粒度，G=0时，段的长度以一个字节为单位，G=1时，段的长度以4K字节为单位。<br>1位S分类，S=0时，是系统段描述符。S=1时，是非系统段描述符。<br>1位段存在位P，P=1时，表示该段在内存中。P=0时，表示该段不在内存中<br>1位系统可用位AVL，AVL=1时，表示系统软件可用本段。 当AVL=0时，表示系统软件不能用本段。<br>2位特权级DPL：定义段的特权级。00最高，11最低<br>1位D位/B位：32/16大小选择。 D/B=1，选32位； D/B=0，选16位。<br>    在代码段描述符中，指示操作数长度和有效地址长度，D位。<br>    在堆栈段描述符中，指示ESP或SP， B位。<br>    在数据段描述符中，指示操作数长度。 B位<br>4位type<br>    当数据段和堆栈段<br>    E可执行位：当E=0时，是数据段或堆栈段。<br>    ED扩展方向位：当ED=0时，向上扩展（增加方向），通常用 于数据段。当ED=1时，向下扩展（地址减小方向），通常用于堆栈段<br>    W可写位：当W=0时，不允许写入。当W=1时，允许写入。<br>    A访问位：当A=0时，该段尚未被访问。当A=1时，该段已被访问<br>    当代码段时<br>    E可执行位：当E=1时，是代码段。<br>    C一致性位：C=0，表示非一致性代码段，忽视段描述符的特权值。C=1，表示一致性代码段，需要进行特权级检查。<br>    R可读位：当R=0时，不允许读。当R=1时，允许读。<br>    A访问位：当A=0时，该段尚未被访问；当A=1时，该段已被访问 </p>
+<p>1.段选择符 * 8 + GDTR基址 = 段描述符地址<br>2.段描述符内容（包括基址）→ 相应段cache<br>3.cache中段基址 + 虚地址偏移量 = 物理地址</p>
+<p>如果LDTR中装入了段选择符，处理器自动地将相应的LDT描述 符从全局描述符表GDT中读出来，并装入LDTR中的cache部分, 其中包括LDT基址，从而为当前任务创建一个LDT</p>
+<p>4KB两级页表<br>页目录索引十位，页表索引十位，偏移地址12位</p>
+<p>4MB一级页表<br>页目录索引1十位，页内偏移22位</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口：在微型计算机系统中，CPU与外部设备之间的联系，需要有特定的硬件连接和相应的控制软件。<br>接口技术：完成这一任务的软、硬件的综合称为。对这种硬 件、软件的设计。<br>接口（Interface）和端口（Port）是不同的。<br>端口：接口电路中那些完成信息传送，可由程序寻址并进行读写操作的寄存器。 </p>
+<p>接口的组成<br>地址译码选择逻辑、数据输出寄存器、数据数入寄存器、状态寄存器、控制寄存器，连接线</p>
+<p>1．存储器映像方式  把一个I/O端口看作是一个存储单元，相当于给每一个I/O端口分配一个 存储器地址。</p>
+<p>2．I/O映像方式 • 在这种寻址方式中，I/O端口空间与存储器空间各自独立，互不干涉，互 不影响，故亦称为独立的I/O寻址方式。 </p>
+<p>输入输出控制方式<br>程序查询、程序中断、DMA、I/O处理机</p>
+<h3 id="DMA"><a href="#DMA" class="headerlink" title="DMA"></a>DMA</h3><p>DMA操作的基本方法</p>
+<ol>
+<li>CPU停机、中断CPU任务以获取总线</li>
+<li>周期扩展、仅将CPU周期加长</li>
+<li>周期挪用、利用CPU不用总线的周期</li>
+</ol>
+<p>DMA控制器</p>
+<ol>
+<li>给CPU发出请求</li>
+<li>CPU回应，DMA获得总线控制权</li>
+<li>修改地址总线</li>
+<li>给存储器或接口发读写信号</li>
+<li>统计传送字节数，判断DMA是否结束</li>
+<li>给CPU发出DMA结束信号，还回总线控制权</li>
+</ol>
+<h3 id="8237"><a href="#8237" class="headerlink" title="8237"></a>8237</h3><p>在一片8237A内有4个独立的DMA通道。<br>每个通道的DMA请求可分别编程允许或禁止。<br>每个通道的DMA请求优先级有两种：固定优先级和循环优先级。固定优先级的顺序是通道0最高，通道3最低。<br>可在外设与存储器，存储器与存储器之间传送数据。<br>四种<strong>工作方式</strong>：单字节传送方式，数据块传送方式，请求传送方式，级连方式。<br>可以多片级连，扩展通道数。<br>DMA操作<strong>结束</strong>有两种方法：一是字节计数器减1由0变为 FFFFH，二是外界通过输入负脉冲，强制DMA操作结束。<br>DMA操作<strong>启动</strong>有两种方法：一是外设输入DMA请求信号 DREQ，二是通过软件编程从内部启动。<br>3种传送类型，DMA读、DMA写、DMA检验</p>
+<h2 id="中断-1"><a href="#中断-1" class="headerlink" title="中断"></a>中断</h2><script type="math/tex; mode=display">
+中断分类\left\{\begin{array}.中断\left\{\begin{array}.外部中断:INTR,NMI\\内部中断:INT \quad a\end{array}\right.\\异常，缺段除零等\end{array}\right.</script><h3 id="中断接口电路"><a href="#中断接口电路" class="headerlink" title="中断接口电路"></a>中断接口电路</h3><p>中断请求触发器保持请求状态，读操作清楚请求</p>
+<p>软件查询优先级，中断信号求和输入CPU，优先级有三态缓冲器完成</p>
+<p>硬件优先级排队电路，中断信号求和输入CPU，优先级有菊花链逻辑电路完成</p>
+<p>单重中断</p>
+<p>CPU响应中断的条件<br>    1）一条指令执行结束后。<br>    2）有中断请求。<br>    3）开中断。</p>
+<p>中断处理（硬件完成）<br>    关中断→保护现场（如标志）→ 保护断点→形成中断服 务程序入口地址→转入中断服务程序。</p>
+<p>中断服务程序（软件完成）<br>    保护现场→中断处理→恢复现场→开中断→返回断点 </p>
+<p>多重中断</p>
+<p>CPU响应中断的条件 • 与单重中断相同。</p>
+<p>中断处理 • 与单重中断相同。</p>
+<p>中断服务程序<br>    保护现场→保护原中断屏蔽字→送新中断屏蔽字→开中断→ 中断处理→关中断→恢复原屏蔽字→恢复现场→开中断→返回断点 </p>
+<p>中断向量：中断服务程 序的入口地址。<br>中断向量表：存放中断 服务程序入口地址的表格</p>
+<p>可屏蔽中断INTR，当IF为1时，且INTR为高电平时响应此类中断</p>
+<p>非屏蔽中断NMI，上升沿有效，不受IF影响，中断类型码为2</p>
+<p>软件中断包括INTO（溢出）、INT3（断点）、INT n、BOUND （界限比较）指令。 </p>
+<p>实模式处理中断</p>
+<ol>
+<li>有中断异常以及单步调试，若是可屏蔽中断需读中断类型码</li>
+<li>标志寄存器入栈，清楚IF，TF形成中断服务程序地址并送至CS和IP</li>
+<li>若仍有NMI则及时回应NMI或此次为处理单步中断则再次执行2，防止单步运行中断服务</li>
+<li>运行中断服务程序并返回</li>
+</ol>
+<h3 id="8259A"><a href="#8259A" class="headerlink" title="8259A"></a>8259A</h3><p>主要功能 </p>
+<p>​    每片管理8个中断源，最多级联64个中断源<br>​    可单独屏蔽中断<br>​    提供中断类型码<br>​    多种工作方式<br>​    可直接连接8086奔腾</p>
+<p>内部结构</p>
+<p>​    中断服务寄存器ISR 保存当前被CPU服务的中断级<br>​    优先级分辨器PR 确定中断请求寄存器IRR中个位的优先等级<br>​    中断请求寄存器IRR 寄存所有IR的中断请求信号，接受后锁存<br>​    控制逻辑 请求时发一个INT=1,CPU响应送8259A两个INTA负脉冲<br>​        第一个负脉冲到达时 是ISR对应位赋值1，IRR对应位清零（提供服务）<br>​        第二个负脉冲到达时 ICW2作为中断类型码从D7-D0发给CPU，如果ICW4的中断自动结束位为1，第二个脉冲结束时对应ISR清零<br>​    读写逻辑由RE WR A0 CS控制<br>​    SP/EN 级联模式下用作分辨主从片，缓冲模式下控制输入输出<br>​    OCW1-OWC3 存放操作命令字，由应用程序设置用于动态控制，可多次设置，OCW1：8位中断屏蔽寄存器IMR，为1屏蔽对应设备<br>​    ICW1-ICW4 存放初始化命令字，有初始化程序设置，不可更改，12必设，34由工作方式决定</p>
+<p>初始化流程<br>    写ICW1确定基本工作方式，写ICW2确定中断类型码，若是级联则写ICW3，若需要ICW4则写ICW4    </p>
+<p>初始化ICW1</p>
+<p>​    确定级联方式与触发方式以及是否需要ICW4</p>
+<p>初始化ICW2</p>
+<p>​    高五位由程序设置，低三位表明请求设备的编号</p>
+<p>初始化ICW3</p>
+<p>​    主片ICW3, 如果一个引脚上连着从片则对应位为1<br>​    从片ICW3, 表明连接的主片的引脚为IRx</p>
+<p>初始化ICW4</p>
+<p>​    选择工作方式，CPU类型，中断结束方式，主从片</p>
+<h2 id="接口芯片"><a href="#接口芯片" class="headerlink" title="接口芯片"></a>接口芯片</h2><h3 id="8255A"><a href="#8255A" class="headerlink" title="8255A"></a>8255A</h3><p>8255A的组成</p>
+<p>数据总线缓冲器：缓冲输入输出数据<br>读写控制逻辑 RD WR A1 A0 CS RESET<br>三个端口每个八位分两组管理 端口A与端口C高四位在A组，端口B和端口C第四位在B组</p>
+<p>控制字</p>
+<p>方式选择控制字<br>D7=1 特征<br>D6-D5 代表三种A组方式<br>D4 A口I/O 0=输出 1=输入<br>D3 C口高四位I/O<br>D2 B组方式选择 两种方式<br>D1 B口I/O<br>D0 C口第四位I/O</p>
+<p>C口置位复位控制字<br>D7=0 特征<br>D3-D1位选择<br>D0 置位/复位选择 0=复位 1=置位</p>
+<p>方法0 基本的输入输出     ABC 四个口独立的输入输出<br>方法1 选通的输入输出    AB    AB负责输入输出 C口两部分作为A口B口的联络信号<br>方法2 双向选通的输入输出    A A口负责输入输出，C口的五位作为联络信号</p>
+<p>方法1输入的逻辑功能<br>STB 输入的选通信号，当外设将数据送入AB中是该线为低电平<br>IBF输入缓冲期满信号，当数据进入缓冲器后发给外部设备用于通知<br>INTE 中断允许信号 A-PC4 B-PC2 对应置1时才允许发送中断请求<br>INTR 中断请求信号 高电平有效当CPU执行IN时 复位INTR IBF外部设备进行下一次输入</p>
+<p>方法1输出的逻辑功能<br>OBF 输出缓冲期满信号，低电平有效，通知外设取走设备<br>ACK 低电平有效，表示数据已被外设取走<br>INTE 中断允许信号 A-PC6 B-PC2<br>INTR 高电平有效 请求CPU进行下次输出</p>
+<p>方法2的逻辑功能结构<br>INTE2 输入相关的中断允许 PC4控制<br>INTE1 输出相关的中断允许 PC6控制<br>STB\IVF\ACK\OBF\INTRA与方法一基本相同</p>
+<h3 id="8253"><a href="#8253" class="headerlink" title="8253"></a>8253</h3><p>基本功能<br>3个16位计数器，能分别计数<br>每个计数器含6中工作方式<br>能进行2进制10进制计数<br>计数频率为0~2MHZ<br>可作为计数器或定时器</p>
+<p>结构<br>控制寄存器、计数初值寄存器、减一计数器、输出锁存器<br>8位数据总线、RD WR A1 A0 CS<br>CLK GATE OUT</p>
+<p>控制字<br>D7-D6 计数器选择<br>D5-D4 读写格式 00锁存 01只读写低8位，高八位清零 10只读写高八位，低八位清零 11先读写低八位后读写高八位<br>D3-D1 工作方式选择共六种方式<br>D0 计数方式 0二进制计数 1BCD码计数</p>
+<p>0 计数结束中断方式 N+1周期后跳变，软 一次有效<br>1 可编程单稳方式 先跳变N周期后再跳变 硬 多次有效<br>2 脉冲频率发生器方式 先跳变一个时钟周期后再跳变，N-1周期后再跳变 软、硬 重复有效<br>3 方波发生器方式 每N/2周期跳变一次 软、硬 重复有效<br>4 软件触发选通方式 N+1周期后连续跳变两次 软 一次有效<br>5 硬件触发选通方式 N周期后连续跳变两次 硬 多次有效 </p>
+<h2 id="串行通信"><a href="#串行通信" class="headerlink" title="串行通信"></a>串行通信</h2><p>串行通信的方向<br>单工方式 单线单向<br>半双工方式 单线双向<br>全双控方式 双线双向</p>
+<p>同步通信 空闲位稳定<br>异步通信 空闲位不稳定</p>
+<h2 id="8251A"><a href="#8251A" class="headerlink" title="8251A"></a>8251A</h2><p>同步方式下 0~64K波特<br>异步方式下 0~19.2K波特<br>可用5、6、7、8位来表示字符<br>异步模式下有停止位<br>全双工双缓冲</p>
+<p>结构<br>数据总线缓冲器：命令寄存器 状态寄存器 方式寄存器 两个同步字符寄存器 数据输入缓冲器 数据输出缓冲器<br>读写控制逻辑<br>调节控制<br>发送缓冲器与控制<br>    TXD 发送数据线<br>    TXEMPTY 发送移位器空<br>    TXRDY 发送器准备好<br>    TXC 发送时钟<br>接受缓冲器与控制</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/08/04/计算方法笔记/" rel="next" title="计算方法笔记">
+                  <i class="fa fa-chevron-left"></i> 计算方法笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微机系统笔记"><span class="nav-number">1.</span> <span class="nav-text">微机系统笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-number">1.1.</span> <span class="nav-text">绪论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16位微处理器Intel-8086"><span class="nav-number">1.2.</span> <span class="nav-text">16位微处理器Intel 8086</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIU"><span class="nav-number">1.2.1.</span> <span class="nav-text">BIU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EU"><span class="nav-number">1.2.2.</span> <span class="nav-text">EU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总线周期"><span class="nav-number">1.2.3.</span> <span class="nav-text">总线周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储结构"><span class="nav-number">1.2.4.</span> <span class="nav-text">存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-number">1.2.5.</span> <span class="nav-text">中断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pentium"><span class="nav-number">1.3.</span> <span class="nav-text">Pentium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构寄存器"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本结构寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引脚"><span class="nav-number">1.3.2.</span> <span class="nav-text">引脚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种模式"><span class="nav-number">1.3.3.</span> <span class="nav-text">三种模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令系统"><span class="nav-number">1.4.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀"><span class="nav-number">1.4.1.</span> <span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">1.4.2.</span> <span class="nav-text">指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编程序"><span class="nav-number">1.5.</span> <span class="nav-text">汇编程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奔腾保护模式存储管理"><span class="nav-number">1.6.</span> <span class="nav-text">奔腾保护模式存储管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出"><span class="nav-number">1.7.</span> <span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">1.7.1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DMA"><span class="nav-number">1.7.2.</span> <span class="nav-text">DMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8237"><span class="nav-number">1.7.3.</span> <span class="nav-text">8237</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断-1"><span class="nav-number">1.8.</span> <span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中断接口电路"><span class="nav-number">1.8.1.</span> <span class="nav-text">中断接口电路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8259A"><span class="nav-number">1.8.2.</span> <span class="nav-text">8259A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口芯片"><span class="nav-number">1.9.</span> <span class="nav-text">接口芯片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8255A"><span class="nav-number">1.9.1.</span> <span class="nav-text">8255A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8253"><span class="nav-number">1.9.2.</span> <span class="nav-text">8253</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信"><span class="nav-number">1.10.</span> <span class="nav-text">串行通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8251A"><span class="nav-number">1.11.</span> <span class="nav-text">8251A</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>

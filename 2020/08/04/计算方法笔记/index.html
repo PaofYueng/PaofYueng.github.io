@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="计算方法笔记前言课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-08-03T11:58:28.675Z">
+<meta property="og:updated_time" content="2020-08-06T08:23:39.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法笔记">
 <meta name="twitter:description" content="计算方法笔记前言课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。">
@@ -237,11 +237,19 @@
                 
               
 
-              <time title="创建时间：2020-08-03 16:27:38 / 修改时间：11:58:28" itemprop="dateCreated datePublished" datetime="2020-08-03T16:27:38Z">2020-08-03</time>
+              <time title="创建时间：2020-08-03 16:27:38" itemprop="dateCreated datePublished" datetime="2020-08-03T16:27:38Z">2020-08-03</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-06 08:23:39" itemprop="dateModified" datetime="2020-08-06T08:23:39Z">2020-08-06</time>
+              </span>
             
           
 
@@ -316,7 +324,54 @@ f(x)\approx f(x_k)+f'(x)(x-x^k)\\
 f(x)=0\\
 x=x_k-\frac{f(x_k)}{f'(x_k)}\\
 x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}</script><p>该法是平方收敛的</p>
-<p>收敛定理<br>① f(a)f(b)&lt;0<br>② f’(x)!=0<br>③ f’’(x)在[a,b]上不变好<br>④ f(x0)f’’(x)&gt;0</p>
+<p>收敛定理<br>① f(a)f(b)&lt;0  ② f’(x)!=0   ③ f’’(x)在[a,b]上不变好   ④ f(x0)f’’(x)&gt;0<br>满足则必有解</p>
+<h3 id="割线法"><a href="#割线法" class="headerlink" title="割线法"></a>割线法</h3><p>我们可以将导数近似表达为$f’(x)\approx \frac{f(x_k)-f(x_{k-1})}{x_k-x_{k-1}}$，则我们可以得到迭代公式：</p>
+<script type="math/tex; mode=display">
+x_{k+1}=x_k-\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}f(x_k)</script><h2 id="第四章-矩阵特征值与特征向量的计算"><a href="#第四章-矩阵特征值与特征向量的计算" class="headerlink" title="第四章-矩阵特征值与特征向量的计算"></a>第四章-矩阵特征值与特征向量的计算</h2><h3 id="乘幂法"><a href="#乘幂法" class="headerlink" title="乘幂法"></a>乘幂法</h3><p>此法用于求主特征值即最大特征值。</p>
+<p>令$x^{k+1}=A^kx$ ，依次迭代方程迭代，收敛条件为谱半径小于一。</p>
+<p>规范化，为防止向量x内元素过小或过大导致精度丢失，我们会对向量x中每个元素除以最大绝对值</p>
+<p>反幂法：矩阵的逆的特征值是矩阵特征值的倒数，故而我们对矩阵的逆进行乘幂法吉柯德按模最小特征值的倒数。</p>
+<p>幂法的平移：我们$B=A-\lambda_0 I$ 此过程可能能加速得到最大特征值，但也可能因为平移导致最大元改变。</p>
+<h3 id="雅各比旋转法"><a href="#雅各比旋转法" class="headerlink" title="雅各比旋转法"></a>雅各比旋转法</h3><p>此法用于求实对称阵全部特征值及特征向量。</p>
+<p>证明此处忽略。</p>
+<p>① 选取非对角线元素绝对值最大者$a_{ij},a_{ji}$</p>
+<p>② 求解$\frac{1}{2}(a_{ii}-a{jj})sin2\theta+a_{ij}cos2\theta=0或tan2\theta=\frac{2a_{ij}}{a_{jj}-a_{ii}}$</p>
+<p>③ 令 $c_{ij}=c_{ji}=0\\c_{ii}=a_{ii}cos^2\theta+a_{jj}sin^2\theta-a_{ij}sin2\theta\\c_{jj}=a_{jj}cos^2\theta+a_{ii}sin^2\theta+a_{ij}sin2\theta\\c_{ik}=c_{ki}=a_{ik}cos\theta-a_{jk}sin\theta\\c_{jk}=c_{kj}=a_{ik}cos\theta+a_{ik}sin\theta$</p>
+<p>雅各比过关法：</p>
+<p>对于雅各比旋转法，每次选取主元都得遍历整个矩阵，时间成本巨大，故而我们采用过关法，我们先计算所有非对角线元素的平方和的开方并除以行数。若我们遍历过程中有元素大于他我们就将其化为0，若没找到就再除以一次行数，直至该数小于要求误差限</p>
+<h2 id="第五章-函数插值与曲线拟合"><a href="#第五章-函数插值与曲线拟合" class="headerlink" title="第五章-函数插值与曲线拟合"></a>第五章-函数插值与曲线拟合</h2><p>在现实生活中我们一般只能获取一个函数的数个离散的点而不能获取函数表达式，我们通过这几个点推测整体函数，这种方法我们称之为函数插值。</p>
+<h3 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h3><p>我们假设所有函数均可以用代数多项式表示，我们拥有的k个数据最多可以描述k个维度。故而当我们拥有k+1个数据点时我们便可建立最高项幂为k的多项式。</p>
+<p>最终n次拉格朗日插值多项式为</p>
+<script type="math/tex; mode=display">
+L_n(x)=\sum_{i=0}^n(\prod_{j\ne i}\frac{x-x_j}{x_i-x_j})y_i</script><p>余项</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}=\prod_{i=0}^n(x-x_i)\\
+R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x)</script><p>此法具有Runge现象，即已知数据越多可能更无法拟合原函数。</p>
+<h3 id="牛顿插值法"><a href="#牛顿插值法" class="headerlink" title="牛顿插值法"></a>牛顿插值法</h3><p>差商</p>
+<script type="math/tex; mode=display">
+f[x_i]=f(x_i)\\\quad\\
+f[x_0,\dots,x_k]=\frac{f[x_1,x_2,\dots,x_k]-f[x_0,x_1,\dots,x_{k-1}]}{x_k-x_0}\\\quad\\
+f[x_0,\dots,x_n]=\frac{f^{(n)}(\xi)}{n!}</script><p>牛顿插值多项式为</p>
+<script type="math/tex; mode=display">
+N_n(x)=f(x_0)+f[x_0,x_1](x-x_0)+f[x_0,x_1,x_2](x-x_0)(x-x_1)\\+\dots+f[x_0,\dots,x_n](x-x_0)\dots(x-x_{n-1})</script><p>余项</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}=\prod_{i=0}^n(x-x_i)\\2R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x)</script><h3 id="三次Hermite插值"><a href="#三次Hermite插值" class="headerlink" title="三次Hermite插值"></a>三次Hermite插值</h3><p>即节点处的函数值与导数值成对出现</p>
+<p>利用函数的导数与差商的关系构建差商表再利用牛顿插值即为解。</p>
+<h2 id="第六章-数值积分"><a href="#第六章-数值积分" class="headerlink" title="第六章-数值积分"></a>第六章-数值积分</h2><p>首先需要知道以下定理</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)dx=(b-a)f(\xi)</script><p>若f与g在同一区间连续且g在此区间内不变号</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)g(x)dx=f(\xi)\int_a^bg(x)dx</script><p>依照此定理与拉格朗日插值公式我们可得</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)dx\approx\int_a^bL_n(x)dx=\sum_{k=0}^nf(x_k)\int_a^bl_k(x)dx\\
+=\sum_{k=0}^n\omega_k^{(n)}f(x_k)</script><p>其中</p>
+<script type="math/tex; mode=display">
+\omega_k^{(n)}=\int_a^bl_k(x)dx=\int_a^b\frac{(x-x_0)\dots(x-x_{k-1})(x-x_{k+1})\dots(x-x_n)}{(x_k-x_0)\dots(x_k-x_{k-1})(x_k-x_{k+1})\dots(x_k-x_n)}dx\\</script><p>余项为</p>
+<script type="math/tex; mode=display">
+R_n[f]=\frac{1}{(n+1)!}\int_a^bf^{(n+1)}(\xi)(x-x_0)\dots(x-x_n)dx</script><p>当求积节点是等距节点时</p>
+<script type="math/tex; mode=display">
+令x_k=a+kh，x=a+th\\\quad\\
+\omega_k^{(n)}=\frac{(-1)^{n-k}h}{k!(n-k)!}\int_0^n\prod_{j=0\\j\ne k}^n(t-j)dt</script><p>当我们有x个节点时我们可以通过依次选两个节点构建梯形公式或选取三个节点构建抛物线公式。我们称之为复合法。</p>
 
     </div>
 
@@ -351,6 +406,10 @@ x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}</script><p>该法是平方收敛的</p>
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/08/07/微机系统笔记/" rel="prev" title="微机系统笔记">
+                  微机系统笔记 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -399,7 +458,7 @@ x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}</script><p>该法是平方收敛的</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算方法笔记"><span class="nav-number">1.</span> <span class="nav-text">计算方法笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-绪论"><span class="nav-number">1.2.</span> <span class="nav-text">第一章-绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法一"><span class="nav-number">1.2.1.</span> <span class="nav-text">误差分析法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法二"><span class="nav-number">1.2.2.</span> <span class="nav-text">误差分析法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-线性方程组的数值解"><span class="nav-number">1.3.</span> <span class="nav-text">第二章 线性方程组的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯消元法"><span class="nav-number">1.3.1.</span> <span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LU分解"><span class="nav-number">1.3.2.</span> <span class="nav-text">LU分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-number">1.3.3.</span> <span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量范数"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵范数"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">矩阵范数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病态方程组与条件数"><span class="nav-number">1.3.4.</span> <span class="nav-text">病态方程组与条件数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代法"><span class="nav-number">1.3.5.</span> <span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#雅可比迭代法"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯-赛德尔迭代法"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">高斯-赛德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-非线性方程的数值解"><span class="nav-number">1.4.</span> <span class="nav-text">第四章-非线性方程的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不动点迭代法"><span class="nav-number">1.4.1.</span> <span class="nav-text">不动点迭代法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿迭代法"><span class="nav-number">1.4.2.</span> <span class="nav-text">牛顿迭代法</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算方法笔记"><span class="nav-number">1.</span> <span class="nav-text">计算方法笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-绪论"><span class="nav-number">1.2.</span> <span class="nav-text">第一章-绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法一"><span class="nav-number">1.2.1.</span> <span class="nav-text">误差分析法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法二"><span class="nav-number">1.2.2.</span> <span class="nav-text">误差分析法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-线性方程组的数值解"><span class="nav-number">1.3.</span> <span class="nav-text">第二章 线性方程组的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯消元法"><span class="nav-number">1.3.1.</span> <span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LU分解"><span class="nav-number">1.3.2.</span> <span class="nav-text">LU分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-number">1.3.3.</span> <span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量范数"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵范数"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">矩阵范数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病态方程组与条件数"><span class="nav-number">1.3.4.</span> <span class="nav-text">病态方程组与条件数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代法"><span class="nav-number">1.3.5.</span> <span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#雅可比迭代法"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯-赛德尔迭代法"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">高斯-赛德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-非线性方程的数值解"><span class="nav-number">1.4.</span> <span class="nav-text">第四章-非线性方程的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不动点迭代法"><span class="nav-number">1.4.1.</span> <span class="nav-text">不动点迭代法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿迭代法"><span class="nav-number">1.4.2.</span> <span class="nav-text">牛顿迭代法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#割线法"><span class="nav-number">1.4.3.</span> <span class="nav-text">割线法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-矩阵特征值与特征向量的计算"><span class="nav-number">1.5.</span> <span class="nav-text">第四章-矩阵特征值与特征向量的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#乘幂法"><span class="nav-number">1.5.1.</span> <span class="nav-text">乘幂法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#雅各比旋转法"><span class="nav-number">1.5.2.</span> <span class="nav-text">雅各比旋转法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-函数插值与曲线拟合"><span class="nav-number">1.6.</span> <span class="nav-text">第五章-函数插值与曲线拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉格朗日插值法"><span class="nav-number">1.6.1.</span> <span class="nav-text">拉格朗日插值法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿插值法"><span class="nav-number">1.6.2.</span> <span class="nav-text">牛顿插值法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三次Hermite插值"><span class="nav-number">1.6.3.</span> <span class="nav-text">三次Hermite插值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-数值积分"><span class="nav-number">1.7.</span> <span class="nav-text">第六章-数值积分</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -417,7 +476,7 @@ x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}</script><p>该法是平方收敛的</p>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
