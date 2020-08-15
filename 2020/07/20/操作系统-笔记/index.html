@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="操作系统笔记前言​        交叉范围极广的学科，与其他科目最大的区别在于资源配置方面的知识。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-08-11T03:45:53.918Z">
+<meta property="og:updated_time" content="2020-08-13T00:59:30.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[操作系统-笔记]">
 <meta name="twitter:description" content="操作系统笔记前言​        交叉范围极广的学科，与其他科目最大的区别在于资源配置方面的知识。">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 03:45:53" itemprop="dateModified" datetime="2020-08-11T03:45:53Z">2020-08-11</time>
+                <time title="修改时间：2020-08-13 00:59:30" itemprop="dateModified" datetime="2020-08-13T00:59:30Z">2020-08-13</time>
               </span>
             
           
@@ -281,8 +281,8 @@
 <p>​    ① 联机批处理：在没有人工干预的情况下由读卡器批量读入数据。<br>​    ② 脱机批处理：由卫星机处理数据并用人力将处理后的数据输入计算机。</p>
 <p>执行系统阶段：由通道进行输入输出。</p>
 <p>多道批处理系统：由输入输出井缓存数据实现作业调度。</p>
-<p>分时操作系统：资源分时得分配给多个终端。</p>
-<p>实时操作系统：实时响应。</p>
+<p>分时操作系统：资源分时得分配给多个终端。多路，交互，独占</p>
+<p>实时操作系统：实时响应。实时，可靠</p>
 <p>通用操作系统：同时具有分时、实时、批处理功能。</p>
 <p>其他操作系统还有：单用户操作系统，网络操作系统，分布式操作系统，多处理机操作系统，嵌入式操作系统，多媒体操作系统，智能卡操作系统。</p>
 <h2 id="第二章-进程、线程与作业"><a href="#第二章-进程、线程与作业" class="headerlink" title="第二章-进程、线程与作业"></a>第二章-进程、线程与作业</h2><p>为了提高吞吐量与资源使用率，我们从单道程序转向了多道程序。</p>
@@ -310,6 +310,7 @@
 <p>运行程序不期望的<br>    时钟中断<br>    IO中断<br>    控制台中断<br>    硬件故障中断：power failure、内存校验错<br>    程序性中断：越界，越权、缺页、溢出，除0、非法指令</p>
 <p>自愿性中断<br>    运行程序期望的：系统调用、访管指令<br>    系统调用：fd=open(fname,mode)<br>    访管指令：准备参数、svc n、取返回值</p>
 <p>在受到中断信号时系统都会关中断，而在进入中断处理前会开放高优先级中断，处理完中断后也会关中断。</p>
+<p>一定进程切换的类型有：进程中断，进程结束，进程等待输入输出。</p>
 <h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3><p>处理机调度要尽量提升CPU利用率和吞吐量，同时减少周转时间响应时间和系统开销。</p>
 <p>调度方法分为剥夺式和非剥夺式调度，区别在于是否抢占运行进程的CPU。</p>
 <h4 id="调度参数"><a href="#调度参数" class="headerlink" title="调度参数"></a>调度参数</h4><p>周转时间：完成时间-进入时间<br>平均周转时间：周转时间的平均值<br>带权周转时间：周转时间/运行时间<br>平均带权周转时间：带权周转时间的平均值</p>

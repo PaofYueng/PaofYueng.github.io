@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="微机系统笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-08-10T14:53:05.482Z">
+<meta property="og:updated_time" content="2020-08-13T15:23:21.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统笔记">
 <meta name="twitter:description" content="微机系统笔记">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-10 14:53:05" itemprop="dateModified" datetime="2020-08-10T14:53:05Z">2020-08-10</time>
+                <time title="修改时间：2020-08-13 15:23:21" itemprop="dateModified" datetime="2020-08-13T15:23:21Z">2020-08-13</time>
               </span>
             
           
@@ -523,7 +523,7 @@
 <h3 id="8259A"><a href="#8259A" class="headerlink" title="8259A"></a>8259A</h3><p>主要功能 </p>
 <p>​    每片管理8个中断源，最多级联64个中断源<br>​    可单独屏蔽中断<br>​    提供中断类型码<br>​    多种工作方式<br>​    可直接连接8086奔腾</p>
 <p>内部结构</p>
-<p>​    中断服务寄存器ISR 保存当前被CPU服务的中断级<br>​    优先级分辨器PR 确定中断请求寄存器IRR中个位的优先等级<br>​    中断请求寄存器IRR 寄存所有IR的中断请求信号，接受后锁存<br>​    控制逻辑 请求时发一个INT=1,CPU响应送8259A两个INTA负脉冲<br>​        第一个负脉冲到达时 是ISR对应位赋值1，IRR对应位清零（提供服务）<br>​        第二个负脉冲到达时 ICW2作为中断类型码从D7-D0发给CPU，如果ICW4的中断自动结束位为1，第二个脉冲结束时对应ISR清零<br>​    读写逻辑由RE WR A0 CS控制<br>​    SP/EN 级联模式下用作分辨主从片，缓冲模式下控制输入输出<br>​    OCW1-OWC3 存放操作命令字，由应用程序设置用于动态控制，可多次设置，OCW1：8位中断屏蔽寄存器IMR，为1屏蔽对应设备<br>​    ICW1-ICW4 存放初始化命令字，有初始化程序设置，不可更改，12必设，34由工作方式决定</p>
+<p>​    中断服务寄存器ISR 保存当前被CPU服务的中断级<br>​    优先级分辨器PR 确定中断请求寄存器IRR中个位的优先等级<br>​    中断向量保护寄存器IMR<br>​    中断请求寄存器IRR 寄存所有IR的中断请求信号，接受后锁存<br>​    控制逻辑 请求时发一个INT=1,CPU响应送8259A两个INTA负脉冲<br>​        第一个负脉冲到达时 是ISR对应位赋值1，IRR对应位清零（提供服务）<br>​        第二个负脉冲到达时 ICW2作为中断类型码从D7-D0发给CPU，如果ICW4的中断自动结束位为1，第二个脉冲结束时对应ISR清零<br>​    读写逻辑由RE WR A0 CS控制<br>​    SP/EN 级联模式下用作分辨主从片，缓冲模式下控制输入输出<br>​    OCW1-OWC3 存放操作命令字，由应用程序设置用于动态控制，可多次设置，OCW1：8位中断屏蔽寄存器IMR，为1屏蔽对应设备<br>​    ICW1-ICW4 存放初始化命令字，有初始化程序设置，不可更改，12必设，34由工作方式决定</p>
 <p>初始化流程<br>    写ICW1确定基本工作方式，写ICW2确定中断类型码，若是级联则写ICW3，若需要ICW4则写ICW4    </p>
 <p>初始化ICW1</p>
 <p>​    确定级联方式与触发方式以及是否需要ICW4</p>
@@ -540,7 +540,9 @@
 <p>C口置位复位控制字<br>D7=0 特征<br>D3-D1位选择<br>D0 置位/复位选择 0=复位 1=置位</p>
 <p>方法0 基本的输入输出     ABC 四个口独立的输入输出<br>方法1 选通的输入输出    AB    AB负责输入输出 C口两部分作为A口B口的联络信号<br>方法2 双向选通的输入输出    A A口负责输入输出，C口的五位作为联络信号</p>
 <p>方法1输入的逻辑功能<br>STB 输入的选通信号，当外设将数据送入AB中是该线为低电平<br>IBF输入缓冲期满信号，当数据进入缓冲器后发给外部设备用于通知<br>INTE 中断允许信号 A-PC4 B-PC2 对应置1时才允许发送中断请求<br>INTR 中断请求信号 高电平有效当CPU执行IN时 复位INTR IBF外部设备进行下一次输入</p>
+<p>STB有效开始缓冲，缓冲完成IBF有效，请求中断INTR有效，获得RD信号后开始输入，撤销INTR，输入完成后撤销IBF信号</p>
 <p>方法1输出的逻辑功能<br>OBF 输出缓冲期满信号，低电平有效，通知外设取走设备<br>ACK 低电平有效，表示数据已被外设取走<br>INTE 中断允许信号 A-PC6 B-PC2<br>INTR 高电平有效 请求CPU进行下次输出</p>
+<p>WR有效请求输出，同时请求中断，WR完成后输出缓存器满,OBF有效。外设响应后外设获取信息撤销INTR与OBF</p>
 <p>方法2的逻辑功能结构<br>INTE2 输入相关的中断允许 PC4控制<br>INTE1 输出相关的中断允许 PC6控制<br>STB\IVF\ACK\OBF\INTRA与方法一基本相同</p>
 <h3 id="8253"><a href="#8253" class="headerlink" title="8253"></a>8253</h3><p>基本功能<br>3个16位计数器，能分别计数<br>每个计数器含6中工作方式<br>能进行2进制10进制计数<br>计数频率为0~2MHZ<br>可作为计数器或定时器</p>
 <p>结构<br>控制寄存器、计数初值寄存器、减一计数器、输出锁存器<br>8位数据总线、RD WR A1 A0 CS<br>CLK GATE OUT</p>
