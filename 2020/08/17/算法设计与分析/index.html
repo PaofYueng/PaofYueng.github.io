@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="算法设计与分析笔记前言 这个世界最蛋疼的大概是你的老师把你懂的知识说的你听不懂了">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/08/17/算法设计与分析/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="算法设计与分析笔记前言 这个世界最蛋疼的大概是你的老师把你懂的知识说的你听不懂了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-08-20T02:00:29.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法设计与分析笔记">
+<meta name="twitter:description" content="算法设计与分析笔记前言 这个世界最蛋疼的大概是你的老师把你懂的知识说的你听不懂了">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/08/17/算法设计与分析/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>算法设计与分析笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/17/算法设计与分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">算法设计与分析笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-16 22:33:38" itemprop="dateCreated datePublished" datetime="2020-08-16T22:33:38Z">2020-08-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-20 02:00:29" itemprop="dateModified" datetime="2020-08-20T02:00:29Z">2020-08-20</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="算法设计与分析笔记"><a href="#算法设计与分析笔记" class="headerlink" title="算法设计与分析笔记"></a>算法设计与分析笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>这个世界最蛋疼的大概是你的老师把你懂的知识说的你听不懂了</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="导引及数学基础"><a href="#导引及数学基础" class="headerlink" title="导引及数学基础"></a>导引及数学基础</h2><p>算法的五个特性：有穷性，确定性，输入，输出，可行性</p>
+<p>算法学习的基本内容：设计，表述，确认，分析</p>
+<p>分析算法：</p>
+<p>时间复杂度分析是基于基本操作的运行次数的</p>
+<p>计算时间的渐进表示<br>如果存在两个正常数c和n0，对于所有的$n≥ n_0，有| f(n) |≤ c| g(n) |$，则记做$f(n) \equiv O(g(n) )$，称g(n)是计算时间f(n)的一个渐近上限<br>如果存在两个正常数c和n0，对于所有的$n\ge n_0，有| f(n) | \ge c | g(n) |$，则记做$  f(n) \equiv \Omega(g(n) )$，称g(n)为f(n)的渐近下限。<br>以上两者都满足，且为同一个g(n)则称$f(n)\equiv \Theta(g(n))$两者是同阶的</p>
+<p>性质<br>传递性、反身性、对称性、互对称性、</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>设计关键是子过程的定义</p>
+<p>时间复杂性分析是重点</p>
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题划分为多个子问题求解</p>
+<p>斯特拉森矩阵乘法，复杂度为O(n^2.81)</p>
+<script type="math/tex; mode=display">
+A\times B=\left[\begin{matrix}A_{11}&A_{12}\\A_{21}&A_{22}\end{matrix}\right]\times\left[\begin{matrix}B_{11}&B_{12}\\B_{21}&B_{22}\end{matrix}\right]\\
+C_{11}=A_{11}B_{11}+A_{12}B_{21}\\
+C_{12}=A_{11}B_{12}+A_{12}B_{22}\\
+C_{21}=A_{21}B_{11}+A_{22}B_{21}\\
+C_{22}=A_{21}B_{12}+A_{22}B_{22}\\</script><p>但如此分划后依旧是O(n^3)，但我们可以继续寻找规律</p>
+<script type="math/tex; mode=display">
+M_1=A_{11}(B_{12}-B_{22})\\
+M_2=(A_{11}+A_{12})B_{22}\\
+M_3=(A_{21}+A_{22})B_{11}\\
+M_4=A_{22}(B_{21}-B_{11})\\
+M_5=(A_{11}+A_{22})(B_{11}+B_{22})\\
+M_6=(A_{12}-A_{22})(B_{21}+B_{22})\\
+M_7=(A_{11}-A_{21})(B_{11}+B_{12})\\
+C_{11}=M_5+M_4-M_2+M_6\\
+C_{12}=M_1+M_2\\
+C_{21}=M_3+M_4\\
+C_{22}=M_5+M_1-M_3-M_7</script><h2 id="贪心方法"><a href="#贪心方法" class="headerlink" title="贪心方法"></a>贪心方法</h2><p>贪心方法是指在对问题求解时，总是做出在当前看来是最好的选择。</p>
+<p>算法过程：<br>    选取一种量度标准；<br>    按此标准对n个输入进行排序；<br>    按该顺序一次输入一个量；<br>    如果这个输入量和当前该量度意义下的部分最优解加在一起不能产生一个可行解, 则不把此输入加入到这个部分解中。</p>
+<h3 id="定理5-1"><a href="#定理5-1" class="headerlink" title="定理5.1"></a>定理5.1</h3><p>如果p1/w1 ≥ p2/w2 ≥ … ≥ pn/wn，则算法GREEDY-KNAPSACK对于给定的背包问题实例生成一个最优解。</p>
+<ol>
+<li><p>如果所有的$x_i=1$则即为解</p>
+</li>
+<li><p>否则对于j，j是令$x_j\ne1$)的最小坐标可知</p>
+<p>对于$1\le i\lt j,x_i=1$</p>
+<p>对于$j\lt i\le n,x_i=0$</p>
+<p>对于$i=j,0\le x_j\lt1$</p>
+</li>
+<li><p>设不为最优解则存在$Y=(y_1,\dots,y_n)$是的$\sum p_iy_i&gt;\sum p_ix_i$设$\sum w_iy_i=M$,k是$y_k\ne x_k$的最小坐标，证明$y_k&lt;x_k$</p>
+<p>① $k&lt;j,x_k=1,\because y_k\ne x_k\therefore y_k&lt;x_k$</p>
+<p>② $k=j,\because\sum x_ip_i=M,y_k&gt;x_k\therefore \sum y_ip_i&gt;M\therefore y_k&lt;x_k$</p>
+<p>③ $k&gt;j,\because \sum x_ip_i=M\therefore y_k=0&lt;x_k$</p>
+</li>
+<li><p>令$y_k$增加到$x_k$，则从$(y_{k+1},\dots,y_n)$中削减$p_k(x_k-y_k)$，得到$Z=(x_1,\dots,x_{k-1},x_{k},z_{k+1},\dots,z_n)$</p>
+</li>
+<li><script type="math/tex; mode=display">
+\therefore \sum p_iz_i=\sum y_ip_i+(z_k-y_k)p_k-\sum_{k<i\leq n}(y_i-z_i)p_i\\
+=\sum p_iy_i+(z_k-y_k)w_k\frac{p_k}{w_k}-\sum_{k<i\leq n}w_i\frac{p_i}{w_i}\\
+\ge \sum p_iy_i+[(z_k-y_k)w_k-\sum_{k<i\leq n}(y_i-z_i)w_i]\frac{p_k}{w_k}=\sum p_iy_i\\
+\therefore \sum p_iz_i\geq \sum p_iy_i</script></li>
+<li><p>若$\sum p_iz_i&gt;\sum p_iy_i$则Y不是最优解，若$\sum p_iz_i=\sum p_iy_i$则Z也是最优解，若Z=X则X也是最优解，若Z!=X，反复以上操作可将Y转化为X，故而X是最优解</p>
+</li>
+</ol>
+<h3 id="定理5-2"><a href="#定理5-2" class="headerlink" title="定理5.2"></a>定理5.2</h3><p>证明思路：设I最优，J贪心，找一个属于J不属于I的元素，替换I对应元素，获得I‘，证明I’最优，重复即可证明</p>
+<ol>
+<li><p>证明I，J互不包含的关系</p>
+<p>(1). I=J，即为解，不考虑</p>
+<p>(2), $I\sub J$，与I最优矛盾</p>
+<p>(3), $J\sub I$，与贪心算法抵触，不成立</p>
+<p>故而I，J互不包含</p>
+</li>
+<li><p>令$a\in J\bar{I},b\in\bar{J}I$若$P_b&gt;P_a$则与算法矛盾，故而$P_a\ge P_b$</p>
+</li>
+<li><p>$S_IS_J$相同作业可以同时调度，故而我们可以让a，b在同一时刻调度</p>
+</li>
+<li><p>将$S_I$中的b置换为a，得到I‘，由于$P_a\ge P_b\therefore P_{I’}\ge P_I$，如果$P_{I’}\gt P_{I}$则与预设相斥，故而$P_{I’}=P_I$</p>
+</li>
+<li><p>如果$I’=J$则得证，不然则反复以上操作</p>
+</li>
+</ol>
+<h3 id="定理5-3"><a href="#定理5-3" class="headerlink" title="定理5.3"></a>定理5.3</h3><p>设J是k个作业的集合, б=$i_1,i_2,\dots,i_k$是J中作业的一种排列, 它使得$d_{i1}\le d_{i2}\le\dots\le d_{ik}$。J是一个可行解, 当且仅当J中的作业可以按照б的次序而又不违反任何一个期限的情况来处理。</p>
+<p>证明：</p>
+<p>必然性，显然若按$\sigma$为可行解，J必然是可行解<br>充分性：</p>
+<ol>
+<li>J可行，则必存在$\sigma’=r_1r_2\dots r_k$，使$d_{rj}\ge j$，假设$\sigma’\ne \sigma$，令a为$r_a\ne i_a$的最小下标。</li>
+<li>设$r_a=i_b$显然$b&gt;a$，我们将$r_a,r_b$交换，由于$d_{ra}=d_{ib}\ge b，d_{rb}\ge a\ge b$故而此操作可行</li>
+<li>连续操作即可得解。</li>
+</ol>
+<h2 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h2><p>最优性原理：过程的最优决策序列具有如下性质:  无论过程的初始状态和初始决策是什么,  其余的决策都必须相对于初始决策所产生的状态构成一个最优决策序列。</p>
+<h3 id="最优二分检索树"><a href="#最优二分检索树" class="headerlink" title="最优二分检索树"></a>最优二分检索树</h3><p>对于每个内结点i，其被访问概率是P(i)、对于每个外结点i，其被访问概率是Q(i)<br>假设一结点k为根节点，其左子树内结点有1~k-1，内结点有0~k-1，其右子树内结点有k+1~n，外结点k~n</p>
+<script type="math/tex; mode=display">
+COST(L)=\sum_{1\le i<k}P(i)*level(a_i)+\sum_{0\le i<k}Q(i)*(level(E_i)-1)\\
+COST(R)=\sum_{k<i\le n}P(i)*level(a_i)+\sum_{k\le i\le k}Q(i)*(level(E_i)-1)</script><p>全树成本</p>
+<script type="math/tex; mode=display">
+newcost(L)=\sum_{1\le i<k}P(i)*(level(a_i)+1）+\sum_{0\le i<k}Q(i)*level(E_i)\\
+newcost(R)=\sum_{k<i\le n}P(i)*（level(a_i)+1）+\sum_{k\le i\le k}Q(i)*level(E_i)\\
+COST(T)=newcost(L)+newcost(R)+P(k)=COST(L)+COST(R)+P(k)+\sum_{1\le i<k}P(i)+\sum_{k<i\le n}P(i)+\sum_{0\le i\le n}Q(i)</script><script type="math/tex; mode=display">
+令w(i.j)=Q(i)+\sum_{l=i+1}^j[P(l)+Q(l)]\\
+COST(T)=cost(L)+cost(R)+w(0,n)\\
+令C(i,j)表示包含a_{i+1}-a_j,E_i-E_j的最优二分检索树\\
+C(i,j)=\min_{i<k\le j}\{C(i,k-1)+C(k,j)+w(i,j)\}</script><h3 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0-1背包"></a>0-1背包</h3><p>递推关系</p>
+<script type="math/tex; mode=display">
+f_i(X)=max\{f_{i-1}(X),f_{i-1}(X-w_i)+p_i\}</script><h3 id="可靠性设计"><a href="#可靠性设计" class="headerlink" title="可靠性设计"></a>可靠性设计</h3><p>转化为01背包求解</p>
+<h3 id="货郎担问题"><a href="#货郎担问题" class="headerlink" title="货郎担问题"></a>货郎担问题</h3><h3 id="流水线调度"><a href="#流水线调度" class="headerlink" title="流水线调度"></a>流水线调度</h3><p>Johnson法则：</p>
+<p>①把全部ai和bj分类成非降序列；<br>②按照这一分类次序考察此序列：<br>    如果序列中下一个数是<strong>aj</strong>且作业j还没调度，那么在还没使用的<strong>最左</strong>位置调度作业j；<br>    如果下个数是<strong>bj</strong>且作业j还没调度，那么在还没使用的<strong>最右</strong>位置调度作业j；<br>    如果已经调度了作业j，则转到该序列的下一个数。 </p>
+<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>状态空间树：由解空间所有元素作为节点构成的树形结构。<br>显示约束：限定每个xi只能从指定的Si中取值。<br>隐式约束：描述xi必须彼此相关的情况。<br>问题状态：表示所求问题的结点。<br>解状态：这样的一些结点S，有根到S的路径构成了一个完整的元组。<br>答案状态：这样的一个解状态S，由根到S的路径确定了问题的解。<br>活结点：已经开始处理但还未处理完的结点集合。<br>E结点：正在生成其儿子的结点。<br>死结点：已经处理完的结点。<br>限界函数：减少通过检验的结点数，减少函数本身的计算时间。</p>
+<h2 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h2><p>在回溯法的基础让E-结点的选择更加明智</p>
+<p>LC检索，建立开销函数，给予每个活结点开销函数值，选取最小开销函数值的节点为E-节点</p>
+<h3 id="15-迷问题"><a href="#15-迷问题" class="headerlink" title="15-迷问题"></a>15-迷问题</h3><p>当且仅当 $\sum_{1\le i\le16}less(i)+X$是偶数时，图b所示的目标状态可由此初始状态到达。<br>less(i)，后续位置中，比i小的牌的数；如果空格所在位置(i,j),(i+j)%2即为X值</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/08/07/微机系统笔记/" rel="next" title="微机系统笔记">
+                  <i class="fa fa-chevron-left"></i> 微机系统笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/08/19/概率论与数理统计笔记/" rel="prev" title="概率论与数理统计笔记">
+                  概率论与数理统计笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法设计与分析笔记"><span class="nav-number">1.</span> <span class="nav-text">算法设计与分析笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导引及数学基础"><span class="nav-number">1.2.</span> <span class="nav-text">导引及数学基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.3.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治法"><span class="nav-number">1.4.</span> <span class="nav-text">分治法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心方法"><span class="nav-number">1.5.</span> <span class="nav-text">贪心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定理5-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">定理5.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定理5-2"><span class="nav-number">1.5.2.</span> <span class="nav-text">定理5.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定理5-3"><span class="nav-number">1.5.3.</span> <span class="nav-text">定理5.3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DP"><span class="nav-number">1.6.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最优二分检索树"><span class="nav-number">1.6.1.</span> <span class="nav-text">最优二分检索树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1背包"><span class="nav-number">1.6.2.</span> <span class="nav-text">0-1背包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠性设计"><span class="nav-number">1.6.3.</span> <span class="nav-text">可靠性设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#货郎担问题"><span class="nav-number">1.6.4.</span> <span class="nav-text">货郎担问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线调度"><span class="nav-number">1.6.5.</span> <span class="nav-text">流水线调度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回溯法"><span class="nav-number">1.7.</span> <span class="nav-text">回溯法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支限界法"><span class="nav-number">1.8.</span> <span class="nav-text">分支限界法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#15-迷问题"><span class="nav-number">1.8.1.</span> <span class="nav-text">15-迷问题</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>
