@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="概率论与数理统计笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-08-20T02:04:54.563Z">
+<meta property="og:updated_time" content="2020-08-20T12:15:28.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率论与数理统计笔记">
 <meta name="twitter:description" content="概率论与数理统计笔记">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 02:04:54" itemprop="dateModified" datetime="2020-08-20T02:04:54Z">2020-08-20</time>
+                <time title="修改时间：2020-08-20 12:15:28" itemprop="dateModified" datetime="2020-08-20T12:15:28Z">2020-08-20</time>
               </span>
             
           
@@ -281,7 +281,7 @@
 <script type="math/tex; mode=display">
 P(A)=\frac{A包含的基本事件数}{\Omega 包含的基本事件数}</script><p>几何概型的概率计算公式</p>
 <script type="math/tex; mode=display">
-P(A)=\frac{A的量度}{\Omega的量度}</script><p>$P(\overline{A})=1-P(A)$<br>$P(B-A)=P(B)-P(AB) ,IF,A\subsete B,P(B-A)=P(B)-P(A)$<br>$P(A\cup B)=P(A)+P(B)-P(AB),P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(AB)-P(AC)-P(BC)+P(ABC)$<br>若A，B互不相容，$P(A\cup B)=P(A)+P(B)$</p>
+P(A)=\frac{A的量度}{\Omega的量度}</script><p>$P(\overline{A})=1-P(A)$<br>$P(B-A)=P(B)-P(AB) ,IF,A\subseteq B,P(B-A)=P(B)-P(A)$<br>$P(A\cup B)=P(A)+P(B)-P(AB),P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(AB)-P(AC)-P(BC)+P(ABC)$<br>若A，B互不相容，$P(A\cup B)=P(A)+P(B)$</p>
 <p>$P(B|A)=\frac{P(AB)}{P(A)}$</p>
 <p>$P(AB)=P(A|B)P(B)=P(B|A)P(A),P(A)&gt;0,P(B)&gt;0$<br>$P(ABC)=P(A)P(B|A)P(C|AB)$</p>
 <p>全概率公式</p>
@@ -390,7 +390,7 @@ F_Y(y)=P(Y\le y)=P(g(X)\le y)=\int_Gf_X(x)dx\\
 f_Y(y)=F_Y'(y)\\
 公式法要求g(x)严格单调且处处可导\\
 f_Y(y)=\left\{\begin{array}.f_X[h(y)]|h'(y)|,\alpha <y<\beta\\0,其他\end{array}\right.\\
-h(y)是g(x)的反函数，\alpha=min(g(-\infin),g(+\infin)),\beta=max(g(-\infin),g(+\infin))</script><h2 id="二维随机变量及其分布"><a href="#二维随机变量及其分布" class="headerlink" title="二维随机变量及其分布"></a>二维随机变量及其分布</h2><h3 id="连续型分布函数"><a href="#连续型分布函数" class="headerlink" title="连续型分布函数"></a>连续型分布函数</h3><p>定义 $F(x,y)=P\{X\le x,Y\le y\}$</p>
+h(y)是g(x)的反函数，\alpha=min(g(-\infty),g(+\infty)),\beta=max(g(-\infty),g(+\infty))</script><h2 id="二维随机变量及其分布"><a href="#二维随机变量及其分布" class="headerlink" title="二维随机变量及其分布"></a>二维随机变量及其分布</h2><h3 id="连续型分布函数"><a href="#连续型分布函数" class="headerlink" title="连续型分布函数"></a>连续型分布函数</h3><p>定义 $F(x,y)=P\{X\le x,Y\le y\}$</p>
 <p>性质</p>
 <ol>
 <li>$0\le F(x,y)\le 1$</li>
@@ -400,8 +400,8 @@ h(y)是g(x)的反函数，\alpha=min(g(-\infin),g(+\infin)),\beta=max(g(-\infin)
 </ol>
 <p>边缘分布函数</p>
 <script type="math/tex; mode=display">
-F_X(x)=P\{X\le x\}=\lim_{y->+\infin}F(x,y)\\
-F_Y(y)=P\{Y\le y\}=\lim_{x->+\infin}F(x,y)</script><p>若x，y相互独立$\forall x,y,F(x,y)=F_X(x)F_Y(y)$</p>
+F_X(x)=P\{X\le x\}=\lim_{y->+\infty}F(x,y)\\
+F_Y(y)=P\{Y\le y\}=\lim_{x->+\infty}F(x,y)</script><p>若x，y相互独立$\forall x,y,F(x,y)=F_X(x)F_Y(y)$</p>
 <h3 id="连续型概率分布"><a href="#连续型概率分布" class="headerlink" title="连续型概率分布"></a>连续型概率分布</h3><p>联合概率密度f(x,y)满足</p>
 <ol>
 <li>$f(x,y\ge 0$</li>
@@ -409,16 +409,16 @@ F_Y(y)=P\{Y\le y\}=\lim_{x->+\infin}F(x,y)</script><p>若x，y相互独立$\fora
 </ol>
 <p>边缘概率密度</p>
 <script type="math/tex; mode=display">
-f_X(x)=\int_{-\infin}^{+\infin}f(x,y)dy\\f_Y(y)=\int_{-\infin}^{+\infin}f(x,y)dx</script><p>独立性，若X,Y独立$f(x,y)=f_X(x)f_Y(y)$</p>
+f_X(x)=\int_{-\infty}^{+\infty}f(x,y)dy\\f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)dx</script><p>独立性，若X,Y独立$f(x,y)=f_X(x)f_Y(y)$</p>
 <p>分布函数和概率密度的关系</p>
 <script type="math/tex; mode=display">
 f(x,y)=\frac{\partial^2F(x,y)}{\partial x\partial y}\\
-F(x,y)=\int_{-\infin}^{x}\int_{-\infin}^{y}f(x,y)dxdy</script><p>$P\{(X,Y)\in D\}=\int\int_Df(x,y)dxdy$</p>
+F(x,y)=\int_{-\infty}^{x}\int_{-\infty}^{y}f(x,y)dxdy</script><p>$P\{(X,Y)\in D\}=\int\int_Df(x,y)dxdy$</p>
 <h3 id="离散型分布律"><a href="#离散型分布律" class="headerlink" title="离散型分布律"></a>离散型分布律</h3><p>联合分布律 $P\{X=x_i,Y=y_j\}=p_{ij}$</p>
 <p>边缘分布律</p>
 <script type="math/tex; mode=display">
-P\{X=x_i\}=p_i=\sum_{j=1}^{\infin}p_{ij}\\
-P\{Y=y_j\}=p_j=\sum_{i=1}^{\infin}p_{ij}</script><p>若x，y相互独立$p_{ij}=p_ip_j$</p>
+P\{X=x_i\}=p_i=\sum_{j=1}^{\infty}p_{ij}\\
+P\{Y=y_j\}=p_j=\sum_{i=1}^{\infty}p_{ij}</script><p>若x，y相互独立$p_{ij}=p_ip_j$</p>
 <h3 id="条件分布"><a href="#条件分布" class="headerlink" title="条件分布"></a>条件分布</h3><p>即用概率密度表达贝叶斯公式</p>
 <p>离散型</p>
 <script type="math/tex; mode=display">
@@ -432,11 +432,11 @@ F_Z(z)=P\{Z\le z\}=P\{g(x,y)\le z\}=\int\int_{g(x,y)\le z}f(x,y)dxdy\\
 f_Z(z)=F'_Z(z)</script><p>连续型的函数分布的几个公式</p>
 <p>Z=X+Y</p>
 <script type="math/tex; mode=display">
-当XY不独立：f_Z(z)=\int_{-\infin}^{+\infin}f(x,z-x)dx=\int_{-\infin}^{+\infin}f(z-y,y)dy\\
-当XY独立，f_Z(z)=\int_{-\infin}^{+\infin}f_X(x)f_Y(z-x)dx=\int_{-\infin}^{+\infin}f_X(z-y)f_Y(y)dy</script><p>Z=aX+bY</p>
+当XY不独立：f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)dx=\int_{-\infty}^{+\infty}f(z-y,y)dy\\
+当XY独立，f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx=\int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy</script><p>Z=aX+bY</p>
 <script type="math/tex; mode=display">
-当XY不独立：f_Z(z)=\frac{1}{|b|}\int_{-\infin}^{+\infin}f(x,\frac{z-ax}{b})dx=\int_{-\infin}^{+\infin}f(\frac{z-by}{a},y)dy\\
-当XY独立，f_Z(z)=\int_{-\infin}^{+\infin}f_X(x)f_Y(\frac{z-ax}{b})dx=\int_{-\infin}^{+\infin}f_X(\frac{z-by}{a})f_Y(y)dy</script><p>设X,Y相互独立，Z=max(X,Y)分布函数为</p>
+当XY不独立：f_Z(z)=\frac{1}{|b|}\int_{-\infty}^{+\infty}f(x,\frac{z-ax}{b})dx=\int_{-\infty}^{+\infty}f(\frac{z-by}{a},y)dy\\
+当XY独立，f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(\frac{z-ax}{b})dx=\int_{-\infty}^{+\infty}f_X(\frac{z-by}{a})f_Y(y)dy</script><p>设X,Y相互独立，Z=max(X,Y)分布函数为</p>
 <script type="math/tex; mode=display">
 F_{max}(z)=P\{max(X,Y)\le z\}=P\{X\le z,Y\le z\}=F_X(x)F_Y(y)\\</script><p>设X,Y相互独立，Z=min(X,Y)分布函数为</p>
 <script type="math/tex; mode=display">
@@ -451,16 +451,16 @@ f(x,y)=\left\{\begin{array}f\frac{1}{S_D},(x,y)\in D\\0,其他\end{array}\right.
 f(x,y)=\frac{1}{2\pi \sigma_1\sigma_2\sqrt{1-\rho^2}}e^{\frac{-1}{2(1-\rho^2)}[\frac{(x-\mu_1)^2}{\sigma_1^2}-2\rho\frac{(x-\mu_1)(x-\mu_2)}{\sigma_1\sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]}</script><p>若$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho),X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)$</p>
 <p>若$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$,XY相互独立是$\rho=0$的充要条件</p>
 <h2 id="随机变量的数字特征"><a href="#随机变量的数字特征" class="headerlink" title="随机变量的数字特征"></a>随机变量的数字特征</h2><h3 id="数学期望"><a href="#数学期望" class="headerlink" title="数学期望"></a>数学期望</h3><script type="math/tex; mode=display">
-E(X)=\sum_{k=1}^{\infin}x_kp_k,离散型\\
-E(X)=\int_{-\infin}^{+\infin}xf(X)dx,连续型\\
-E(Y)=E[g(X)]=\sum_{k=1}^\infin g(x_k)p_k，离散型\\
-E(Y)=E[g(x)]=\int_{-\infin}^{+\infin}g(x)f(x)dx，连续型\\
-E(Z)=E[g(X,Y)]=\sum_{i=1}^\infin \sum_{f=1}^\infin g(x_i,y_j)p_{ij}，离散型\\
-E(Z)=E[g(X,Y)]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}g(x.y)f(x,y)dx，连续型\\
-E[g(X)]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}g(x)f_X(x)dx\\
-E[h(Y)]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}h(y)f_Y(y)dx\\
-E[X]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}xf_X(x)dx\\
-E[Y]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}yf_Y(y)dx\\</script><p>性质</p>
+E(X)=\sum_{k=1}^{\infty}x_kp_k,离散型\\
+E(X)=\int_{-\infty}^{+\infty}xf(X)dx,连续型\\
+E(Y)=E[g(X)]=\sum_{k=1}^\infty g(x_k)p_k，离散型\\
+E(Y)=E[g(x)]=\int_{-\infty}^{+\infty}g(x)f(x)dx，连续型\\
+E(Z)=E[g(X,Y)]=\sum_{i=1}^\infty \sum_{f=1}^\infty g(x_i,y_j)p_{ij}，离散型\\
+E(Z)=E[g(X,Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x.y)f(x,y)dx，连续型\\
+E[g(X)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x)f_X(x)dx\\
+E[h(Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(y)f_Y(y)dx\\
+E[X]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xf_X(x)dx\\
+E[Y]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yf_Y(y)dx\\</script><p>性质</p>
 <ol>
 <li>设c为常数。$E(c)=c$</li>
 <li>设c为常数。$E(cX)=cE(X)$</li>
@@ -468,7 +468,7 @@ E[Y]=\int_{-\infin}^{+\infin}\int_{-\infin}^{+\infin}yf_Y(y)dx\\</script><p>性�
 <li>X,Y相互独立$E(XY)=E(X)E(Y)$</li>
 </ol>
 <h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><script type="math/tex; mode=display">
-D(X)=E[(X-EX)^2]=\left\{\begin{array}.\sum_{k=1}^\infin(x_k-E(X))^2p_k\\\int_{-\infin}^{+\infin}(x-E(X))^2f(x)dx\end{array}\right.\\
+D(X)=E[(X-EX)^2]=\left\{\begin{array}.\sum_{k=1}^\infty(x_k-E(X))^2p_k\\\int_{-\infty}^{+\infty}(x-E(X))^2f(x)dx\end{array}\right.\\
 D(X)=E(x^2+2EXx+EX^2)=E(x^2)-2EX*E(X)+EX^2=E(X^2)-EX^2\\</script><p>性质</p>
 <ol>
 <li>设C为常数，$D(C)=0$</li>
@@ -499,7 +499,7 @@ Cov(X,Y)=E[(X-EX)(Y-EY)]=E(XY)-E(X)E(Y)</script><p>性质</p>
 设E(X),D(X)存在，则对任意\varepsilon>0有\\
 P\{|X-E(X)|\ge\varepsilon\}\le \frac{D(X)}{\varepsilon^2}或\\
 P\{|X-E(X)|\lt \varepsilon\}\ge 1-\frac{D(X)}{\varepsilon^2}\\
-证明:P\{|X-E(X)|\ge\varepsilon\}=\int_{|x-EX|>\varepsilon}f(x)dx\le\int_{|x-EX|>\varepsilon}\frac{(x-EX)^2}{\varepsilon^2}f(x)dx\le\frac{1}{\varepsilon^2}\int_{-\infin}^{+\infin}(x-EX)^2f(X)\le \frac{D(X)}{\varepsilon^2}</script><h3 id="大数定理"><a href="#大数定理" class="headerlink" title="大数定理"></a>大数定理</h3><div class="table-container">
+证明:P\{|X-E(X)|\ge\varepsilon\}=\int_{|x-EX|>\varepsilon}f(x)dx\le\int_{|x-EX|>\varepsilon}\frac{(x-EX)^2}{\varepsilon^2}f(x)dx\le\frac{1}{\varepsilon^2}\int_{-\infty}^{+\infty}(x-EX)^2f(X)\le \frac{D(X)}{\varepsilon^2}</script><h3 id="大数定理"><a href="#大数定理" class="headerlink" title="大数定理"></a>大数定理</h3><div class="table-container">
 <table>
 <thead>
 <tr>
