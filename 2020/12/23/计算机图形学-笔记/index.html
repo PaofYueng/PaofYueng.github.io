@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="计算机图形学-笔记定义表 计算机图形学 指用计算机产生对象图形输出的技术。确切地说，计算机图形学是研究通过计算机将数据转换为图形，并在专门显示设备上显示的原理、方法和技术的学科。  客观存在的实体。可以是各种具体的、实在的物体，也可以是抽象的、假想的事物。  模型：能够正确地表达出一个对象性质、结构和行为的描述信息。  图形：对象的一种外在表现形式，它是对象有关信息的具体体现。  图象处理是指用计">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学-笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/12/23/计算机图形学-笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="计算机图形学-笔记定义表 计算机图形学 指用计算机产生对象图形输出的技术。确切地说，计算机图形学是研究通过计算机将数据转换为图形，并在专门显示设备上显示的原理、方法和技术的学科。  客观存在的实体。可以是各种具体的、实在的物体，也可以是抽象的、假想的事物。  模型：能够正确地表达出一个对象性质、结构和行为的描述信息。  图形：对象的一种外在表现形式，它是对象有关信息的具体体现。  图象处理是指用计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-12-23T02:52:55.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机图形学-笔记">
+<meta name="twitter:description" content="计算机图形学-笔记定义表 计算机图形学 指用计算机产生对象图形输出的技术。确切地说，计算机图形学是研究通过计算机将数据转换为图形，并在专门显示设备上显示的原理、方法和技术的学科。  客观存在的实体。可以是各种具体的、实在的物体，也可以是抽象的、假想的事物。  模型：能够正确地表达出一个对象性质、结构和行为的描述信息。  图形：对象的一种外在表现形式，它是对象有关信息的具体体现。  图象处理是指用计">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/12/23/计算机图形学-笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机图形学-笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/12/23/计算机图形学-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机图形学-笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-23 10:36:00 / 修改时间：02:52:55" itemprop="dateCreated datePublished" datetime="2020-12-23T10:36:00Z">2020-12-23</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="计算机图形学-笔记"><a href="#计算机图形学-笔记" class="headerlink" title="计算机图形学-笔记"></a>计算机图形学-笔记</h1><h2 id="定义表"><a href="#定义表" class="headerlink" title="定义表"></a>定义表</h2><ol>
+<li><p>计算机图形学 指用计算机产生对象图形输出的技术。确切地说，计算机图形学是研究通过计算机将数据转换为图形，并在专门显示设备上显示的原理、方法和技术的学科。</p>
+</li>
+<li><p>客观存在的实体。可以是各种具体的、实在的物体，也可以是抽象的、假想的事物。</p>
+</li>
+<li><p>模型：能够正确地表达出一个对象性质、结构和行为的描述信息。</p>
+</li>
+<li><p>图形：对象的一种外在表现形式，它是对象有关信息的具体体现。</p>
+</li>
+<li><p>图象处理是指用计算机来改善图象质量的数字技术。</p>
+</li>
+<li><p>模式识别是指用计算机对输入图形进行识别的技术。</p>
+</li>
+<li><p>计算几何学是研究几何模型和数据处理的学科。 </p>
+</li>
+<li><p>交互式计算机图形学是指用计算机交互式地产生图形的技术</p>
+</li>
+<li><p>交互设备是实现交互技术，完成交互任务的基础。交互设备有定位、键盘、选择、取值和拾取。</p>
+</li>
+<li><p>交互任务是用户输入到计算机的一个单元信息，基本任务有四种：定位、字串、选择、取值。</p>
+</li>
+<li><p>计算机图形学硬件系统系统：<br>  计算机(CPU)、显示处理器(GPU)、图形显示器、输入设备和硬拷贝设备</p>
+</li>
+<li><p>象素  屏幕上可以点亮或熄灭的最小单位</p>
+</li>
+<li><p>分辨率 显示屏上象素的总数，常用每行象素数与行数的乘积表示</p>
+</li>
+<li><p>亮度等级或称灰度等级数目是指单色显示器象素的亮度可以有多少种不同的变化 </p>
+</li>
+<li><p>帧存储器  存储屏幕上每个象素对应的颜色或亮度值</p>
+</li>
+<li><p>数值通过光栅扫描电路使CRT电子束产生扫描偏转，<br>作为地址值读出帧存储器中的内容以控制显示屏上对应像素的颜色或亮度。</p>
+</li>
+<li><p>扫描转换 将图形描述转换成用象素矩阵表示的过程</p>
+</li>
+<li><p>图形基元（输出图形元素）图形系统能产生的最基本图形 </p>
+</li>
+<li><p>区域：指光栅网格上的一组像素。</p>
+</li>
+<li><p>区域填充：把某确定的像素值送入到区域内部的所有像素中。</p>
+</li>
+<li><p>内定义区域(oldvalue)指出区域内部所具有的像素值,（内点表示）</p>
+</li>
+<li><p>边界定义区域(boundaryvalue)，指出区域边界所具有的像素值。此时区域边界上所有像素具有某个边界boundaryvalue。区域的边界应该是封闭的，指明区域的内部和外部。</p>
+</li>
+<li><p>四连通:从区域中的一个像素出发，经连续地向上下左右四个相邻像素的移动，就可以到达区域内的任意另一个像素。</p>
+</li>
+<li><p>八连通:如果除了要经上下左右的移动，还要经左上、右上、左下和右下的移动，才能由一个像素走到区域中另外任意一个像素.<br>四连通区域必定是八连通区域，反之不一定。</p>
+</li>
+<li><p>一个区域内部像素，称为种子。</p>
+</li>
+<li><p>局部极大：如果一个顶点的前面和后面各有一些相邻顶点的y坐标，都小于该顶点的y坐标，则这个顶点是局部极大。</p>
+</li>
+<li><p>局部极小：如果一个顶点的前面和后面各有一些相邻顶点的y坐标，都大于该顶点的y坐标，则这个顶点是局部极小。</p>
+</li>
+<li><p>本体坐标系</p>
+<pre><code>也称模型坐标系，是为规定基本形体而引入的便于描述的坐标系。
+</code></pre></li>
+<li><p>用户坐标系</p>
+<pre><code>也称世界坐标系，是用户引入描述整个形体的坐标系。
+</code></pre></li>
+<li><p>观察坐标系</p>
+<pre><code>也称视坐标系或目坐标系，为说明观察的姿态而引入，也就是观察者所处的位置。
+</code></pre></li>
+<li><p>设备坐标系</p>
+<pre><code>也称显示器坐标系或屏坐标系，是各种图形设备自身规定的在显示表面上采用的坐标系。要显示的景物最终要在这个坐标系中显示出来。
+</code></pre></li>
+<li><p>规范化设备坐标系</p>
+<pre><code>不同图形设备的设备坐标系一般不同，图形系统为了使绘制与具体设备无关而引入的坐标系，约定它是二维正方形，即各坐标范围规定为从0至1。 
+</code></pre></li>
+<li><p>左手系：在计算机图形学中，通常约定为假想眼睛位于原点，x轴方向是水平向右，y轴方向竖直向上，z轴方向离开眼睛射向前方，这样形成的观察坐标系是左手系。（本书采用左手系）<br>右手系：如果让z轴的方向面向眼睛方向，这样得到的观察坐标系就是右手系。 </p>
+</li>
+<li><p>图形（几何）变换：为了从不同方向去观察对象，而对对象所作的旋转、放大、缩小和平移等变换。将景物在本体坐标系中的描述转变为在用户坐标系中的描述。</p>
+</li>
+<li><p>投影变换：三维图形投影在二维投影平面上的变换。将景物在用户坐标系中的描述转变为在观察坐标系中的描述。</p>
+</li>
+<li><p>视见变换：绘图过程中要用窗口来规定要显示的内容，用视区来规定在屏幕上显示的位置所应用的变换。将景物在观察坐标系中的描述转变为在设备坐标系中的描述。 </p>
+</li>
+<li><p>齐次坐标表示法就是用n+1维向量表示一个n维向量。</p>
+</li>
+<li><p>窗口就是在观察坐标系中指出的要显示出来的区域，这一区域通常为矩形区域。</p>
+</li>
+<li><p>视见区是屏幕域中的一个子区域，通常为矩形区域，它最大与屏幕域等同。     </p>
+</li>
+<li><p>平行投影，当投影中心与投影平面的距离为无穷远时，投射直线成为一组平行线.</p>
+</li>
+<li><p>透视投影，当投影中心与投影平面的距离是有限数值时，投射直线交于一点，形成灭点.</p>
+</li>
+<li><p>正投影 垂直于投影平面</p>
+<p>斜投影 倾斜于投影平面</p>
+</li>
+<li><p>斜二测投影:垂直于投影平面的线段长度缩短为原来的一半;</p>
+</li>
+<li><p>斜等轴投影:使垂直于投影平面的线段仍保持长度. </p>
+</li>
+<li><p>裁剪就是去掉窗口外的不可见部分，保留窗口内的可见部分的过程。</p>
+</li>
+<li><p>字符裁剪 如果把字符的每一笔看成是由一条直线段或几条直线段组成的，那么就可以用直线段裁剪的方法去处理每一笔划；或者把包含一个字符的最小矩形在窗口外的字符认为不可见。</p>
+</li>
+<li><p>字符串裁剪 如果包含字符串的最小矩形在窗口外，则认为整个字符串为不可见。</p>
+</li>
+<li><p>插值 构造一条曲线顺序通过型值点，称为对这些型值点进行插值（interpolation）。</p>
+</li>
+<li><p>逼近 构造一条曲线，使它在某种意义上最接近这些型值点但不完全通过，称之为对这些型值点进行逼近（approximation）。</p>
+</li>
+<li><p>参数连续性<br>  一函数在某一点x0处具有相等的直到k阶的左右导数，称它在x0处是k次连续可微的，或称它在x0处是k阶连续的，记作Ck。几何上C0、C1、C2依次表示该函数的图形、切线方向、曲率是连续的。参数曲线的可微性称为参数曲线的连续性。</p>
+</li>
+<li><p>几何连续性<br>  两曲线段的相应的弧长参数化在公共连接点处参数导数成比例而不是相等，则称它们在该点处具有k阶几何连续性，记作Gk 。</p>
+<pre><code>零阶几何连续G0与零阶参数连续C0是一致的。
+一阶几何连续G1指一阶导数在两个相邻曲线段的交点处成比例，即方向相同，大小不同。
+二阶几何连续G2指两个曲线段在交点处其一阶和二阶导数均成比例。
+</code></pre></li>
+<li><p>光顺<br>  光顺（smoothness）是指曲线的拐点不能太多，要光滑顺畅。对于平面曲线相对光顺的条件应该是：<br>（1）具有二阶几何连续（G2）；<br>（2）不存在多余拐点和奇异点；<br>（3）曲率变化较小。 </p>
+</li>
+<li><p>Hermite:</p>
+<script type="math/tex; mode=display">
+P(u)=(u^3 \ u^2 \ u \ 1)
+\left[\begin{matrix} 
+2& -2& 1& 1\\
+-3& 3& -2& -1\\
+0& 0& 1&0\\
+1& 0& 0& 0
+\end{matrix}\right]
+\left[\begin{matrix}P_0\\P_3\\P_1-P_0\\P_3-P_2 \end{matrix}\right]</script></li>
+<li><p>Bezier</p>
+<script type="math/tex; mode=display">
+P(u)=(u^3 \ u^2 \ u \ 1)
+\left[\begin{matrix} 
+-1& 3& -3& 1\\
+3& 6& 3& 0\\
+-3& 3& 0&0\\
+1& 0& 0& 0
+\end{matrix}\right]
+\left[\begin{matrix}P_0\\P_1\\P_2\\P_3 \end{matrix}\right]</script></li>
+<li><p>B样条</p>
+<script type="math/tex; mode=display">
+P(u)=(u^3 \ u^2 \ u \ 1)
+\left[\begin{matrix} 
+-1& 3& -3& 1\\
+3& -6& 3& 0\\
+-3& 0& 3&0\\
+1& 4& 1& 0
+\end{matrix}\right]
+\left[\begin{matrix}P_0\\P_1\\P_2\\P_3 \end{matrix}\right]</script></li>
+<li><p>多边形：设空间多面体的表面为凸多边形表面,分别由它们的顶点坐标逆时针方向的序列确定,即约定按顶点序列前行时内部在左侧。</p>
+</li>
+<li><p>凸壳 包含一个平面点集的最小凸区域</p>
+</li>
+<li><p>凸区域指要求区域内任意两点的连线仍在该区<br>域内。</p>
+</li>
+<li><p>与空间任意形体有关的信息可以分为<br>1.图形信息:点、线、面的位置,相互关系及大小等<br>2.非图形信息:颜色、亮度、质量、体积。</p>
+</li>
+<li><p>图形信息包括<br>1.几何信息：形体在空间的位置和大小<br>2.拓扑信息：组成形体各部分的数目及相互间的连接关系。</p>
+</li>
+<li><p>形体的表示方法通常可分为两类：<br>1.边界表示：用边界将形体分为内部和外部。例如曲线曲面<br>2.空间分区表示：描述形体的内部性质,将包含形体的空间区域划分为一组小的非重叠的连续实体。（四叉树和八叉树）</p>
+</li>
+<li><p>形体的模型主要指的就是包含图形信息所形成的模型。 </p>
+<pre><code>形体本身的构造有一定的层次性，低层部分组合构成上一层部分，而上一层部分组合又可以构成更高一层的部分，依此类推可形成多层结构。其中，每一层中的部分，称为几何元素。  
+</code></pre></li>
+<li><p>点是0维几何元素，有端点、交点、切点、孤立点等形式。</p>
+<pre><code>曲线、曲面的应用中会涉及到三种类型的点：
+型值点 相应曲线、曲面必然经过的点。
+控制点 相应曲线、曲面不一定经过的点，仅用于确定位置和形状。
+插值点 在型值点之间插入的一系列点，用于提高曲线曲面的输出精度。
+</code></pre></li>
+<li><p>边是一维几何元素，是两个邻面（正则形体）或多个邻面（非正则形体）的交界。边分直线边和曲线边。直线边由起点和终点两端点确定；曲线边由一系列型值点或控制点表示，也可以用显式、隐式方程描述。</p>
+</li>
+<li><p>环是有序有向边（直线段或曲线段）组成的面的封闭边界。环中的边不能自相交，相邻两条边共享一个端点。环有内外之分，确定面的最大外边界的环称之为外环，通常其边按逆时针方向排序。而把确定面中内孔或凸台边界的环称之为内环，其边相应外环排序方向相反，通常按顺时针方向排序。</p>
+</li>
+<li><p>面是二维几何元素，是形体上一个有限、非零的区域，它由一个外环和若干个内环所界定。面有方向性，一般用其外法向量作为该面的正向。若一个面的外法向量向外，此面为正；否则，为反向面。</p>
+</li>
+<li><p>体是三维几何元素，由封闭表面围成的空间，它是欧氏空间R3中非空、有界的封闭子集，其边界是有限面的并集。</p>
+</li>
+<li><p>体素是可以用有限个尺寸参数定位和定型的体，常有下面三种定义形式。</p>
+<pre><code>一组单元实体   长方体、圆柱体、圆锥体、球体。
+扫描体   由参数定义的一条（一组）截面轮廓线沿一条（一组）空间参数曲线作扫描运动而产生的形体。
+用代数半空间定义的形体   在此半空间中点集可定义$\{ (x,y,z)|f(x,y,z)≤0 \}$此处的f应是不可约的多项式。
+形体的层次结构
+点→边→环→面→外壳→形体。 
+</code></pre></li>
+<li><p>用计算机在图形设备上生成连续色调的真实感图形必须完成四个基本的任务。</p>
+<pre><code>第一  用数学方法建立所构造三维场景的几何描述，并将它们输入至计算机。
+第二  将三维几何描述转换为二维透视图。
+第三  确定场景中的所有可见面，这需要使用隐藏面消除算法将被其它物体遮挡的不可见面消去。
+第四  计算场景中可见面的颜色，严格地说，就是根据基于光学物理的光照明模型计算可见面投射到观察者眼中的光亮度大小和颜色组成，并将它转换成适合图形设备的颜色值，从而确定投影画面上每一象素的颜色，最终生成图形。 
+</code></pre></li>
+<li><p>明暗模型：指模拟明暗效应的模型，用以计算可见表面应该显示的亮度和彩色。</p>
+</li>
+<li></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/12/11/编译原理-笔记/" rel="next" title="编译原理-笔记">
+                  <i class="fa fa-chevron-left"></i> 编译原理-笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机图形学-笔记"><span class="nav-number">1.</span> <span class="nav-text">计算机图形学-笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义表"><span class="nav-number">1.1.</span> <span class="nav-text">定义表</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>
