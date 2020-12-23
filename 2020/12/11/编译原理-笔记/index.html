@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="编译原理-笔记前言 可能写的比较简略，毕竟时间不太够">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-12-23T03:03:22.748Z">
+<meta property="og:updated_time" content="2020-12-23T03:22:24.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理-笔记">
 <meta name="twitter:description" content="编译原理-笔记前言 可能写的比较简略，毕竟时间不太够">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 03:03:22" itemprop="dateModified" datetime="2020-12-23T03:03:22Z">2020-12-23</time>
+                <time title="修改时间：2020-12-23 03:22:24" itemprop="dateModified" datetime="2020-12-23T03:22:24Z">2020-12-23</time>
               </span>
             
           
@@ -322,8 +322,8 @@
 <p>消除空产生式：穷举所有结果</p>
 <p>提取公共前缀：设立可推出不同后缀的子状态</p>
 <p>消除直接左递归：转化为右递归</p>
-<h3 id="自顶向下的语言分析"><a href="#自顶向下的语言分析" class="headerlink" title="自顶向下的语言分析"></a>自顶向下的语言分析</h3><h4 id="三个重要集合"><a href="#三个重要集合" class="headerlink" title="三个重要集合"></a>三个重要集合</h4><p>$\beta \in(V_T\cup V_N)^<em>,First(\beta)=\{a\in V_T|\beta\Rightarrow^</em>a\}\cup(if\space\beta\Rightarrow*\varepsilon\space then \space \{\varepsilon\}\space else\space \varnothing)$</p>
-<p>$A\in V_N,Follow(A)=\{a\in V_T|S\Rightarrow^+…Aa…\}\cup (if\space S\Rightarrow^*…A\space then \space \{ # \}\space else\space \varnothing)$</p>
+<h3 id="自顶向下的语言分析"><a href="#自顶向下的语言分析" class="headerlink" title="自顶向下的语言分析"></a>自顶向下的语言分析</h3><h4 id="三个重要集合"><a href="#三个重要集合" class="headerlink" title="三个重要集合"></a>三个重要集合</h4><script type="math/tex; mode=display">
+\beta \in (V_T \cup V_N)^*,First( \beta )=\{ a \in V_T \|  \beta \Rightarrow^*a \} \cup (if \space \beta \Rightarrow^* \varepsilon \space then \space \{ \varepsilon \} \space else \space \varnothing)</script><p>$A  \in  V_N, Follow(A)=\{a\in V_T | S\Rightarrow^+…Aa…\} \cup (if \space S \Rightarrow^* …A \space  then \space \{ $ $ # $ $ \} \space else \space \varnothing)$</p>
 <p>$Predict(A\to \beta)=First(\beta)\space when\space\varepsilon\notin First(\beta)=First(\beta)-\{\varepsilon\}\cup Follow(A)\space when\space\varepsilon\in First(\beta)$</p>
 <h4 id="LL-1"><a href="#LL-1" class="headerlink" title="LL(1)"></a>LL(1)</h4><p>建立状态与非终极符的矩阵求解</p>
 <h4 id="递归下降法"><a href="#递归下降法" class="headerlink" title="递归下降法"></a>递归下降法</h4><p>在函数里构建</p>
