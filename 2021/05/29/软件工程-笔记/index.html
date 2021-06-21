@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="寻求力量之旅">
 <meta property="og:description" content="前言 懒得写了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2021-06-19T06:55:23.937Z">
+<meta property="og:updated_time" content="2021-06-21T05:11:29.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件工程-笔记">
 <meta name="twitter:description" content="前言 懒得写了">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-19 06:55:23" itemprop="dateModified" datetime="2021-06-19T06:55:23Z">2021-06-19</time>
+                <time title="修改时间：2021-06-21 05:11:29" itemprop="dateModified" datetime="2021-06-21T05:11:29Z">2021-06-21</time>
               </span>
             
           
@@ -1152,12 +1152,12 @@ E_c(\tau):0 - \tau改正的错误\\
 平均无故障时间与\underline{单位长度程序中剩余的错误数成反比}\\
 \therefore MTTF=\frac{1}{K(E_T/I_T-E_C(\tau)/I_T)}\ \ \ \ \ \ （K一般取200）</script><p>估算错误总数</p>
 <ol>
-<li>植入错误法，类比标记重捕法。<script type="math/tex; mode=display">
+<li><p>植入错误法，类比标记重捕法。</p>
+<script type="math/tex; mode=display">
 N_S: 人为植入的错误,n:测试发现的原有错误,n_s测试发现的植入错误\\
 \bar{N} =\frac{n}{n_S}N_S</script></li>
-</ol>
-<ol>
-<li>分别测试法，也类似与标记重捕法，两人相同的视为被标记的<script type="math/tex; mode=display">
+<li><p>分别测试法，也类似与标记重捕法，两人相同的视为被标记的</p>
+<script type="math/tex; mode=display">
 B_0:错误总数,B_1:测试员甲发现的错误,B_2:测试员乙发现的错误,b_c:两个测试员发现的相同错误\\
 \bar{B_0}=\frac{B_2B_1}{b_c}</script></li>
 </ol>
@@ -1234,7 +1234,8 @@ B_0:错误总数,B_1:测试员甲发现的错误,B_2:测试员乙发现的错误
 <li>数据重构，修改数据结构</li>
 <li>正向工程，改变或重构现有系统，以提高其整体质量</li>
 </ol>
-<h1 id="软件项目管理"><a href="#软件项目管理" class="headerlink" title="软件项目管理"></a>软件项目管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>项目：结果导向的暂时的努力</p>
+<h1 id="软件项目管理"><a href="#软件项目管理" class="headerlink" title="软件项目管理"></a>软件项目管理</h1><p>注：这一章节是站在较为宏观的角度看待软件开发，区别上述对软件开发过程中的阶段的详细解释。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>项目：结果导向的暂时的努力</p>
 <p>特征：</p>
 <ol>
 <li>独特的</li>
@@ -1244,7 +1245,140 @@ B_0:错误总数,B_1:测试员甲发现的错误,B_2:测试员乙发现的错误
 <p>项目约束：时间、金钱（资源）和质量</p>
 <p>项目干系人：既得利益者</p>
 <p>关键项目干系人：促成或破坏项目的人</p>
-<h2 id="成本与工作量估算"><a href="#成本与工作量估算" class="headerlink" title="成本与工作量估算"></a>成本与工作量估算</h2>
+<h2 id="成本与工作量估算"><a href="#成本与工作量估算" class="headerlink" title="成本与工作量估算"></a>成本与工作量估算</h2><h3 id="软件成本"><a href="#软件成本" class="headerlink" title="软件成本"></a>软件成本</h3><p>注意：与其他管理活动一样，软件成本估算随着项目的进行需要定期修正</p>
+<ol>
+<li>包括维护在内的硬件和软件费用；</li>
+<li>工作成本（支付给软件开发人员的费用）；</li>
+<li>应用的方法、过程所形成的一部分成本；</li>
+<li>使用的工具；</li>
+<li>差旅费</li>
+</ol>
+<h3 id="工作量"><a href="#工作量" class="headerlink" title="工作量"></a>工作量</h3><p>软件工作量估算是<strong>预测</strong>构造一个软件系统所需的<strong>总工作量</strong>的过程，工作量估算从<strong>软件规模</strong>的估算入手。</p>
+<p><strong>代码行技术</strong>：这种方法依据以往开发类似产品的经验和历史数据，估计实现一个功能所需要的源程序行数。<br><strong>功能点技术</strong>：看交付的软件的总功能有多少。依赖对软件信息域特性和软件复杂性的评估结果估算软件规模。功能点（FP）和对象点是这种估算中常用的指标。<br>根据<strong>专家经验</strong>来估算软件工作量</p>
+<h2 id="进度计划"><a href="#进度计划" class="headerlink" title="进度计划"></a>进度计划</h2><p>内容：</p>
+<ol>
+<li>罗列项目各阶段</li>
+<li>把每个阶段划分成需要完成的活动</li>
+<li>描述活动间的关系</li>
+<li>估算活动所需时间</li>
+</ol>
+<p>出发点：</p>
+<ol>
+<li>满足干系人的期望与客户的需要</li>
+<li>列出所有的可交付成果</li>
+<li>判定必须进行哪些活动以建立这些可交付成果</li>
+</ol>
+<h3 id="工作分解结构"><a href="#工作分解结构" class="headerlink" title="工作分解结构"></a>工作分解结构</h3><p>相当于大纲，具体参照书目。</p>
+<p>任务责任矩阵：表示分工与责任，详见书目</p>
+<p>优点：</p>
+<ol>
+<li>明确了项目范围</li>
+<li>确定了项目包含的活动</li>
+<li>指明活动对应的里程碑</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>没有指明活动间的相互依赖<strong>关联</strong></li>
+<li>无法表示项目中可以<strong>并行</strong>的部分</li>
+<li>还需要其他手段才能产生现实可行的项目进度计划</li>
+</ol>
+<h3 id="Gantt图"><a href="#Gantt图" class="headerlink" title="Gantt图"></a>Gantt图</h3><p>优点：直观简明和容易掌握、容易绘制</p>
+<p>缺点：</p>
+<ol>
+<li>不能<strong>显式地</strong>描绘各项作业彼此间的<strong>依赖关系</strong></li>
+<li>进度计划的<strong>关键部分</strong>不明确，难于判定哪些部分应当是主攻和主控的对象</li>
+<li>计划中有潜力的部分及潜力的大小不明确，往往造成潜力的浪费</li>
+</ol>
+<h3 id="工程网络"><a href="#工程网络" class="headerlink" title="工程网络"></a>工程网络</h3><p>活动（Activity）：一个活动是项目的一部分，它要耗费一段时间，有开始和结束（边<br>里程碑（Milestone）：一个里程碑是某个活动完成的标志，它是一个特定的时间点（点</p>
+<p>剩余的与求关键路径完全相同，此处略去。</p>
+<h2 id="人员组织"><a href="#人员组织" class="headerlink" title="人员组织"></a>人员组织</h2><p>为了成功地完成软件开发工作，项目组成员必须以一种有意义且有效的方式彼此交互和通信（n*(n+1)/2</p>
+<h3 id="民主制程序员组"><a href="#民主制程序员组" class="headerlink" title="民主制程序员组"></a>民主制程序员组</h3><p>小组成员完全平等，享有充分民主，通过协商做出技术决策。2-8人适宜</p>
+<p>优点：</p>
+<ol>
+<li>组员们对发现程序错误持积极的态度</li>
+<li>组员们享有充分民主，小组有高度凝聚力，组内学术空气浓厚，有利于攻克技术难关</li>
+</ol>
+<h3 id="主程序员组"><a href="#主程序员组" class="headerlink" title="主程序员组"></a>主程序员组</h3><p>主程序员组用<strong>经验多、技术好、能力强</strong>的程序员作为主程序员，同时，利用人和计算机在事务性工作方面<strong>给主程序员提供充分支持</strong>，而且所<strong>有通信都通过一两个人</strong>进行</p>
+<p>出发点：</p>
+<ol>
+<li>软件开发人员多数比较<strong>缺乏经验</strong></li>
+<li>程序设计过程中有许多<strong>事务性的工作</strong></li>
+<li>多渠道<strong>通信很费时间</strong>，将降低程序员的生产率</li>
+</ol>
+<p>特点：专业化，层次化</p>
+<p>主程序员：管理者的同时是程序员，负责体系设计与其他关键设计，协调成员，复查其他成员的工作，主要负责人。</p>
+<p>后备程序员：主程序的替补</p>
+<p>编程秘书：负责完成项目有关的全部事务性工作（维护资料文档，原码的编译链接运行）</p>
+<p>集中式与分散式的区别在于同层的人员是否存在通信方式</p>
+<h2 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h2><p>注：上文所述，软件工程的过程微观来看应当是递增，而配置管理就是让这一递增的变化过程变得可见。（不仅仅是代码的变化管理</p>
+<p>配置管理的目的是<strong>针对变化、控制变化</strong>；</p>
+<p>软件配置管理的目标是：</p>
+<ol>
+<li><p>标识变更</p>
+</li>
+<li><p>控制变更</p>
+</li>
+<li><p>确保变更正确地实现</p>
+</li>
+<li><p>向其他有关的人报告变更</p>
+</li>
+</ol>
+<p>简言之：软件配置管理是软件系统发展过程中<strong>管理和控制变化</strong>的规范。</p>
+<p>软件配置管理（Software Configuration Management）是一门应用技术、管理和监督相结合的学科，通过<strong>标识和文档来记录配置项的功能和物理特性、控制这些特性的变更、记录和报告变更的过程和状态，并验证它们与需求是否一致</strong>。（配置文档记录配置项的细则内容</p>
+<p>软件配置项（Software Configuration Item） ：为了配置管理而作为单独实体处理的<strong>一个工作产品或一段软件</strong>，简称SCI。<br>软件配置项：简单说，就是软件过程输出的<strong>全部计算机程序、文档、数据</strong>。<br>配置管理聚集：SCI的一个组合。简称CM聚集。<br>版本：在一确定的时间点上，某个SCI或某个配置的状态。</p>
+<p>需要保证软件配置项的正确性与一致性</p>
+<p>基线（baseline）：IEEE把基线定义为：已经通过了<strong>正式复审的规格说明或中间产品</strong>，它可以作为进一步开发的基础，并且只有通过正式的变化控制过程才能改变它。<br>基线就是通过了正式复审的软件配置项。</p>
+<p>项目数据库：</p>
+<ol>
+<li>一旦一个SCI成为基线，就被存放到项目数据库中；</li>
+<li>项目数据库和变更控制规程相结合，保护着项目的基线；</li>
+</ol>
+<h3 id="管理过程"><a href="#管理过程" class="headerlink" title="管理过程"></a>管理过程</h3><p>版本控制：</p>
+<p>变化控制：变化需要评估-审阅-提取修改测试-提交</p>
+<p>配置审计：</p>
+<ol>
+<li>正式的技术审计（保证可行性</li>
+<li>软件配置审计（保证需求被满足</li>
+</ol>
+<p>状态报告：（简而言之，变化应当被记录</p>
+<ol>
+<li>发生了什么事？</li>
+<li>谁做的这件事？</li>
+<li>何时发生的？</li>
+<li>有什么影响？ </li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>软件配置管理是一个相对独立的管理活动。 （与其他管理是并行的</li>
+<li>其他许多的管理活动，多数都要以完善的配置管理作为基础。 </li>
+<li>从实际经验的总结来看，配置管理是诸多管理活动中最易操作、最容易实现并且能在项目最先体现出效果的管理手段。</li>
+</ol>
+<h2 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h2><p>风险：能造成恶果的有害事件。风险越大一般收益越大</p>
+<p>在风险突然变成问题的那一刻，我们说风险“具现”了。这也是<strong>风险转化</strong>的时刻。</p>
+<p><strong>风险识别</strong></p>
+<p>风险类别：项目风险，技术风险与商业风险</p>
+<p>核心风险：</p>
+<ol>
+<li>进度安排的先天错误</li>
+<li>需求膨胀</li>
+<li>人员流失</li>
+<li>规约崩溃</li>
+</ol>
+<p><strong>风险分析</strong></p>
+<p>风险暴露值 = 风险概率 * 风险影响</p>
+<p><strong>风险规划</strong></p>
+<p>风险优先级划分<br>制定风险管理对策</p>
+<p><strong>风险控制</strong></p>
+<p>风险规避，风险转移，风险缓解，风险承担</p>
+<h2 id="质量管理"><a href="#质量管理" class="headerlink" title="质量管理"></a>质量管理</h2><p>软件质量：软件与明确地和隐含地定义的<strong>需求相一致的程度</strong></p>
+<p><strong>软件需求</strong>是度量软件质量的<strong>基础</strong><br>指定的开发标准定义了一组指导软件开发的准则<br>通常有一组没有显式描述的<strong>隐含需求</strong></p>
+<p>质量保证措施</p>
+<ol>
+<li>基于非执行的测试（复审或评审）（审查</li>
+<li>基于执行的测试（软件测试）（走查</li>
+<li>程序正确性证明</li>
+</ol>
+
     </div>
 
     
@@ -1326,7 +1460,7 @@ B_0:错误总数,B_1:测试员甲发现的错误,B_2:测试员乙发现的错误
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件工程概论"><span class="nav-number">2.</span> <span class="nav-text">软件工程概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件组成"><span class="nav-number">2.1.1.</span> <span class="nav-text">软件组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件特点"><span class="nav-number">2.1.2.</span> <span class="nav-text">软件特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件危机"><span class="nav-number">2.2.</span> <span class="nav-text">软件危机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件危机的主要表现"><span class="nav-number">2.2.1.</span> <span class="nav-text">软件危机的主要表现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件危机的原因"><span class="nav-number">2.2.2.</span> <span class="nav-text">软件危机的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消除软件危机的途径"><span class="nav-number">2.2.3.</span> <span class="nav-text">消除软件危机的途径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件工程"><span class="nav-number">2.3.</span> <span class="nav-text">软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件生命周期"><span class="nav-number">2.4.</span> <span class="nav-text">软件生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件过程"><span class="nav-number">3.</span> <span class="nav-text">软件过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#瀑布模型"><span class="nav-number">3.1.</span> <span class="nav-text">瀑布模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V模型"><span class="nav-number">3.2.</span> <span class="nav-text">V模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速原型模型"><span class="nav-number">3.3.</span> <span class="nav-text">快速原型模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阶段式开发or演化模型"><span class="nav-number">3.4.</span> <span class="nav-text">阶段式开发or演化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增量模型or渐增模型"><span class="nav-number">3.4.1.</span> <span class="nav-text">增量模型or渐增模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#螺旋模型or迭代模型"><span class="nav-number">3.4.2.</span> <span class="nav-text">螺旋模型or迭代模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#喷泉模型"><span class="nav-number">3.5.</span> <span class="nav-text">喷泉模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RUP-Rational统一过程"><span class="nav-number">3.6.</span> <span class="nav-text">RUP(Rational统一过程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷过程"><span class="nav-number">3.7.</span> <span class="nav-text">敏捷过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极限编程"><span class="nav-number">3.8.</span> <span class="nav-text">极限编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微软过程"><span class="nav-number">3.9.</span> <span class="nav-text">微软过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可行性研究"><span class="nav-number">4.</span> <span class="nav-text">可行性研究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成本效应分析"><span class="nav-number">4.1.</span> <span class="nav-text">成本效应分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据流图-DFD"><span class="nav-number">4.2.</span> <span class="nav-text">数据流图 DFD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据字典"><span class="nav-number">4.3.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需求分析"><span class="nav-number">5.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与用户沟通获取需求的方法"><span class="nav-number">5.1.</span> <span class="nav-text">与用户沟通获取需求的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析建模与规格说明"><span class="nav-number">5.2.</span> <span class="nav-text">分析建模与规格说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证软件需求"><span class="nav-number">5.3.</span> <span class="nav-text">验证软件需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总体设计"><span class="nav-number">6.</span> <span class="nav-text">总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件设计过程"><span class="nav-number">6.1.</span> <span class="nav-text">软件设计过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件设计原理"><span class="nav-number">6.2.</span> <span class="nav-text">软件设计原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化"><span class="nav-number">6.2.1.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象"><span class="nav-number">6.2.2.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逐步求精"><span class="nav-number">6.2.3.</span> <span class="nav-text">逐步求精</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息隐藏与局部化"><span class="nav-number">6.2.4.</span> <span class="nav-text">信息隐藏与局部化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块独立性"><span class="nav-number">6.2.5.</span> <span class="nav-text">模块独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#耦合"><span class="nav-number">6.2.5.1.</span> <span class="nav-text">耦合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内聚"><span class="nav-number">6.2.5.2.</span> <span class="nav-text">内聚</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启发规则"><span class="nav-number">6.3.</span> <span class="nav-text">启发规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描绘软件结构的图形工具"><span class="nav-number">6.4.</span> <span class="nav-text">描绘软件结构的图形工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向数据流的设计方法（SD）"><span class="nav-number">6.4.1.</span> <span class="nav-text">面向数据流的设计方法（SD）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件体系结构"><span class="nav-number">6.5.</span> <span class="nav-text">软件体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管道-过滤器风格"><span class="nav-number">6.5.1.</span> <span class="nav-text">管道/过滤器风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据抽象与面向对象风格"><span class="nav-number">6.5.2.</span> <span class="nav-text">数据抽象与面向对象风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于事件／隐式调用风格"><span class="nav-number">6.5.3.</span> <span class="nav-text">基于事件／隐式调用风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次系统风格"><span class="nav-number">6.5.4.</span> <span class="nav-text">层次系统风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库风格"><span class="nav-number">6.5.5.</span> <span class="nav-text">仓库风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户-服务器（C2风格）"><span class="nav-number">6.5.6.</span> <span class="nav-text">客户/服务器（C2风格）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#详细设计"><span class="nav-number">7.</span> <span class="nav-text">详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构程序设计"><span class="nav-number">7.1.</span> <span class="nav-text">结构程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人机交互设计"><span class="nav-number">7.2.</span> <span class="nav-text">人机交互设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统响应时间"><span class="nav-number">7.2.1.</span> <span class="nav-text">系统响应时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户帮助设施"><span class="nav-number">7.2.2.</span> <span class="nav-text">用户帮助设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出错信息处理"><span class="nav-number">7.2.3.</span> <span class="nav-text">出错信息处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交互界面设计"><span class="nav-number">7.2.4.</span> <span class="nav-text">交互界面设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程设计技术和工具"><span class="nav-number">7.3.</span> <span class="nav-text">过程设计技术和工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序复杂程度的定量度量"><span class="nav-number">7.4.</span> <span class="nav-text">程序复杂程度的定量度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#McCabe方法"><span class="nav-number">7.4.1.</span> <span class="nav-text">McCabe方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">8.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编码"><span class="nav-number">8.1.</span> <span class="nav-text">编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编码风格"><span class="nav-number">8.1.1.</span> <span class="nav-text">编码风格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件测试基础"><span class="nav-number">8.2.</span> <span class="nav-text">软件测试基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">8.3.</span> <span class="nav-text">单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机测试"><span class="nav-number">8.3.1.</span> <span class="nav-text">计算机测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成测试"><span class="nav-number">8.4.</span> <span class="nav-text">集成测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认测试"><span class="nav-number">8.5.</span> <span class="nav-text">确认测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白盒测试"><span class="nav-number">8.6.</span> <span class="nav-text">白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑覆盖"><span class="nav-number">8.6.1.</span> <span class="nav-text">逻辑覆盖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制结构测试"><span class="nav-number">8.6.2.</span> <span class="nav-text">控制结构测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黑盒测试技术"><span class="nav-number">8.7.</span> <span class="nav-text">黑盒测试技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等价划分"><span class="nav-number">8.7.1.</span> <span class="nav-text">等价划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">8.8.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件可靠性"><span class="nav-number">8.9.</span> <span class="nav-text">软件可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#估计平均无故障时间"><span class="nav-number">8.9.1.</span> <span class="nav-text">估计平均无故障时间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件维护"><span class="nav-number">9.</span> <span class="nav-text">软件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">9.1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可维护性"><span class="nav-number">9.2.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件项目管理"><span class="nav-number">10.</span> <span class="nav-text">软件项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">10.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成本与工作量估算"><span class="nav-number">10.2.</span> <span class="nav-text">成本与工作量估算</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件工程概论"><span class="nav-number">2.</span> <span class="nav-text">软件工程概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件组成"><span class="nav-number">2.1.1.</span> <span class="nav-text">软件组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件特点"><span class="nav-number">2.1.2.</span> <span class="nav-text">软件特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件危机"><span class="nav-number">2.2.</span> <span class="nav-text">软件危机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件危机的主要表现"><span class="nav-number">2.2.1.</span> <span class="nav-text">软件危机的主要表现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件危机的原因"><span class="nav-number">2.2.2.</span> <span class="nav-text">软件危机的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消除软件危机的途径"><span class="nav-number">2.2.3.</span> <span class="nav-text">消除软件危机的途径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件工程"><span class="nav-number">2.3.</span> <span class="nav-text">软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件生命周期"><span class="nav-number">2.4.</span> <span class="nav-text">软件生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件过程"><span class="nav-number">3.</span> <span class="nav-text">软件过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#瀑布模型"><span class="nav-number">3.1.</span> <span class="nav-text">瀑布模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V模型"><span class="nav-number">3.2.</span> <span class="nav-text">V模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速原型模型"><span class="nav-number">3.3.</span> <span class="nav-text">快速原型模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阶段式开发or演化模型"><span class="nav-number">3.4.</span> <span class="nav-text">阶段式开发or演化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增量模型or渐增模型"><span class="nav-number">3.4.1.</span> <span class="nav-text">增量模型or渐增模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#螺旋模型or迭代模型"><span class="nav-number">3.4.2.</span> <span class="nav-text">螺旋模型or迭代模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#喷泉模型"><span class="nav-number">3.5.</span> <span class="nav-text">喷泉模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RUP-Rational统一过程"><span class="nav-number">3.6.</span> <span class="nav-text">RUP(Rational统一过程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷过程"><span class="nav-number">3.7.</span> <span class="nav-text">敏捷过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极限编程"><span class="nav-number">3.8.</span> <span class="nav-text">极限编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微软过程"><span class="nav-number">3.9.</span> <span class="nav-text">微软过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可行性研究"><span class="nav-number">4.</span> <span class="nav-text">可行性研究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成本效应分析"><span class="nav-number">4.1.</span> <span class="nav-text">成本效应分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据流图-DFD"><span class="nav-number">4.2.</span> <span class="nav-text">数据流图 DFD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据字典"><span class="nav-number">4.3.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需求分析"><span class="nav-number">5.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与用户沟通获取需求的方法"><span class="nav-number">5.1.</span> <span class="nav-text">与用户沟通获取需求的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析建模与规格说明"><span class="nav-number">5.2.</span> <span class="nav-text">分析建模与规格说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证软件需求"><span class="nav-number">5.3.</span> <span class="nav-text">验证软件需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总体设计"><span class="nav-number">6.</span> <span class="nav-text">总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件设计过程"><span class="nav-number">6.1.</span> <span class="nav-text">软件设计过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件设计原理"><span class="nav-number">6.2.</span> <span class="nav-text">软件设计原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化"><span class="nav-number">6.2.1.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象"><span class="nav-number">6.2.2.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逐步求精"><span class="nav-number">6.2.3.</span> <span class="nav-text">逐步求精</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息隐藏与局部化"><span class="nav-number">6.2.4.</span> <span class="nav-text">信息隐藏与局部化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块独立性"><span class="nav-number">6.2.5.</span> <span class="nav-text">模块独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#耦合"><span class="nav-number">6.2.5.1.</span> <span class="nav-text">耦合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内聚"><span class="nav-number">6.2.5.2.</span> <span class="nav-text">内聚</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启发规则"><span class="nav-number">6.3.</span> <span class="nav-text">启发规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描绘软件结构的图形工具"><span class="nav-number">6.4.</span> <span class="nav-text">描绘软件结构的图形工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向数据流的设计方法（SD）"><span class="nav-number">6.4.1.</span> <span class="nav-text">面向数据流的设计方法（SD）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件体系结构"><span class="nav-number">6.5.</span> <span class="nav-text">软件体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管道-过滤器风格"><span class="nav-number">6.5.1.</span> <span class="nav-text">管道/过滤器风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据抽象与面向对象风格"><span class="nav-number">6.5.2.</span> <span class="nav-text">数据抽象与面向对象风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于事件／隐式调用风格"><span class="nav-number">6.5.3.</span> <span class="nav-text">基于事件／隐式调用风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次系统风格"><span class="nav-number">6.5.4.</span> <span class="nav-text">层次系统风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库风格"><span class="nav-number">6.5.5.</span> <span class="nav-text">仓库风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户-服务器（C2风格）"><span class="nav-number">6.5.6.</span> <span class="nav-text">客户/服务器（C2风格）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#详细设计"><span class="nav-number">7.</span> <span class="nav-text">详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构程序设计"><span class="nav-number">7.1.</span> <span class="nav-text">结构程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人机交互设计"><span class="nav-number">7.2.</span> <span class="nav-text">人机交互设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统响应时间"><span class="nav-number">7.2.1.</span> <span class="nav-text">系统响应时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户帮助设施"><span class="nav-number">7.2.2.</span> <span class="nav-text">用户帮助设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出错信息处理"><span class="nav-number">7.2.3.</span> <span class="nav-text">出错信息处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交互界面设计"><span class="nav-number">7.2.4.</span> <span class="nav-text">交互界面设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程设计技术和工具"><span class="nav-number">7.3.</span> <span class="nav-text">过程设计技术和工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序复杂程度的定量度量"><span class="nav-number">7.4.</span> <span class="nav-text">程序复杂程度的定量度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#McCabe方法"><span class="nav-number">7.4.1.</span> <span class="nav-text">McCabe方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">8.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编码"><span class="nav-number">8.1.</span> <span class="nav-text">编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编码风格"><span class="nav-number">8.1.1.</span> <span class="nav-text">编码风格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件测试基础"><span class="nav-number">8.2.</span> <span class="nav-text">软件测试基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">8.3.</span> <span class="nav-text">单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机测试"><span class="nav-number">8.3.1.</span> <span class="nav-text">计算机测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成测试"><span class="nav-number">8.4.</span> <span class="nav-text">集成测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认测试"><span class="nav-number">8.5.</span> <span class="nav-text">确认测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白盒测试"><span class="nav-number">8.6.</span> <span class="nav-text">白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑覆盖"><span class="nav-number">8.6.1.</span> <span class="nav-text">逻辑覆盖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制结构测试"><span class="nav-number">8.6.2.</span> <span class="nav-text">控制结构测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黑盒测试技术"><span class="nav-number">8.7.</span> <span class="nav-text">黑盒测试技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等价划分"><span class="nav-number">8.7.1.</span> <span class="nav-text">等价划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">8.8.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件可靠性"><span class="nav-number">8.9.</span> <span class="nav-text">软件可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#估计平均无故障时间"><span class="nav-number">8.9.1.</span> <span class="nav-text">估计平均无故障时间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件维护"><span class="nav-number">9.</span> <span class="nav-text">软件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">9.1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可维护性"><span class="nav-number">9.2.</span> <span class="nav-text">可维护性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件项目管理"><span class="nav-number">10.</span> <span class="nav-text">软件项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">10.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成本与工作量估算"><span class="nav-number">10.2.</span> <span class="nav-text">成本与工作量估算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件成本"><span class="nav-number">10.2.1.</span> <span class="nav-text">软件成本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作量"><span class="nav-number">10.2.2.</span> <span class="nav-text">工作量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进度计划"><span class="nav-number">10.3.</span> <span class="nav-text">进度计划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作分解结构"><span class="nav-number">10.3.1.</span> <span class="nav-text">工作分解结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gantt图"><span class="nav-number">10.3.2.</span> <span class="nav-text">Gantt图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程网络"><span class="nav-number">10.3.3.</span> <span class="nav-text">工程网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人员组织"><span class="nav-number">10.4.</span> <span class="nav-text">人员组织</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#民主制程序员组"><span class="nav-number">10.4.1.</span> <span class="nav-text">民主制程序员组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主程序员组"><span class="nav-number">10.4.2.</span> <span class="nav-text">主程序员组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置管理"><span class="nav-number">10.5.</span> <span class="nav-text">配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管理过程"><span class="nav-number">10.5.1.</span> <span class="nav-text">管理过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#风险管理"><span class="nav-number">10.6.</span> <span class="nav-text">风险管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量管理"><span class="nav-number">10.7.</span> <span class="nav-text">质量管理</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
