@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="计算机系统结构笔记前言​        网课的现状可能是明明自己不学习，却还要做笔记骗自己吧">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统结构笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/07/08/计算机系统结构笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="计算机系统结构笔记前言​        网课的现状可能是明明自己不学习，却还要做笔记骗自己吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-08-19T01:49:29.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统结构笔记">
+<meta name="twitter:description" content="计算机系统结构笔记前言​        网课的现状可能是明明自己不学习，却还要做笔记骗自己吧">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/07/08/计算机系统结构笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机系统结构笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/07/08/计算机系统结构笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算机系统结构笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-07 23:58:09" itemprop="dateCreated datePublished" datetime="2020-07-07T23:58:09Z">2020-07-07</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-19 01:49:29" itemprop="dateModified" datetime="2020-08-19T01:49:29Z">2020-08-19</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="计算机系统结构笔记"><a href="#计算机系统结构笔记" class="headerlink" title="计算机系统结构笔记"></a>计算机系统结构笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        网课的现状可能是明明自己不学习，却还要做笔记骗自己吧</p>
+<a id="more"></a>        
+<h2 id="第一章-计算机系统结构的基本概念"><a href="#第一章-计算机系统结构的基本概念" class="headerlink" title="第一章-计算机系统结构的基本概念"></a>第一章-计算机系统结构的基本概念</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>1.第一台通用电子计算机诞生于<strong>1946</strong>年 </p>
+<p>2.计算机技术的飞速发展得益于两个方面<br>    计算机<strong>制造</strong>技术的发展<br>    计算机<strong>系统结构</strong>的创新</p>
+<p>3.经历了4个发展过程<br>    ① 两种原因都有<br>    ② <strong>集成电路</strong>的制造技术的发展<br>    ③<strong>RISC</strong>系统结构创新的发展<br>    ④ 功耗限制，指令级并行性限制，存储器读写性能限制</p>
+<p>4.系统结构的重大转折：从单纯依靠<strong>指令级并行</strong>转向开发<strong>线程级并行和数据级并行</strong>。</p>
+<h3 id="计算机系统结构的概念"><a href="#计算机系统结构的概念" class="headerlink" title="计算机系统结构的概念"></a>计算机系统结构的概念</h3><p>简而言之，系统结构一次意味着<strong>硬件与软件</strong>的有机组合，我们依托于计算机语言由低级向高级的发展，可将计算机系统按功能划分为以下几个层次。<br><strong>微程序机器级-机器语言级-操作系统虚拟机-汇编语言虚拟机-高级语言虚拟机-应用语言虚拟机</strong></p>
+<p>虚拟机即用软件实现的机器。</p>
+<p>语言实现的两种基本技术<strong>翻译与解释</strong>，翻译即将所有指令都转换为机器语言后执行程序，解释即运行到当前指令时才将当前指令转换为机器语言。</p>
+<p>程序员所看到的计算机属性，即概念性结构与功能特性。按照计算机系统的多级层次结构，不同级程序员所看到的计算机具有不同的属性。而对于那些我们无法感受到却真实存在的属性我们称其为<strong>透明</strong>的。</p>
+<p>广义的系统结构定义：<strong>指令集结构、组成、硬件</strong></p>
+<p>对于通用寄存器型机器来说，这些属性主要是指：指令系统 数据表示 寻址规则 中断系统 机器工作状态的定义和切换 存储系统 信息保护 I/O结构</p>
+<p>计算机系统结构概念的实质：确定计算机系统中软、硬件的界面，界面之上是软件实现的功能，界面之下是硬件和固件实现的功能。</p>
+<p>计算机组成着眼于各设备与功能的<strong>逻辑</strong>关系，而计算机实现着眼于<strong>器件</strong>技术</p>
+<p>冯氏分类法：用系统的最大并行度对计算机进行分类。（最大并行度：字宽×同时可处理字数）</p>
+<p>Flynn分类法 ：按照指令流和数据流的多倍性进行分类。（有SISD,MISD,SIMD,MIMD）</p>
+<p>计算机系统设计的四个定量原理：</p>
+<p>​    ① 以经常性事件为重点</p>
+<p>​    ② Amdahl定律：加快某部件执行速度所能获得的系统性能加速比，受限于该部件的执行时间占系统中总执行时的百分比</p>
+<p>​            <strong>公式为：$加速比=\frac{1}{不可加速百分比+\frac{可改进比例}{部件加速比}}$ </strong></p>
+<p>​    ③ CPU 性能公式。执行一个程序所需的CPU 时间 = IC ×CPI ×时钟周期时间</p>
+<p>​    ④ 程序的局部性原理。包含空间局部性与时间局部性</p>
+<h3 id="冯诺依曼模型"><a href="#冯诺依曼模型" class="headerlink" title="冯诺依曼模型"></a>冯诺依曼模型</h3><p>部件包括：I/O,CU,MEM,ALU</p>
+<p>CU是核心结构，指令和数据同等对待。</p>
+<p><strong>模拟和仿真</strong>都是实现移植的方法，但模拟是全软件实现的，仿真虽然也需要软件但同时求硬件系统也有要求。</p>
+<h3 id="并行性"><a href="#并行性" class="headerlink" title="并行性"></a>并行性</h3><p>并行性：计算机系统在<strong>同一时刻或者同一时间间隔</strong>内进行多种运算或操作</p>
+<p>​    同时性：两个或两个以上的事件在同一时刻发生。</p>
+<p>​    并发性：两个或两个以上的事件在同一时间间隔内发生。 </p>
+<p>数据处理等级由下到上：字串位串，字串位并，字并位串，全并行</p>
+<p>执行程序等级由下到上：指令内部并行，指令级并行，线程级并行，任务级或过程级并行，作业或程序级并行</p>
+<p><strong>增加并行性的途径</strong></p>
+<p>​    ① 时间重叠，在同一时间让不同设备处理不同任务</p>
+<p>​    ② 资源重复，重复设置设备数</p>
+<p>​    ③ 资源共享，不同任务轮流使用设备</p>
+<h2 id="第二章-计算机指令集结构"><a href="#第二章-计算机指令集结构" class="headerlink" title="第二章-计算机指令集结构"></a>第二章-计算机指令集结构</h2><p>区别指令集主要由CPU内存储单元类型决定，其主要有：堆栈，累加器，通用寄存器组，分别代表三种不同的结构，通用寄存器组结构根据操作数来源可进一步划分为RR结构，RM结构，MM结构。操作数可以隐式给出（如乘法），也可显性给出（如加法）</p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p>① 寄存器寻址，操作数均为寄存器。<br>② 立即值寻址，操作数中存在立即数。<br>③ 偏移寻址，操作数为MEM[Regs[Rx]+立即数]的方法取得。<br>④ 寄存器间接寻址，操作数为MEM[Regs[Rx]]的方法取得。<br>⑤ 索引寻址，操作数为MEM[Regs[Rx1]+Regs[Rx2]]的方法取得。<br>⑥ 直接寻址或绝对寻址，操作数为MEM[立即数]的方法取得<br>⑦ 存储器间接寻址，操作数为MEM[MEM[Regs[Rx]]]的方法取得<br>⑧ 自增寻址，计算后寄存器内容自增。<br>⑨ 自减寻址，计算前寄存器内容自减。<br>⑩ 缩放寻址，操作数为MEM[1立即数+Regs[Rx1]+Regs[Rx2]]的方法取得</p>
+<h3 id="指令集结构的功能设计"><a href="#指令集结构的功能设计" class="headerlink" title="指令集结构的功能设计"></a>指令集结构的功能设计</h3><p>硬件实现速度快、成本高、灵活性差，软件实现则相反。但设计过程中要确保以下四种基本要求可以被满足。</p>
+<p>① 完整性，保证指令够用，能完成可解任务<br>② 规整性，包括对称性（保证操作码设置对等）和均匀性（保证各种指令都兼容各种操作数类型与字长）<br>③ 高效率 ④ 兼容性</p>
+<p>两种指令集结构的计算机系统<br>① <strong>CISC</strong>，硬件执行大部分工作，指令数量多。<br>② <strong>RISC</strong>，将一部分工作交给软件，指令数量少。</p>
+<h3 id="操作数"><a href="#操作数" class="headerlink" title="操作数"></a>操作数</h3><p>操作数大小字节（8位）、半字（16位）字（32位）、双字（64位）</p>
+<p>字符：用ASCII码表示，为一个字节大小。<br>整数：用二进制补码表示，其大小可以是字节、半字或单字。<br>浮点操作数：单精度浮点数（1个字）、双精度浮点数（双字）。<br>十进制操作数类型<br>    压缩十进制或二进制编码十进制（BCD码）：用4位二进制编码表示数字0～9，并将两个十进制数字合并到一个字节中存储。<br>    非压缩十进制：将十进制数直接用字符串来表示。</p>
+<p>操作码的编码：Huffman编码法，固定长度的操作码</p>
+<p>指令集的3种编码格式：变长编码格式、定长编码格式、混合型编码格式</p>
+<h3 id="MIPS"><a href="#MIPS" class="headerlink" title="MIPS"></a>MIPS</h3><h4 id="MIPS的寄存器："><a href="#MIPS的寄存器：" class="headerlink" title="MIPS的寄存器："></a>MIPS的寄存器：</h4><p>32个64位通用寄存器（GPRs），1.32个64位浮点数寄存器（FPRs），一些特殊寄存器。</p>
+<h4 id="MIPS的数据表示："><a href="#MIPS的数据表示：" class="headerlink" title="MIPS的数据表示："></a>MIPS的数据表示：</h4><p>整数：字节（8位）  半字（16位）字（32位）  双字（64位）<br>浮点数：单精度浮点数（32位） 双精度浮点数（64位）<br>字节、半字或者字在装入64位寄存器时，用零扩展或者用符号位扩展来填充该寄存器的剩余部分。装入以后，对它们将按照64位整数的方式进行运算。</p>
+<h4 id="MIPS的指令格式"><a href="#MIPS的指令格式" class="headerlink" title="MIPS的指令格式"></a>MIPS的指令格式</h4><p>I类指令：<br>    包含立即数的指令，load，store，分支，寄存器跳转<br>    格式为6位操作码，5位rs，5位rt，16位立即数</p>
+<p>R类指令：<br>    包括ALU指令、专用寄存器读/写指令、move指令等。<br>    格式为6位操作码，5位rs，5位rt，5位rd以及其他位。</p>
+<p>J类指令：<br>    包括跳转指令、跳转并链接指令、自陷指令、异常返回指令。<br>    格式为6位操作码和26位偏移量。</p>
+<h4 id="MIPS的操作"><a href="#MIPS的操作" class="headerlink" title="MIPS的操作"></a>MIPS的操作</h4><p>load和store、ALU操作、分支与跳转、浮点操作</p>
+<h2 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章-流水线技术"></a>第三章-流水线技术</h2><p>​    有相当大一部分内容与计算机组成原理相同，故不在此赘述。</p>
+<p>吞吐率=指令数/总时间</p>
+<p>减速比=加速前/加速后</p>
+<p>效率=工作时空数/总时空数</p>
+<p>数据相关，名相关（反相关，输出相关），控制相关</p>
+<h2 id="第四章-指令集并行"><a href="#第四章-指令集并行" class="headerlink" title="第四章-指令集并行"></a>第四章-指令集并行</h2><p>通过<strong>流水线</strong>让指令重叠的潜在的并行性称为指令级并行</p>
+<p>实际CPI要在理想CPI的基础上考虑结构冲突，数据冲突，控制冲突带来的停顿</p>
+<p>IPC：每个时钟周期完成的指令条数</p>
+<p>基本程序块：一段除了入口和出口以外不包含其他分支的线性代码段。</p>
+<p>循环级并行：使一个循环中的不同循环体并行执行。</p>
+<p>三种相关：数据相关，名相关，控制相关</p>
+<p>流水线冲突是指由于相关的存在使得下一条指令不能在指定的时间周期运行</p>
+<h3 id="指令的动态调度"><a href="#指令的动态调度" class="headerlink" title="指令的动态调度"></a>指令的动态调度</h3><p>静态调度：在编译时完成，通过将相关的指令拉开距离来完成。<br>动态调度：依靠专门的硬件实时的工作。 </p>
+<h3 id="Tomasulo-算法"><a href="#Tomasulo-算法" class="headerlink" title="Tomasulo 算法"></a>Tomasulo 算法</h3><p>操作数就绪就执行减少RAW冲突的可能性，寄存器换名消除WAR，WAW。</p>
+<p>指令流入-指令等待-指令就绪-指令执行-指令流出</p>
+<h2 id="重要计算公式"><a href="#重要计算公式" class="headerlink" title="重要计算公式"></a>重要计算公式</h2><p>加速比、CPU时间、平均访存时间</p>
+<p>通道流量分析 </p>
+<p>TS：设备选择时间    TD：传送一字节的时间    p：设备数        n：每台设备传送字节数    k：数据块含字节数        T：完整时间</p>
+<p>字节多路通道：$f_{MAX-BYTE}=\frac{pn}{(TS+TD)pn}=\frac{1}{TS+TD}$ $f_{BYTE}=\sum_{i=1}^pf_i$</p>
+<p>选择通道：p台设备传送n个数据的时间$T_{SELECT}=pT_S+pnT_D$ $f_{MAX-SELECT}=\frac{pn}{T_{SELECT}}=\frac{1}{\frac{T_S}{n}+T_D}$</p>
+<p>数组多路通道：$f_{MAX-BYTE}=\frac{pn}{(\frac{TS}{k}+T_D)pn}=\frac{1}{\frac{TS}{k}+T_D}$</p>
+<h2 id="问答题"><a href="#问答题" class="headerlink" title="问答题"></a>问答题</h2><ol>
+<li><p>简述计算机系统的层次结构（从计算机语言的角度）。</p>
+<p><strong>微程序机器级-机器语言级-操作系统虚拟机-汇编语言虚拟机-高级语言虚拟机-应用语言虚拟机</strong></p>
+</li>
+<li><p>什么是虚拟机？为什么要使用虚拟机？</p>
+<p>用软件的方法实现的计算机，提高了共享性</p>
+</li>
+<li><p>什么是翻译？什么是解释？</p>
+<p>翻译是静态的，预处理的；解释是动态的，实时处理的；</p>
+</li>
+<li><p>计算机系统结构、计算机组成和计算机实现三者之间的关系，并举例说明。</p>
+<p>计算机系统结构：软硬件的界面，机器语言程序员看到的传统机器具有的属性</p>
+<p>计算机组成：计算机系统结构的逻辑实现</p>
+<p>计算机实现：计算机组成的物理实现</p>
+</li>
+<li><p>什么是软件的可移植性？实现软件可移植性的常用方法有哪三种？</p>
+<p>系列机，模拟仿真，统一高级语言</p>
+</li>
+<li><p>什么是模拟？什么是仿真？</p>
+<p>模拟：<strong>软件</strong>的方法实现另一台计算机的指令集</p>
+<p>仿真：<strong>微程序</strong>的方法解释另一台机器的指令集</p>
+</li>
+<li><p>Flynn分类法将计算机系统结构分成哪四类？请简述。</p>
+<p>SISD,SIMD,MISD,MIMD</p>
+</li>
+<li><p>请简述程序局部性原理。</p>
+<p>空间局部性：程序使用的数据在空间上可能相邻或相近</p>
+<p>时间局部性：程序使用的时间上相邻的数据可能相同</p>
+</li>
+<li><p>简述Amdahl定律。</p>
+<p>加速某部件的效果受限于该部件在总执行时间的百分比</p>
+</li>
+<li><p>影响CPU时间的因素包括什么？（提示：从CPU公式入手，考虑3个参数的影响因素）</p>
+<p>CPU时间=IC*CPI*时钟周期时间<br>指令数，每条指令执行的时间周期数，时间周期时间</p>
+</li>
+<li><p>冯诺依曼体系结构的特点。</p>
+<p>运算器、控制器、I/O、存储器</p>
+<p>（1）单处理机结构，机器以<strong>运算器</strong>为中心；<br>（2）采用<strong>程序存储</strong>思想；<br>（3）<strong>指令</strong>和数据一样可以参与<strong>运算</strong>；<br>（4） 数据以<strong>二进制</strong>表示；<br>（5）将<strong>软件和硬件完全分离</strong>；<br>（6） 指令由<strong>操作码和操作数</strong>组成；<br>（7）指令<strong>顺序</strong>执行。 [4]</p>
+</li>
+<li><p>简述现代计算机对比冯诺依曼体系结构，在哪几个方面进行了改进。</p>
+<p>输入输出:DMA、IO处理机</p>
+<p>采用并行技术</p>
+<p>存储器组织：CACHE</p>
+<p>指令集：RISC</p>
+</li>
+<li><p>什么是系列机？什么是兼容机？</p>
+<p>系列机：同一厂家生产的相同系统结构不同组成和实现的计算机</p>
+<p>兼容机：不同厂家生产的具有相同系统结构的计算机</p>
+</li>
+<li><p>什么是软件兼容？软件兼容有几种？其中哪一种是软件兼容的根本特征？</p>
+<p>向上，向下（档次），向前，向后（时代）</p>
+<p>向后兼容是最根本的，这是系列机可以成系列的基础</p>
+</li>
+<li><p>什么是并行性？</p>
+<p>同一时刻或同一时间间隔进行多种运算或操作</p>
+</li>
+<li><p>简要说明提高计算机系统并行性的3种技术途径，并分别从单机和多机系统的角度举例。</p>
+<p>时间重叠，例流水线，不同设备运行不同指令</p>
+<p>资源重复，多个同种设备运行不同指令</p>
+<p>资源共享，分时系统</p>
+</li>
+<li><p>增强CISC机器的指令功能主要从哪几方面着手？</p>
+<p>增强指令功能，增加运算，传送，控制指令的功能</p>
+<p>面向高级语言优化指令集，减少编译复杂度</p>
+<p>面向操作系统的优化指令集</p>
+</li>
+<li><p>简述CISC存在的主要问题。</p>
+<p>各种指令使用频率相差大，最常用的往往是最简单的指令</p>
+<p>指令集庞大，使得硬件复杂</p>
+<p>指令操作复杂，使得CPI增加</p>
+<p>规整性差，不适合流水线</p>
+</li>
+<li><p>简述RISC的优缺点及设计RISC机器的一般原则。</p>
+<p>指令少而简单，统一指令格式，指令在单个机器周期完成，访存交给ls指令，硬联逻辑来实现指令</p>
+</li>
+<li><p>根据CPU内部存储单元类型，可将指令集结构分为哪几类？</p>
+<p>堆栈型指令集结构、累加器型指令集结构、通用寄存器型指令集结构</p>
+</li>
+<li><p>常见的三种通用寄存器型指令集结构是什么？</p>
+<p>RR、RM、MM</p>
+</li>
+<li><p>计算机指令集结构设计所涉及的内容有哪些？</p>
+<p>(1) 指令集功能设计：主要有RISC和CISC两种技术发展方向。</p>
+<p>(2) 寻址方式的设计。</p>
+<p>(3) 操作数表示和操作数类型。</p>
+<p>(4) 寻址方式的表示：可以将寻址方式编码于操作码中，也可以将寻址方式作为一个单独的域来表示。</p>
+<p>(5) 指令集格式的设计：有变长编码格式、固定长度编码格式和混合型编码格式三种。</p>
+</li>
+<li><p>流水技术有哪些特点？</p>
+<p>把一个过程分成若干个子程序，每个子程序由专门的部件完成</p>
+<p>各段时间尽可能相等</p>
+<p>有一个功能部件后都要有一个缓冲寄存器</p>
+<p>需要不断的提供任务才能体现效率</p>
+<p>需要通过时间（第一个任务从流入到流出的时间）和排空时间（最后一个任务流入到流出的时间）</p>
+</li>
+<li><p>什么是静态流水线？什么是动态流水线？</p>
+<p>对于多功能流水线，若同一时间内只有实现一种功能则为静态流水线，若可以实现多个功能则为动态流水线</p>
+</li>
+<li><p>什么是单功能流水线？什么是多功能流水线？</p>
+<p>单功能，只能完成一种功能的流水线，多功能，按照段的不同连接方式一条流水线上可以实现不同功能。</p>
+</li>
+<li><p>什么是线性流水线？什么是非线性流水线？</p>
+<p>线性流水线，各段按照串行方式连接，没有反馈回路，数据对于每个段只能流过一次</p>
+<p>非线性流水线，有反馈回路。</p>
+</li>
+<li><p>列举3种相关。</p>
+<p>数据相关，名相关，控制相关</p>
+</li>
+<li><p>流水线中有哪三种冲突？各是什么原因造成的？</p>
+<p>结构冲突，硬件资源限制无法实现流水线。</p>
+<p>数据冲突，指令需要前面指令的运行结果</p>
+<p>控制相关，分支指令导致PC变化</p>
+</li>
+<li><p>选择至少2种解决流水线结构冲突的方法简述</p>
+<p>插入气泡，建立Cache</p>
+</li>
+<li><p>选择至少2种解决流水线数据冲突的方法简述。</p>
+<p>定向技术，气泡，指令调度</p>
+</li>
+<li><p>选择至少2种解决流水线控制冲突的静态方法简述。</p>
+<p>冻结或者排空流水线</p>
+<p>软件减少分支：预测分支失败，预测分支成功，延迟分支（分支延时槽）</p>
+</li>
+<li><p>简述流水寄存器的作用。</p>
+<p>当产生数据冲突时，我们可以利用流水寄存器将数据直接传送到需要的地方</p>
+</li>
+<li><p>简述分支延迟槽的主要思想。</p>
+<p>将分支指令视作分支指令与若干个分支延迟槽，无论分支是否成功都运行延时槽内的指令</p>
+</li>
+<li><p>简述分支延迟槽的三种调度策略。</p>
+<p>从前，从目标处，从失败处</p>
+</li>
+<li><p>简述流水线冻结/排空策略。</p>
+<p>暂停流水线的运作，直到分支指令结束</p>
+</li>
+<li><p>什么是静态调度？什么是动态调度？动态调度的优点是什么？</p>
+<p>静态调度，在编译阶段完成对代码的调度优化，让相关指令拉开距离减少停顿</p>
+<p>动态调度，执行过程中由硬件完成，降低编译器复杂度，更具有可行性</p>
+</li>
+<li><p>简述Tomasulo算法的基本思想。</p>
+<p>操作数就绪就立刻执行减少RAW冲突</p>
+<p>寄存器换名消除WAW,WAR</p>
+</li>
+<li><p>什么是动态分支预测？有何优点？</p>
+<p>根据分支指令过去的表现来预测将来的行为。有更好的预测准确度和适应性</p>
+</li>
+<li><p>简述分支历史表BHT的基本思想。</p>
+<p>用BHT记录分支指令最近的执行情况，并据此预测</p>
+</li>
+<li><p>简述分支目标缓冲器BTB的基本思想。</p>
+<p>缓存分支成功的指令与其目标地址。</p>
+</li>
+<li><p>简述基于硬件的前瞻算法基本思想。</p>
+<p>①动态预测分支，②并运行预测结果目标的指令，并将结果写入缓冲中，知道确认后在写入寄存器或存储器</p>
+<p>③动态调度策略，跨基本快调度</p>
+</li>
+<li><p>单级存储器的主要矛盾是什么？通常采取什么方法来解决？</p>
+<p>速度，容量与价格之间的矛盾，采用多级存储结构。</p>
+</li>
+<li><p>“Cache-主存”和“主存-辅存”层次的主要区别是什么？</p>
+<p>|          \           |     Cache-主存     |     主存-辅存      |<br>| :—————————-: | :————————: | :————————: |<br>|         目的          | 弥补主存速度的不足 | 弥补主存容量的不足 |<br>|    存储管理的实现     |        硬件        |        软件        |<br>|        速度比         |       几比一       |      几万比一      |<br>|        块大小         |     几十个字节     |   几百几千个字节   |<br>| CPU对第二级的访问方式 |      直接访问      |     通过第一级     |<br>|   不命中时是否中断    |         否         |         是         |</p>
+</li>
+<li><p>在存储层次中应解决哪四个问题？</p>
+<p>映射规则，查找算法，替换算法，写策略</p>
+</li>
+<li><p>简述Cache的基本工作原理。</p>
+<p>Cache的读写速度比主存好，由于局部性原理的存在，我们可以以块为单位在Cache中缓冲一部分主存的内容。我们将主存地址分为块地址和块内偏移，有主存地址的块地址搜索Cache，若命中则可以取出内容，若不命中则去访问主存。</p>
+</li>
+<li><p>在Cache-主存层中，地址映像方法有哪几种？它们各有什么优缺点？</p>
+<p>全相联：每块数据都可以放在cache的任意位置，空间利用率高，冲突概率低，实现最复杂</p>
+<p>直接映射：对某块数据他只能被放在指定的位置，空间利用率最低，冲突概率最高，实现最简单。</p>
+<p>组相连模式：折中方案，对某块数据他只能被放在指定的组，组内有多个位置可供放置</p>
+</li>
+<li><p>简单使用比较器进行4路组相联Cache并行查找的过程。</p>
+<p>对于主存地址中的块地址，我们取模得到组号亦即索引，在对应组中顺序查找是否有匹配项</p>
+</li>
+<li><p>Cache-主存层常用的替换算法有哪些？</p>
+<p>LRU、FIFO</p>
+</li>
+<li><p>简述Cache写命中时的两种写策略。</p>
+<p>写回法，写直达</p>
+</li>
+<li><p>简述Cache写失效的两种处理方法。</p>
+<p>按写分配、不按写分配</p>
+</li>
+<li><p>影响平均访存时间的因素有哪些？针对每个因素，各举出1种改进方法。</p>
+<p>平均访存时间=命中时间+不命中率*不命中开销</p>
+<p>伪相联平均访问时间= 直接映像命中时间+（直接映像的不命中率 - 2路组相联的不命中率）<em> 伪命中额外开销 + 二路组相联不命中率</em>不命中开销</p>
+</li>
+<li><p>Cache的3C失效是哪三种失效？针对每种失效给出一种降低失效率的方法。</p>
+<p>强制性不命中，冷启动时的不命中</p>
+<p>容量不命中，容量满后，块被换出后又被访问</p>
+<p>冲突不命中，组相连和直接映射组内换入换出造成的不命中。</p>
+</li>
+<li><p>多体交叉存储器有哪两种编址方式？各有什么特点。</p>
+<p>高位交叉编址：列优先，同一个体中的高log2m位都是相同的</p>
+<p>低位交叉编址：行优先，同一个体中的低log2m位都是相同的</p>
+</li>
+<li><p>反映输入/输出系统可靠性能的参数有哪些？</p>
+<p>可靠性：平均无故障时间MTTF</p>
+<p>可用性：$可用性=\frac{MTTF}{MTTF+MTTR}$ MTTF+MTTR：平均失效间隔时间MTBF</p>
+<p>可信性：服务的质量。即在多大程度上可以合理地认为服务是可靠的。<strong>（不可以度量）</strong></p>
+</li>
+<li><p>总线仲裁要解决的是什么问题，总线仲裁的方法有哪些，各有什么特点。</p>
+<p>总线仲裁要解决的问题是多设备争抢总线资源时，总线资源的分配问题。</p>
+<p>集中式仲裁</p>
+<ol>
+<li>链式查询方式，授权信号按顺序遍历各个I/O接口，当遍历到的I/O对总线有申请时，将总线分配给它。优点是容易增加设备，缺点是设备间相关性强，顺序前的设备出错很可能导致其后设备都无法被查询。</li>
+<li>计数器定时查询方式，计数器每次+1时并行的接受所有设备的总线请求，当计数器与设备编号相同，且设备有总线请求时将总线资源分配给他。优点是可以设定优先级，缺点是增加设备时需要额外的设备支持。</li>
+<li><p>独立请求方式，中央仲裁器独立的接受所有设备的请求，按照内部设定的排队规则分配总线资源</p>
+<p>分布式总线仲裁，增加总线仲裁功能，当设备请求来临时对比总线上的仲裁号与请求设备的仲裁号，优先级高者获得总线资源。</p>
+</li>
+</ol>
+</li>
+<li><p>总线的通信控制解决的是什么问题？大致有哪些方式。</p>
+<p>总线的通信控制解决的是通信双方如何协调工作，何时开始，何时结束。大致包括同步通信、异步通信、版同步通信和分离式通信（分离事务总线）。</p>
+</li>
+<li><p>试比较程序查询、程序中断、DMA三种I/O方式的区别。</p>
+<p>（1）程序查询方式中，是通过指令进行I/O设备的查询，以及读取数据。也就是说，数据流是经过CPU的。只要I/O设备没准备好， CPU也不干别的，就一直查询。<br>（2）程序中断方式中，CPU发出了I/O命令后，I/O设备自行去做准备，CPU返回用户程序，该干啥干啥。直到I/O设备准备好了，向CPU提出中断请求，CPU和I/O设备进行数据交换（实际是跟I/O接口）。这样，实际上就是实现了非数据交换时间，CPU和I/O设备并行。但是要注意，这种方式，数据流也是经过CPU的。<br>（3）DMA，全称叫做Direct Memory Access，直接存储访问。顾名思义，数据流不经过CPU，直接在存储器（内存）和I/O设备之间（实际也是I/O接口）进行数据交换，CPU起到的作用是管理作用。所以，一般来说，DMA方式一处理就是一组数据。 但是，CPU和DMA存在一个访存矛盾，就是同一时刻，只有CPU或DMA一个设备访存，所以，存在三种CPU和DMA访存方式：停止CPU访问、周期挪用、交替访问。 所谓的周期挪用，挪用的是CPU的存储周期。<br>（4）通道处理机，既然叫做 处理机， 他的功能更为强大，已经不仅限于DMA的设置作用了，它能够通过执行通道指令来进行输入输出，甚至处理异常。</p>
+</li>
+<li><p>简述通道的主要功能。</p>
+<p>接收CPU发来的I/O指令，并根据指令要求选择指定的外设与通道相连接。</p>
+<p>执行通道程序</p>
+<p>给出外设中要进行读/写操作的数据所在的地址</p>
+<p>给出主存缓冲区的首地址</p>
+<p>控制外设与主存缓冲区之间的数据传送的长度</p>
+<p>指定传送工作结束时要进行的操作</p>
+<p>检查外设的工作状态是否正常，并将该状态信息送往主存指定单元保存。</p>
+<p>在数据传输过程中完成必要的格式变换</p>
+</li>
+<li><p>简述通道完成一次数据传输的主要过程。</p>
+<p>在用户程序中使用访管指令进入管理程序，由管理程序生成一个通道程序，并启动通道。通道请求中断</p>
+</li>
+<li><p>简述三种通道传输方式及其传输过程。</p>
+<p>字节多路通道：字节交叉地分时为多台中低速设备服务</p>
+<p>选择通道：一段时间内独占地为高速设备服务，可以连接多台设备</p>
+<p>数组多路通道：每次为一台高速设备传输一个数据块，轮流为多台设备服务</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/06/23/Linux 总复习/" rel="next" title="Linux 总复习">
+                  <i class="fa fa-chevron-left"></i> Linux 总复习
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/07/20/操作系统-笔记/" rel="prev" title="操作系统-笔记">
+                  操作系统-笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机系统结构笔记"><span class="nav-number">1.</span> <span class="nav-text">计算机系统结构笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-计算机系统结构的基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">第一章-计算机系统结构的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.2.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统结构的概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">计算机系统结构的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冯诺依曼模型"><span class="nav-number">1.2.3.</span> <span class="nav-text">冯诺依曼模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行性"><span class="nav-number">1.2.4.</span> <span class="nav-text">并行性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-计算机指令集结构"><span class="nav-number">1.3.</span> <span class="nav-text">第二章-计算机指令集结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻址方式"><span class="nav-number">1.3.1.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令集结构的功能设计"><span class="nav-number">1.3.2.</span> <span class="nav-text">指令集结构的功能设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作数"><span class="nav-number">1.3.3.</span> <span class="nav-text">操作数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIPS"><span class="nav-number">1.3.4.</span> <span class="nav-text">MIPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS的寄存器："><span class="nav-number">1.3.4.1.</span> <span class="nav-text">MIPS的寄存器：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS的数据表示："><span class="nav-number">1.3.4.2.</span> <span class="nav-text">MIPS的数据表示：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS的指令格式"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">MIPS的指令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS的操作"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">MIPS的操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-number">1.4.</span> <span class="nav-text">第三章-流水线技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-指令集并行"><span class="nav-number">1.5.</span> <span class="nav-text">第四章-指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令的动态调度"><span class="nav-number">1.5.1.</span> <span class="nav-text">指令的动态调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomasulo-算法"><span class="nav-number">1.5.2.</span> <span class="nav-text">Tomasulo 算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要计算公式"><span class="nav-number">1.6.</span> <span class="nav-text">重要计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问答题"><span class="nav-number">1.7.</span> <span class="nav-text">问答题</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>

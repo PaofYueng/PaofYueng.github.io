@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="计算方法笔记前言课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算方法笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/08/04/计算方法笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="计算方法笔记前言课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-08-12T02:19:31.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算方法笔记">
+<meta name="twitter:description" content="计算方法笔记前言课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/08/04/计算方法笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算方法笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/04/计算方法笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">计算方法笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-03 16:27:38" itemprop="dateCreated datePublished" datetime="2020-08-03T16:27:38Z">2020-08-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-12 02:19:31" itemprop="dateModified" datetime="2020-08-12T02:19:31Z">2020-08-12</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="计算方法笔记"><a href="#计算方法笔记" class="headerlink" title="计算方法笔记"></a>计算方法笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。</p>
+<a id="more"></a>
+<h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章-绪论"></a>第一章-绪论</h2><p>本章主要是介绍此课程的内容，知识点在于误差分析</p>
+<p>绝对误差，即真实值与近似值的差。</p>
+<script type="math/tex; mode=display">
+e^*=x*-x</script><p>绝对误差限，我们希望将误差降至这个范围内</p>
+<script type="math/tex; mode=display">
+\\|e^*|=|x^*-x|\leq \varepsilon</script><p>相对误差</p>
+<script type="math/tex; mode=display">
+\frac{e^*}{x}=\frac{x^*-x}{x}</script><p>定理1.1 若近似值$x^*$具有n位有效数字，则其相对误差满足</p>
+<script type="math/tex; mode=display">
+|e^*_r|\leq \frac{1}{2a_1}\times10^{-(n-1)}</script><p>反之若相对误差限满足</p>
+<script type="math/tex; mode=display">
+|e^*_r|\leq \frac{1}{2(a_1+1)}\times 10^{-(n-1)}</script><h3 id="误差分析法一"><a href="#误差分析法一" class="headerlink" title="误差分析法一"></a>误差分析法一</h3><p>x的微分表示<em>x</em>的误差，ln <em>x</em>的微分表示<em>x</em>的相对误差</p>
+<script type="math/tex; mode=display">
+e^*(x\pm y)=d(x\pm y)=dx\pm dy=e^*(x)\pm e^*(y)\\
+e^*(xy)=d(xy)=ydx+ xdy=ye^*(x)+xe^*(y)\\
+e^*(x/y)=d(x/y)=(ydx- xdy)/y^2=(ye^*(x)-xe^*(y))/y^2\\
+e^*_r(xy)=dln(xy)=dlnx\pm dlny=e^*_r(x)+e^*_r(y)\\
+e^*_r(x/y)=dln(x/y)=dlnx-dlny=e^*_r(x)-e^*_r(y)</script><h3 id="误差分析法二"><a href="#误差分析法二" class="headerlink" title="误差分析法二"></a>误差分析法二</h3><p>而更一般的情况是，当自变量有误差时计算函数值时也会产生误差。其误差可以用函数的Taylor展开式进行估计。</p>
+<script type="math/tex; mode=display">
+f(x)-f(x^*)=f'(x^*)(x-x^*)+\frac{f'(\xi)}{2}(x-x^*)^2\\
+e^*(f(x))=|f(x^*)-f(x)|\approx|f'(x^*)|e^*(x^*)</script><h2 id="第二章-线性方程组的数值解"><a href="#第二章-线性方程组的数值解" class="headerlink" title="第二章 线性方程组的数值解"></a>第二章 线性方程组的数值解</h2><p>我们将线性方程组变换为<em>Ax=b</em> ，我们可以用直接法与迭代法完成这个问题。</p>
+<p>如果矩阵<em>A</em>或常数项<em>b</em>的微小变化,引起方程组<em>Ax</em>=<em>b</em>的巨大变化,则称此方程组为<strong>“病态”方程组</strong>,矩阵<em>A</em>称为“病态”矩阵，否则称方程组为“良态”方程组，<em>A</em>称为“良态”矩阵。</p>
+<h3 id="高斯消元法"><a href="#高斯消元法" class="headerlink" title="高斯消元法"></a>高斯消元法</h3><p>即将A转换为上三角矩阵然后求解。</p>
+<p>按照行顺序，若此时为第i行，则将第i列设为主元将i+1~n行的第i列元素化为0。此步骤完成后从第n行开始逆推x即可</p>
+<p>主元选择上，若主元过小，由于计算机内浮点数的存储规则可能会导致误差过大，而若是零则无法继续。因而我们倾向于选择尽可能大的数。列主元法即为在$a_{ii},a_{i+1,i}\dots a_{n,i}$中选择最大的作为主元。主元消去法则是在剩余数据中选取最大元素作为主元。</p>
+<h3 id="LU分解"><a href="#LU分解" class="headerlink" title="LU分解"></a>LU分解</h3><p>我们经过一系列变化可以令(A,b)=LU，其中L或U为单位三角矩阵。若L为单位下三角矩阵则成为Doolittle分解，若U为单位上三角阵则为Crout分解。我们可以利用待定系数法求解</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}a_{11}&…&a_{21}\\\vdots&\ddots &\vdots\\a_{n1}&\dots&a_{nn}\end{matrix}\right]=
+\left[\begin{matrix}1&\\l_{21}&1\\\vdots&&\ddots\\\vdots&&&1\\l_{n1}&l_{n2}&\dots&l_{n,n-1}&1\end{matrix}\right]
+\left[\begin{matrix}u_{11}&u_{12}&\dots&\dots&u_{1n}\\&u_{22}&&&\vdots\\&&\ddots&&\vdots\\&&&\ddots&\vdots\\&&&&1\end{matrix}\right]</script><h3 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h3><h4 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h4><p>向量范数的性质：<br>非负性、齐次性、三角不等式</p>
+<p>1范数：向量各元素绝对值和<br>2范数：向量各元素平方和开方<br>无穷范数：向量内绝对值最大元</p>
+<p>向量序列收敛的条件：<br>向量序列即$x^{(k)}=(x_1^{(k)},x_2^{(k)},\dots,x_n^{(k)})$<br>收敛条件为$lim_{k-&gt;\infin}||x^{(k)}||_\infin=0$</p>
+<h4 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h4><p>矩阵范数的性质：<br>非负性、齐次性、三角不等式</p>
+<p>若范数满足$||AB||\leq||A||<em>||B||\&amp;\&amp;||Ax||\leq||A||</em>||x||$我们则称其为相容范数。</p>
+<p>我们利用向量范数来定义矩阵范数并称其为算子范数</p>
+<script type="math/tex; mode=display">
+||A||_p={max}_{x\ne0}\frac{||Ax||_p}{||x||_p}=max_{||x||_p=1}||Ax||_p</script><p>其是相容的</p>
+<p>无穷范数：每行行元和最大值<br>1范数:每列列元和最大值<br>2范数:$\sqrt{A^TA的最大特征值}$</p>
+<p>谱半径：即绝对值最大的特征值</p>
+<h3 id="病态方程组与条件数"><a href="#病态方程组与条件数" class="headerlink" title="病态方程组与条件数"></a>病态方程组与条件数</h3><p>如果矩阵<em>A</em>或常数项<em>b</em>的微小变化,引起方程组<em>Ax</em>=<em>b</em>的巨大变化,则称此方程组为<strong>“病态”方程组</strong>,矩阵<em>A</em>称为“病态”矩阵，否则称方程组为“良态”方程组，<em>A</em>称为“良态”矩阵。</p>
+<p>条件数：$Cond_p(A)=||A||_p*||A^{-1}||_p$，其过大则为病态方程组</p>
+<h3 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h3><p>一种适合求大型稀疏系数矩阵的方法</p>
+<p>令x=Hx+g 若H即迭代矩阵收敛，则轻易可得$x^k-&gt;x^*$<br>H矩阵收敛的充要条件为其谱半径小于1<br>迭代矩阵任意范数小于1也可使用该法</p>
+<h4 id="雅可比迭代法"><a href="#雅可比迭代法" class="headerlink" title="雅可比迭代法"></a>雅可比迭代法</h4><p>对一不等式，将其变型令每个等式的左端恰为不同的变量，则等式右端各变量系数构建的矩阵则为迭代矩阵。</p>
+<h4 id="高斯-赛德尔迭代法"><a href="#高斯-赛德尔迭代法" class="headerlink" title="高斯-赛德尔迭代法"></a>高斯-赛德尔迭代法</h4><p>与上法几乎同理。只是在迭代过程中下一变量的推导中立即使用了上一步所得变量。</p>
+<h2 id="第四章-非线性方程的数值解"><a href="#第四章-非线性方程的数值解" class="headerlink" title="第四章-非线性方程的数值解"></a>第四章-非线性方程的数值解</h2><p>开方的计算<br>若给x^2=a 我们可以建立$x_1=\frac{1}{2}(x_0+\frac{a}{x_0})$进行迭代求解</p>
+<p>二分法，基于中值定理我们可以知道对于连续的函数当f(x1)f(x2)&lt;0时(x1,x2)内有解</p>
+<h3 id="不动点迭代法"><a href="#不动点迭代法" class="headerlink" title="不动点迭代法"></a>不动点迭代法</h3><p>我们可以将$f(x)=0$变化为$x=\varphi(x)$当迭代后时收敛的则称其为收敛点。</p>
+<p>我们求解此问题的基本方法是：<br>① 化等价方程，构造迭代函数<br>② 研究迭代数列的收敛性，收敛速度及误差估计</p>
+<p>收敛性定理<br>① 在区间内连续<br>② 定义域亦为$\varphi(x)$的值域<br>③ $\varphi‘(x)&lt;1$<br>条件三可放大到任取定义域内两点满足$|\varphi(x_1)-\varphi(x_2)|\leq L|x_1-x_2|,L&lt;1$<br>当满足此条件时下列两个误差估计式成立</p>
+<script type="math/tex; mode=display">
+|x^*-x^k|\leq\frac{1}{1-L}|x_{k+1}-x_k|\\
+|x^*-x^k|\leq\frac{L^k}{1-L}|x_1-x_0|</script><p>收敛阶P为$\frac{|x_{k+1}-x^<em>|}{|x_k-x^</em>|^P}=C\ne0$</p>
+<h3 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h3><script type="math/tex; mode=display">
+f(x)\approx f(x_k)+f'(x)(x-x^k)\\
+f(x)=0\\
+x=x_k-\frac{f(x_k)}{f'(x_k)}\\
+x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}</script><p>该法是平方收敛的</p>
+<p>收敛定理<br>① f(a)f(b)&lt;0  ② f’(x)!=0   ③ f’’(x)在[a,b]上不变好   ④ f(x0)f’’(x)&gt;0<br>满足则必有解</p>
+<h3 id="割线法"><a href="#割线法" class="headerlink" title="割线法"></a>割线法</h3><p>我们可以将导数近似表达为$f’(x)\approx \frac{f(x_k)-f(x_{k-1})}{x_k-x_{k-1}}$，则我们可以得到迭代公式：</p>
+<script type="math/tex; mode=display">
+x_{k+1}=x_k-\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}f(x_k)</script><h2 id="第四章-矩阵特征值与特征向量的计算"><a href="#第四章-矩阵特征值与特征向量的计算" class="headerlink" title="第四章-矩阵特征值与特征向量的计算"></a>第四章-矩阵特征值与特征向量的计算</h2><h3 id="乘幂法"><a href="#乘幂法" class="headerlink" title="乘幂法"></a>乘幂法</h3><p>此法用于求主特征值即最大特征值。</p>
+<p>令$x^{k+1}=A^kx$ ，依次迭代方程迭代，收敛条件为谱半径小于一。</p>
+<p>规范化，为防止向量x内元素过小或过大导致精度丢失，我们会对向量x中每个元素除以最大绝对值</p>
+<p>反幂法：矩阵的逆的特征值是矩阵特征值的倒数，故而我们对矩阵的逆进行乘幂法吉柯德按模最小特征值的倒数。</p>
+<p>幂法的平移：我们$B=A-\lambda_0 I$ 此过程可能能加速得到最大特征值，但也可能因为平移导致最大元改变。</p>
+<h3 id="雅各比旋转法"><a href="#雅各比旋转法" class="headerlink" title="雅各比旋转法"></a>雅各比旋转法</h3><p>此法用于求实对称阵全部特征值及特征向量。</p>
+<p>证明此处忽略。</p>
+<p>① 选取非对角线元素绝对值最大者$a_{ij},a_{ji}$</p>
+<p>② 求解$\frac{1}{2}(a_{ii}-a{jj})sin2\theta+a_{ij}cos2\theta=0或tan2\theta=\frac{2a_{ij}}{a_{jj}-a_{ii}}$</p>
+<p>③ 令 $c_{ij}=c_{ji}=0\\c_{ii}=a_{ii}cos^2\theta+a_{jj}sin^2\theta-a_{ij}sin2\theta\\c_{jj}=a_{jj}cos^2\theta+a_{ii}sin^2\theta+a_{ij}sin2\theta\\c_{ik}=c_{ki}=a_{ik}cos\theta-a_{jk}sin\theta\\c_{jk}=c_{kj}=a_{ik}cos\theta+a_{ik}sin\theta$</p>
+<p>雅各比过关法：</p>
+<p>对于雅各比旋转法，每次选取主元都得遍历整个矩阵，时间成本巨大，故而我们采用过关法，我们先计算所有非对角线元素的平方和的开方并除以行数。若我们遍历过程中有元素大于他我们就将其化为0，若没找到就再除以一次行数，直至该数小于要求误差限</p>
+<h2 id="第五章-函数插值与曲线拟合"><a href="#第五章-函数插值与曲线拟合" class="headerlink" title="第五章-函数插值与曲线拟合"></a>第五章-函数插值与曲线拟合</h2><p>在现实生活中我们一般只能获取一个函数的数个离散的点而不能获取函数表达式，我们通过这几个点推测整体函数，这种方法我们称之为函数插值。</p>
+<h3 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h3><p>我们假设所有函数均可以用代数多项式表示，我们拥有的k个数据最多可以描述k个维度。故而当我们拥有k+1个数据点时我们便可建立最高项幂为k的多项式。</p>
+<p>最终n次拉格朗日插值多项式为</p>
+<script type="math/tex; mode=display">
+L_n(x)=\sum_{i=0}^n(\prod_{j\ne i}\frac{x-x_j}{x_i-x_j})y_i</script><p>余项</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}=\prod_{i=0}^n(x-x_i)\\
+R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x)</script><p>此法具有Runge现象，即已知数据越多可能更无法拟合原函数。</p>
+<h3 id="牛顿插值法"><a href="#牛顿插值法" class="headerlink" title="牛顿插值法"></a>牛顿插值法</h3><p>差商</p>
+<script type="math/tex; mode=display">
+f[x_i]=f(x_i)\\\quad\\
+f[x_0,\dots,x_k]=\frac{f[x_1,x_2,\dots,x_k]-f[x_0,x_1,\dots,x_{k-1}]}{x_k-x_0}\\\quad\\
+f[x_0,\dots,x_n]=\frac{f^{(n)}(\xi)}{n!}</script><p>牛顿插值多项式为</p>
+<script type="math/tex; mode=display">
+N_n(x)=f(x_0)+f[x_0,x_1](x-x_0)+f[x_0,x_1,x_2](x-x_0)(x-x_1)\\+\dots+f[x_0,\dots,x_n](x-x_0)\dots(x-x_{n-1})</script><p>余项</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}=\prod_{i=0}^n(x-x_i)\\2R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x)</script><h3 id="三次Hermite插值"><a href="#三次Hermite插值" class="headerlink" title="三次Hermite插值"></a>三次Hermite插值</h3><p>即节点处的函数值与导数值成对出现</p>
+<p>利用函数的导数与差商的关系构建差商表再利用牛顿插值即为解。</p>
+<h2 id="第六章-数值积分"><a href="#第六章-数值积分" class="headerlink" title="第六章-数值积分"></a>第六章-数值积分</h2><p>首先需要知道以下定理</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)dx=(b-a)f(\xi)</script><p>若f与g在同一区间连续且g在此区间内不变号</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)g(x)dx=f(\xi)\int_a^bg(x)dx</script><p>依照此定理与拉格朗日插值公式我们可得</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)dx\approx\int_a^bL_n(x)dx=\sum_{k=0}^nf(x_k)\int_a^bl_k(x)dx\\
+=\sum_{k=0}^n\omega_k^{(n)}f(x_k)</script><p>其中</p>
+<script type="math/tex; mode=display">
+\omega_k^{(n)}=\int_a^bl_k(x)dx=\int_a^b\frac{(x-x_0)\dots(x-x_{k-1})(x-x_{k+1})\dots(x-x_n)}{(x_k-x_0)\dots(x_k-x_{k-1})(x_k-x_{k+1})\dots(x_k-x_n)}dx\\</script><p>余项为</p>
+<script type="math/tex; mode=display">
+R_n[f]=\frac{1}{(n+1)!}\int_a^bf^{(n+1)}(\xi)(x-x_0)\dots(x-x_n)dx</script><p>当求积节点是等距节点时</p>
+<script type="math/tex; mode=display">
+令x_k=a+kh，x=a+th\\\quad\\
+\omega_k^{(n)}=\frac{(-1)^{n-k}h}{k!(n-k)!}\int_0^n\prod_{j=0\\j\ne k}^n(t-j)dt</script><p>当我们有x个节点时我们可以通过依次选两个节点构建梯形公式或选取三个节点构建抛物线公式。我们称之为复合法。</p>
+<p>梯形公式</p>
+<script type="math/tex; mode=display">
+Q_1[f]=\frac{b-a}{2}(f(a)+f(b))\\
+R_1[f]=-\frac{(b-a)}{12}h^2f''(\xi)</script><p>抛物线公式</p>
+<script type="math/tex; mode=display">
+Q_2[f]=\frac{b-a}{6}[f(a)+4f(\frac{a+b}{2}+f(b)]\\
+R_2[f]=-\frac{b-a}{180}h^4f^{(4)}(\xi)</script>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/07/20/操作系统-笔记/" rel="next" title="操作系统-笔记">
+                  <i class="fa fa-chevron-left"></i> 操作系统-笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/08/07/微机系统笔记/" rel="prev" title="微机系统笔记">
+                  微机系统笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算方法笔记"><span class="nav-number">1.</span> <span class="nav-text">计算方法笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-绪论"><span class="nav-number">1.2.</span> <span class="nav-text">第一章-绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法一"><span class="nav-number">1.2.1.</span> <span class="nav-text">误差分析法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析法二"><span class="nav-number">1.2.2.</span> <span class="nav-text">误差分析法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-线性方程组的数值解"><span class="nav-number">1.3.</span> <span class="nav-text">第二章 线性方程组的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯消元法"><span class="nav-number">1.3.1.</span> <span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LU分解"><span class="nav-number">1.3.2.</span> <span class="nav-text">LU分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-number">1.3.3.</span> <span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量范数"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵范数"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">矩阵范数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病态方程组与条件数"><span class="nav-number">1.3.4.</span> <span class="nav-text">病态方程组与条件数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代法"><span class="nav-number">1.3.5.</span> <span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#雅可比迭代法"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯-赛德尔迭代法"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">高斯-赛德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-非线性方程的数值解"><span class="nav-number">1.4.</span> <span class="nav-text">第四章-非线性方程的数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不动点迭代法"><span class="nav-number">1.4.1.</span> <span class="nav-text">不动点迭代法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿迭代法"><span class="nav-number">1.4.2.</span> <span class="nav-text">牛顿迭代法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#割线法"><span class="nav-number">1.4.3.</span> <span class="nav-text">割线法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-矩阵特征值与特征向量的计算"><span class="nav-number">1.5.</span> <span class="nav-text">第四章-矩阵特征值与特征向量的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#乘幂法"><span class="nav-number">1.5.1.</span> <span class="nav-text">乘幂法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#雅各比旋转法"><span class="nav-number">1.5.2.</span> <span class="nav-text">雅各比旋转法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-函数插值与曲线拟合"><span class="nav-number">1.6.</span> <span class="nav-text">第五章-函数插值与曲线拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉格朗日插值法"><span class="nav-number">1.6.1.</span> <span class="nav-text">拉格朗日插值法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿插值法"><span class="nav-number">1.6.2.</span> <span class="nav-text">牛顿插值法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三次Hermite插值"><span class="nav-number">1.6.3.</span> <span class="nav-text">三次Hermite插值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-数值积分"><span class="nav-number">1.7.</span> <span class="nav-text">第六章-数值积分</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>

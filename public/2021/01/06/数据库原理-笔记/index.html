@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="数据库原理-笔记前言 12周结课，20周考，真有你的，吉林大学">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库原理-笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2021/01/06/数据库原理-笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="数据库原理-笔记前言 12周结课，20周考，真有你的，吉林大学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2021-06-18T13:44:29.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库原理-笔记">
+<meta name="twitter:description" content="数据库原理-笔记前言 12周结课，20周考，真有你的，吉林大学">
+  <link rel="canonical" href="https://paofyueng.github.io/2021/01/06/数据库原理-笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>数据库原理-笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2021/01/06/数据库原理-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">数据库原理-笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2021-01-05 20:01:10" itemprop="dateCreated datePublished" datetime="2021-01-05T20:01:10Z">2021-01-05</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-18 13:44:29" itemprop="dateModified" datetime="2021-06-18T13:44:29Z">2021-06-18</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数据库原理-笔记"><a href="#数据库原理-笔记" class="headerlink" title="数据库原理-笔记"></a>数据库原理-笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>12周结课，20周考，真有你的，吉林大学</p>
+</blockquote>
+<a id="more"></a>        
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>数据库系统需要解决的问题：</p>
+<ol>
+<li>数据的冗余与不一致，冗余即重复存储，不一致指同一数据的不同副本不一致</li>
+<li>数据孤立，需要将数据整合起来方便查找</li>
+<li>完整性问题，需要保证数据的值满足一定的约束</li>
+<li>原子性问题，对数据库的操作需要是原子的</li>
+<li>并发访问异常，确保并发操作的正确性</li>
+<li>安全性问题，权限管理</li>
+</ol>
+<p>数据视图</p>
+<ol>
+<li>物理层：数据的物理存储，例B树</li>
+<li>逻辑层：数据的逻辑存储，例表</li>
+<li>视图层：只描述了数据的某个部分，例视图</li>
+</ol>
+<p>实例：某一时刻信息的集合<br>模式：数据库的整体设计</p>
+<p>数据模型</p>
+<ol>
+<li>数据模型，描述数据，数据联系，数据语义与一致性约束的公式</li>
+<li>关系模型，实体联系模型，基于对象的数据模型，半结构化数据模型</li>
+</ol>
+<p>DML 数据操纵语言——增删改查</p>
+<p>DDL 数据定义语言——定义了数据库模式的实现细节</p>
+<ol>
+<li>域约束，属性的定义域</li>
+<li>参照完整性，外键</li>
+<li>断言，持久的内容约束</li>
+<li>授权</li>
+</ol>
+<p>DDL的数据存放于数据字典（数据库信息的表），其包含元数据（数据库的数据）</p>
+<p>设计过程：需求分析-概念设计-实现</p>
+<h2 id="关系模型介绍"><a href="#关系模型介绍" class="headerlink" title="关系模型介绍"></a>关系模型介绍</h2><p>关系数据库是表的集合，关系指代表，元组指代行，属性指代列</p>
+<p>数据库模式是数据库的逻辑设计<br>数据库实例是给定时刻数据库的数据的快照</p>
+<h3 id="码"><a href="#码" class="headerlink" title="码"></a>码</h3><ol>
+<li>超码是一个或一组能唯一标识一个元组的属性</li>
+<li>候选码是最小超码</li>
+<li>主码是设计者选中的超码</li>
+<li>外码，参照关系的实现，一般是约束该属性的取值来自于另一关系的主码</li>
+</ol>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>主要有DDL,DML,完整性，视图定义，事务控制与授权组成</p>
+<p>数据库的基本类型</p>
+<ol>
+<li>char，定长字符串</li>
+<li>varchar，变长字符串</li>
+<li>int，整型</li>
+<li>smallint，小整型</li>
+<li>numeric，定点数</li>
+<li>real，double precision，浮点数，双精度浮点数</li>
+<li>float(n)，精度至少为n的浮点数</li>
+</ol>
+<h3 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> R(</span><br><span class="line">	A1 D1,</span><br><span class="line">	//...</span><br><span class="line">	AN DN.</span><br><span class="line">	primary <span class="keyword">key</span> (<span class="keyword">id</span>),</span><br><span class="line">	<span class="keyword">foreign</span> <span class="keyword">key</span> (<span class="keyword">name</span>) <span class="keyword">reference</span> r2</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> r <span class="keyword">values</span>(a1,a2,...,an)</span><br></pre></td></tr></table></figure>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student</span><br></pre></td></tr></table></figure>
+<p>删除元组</p>
+<h3 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> r</span><br></pre></td></tr></table></figure>
+<p>删除表</p>
+<h3 id="alter"><a href="#alter" class="headerlink" title="alter"></a>alter</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> r <span class="keyword">add</span> A D;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> r <span class="keyword">drop</span> B</span><br></pre></td></tr></table></figure>
+<p>表属性操作</p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r ;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r1,r2 <span class="keyword">where</span> r1.A=r2.A;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r1 <span class="keyword">natural</span> <span class="keyword">join</span> r2 <span class="keyword">where</span> P;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">as</span> r1,r <span class="keyword">as</span> r2 <span class="keyword">where</span> r1.A=r2.A;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> A <span class="keyword">like</span> <span class="string">'%___%'</span> ;</span><br><span class="line">(<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P1) <span class="keyword">union</span> (<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P2);</span><br><span class="line">(<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P1) <span class="keyword">intersect</span> (<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P2);<span class="comment">#交</span></span><br><span class="line">(<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P1) <span class="keyword">except</span> (<span class="keyword">select</span> * <span class="keyword">from</span> r <span class="keyword">where</span> P2);<span class="comment">#差</span></span><br></pre></td></tr></table></figure>
+<p>选择所有=不存在没被选择</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> </span><br><span class="line"><span class="keyword">from</span> student </span><br><span class="line"><span class="keyword">where</span> student <span class="keyword">not</span> <span class="keyword">exists</span> </span><br><span class="line">  ((<span class="keyword">select</span> course_id </span><br><span class="line">  <span class="keyword">from</span> cource </span><br><span class="line">  <span class="keyword">where</span> dept_name=’Comp. Sci.’)<span class="keyword">except</span>(</span><br><span class="line">    <span class="keyword">select</span> course_id <span class="keyword">from</span> takes <span class="keyword">where</span> <span class="keyword">ID</span>=student.ID))</span><br></pre></td></tr></table></figure>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>对于and与or短路与断路依旧存在，对于比较运算与非运算结果均为unknown，判断是不是null 用 is null 语句，判断是否为unknown 用is unknown语句</p>
+<h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><p>avg,min,max,sum,count</p>
+<p>分组聚集group by，按照属性值分组后每组分别进行聚集函数</p>
+<p>having 对于分组的筛选</p>
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><p>嵌套子查询中，判断元组是否在子查询结果中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> r</span><br><span class="line"><span class="keyword">where</span> A1 <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> A1</span><br><span class="line">	<span class="keyword">from</span> r</span><br><span class="line">	<span class="keyword">where</span> P</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="some-all"><a href="#some-all" class="headerlink" title="some,all"></a>some,all</h3><p>与in类似，some存在成立则成立，all存在不成立则不成立</p>
+<h3 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h3><p>select内的子查询必须要是标量子查询（只返回一个数）</p>
+<p>父查询的表可用于子查询中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> r <span class="keyword">as</span> r1</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span>&gt;(</span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">from</span> r <span class="keyword">as</span> r2</span><br><span class="line">	<span class="keyword">where</span> r1.A=r2.A</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> r <span class="keyword">where</span> P;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> course (A2,A4) <span class="keyword">values</span> (a2,a4);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> r1</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> r2;</span><br><span class="line"><span class="keyword">update</span> r1 <span class="keyword">set</span> A1=f(A1) <span class="keyword">where</span> P;</span><br></pre></td></tr></table></figure>
+<h2 id="中级SQL"><a href="#中级SQL" class="headerlink" title="中级SQL"></a>中级SQL</h2><p>内连接：不保留匹配失败的元组</p>
+<p>全/左/右外连接：保留全/左/右表未匹配信息</p>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>对用户可见的虚关系</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> v <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> A1,A2..,AN</span><br><span class="line"><span class="keyword">from</span> r</span><br><span class="line"><span class="keyword">where</span> P</span><br></pre></td></tr></table></figure>
+<p>可更新条件：来自单表，只包含属性，不出现在select中的属性均可为空，无分组</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务由查询或更新语句的序列组成。</p>
+<p>commit work:提交事务，标志事务完成<br>rollback work:回滚事务</p>
+<p>原子的，全执行或全不执行，二择一</p>
+<h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><ol>
+<li>not null</li>
+<li>unique</li>
+<li>default</li>
+<li>primary key</li>
+<li>foreign key</li>
+<li>check</li>
+</ol>
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> [<span class="keyword">select</span> | <span class="keyword">insert</span> | <span class="keyword">update</span> | <span class="keyword">delete</span>]</span><br><span class="line"><span class="keyword">on</span> r</span><br><span class="line"><span class="keyword">to</span> <span class="keyword">user</span>/<span class="keyword">role</span>;</span><br><span class="line"><span class="keyword">revoke</span> [<span class="keyword">select</span> | <span class="keyword">insert</span> | <span class="keyword">update</span> | <span class="keyword">delete</span>]</span><br><span class="line"><span class="keyword">on</span> r</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span>/<span class="keyword">role</span>;</span><br></pre></td></tr></table></figure>
+<p>角色</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">role</span> a</span><br></pre></td></tr></table></figure>
+<p>是权限与角色的集合</p>
+<p>权限的回收具有级联问题</p>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p>可以用于完整性约束的实现，可指定在指定操作的前后执行</p>
+<h2 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h2><script type="math/tex; mode=display">
+选择\ \sigma_P(r)\\
+投影\ \Pi_A(r)\\
+并\ r1\cup r2\\
+差\ r1-r2\\
+笛卡尔积\ r1\times r2\\
+改名 \rho_x(r)\\
+自然连接\ r1\Join r2=\Pi_{R1\cup R2}(\sigma_{r1.A1=r2.A1\and r1.A2=r2.A2\and ...\and r1.An=r2.An}(r1\times r2))\\
+赋值运算\ E1\leftarrow E2\\
+外连接\ r⟕s=r\Join s\cup(r-\Pi_R(r\Join s))\times\{(null,null,...,null)\}\\
+聚集函数\ _{A1}\mathcal{G}_{f(A2)}(r)</script><h3 id="元组关系演算"><a href="#元组关系演算" class="headerlink" title="元组关系演算"></a>元组关系演算</h3><p>标准表达用文字书写为“他是满足如下条件的元组t的集合，在关系r中存在元组s是t和s在主键相等，且s在属性A上满足表达式P”</p>
+<script type="math/tex; mode=display">
+\{t|\exist s \in r(t[PK]=s[PK]\and P(s[A])\}</script><h2 id="ER模型"><a href="#ER模型" class="headerlink" title="ER模型"></a>ER模型</h2><p>好的模型设计需要避免冗余与不完整</p>
+<p>实体，可以是实在的或抽象的事物与对象<br>实体集，相同类型的实体的集合<br>联系，实体间的相互关联,如(e1,e2)<br>联系集，相同类型联系的集合,联系集可以具有描述性属性</p>
+<p>联系集是自环的:$R=\{(e_1,e_2)|e_1\in E ,e_2\in E\}$<br>度，参与联系集的实体集数目</p>
+<p>简单属性-复合属性：是否可再分<br>单值属性-多值属性：某一实体的某一属性是否唯一<br>派生属性：可由已有属性推导出</p>
+<p>映射基数：一对一，一对多，多对一，多对多</p>
+<p>参与约束：实体集中所有实体都参与了联系集，则称为全部的，否则称为部分的</p>
+<p>多对一的联系集中，多的实体集的主码可以作为联系集的主码</p>
+<h2 id="关系数据库的设计"><a href="#关系数据库的设计" class="headerlink" title="关系数据库的设计"></a>关系数据库的设计</h2><p>有损分解，分解后再连接存在数据错误</p>
+<p>第一范式：要求属性都为简单属性</p>
+<p>函数依赖存在属性A,B由唯一决定的$B=f(A)则A\rightarrow B$</p>
+<p>若存在$\alpha,\beta有\alpha\rightarrow\beta且\beta\in\alpha$则称该函数依赖为平凡的，即我确定我自己</p>
+<p>BCNF：<br>对于模式的函数闭包中的任意函数依赖$\alpha\rightarrow\beta$<br>若都为平凡的或$\alpha$为超码，则该模式为BCNF</p>
+<p>分解，将函数依赖移除并存入新的模式中即可</p>
+<p>BCNF分解可能会破坏函数依赖，我们希望保持依赖，故有第三范式<br>比BCNF多出一个成立条件$\beta-\alpha$中的每个属性A都包含与R的一个候选码中</p>
+<h3 id="函数依赖理论"><a href="#函数依赖理论" class="headerlink" title="函数依赖理论"></a>函数依赖理论</h3><p>正则覆盖</p>
+<p>①合并$\alpha_1\rightarrow\beta_1,\alpha_1\rightarrow\beta_2$<br>②寻找任意函数依赖，与其有无关属性<br>③删除无关属性</p>
+<p>3NF分解</p>
+<p>①求正则覆盖<br>②每个函数依赖的左部和右部组合为新模式<br>③保证存在模式集中存模式包含原模式的候选码</p>
+<h2 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h2><p>ACID：</p>
+<ol>
+<li>一致性：与预期保持一致</li>
+<li>原子性：都做或都不做</li>
+<li>持久性：保证事务结束后数据写在了磁盘上</li>
+<li>隔离性：不同事务若会相互影响需要隔离</li>
+</ol>
+<h3 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h3><p>关注read和write操作</p>
+<p>冲突等价，调度可经过非冲突指令相互交换</p>
+<p>优先图中存在$T_i\rightarrow T_j$</p>
+<ol>
+<li>在$T_j$执行read(Q)前，$T_i$执行write(Q)</li>
+<li>在$T_j$执行write(Q)前，$T_i$执行read(Q)</li>
+<li>在$T_j$执行write(Q)前，$T_i$执行write(Q)</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/12/23/计算机图形学-笔记/" rel="next" title="计算机图形学-笔记">
+                  <i class="fa fa-chevron-left"></i> 计算机图形学-笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2021/01/09/计算机网络-笔记/" rel="prev" title="计算机网络-笔记">
+                  计算机网络-笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库原理-笔记"><span class="nav-number">1.</span> <span class="nav-text">数据库原理-笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.2.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系模型介绍"><span class="nav-number">1.3.</span> <span class="nav-text">关系模型介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#码"><span class="nav-number">1.3.1.</span> <span class="nav-text">码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">1.4.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE"><span class="nav-number">1.4.1.</span> <span class="nav-text">CREATE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT"><span class="nav-number">1.4.2.</span> <span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELETE"><span class="nav-number">1.4.3.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#drop"><span class="nav-number">1.4.4.</span> <span class="nav-text">drop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alter"><span class="nav-number">1.4.5.</span> <span class="nav-text">alter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">1.4.6.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.7.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集函数"><span class="nav-number">1.4.8.</span> <span class="nav-text">聚集函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">1.4.9.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-all"><span class="nav-number">1.4.10.</span> <span class="nav-text">some,all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关子查询"><span class="nav-number">1.4.11.</span> <span class="nav-text">相关子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改查"><span class="nav-number">1.4.12.</span> <span class="nav-text">增删改查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级SQL"><span class="nav-number">1.5.</span> <span class="nav-text">中级SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图"><span class="nav-number">1.5.1.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.5.2.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束"><span class="nav-number">1.5.3.</span> <span class="nav-text">完整性约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限"><span class="nav-number">1.5.4.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触发器"><span class="nav-number">1.5.5.</span> <span class="nav-text">触发器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系代数"><span class="nav-number">1.6.</span> <span class="nav-text">关系代数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元组关系演算"><span class="nav-number">1.6.1.</span> <span class="nav-text">元组关系演算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ER模型"><span class="nav-number">1.7.</span> <span class="nav-text">ER模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系数据库的设计"><span class="nav-number">1.8.</span> <span class="nav-text">关系数据库的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数依赖理论"><span class="nav-number">1.8.1.</span> <span class="nav-text">函数依赖理论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务-1"><span class="nav-number">1.9.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可串行化"><span class="nav-number">1.9.1.</span> <span class="nav-text">可串行化</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>

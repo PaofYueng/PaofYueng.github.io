@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="概率论与数理统计笔记">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论与数理统计笔记">
+<meta property="og:url" content="https://paofyueng.github.io/2020/08/19/概率论与数理统计笔记/index.html">
+<meta property="og:site_name" content="寻求力量之旅">
+<meta property="og:description" content="概率论与数理统计笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-08-20T14:27:08.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="概率论与数理统计笔记">
+<meta name="twitter:description" content="概率论与数理统计笔记">
+  <link rel="canonical" href="https://paofyueng.github.io/2020/08/19/概率论与数理统计笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>概率论与数理统计笔记 | 寻求力量之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">寻求力量之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">ACM搬砖记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/19/概率论与数理统计笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">概率论与数理统计笔记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-19 09:46:01" itemprop="dateCreated datePublished" datetime="2020-08-19T09:46:01Z">2020-08-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-20 14:27:08" itemprop="dateModified" datetime="2020-08-20T14:27:08Z">2020-08-20</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="概率论与数理统计笔记"><a href="#概率论与数理统计笔记" class="headerlink" title="概率论与数理统计笔记"></a>概率论与数理统计笔记</h1><a id="more"></a>
+<h2 id="随机事件及其概率"><a href="#随机事件及其概率" class="headerlink" title="随机事件及其概率"></a>随机事件及其概率</h2><h3 id="随机事件的关系和运算"><a href="#随机事件的关系和运算" class="headerlink" title="随机事件的关系和运算"></a>随机事件的关系和运算</h3><ol>
+<li>包含 $A\subset B$：事件A发生必然导致B发生</li>
+<li>相等 $A=B$：A，B互相包含</li>
+<li>互不相容 $AB=\phi$：A，B不能同时发生</li>
+<li>互逆 $AB=\phi且A\cup B=\Omega$，每次AB有且只有一个发生</li>
+<li>和事件 $A\cup B$：事件AB至少有一个发生</li>
+<li>积事件 $AB$：事件AB同时发生</li>
+<li>差事件 $A-B$：事件A发生且事件B不发生</li>
+</ol>
+<h3 id="几个结论"><a href="#几个结论" class="headerlink" title="几个结论"></a>几个结论</h3><p>互逆可推互不相容，互不相容不可推互逆<br>基本事件互不相容<br>基本事件的和事件是全集</p>
+<p>$A-B=A-AB=A\bar{B}$<br>$A\cup B=A\cup(B-A)=A\cup(B-AB)$<br>$A=A\Omega=A(B\cup \bar B)=AB\cup A\bar B$</p>
+<p>$A(B\cup C)=AB\cup AC,A\cup(BC)=(A\cup B)(A\cup C)$<br>$\overline{A\cup B}=\overline{A}\overline{B},\overline{AB}=\overline{A}\cup\overline{B}$</p>
+<p>古典概型概率计算公式</p>
+<script type="math/tex; mode=display">
+P(A)=\frac{A包含的基本事件数}{\Omega 包含的基本事件数}</script><p>几何概型的概率计算公式</p>
+<script type="math/tex; mode=display">
+P(A)=\frac{A的量度}{\Omega的量度}</script><p>$P(\overline{A})=1-P(A)$<br>$P(B-A)=P(B)-P(AB) ,IF,A\subseteq B,P(B-A)=P(B)-P(A)$<br>$P(A\cup B)=P(A)+P(B)-P(AB),P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(AB)-P(AC)-P(BC)+P(ABC)$<br>若A，B互不相容，$P(A\cup B)=P(A)+P(B)$</p>
+<p>$P(B|A)=\frac{P(AB)}{P(A)}$</p>
+<p>$P(AB)=P(A|B)P(B)=P(B|A)P(A),P(A)&gt;0,P(B)&gt;0$<br>$P(ABC)=P(A)P(B|A)P(C|AB)$</p>
+<p>全概率公式</p>
+<script type="math/tex; mode=display">
+P(B)=\sum_{i=1}^nP(B|A_i)P(A_i)</script><p>贝叶斯公式</p>
+<script type="math/tex; mode=display">
+P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^nP(B|A_j)P(A_j)}</script><p>事件独立</p>
+<script type="math/tex; mode=display">
+P(AB)=P(A)P(B)\\
+P(B|A)=P(B)\\
+P(A|B)=P(A)</script><p>三个事件独立</p>
+<script type="math/tex; mode=display">
+P(AB)=P(A)P(B)\\
+P(AC)=P(A)P(C)\\
+P(BC)=P(B)P(C)\\
+P(ABC)=P(A)P(B)P(C)</script><h2 id="随机变量及其分布"><a href="#随机变量及其分布" class="headerlink" title="随机变量及其分布"></a>随机变量及其分布</h2><h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><p>定义 $F(x)=P(X\le x)$</p>
+<p>性质</p>
+<ol>
+<li>$0\le F(x)\le 1$</li>
+<li>$F(-\infty)=lim_{x-&gt;-\infty }F(X)=0,F(+\infty)=lim_{x-&gt;+\infty }F(X)=1 $</li>
+<li>分布函数单调不减</li>
+<li>分布函数右连续</li>
+<li>$P(a&lt;X\le b)=F(b)-F(a)$</li>
+</ol>
+<h3 id="离散型随机变量分布律"><a href="#离散型随机变量分布律" class="headerlink" title="离散型随机变量分布律"></a>离散型随机变量分布律</h3><p>分布律 $P\{X=x_k\}=p_k$<br>分布函数 $F(x)=P(X\le x)=\sum_{s_k\le x}P\{X=x_k\}=\sum_{x_k\le x}p_k$</p>
+<h3 id="连续型随机变量的概率密度"><a href="#连续型随机变量的概率密度" class="headerlink" title="连续型随机变量的概率密度"></a>连续型随机变量的概率密度</h3><p>概率密度可以看做概率的概率，f(x)是指落在x的某一邻域的概率，反映了附近的密集程度</p>
+<p>概率密度f(x)必须满足</p>
+<ol>
+<li>$f(x)\ge 0$</li>
+<li>$\int_{-\infty}^{+\infty}f(x)dx=1$</li>
+</ol>
+<p>其分布函数是连续函数</p>
+<p>$P\{X=c\}=0$<br>$P(a&lt;x&lt;b)=\int_a^bf(x)dx$<br>$f(X)=F’(x)$<br>$f(x)$不一定连续也不唯一</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>随机变量X</th>
+<th>分布律或概率密度</th>
+<th>数学期望</th>
+<th>方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01分布</td>
+<td>$P\{X=0\}=1-p,P\{X=1\}=p$</td>
+<td>$p$</td>
+<td>$p(1-p)$</td>
+</tr>
+<tr>
+<td>二项分布$B(n,p)$</td>
+<td>$P\{X=k\}=C_n^kp^k(1-p)^{n-k}$</td>
+<td>$np$</td>
+<td>$np(1-p)$</td>
+</tr>
+<tr>
+<td>泊松分布$P(\lambda)$</td>
+<td>$P\{X=k\}=\frac{\lambda^k}{k!}e^{-\lambda}$</td>
+<td>$\lambda$</td>
+<td>$\lambda$</td>
+</tr>
+<tr>
+<td>几何分布</td>
+<td>$P(X=k)=p(1-k)^{k-1}$</td>
+<td>$1/p$</td>
+<td>$(1-p)/p^2$</td>
+</tr>
+<tr>
+<td>均匀分布$U(a,b)$</td>
+<td>$f(x)=\left\{ \begin{array} .1/(b-a),a&lt;x&lt;b\\0,其他\end{array}\right.$</td>
+<td>$(a+b)/{2}$</td>
+<td>$(b-a)^2/12$</td>
+</tr>
+<tr>
+<td>正态分布$N(\mu,\sigma^2)$</td>
+<td>$f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$</td>
+<td>$\mu$</td>
+<td>$\sigma^2$</td>
+</tr>
+<tr>
+<td>指数分布$e(\lambda)$</td>
+<td>$f(x)=\left\{ \begin{array} .\lambda e^{-\lambda x},x&gt;0\\0,x\le0\end{array}\right.$</td>
+<td>$1/\lambda$</td>
+<td>$1/\lambda^2$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="一维正态分布"><a href="#一维正态分布" class="headerlink" title="一维正态分布"></a>一维正态分布</h3><p>标准正态分布N(0,1)</p>
+<ol>
+<li>概率密度 $\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$</li>
+<li>分布函数 $\Phi(x)=\int_{-\infty}^x\varphi(x)dx$</li>
+<li>$\Phi(u_\alpha)=1-\alpha$</li>
+</ol>
+<p>正态分布$N(\mu,\sigma^2)$</p>
+<ol>
+<li>若$X\sim N(\mu,\sigma^2),\frac{X-\mu}{\sigma}\sim N(0,1)$</li>
+<li>若$X\sim N(\mu,\sigma^2),aX+b\sim N(a\mu+b,(a\sigma)^2)$</li>
+<li>区间概率转化为标准正态分布求解</li>
+</ol>
+<h3 id="求Y-g-x-的分布律或概率分布"><a href="#求Y-g-x-的分布律或概率分布" class="headerlink" title="求Y=g(x)的分布律或概率分布"></a>求Y=g(x)的分布律或概率分布</h3><p>离散型 $P(y_k)=P(g(x_k))$</p>
+<p>连续型</p>
+<script type="math/tex; mode=display">
+F_Y(y)=P(Y\le y)=P(g(X)\le y)=\int_Gf_X(x)dx\\
+f_Y(y)=F_Y'(y)\\
+公式法要求g(x)严格单调且处处可导\\
+f_Y(y)=\left\{\begin{array}.f_X[h(y)]|h'(y)|,\alpha <y<\beta\\0,其他\end{array}\right.\\
+h(y)是g(x)的反函数，\alpha=min(g(-\infty),g(+\infty)),\beta=max(g(-\infty),g(+\infty))</script><h2 id="二维随机变量及其分布"><a href="#二维随机变量及其分布" class="headerlink" title="二维随机变量及其分布"></a>二维随机变量及其分布</h2><h3 id="连续型分布函数"><a href="#连续型分布函数" class="headerlink" title="连续型分布函数"></a>连续型分布函数</h3><p>定义 $F(x,y)=P\{X\le x,Y\le y\}$</p>
+<p>性质</p>
+<ol>
+<li>$0\le F(x,y)\le 1$</li>
+<li>$F(+\infty,+\infty)=1,F(-\infty,-\infty)=F(-\infty,y)=F(x,-\infty)=0$</li>
+<li>$F(x,y)$是x的单调不减函数，也是y的单调不减函数</li>
+<li>关于x右连续，关于y右连续</li>
+</ol>
+<p>边缘分布函数</p>
+<script type="math/tex; mode=display">
+F_X(x)=P\{X\le x\}=\lim_{y->+\infty}F(x,y)\\
+F_Y(y)=P\{Y\le y\}=\lim_{x->+\infty}F(x,y)</script><p>若x，y相互独立$\forall x,y,F(x,y)=F_X(x)F_Y(y)$</p>
+<h3 id="连续型概率分布"><a href="#连续型概率分布" class="headerlink" title="连续型概率分布"></a>连续型概率分布</h3><p>联合概率密度f(x,y)满足</p>
+<ol>
+<li>$f(x,y\ge 0$</li>
+<li>$\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(u,v)dudv=1$</li>
+</ol>
+<p>边缘概率密度</p>
+<script type="math/tex; mode=display">
+f_X(x)=\int_{-\infty}^{+\infty}f(x,y)dy\\f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)dx</script><p>独立性，若X,Y独立$f(x,y)=f_X(x)f_Y(y)$</p>
+<p>分布函数和概率密度的关系</p>
+<script type="math/tex; mode=display">
+f(x,y)=\frac{\partial^2F(x,y)}{\partial x\partial y}\\
+F(x,y)=\int_{-\infty}^{x}\int_{-\infty}^{y}f(x,y)dxdy</script><p>$P\{(X,Y)\in D\}=\int\int_Df(x,y)dxdy$</p>
+<h3 id="离散型分布律"><a href="#离散型分布律" class="headerlink" title="离散型分布律"></a>离散型分布律</h3><p>联合分布律 $P\{X=x_i,Y=y_j\}=p_{ij}$</p>
+<p>边缘分布律</p>
+<script type="math/tex; mode=display">
+P\{X=x_i\}=p_i=\sum_{j=1}^{\infty}p_{ij}\\
+P\{Y=y_j\}=p_j=\sum_{i=1}^{\infty}p_{ij}</script><p>若x，y相互独立$p_{ij}=p_ip_j$</p>
+<h3 id="条件分布"><a href="#条件分布" class="headerlink" title="条件分布"></a>条件分布</h3><p>即用概率密度表达贝叶斯公式</p>
+<p>离散型</p>
+<script type="math/tex; mode=display">
+P\{Y=y_j|X=x_i\}=\frac{P\{X=x_i,Y=y_j\}}{P\{X=x_i\}}\\
+P\{X=x_i|Y=y_j\}=\frac{P\{X=x_i,Y=y_j\}}{P\{Y=y_j\}}</script><p>连续型</p>
+<script type="math/tex; mode=display">
+f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}\\f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}</script><h3 id="求Z-g-x-y-的分布律或概率密度"><a href="#求Z-g-x-y-的分布律或概率密度" class="headerlink" title="求Z=g(x,y)的分布律或概率密度"></a>求Z=g(x,y)的分布律或概率密度</h3><p>离散型，确定$z_i$的取值即可</p>
+<p>连续型</p>
+<script type="math/tex; mode=display">
+F_Z(z)=P\{Z\le z\}=P\{g(x,y)\le z\}=\int\int_{g(x,y)\le z}f(x,y)dxdy\\
+f_Z(z)=F'_Z(z)</script><p>连续型的函数分布的几个公式</p>
+<p>Z=X+Y</p>
+<script type="math/tex; mode=display">
+当XY不独立：f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)dx=\int_{-\infty}^{+\infty}f(z-y,y)dy\\
+当XY独立，f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx=\int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy</script><p>Z=aX+bY</p>
+<script type="math/tex; mode=display">
+当XY不独立：f_Z(z)=\frac{1}{|b|}\int_{-\infty}^{+\infty}f(x,\frac{z-ax}{b})dx=\int_{-\infty}^{+\infty}f(\frac{z-by}{a},y)dy\\
+当XY独立，f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(\frac{z-ax}{b})dx=\int_{-\infty}^{+\infty}f_X(\frac{z-by}{a})f_Y(y)dy</script><p>设X,Y相互独立，Z=max(X,Y)分布函数为</p>
+<script type="math/tex; mode=display">
+F_{max}(z)=P\{max(X,Y)\le z\}=P\{X\le z,Y\le z\}=F_X(x)F_Y(y)\\</script><p>设X,Y相互独立，Z=min(X,Y)分布函数为</p>
+<script type="math/tex; mode=display">
+F_{min}(z)=P\{min(X,Y)\le z\}=1-P\{X\ge z,Y\ge z\}=1-[1-F_X(x)][1-F_Y(y)]\\</script><p>X,Y独立，集中随机变量的和</p>
+<script type="math/tex; mode=display">
+X\sim P(\lambda_1),Y\sim P(\lambda_2)\Rightarrow X+Y\sim P(\lambda_1+\lambda_2)\\
+X\sim B(m,p),Y\sim B(n,p)\Rightarrow X+Y\sim B(n+m,p)\\
+X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)\Rightarrow X+Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2),aX+bY\sim N(a\mu_1+b\mu_2,a^2\sigma_1^2+b^2\sigma_2^2)\\
+X\sim \chi^2(n_1),Y\sim \chi(n_2)\Rightarrow X+Y\sim \chi(n_1+n_2)\\</script><p>二维均匀分布</p>
+<script type="math/tex; mode=display">
+f(x,y)=\left\{\begin{array}f\frac{1}{S_D},(x,y)\in D\\0,其他\end{array}\right.</script><h3 id="二维正态分布"><a href="#二维正态分布" class="headerlink" title="二维正态分布"></a>二维正态分布</h3><script type="math/tex; mode=display">
+f(x,y)=\frac{1}{2\pi \sigma_1\sigma_2\sqrt{1-\rho^2}}e^{\frac{-1}{2(1-\rho^2)}[\frac{(x-\mu_1)^2}{\sigma_1^2}-2\rho\frac{(x-\mu_1)(x-\mu_2)}{\sigma_1\sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]}</script><p>若$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho),X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)$</p>
+<p>若$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$,XY相互独立是$\rho=0$的充要条件</p>
+<h2 id="随机变量的数字特征"><a href="#随机变量的数字特征" class="headerlink" title="随机变量的数字特征"></a>随机变量的数字特征</h2><h3 id="数学期望"><a href="#数学期望" class="headerlink" title="数学期望"></a>数学期望</h3><script type="math/tex; mode=display">
+E(X)=\sum_{k=1}^{\infty}x_kp_k,离散型\\
+E(X)=\int_{-\infty}^{+\infty}xf(X)dx,连续型\\
+E(Y)=E[g(X)]=\sum_{k=1}^\infty g(x_k)p_k，离散型\\
+E(Y)=E[g(x)]=\int_{-\infty}^{+\infty}g(x)f(x)dx，连续型\\
+E(Z)=E[g(X,Y)]=\sum_{i=1}^\infty \sum_{f=1}^\infty g(x_i,y_j)p_{ij}，离散型\\
+E(Z)=E[g(X,Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x.y)f(x,y)dx，连续型\\
+E[g(X)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x)f_X(x)dx\\
+E[h(Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(y)f_Y(y)dx\\
+E[X]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xf_X(x)dx\\
+E[Y]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yf_Y(y)dx\\</script><p>性质</p>
+<ol>
+<li>设c为常数。$E(c)=c$</li>
+<li>设c为常数。$E(cX)=cE(X)$</li>
+<li>$E(X\pm Y)=E(X)\pm E(Y)$</li>
+<li>X,Y相互独立$E(XY)=E(X)E(Y)$</li>
+</ol>
+<h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><script type="math/tex; mode=display">
+D(X)=E[(X-EX)^2]=\left\{\begin{array}.\sum_{k=1}^\infty(x_k-E(X))^2p_k\\\int_{-\infty}^{+\infty}(x-E(X))^2f(x)dx\end{array}\right.\\
+D(X)=E(x^2+2EXx+EX^2)=E(x^2)-2EX*E(X)+EX^2=E(X^2)-EX^2\\</script><p>性质</p>
+<ol>
+<li>设C为常数，$D(C)=0$</li>
+<li>设C为常数,$D(CX)=E[(CX-E(CX))^2]=E[C^2(X-EX)]=C^2E[X-E(X)]=C^2D(X)$</li>
+<li>$D(X+C)=E[(X+C-E(X+C))^2]=E[(X+C-C+EX]=D(X)$</li>
+<li>如果XY相互独立有$D(X\pm Y)=E[(X+Y-E(X+Y))^2]=E[(X-EX+Y-EY)^2]\\=E[(X-EX)^2+(Y-EY)^2\pm 2(X-EX)(Y-EY)]=D(X)+D(Y)\pm 2E[XY+EXEY-XEY-YEX]=D(X)+D(Y)$</li>
+</ol>
+<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><script type="math/tex; mode=display">
+Cov(X,Y)=E[(X-EX)(Y-EY)]=E(XY)-E(X)E(Y)</script><p>性质</p>
+<ol>
+<li>若X,Y相互独立有$E(XY)=E(X)E(Y)\therefore Cov(X,Y)=0$，亦XY不相关，但不相关不一定独立</li>
+<li>$Cov(X,X)=E[(X-EX)(X-EX)]=E[(X-EX)^2]=D(X)$</li>
+<li>$D(X+Y)=D(X)+D(Y)\pm2E[(X-EX)(Y-EY)]=D(X)+D(Y)\pm Cov(X,Y)$</li>
+<li>$Cov(X,Y)=E[(X-EX)(Y-EX)]=E[(Y-EY)(X-EX)]=Cov(Y,X)$</li>
+<li>$Cov(aX,bY)=E[(aX-E(aX))(bY-E(bY))]=abE[(X-EX)(Y-EY)]=abCov(X,Y)$</li>
+<li>$Cov(X_1+X_2,Y)=E[(X_1+X_2-E(X_1+X_2))(Y-EY)]\\=E[(X_1-E(X_1))(Y-EY)]+E[(X_2-EX_2)(Y-EY)]=Cov(X_1,Y)+Cov(X_2,Y)$</li>
+<li>$Cov(X,c)=E[(X-EX)(C-EC)]=E(0)=0$</li>
+</ol>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><script type="math/tex; mode=display">
+\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{D(X)D(Y)}}</script><p>性质</p>
+<ol>
+<li>$\rho_{XY}=\frac{E(XY)-E(X)E(Y)}{\sqrt{(E(X^2)-EX^2)(E(Y^2)-EY^2)}}\therefore |\rho_{XY}|\le 1$</li>
+<li>$|\rho_{XY}|=1$则存在a,b是的$P\{Y=a+bX\}=1$</li>
+</ol>
+<p>等价命题</p>
+<p>$\rho_{XY}=0\Lrarr Cov(X,Y)=0\Lrarr E(XY)=E(X)E(Y)\Lrarr D(X\pm Y)=D(X)+D(Y)$</p>
+<h2 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h2><h3 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h3><script type="math/tex; mode=display">
+设E(X),D(X)存在，则对任意\varepsilon>0有\\
+P\{|X-E(X)|\ge\varepsilon\}\le \frac{D(X)}{\varepsilon^2}或\\
+P\{|X-E(X)|\lt \varepsilon\}\ge 1-\frac{D(X)}{\varepsilon^2}\\
+证明:P\{|X-E(X)|\ge\varepsilon\}=\int_{|x-EX|>\varepsilon}f(x)dx\le\int_{|x-EX|>\varepsilon}\frac{(x-EX)^2}{\varepsilon^2}f(x)dx\le\frac{1}{\varepsilon^2}\int_{-\infty}^{+\infty}(x-EX)^2f(X)\le \frac{D(X)}{\varepsilon^2}</script><h3 id="大数定理"><a href="#大数定理" class="headerlink" title="大数定理"></a>大数定理</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>定理名</th>
+<th>条件</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>切比雪夫大数定理</td>
+<td>$X_1,\dots,X_n$独立数学期望存在，方差存在且有界</td>
+<td>$\frac{1}{n}\sum_{i=1}^nX_i依概率收敛于E(\frac{1}{n}\sum_{i=1}^nX_i)$</td>
+</tr>
+<tr>
+<td>推论</td>
+<td>$X_1,\dots,X_n$独立，相同数学期望$\mu$，相同方差$\sigma^2$</td>
+<td>$\frac{1}{n}\sum_{i=1}^nX_i依概率收敛于E(\frac{1}{n}\sum_{i=1}^nX_i)=\mu$</td>
+</tr>
+<tr>
+<td>伯努利大数定理</td>
+<td>$ n_A\sim B(n,p) $</td>
+<td>$\frac{n_A}{n}依概率收敛于E(\frac{n_A}{n})=p$</td>
+</tr>
+<tr>
+<td>辛钦大数定理</td>
+<td>$X_1,\dots,X_n$独立，服从同一分布，数学期望$\mu$</td>
+<td>$\frac{1}{n}\sum_{i=1}^nX_i依概率收敛于E(\frac{1}{n}\sum_{i=1}^nX_i)=\mu$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="中心极限定理-1"><a href="#中心极限定理-1" class="headerlink" title="中心极限定理"></a>中心极限定理</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>定理名</th>
+<th>条件</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立同分布中心极限定理</td>
+<td>$X_1,\dots,X_n$独立同分布，数学期望$\mu$，方差$\sigma^2\ne0$</td>
+<td>$\sum_{i=1}^nX_i\sim N(n\mu,n\sigma^2)$</td>
+</tr>
+<tr>
+<td>棣莫弗-拉普拉斯中心极限定理</td>
+<td>$Y_n\sim B(n,p)$</td>
+<td>$Y_n\sim N(np,np(1-p))$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="样本及抽样分布"><a href="#样本及抽样分布" class="headerlink" title="样本及抽样分布"></a>样本及抽样分布</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>样本：$X_1,X_2,\dots,X_n$独立与总体X同分布，n为样本容量，对应值$x_i$为样本观测值<br>样本函数：$X_1,X_2,\dots,X_n$的函数$g(X_1,X_2,\dots,X_n)$<br>统计量：不含未知参数的样本函数<br>样本的三个特点：<br>    1)随机性:  每个个体有同等机会被抽取到.<br>    2)代表性:  每次取出的样本与总体有相同分布.<br>    3)独立性:  各次抽样是相互独立的.</p>
+<h3 id="常用统计量"><a href="#常用统计量" class="headerlink" title="常用统计量"></a>常用统计量</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>统计量</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>样本均值</td>
+<td>$\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$</td>
+</tr>
+<tr>
+<td>样本方差</td>
+<td>$S^2=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2=\frac{1}{n-1}\sum_{i=1}^{n}X_i^2-n\bar{X}^2$</td>
+</tr>
+<tr>
+<td>样本标准差</td>
+<td>$S=\sqrt{S^2}$</td>
+</tr>
+<tr>
+<td>样本k阶原点矩</td>
+<td>$A_k=\frac{1}{n}\sum_{i=1}^{n}X_i^k$</td>
+</tr>
+<tr>
+<td>样本k阶中心距</td>
+<td>$B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\bar X)^k$</td>
+</tr>
+<tr>
+<td>样本最小值</td>
+<td>$X_{(1)}=min\{X_1,\dots,X_n\}$</td>
+</tr>
+<tr>
+<td>样本最大值</td>
+<td>$X_{(n)}=max\{X_1,\dots,X_n\}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script type="math/tex; mode=display">
+E(\bar X)=\frac{1}{n}\sum_{i=1}^nE(X_i)=E(X)\\
+D(\bar X)=\frac{1}{n^2}\sum_{i=1}^nD(X_i)=\frac{D(X)}{n}\\
+E(S^2)=\frac{1}{n-1}\sum_{i=1}^nE[(X_i-\bar X)^2]=\frac{1}{n-1}E(\sum_{i=1}^nX_i^2+n\bar X^2-2n\bar X\sum_{i=1}^n\frac{X_i}{n})\\=\frac{1}{n-1}E(\sum_{i=1}^nX_i^2-n\bar X^2)=\frac{1}{n-1}\{\sum_{i=1}^{n}[D(X_i)+(EX_i)^2]-n[D(\bar X)+(E\bar X)^2]\}=\sigma^2=D(X)\\
+E(B_2)=\frac{n-1}{n}D(X)\\
+如果X\sim N(\mu,\sigma^2),D(S^2)=\frac{2\sigma^2}{n-1}</script><h3 id="chi-2-分布"><a href="#chi-2-分布" class="headerlink" title="$\chi^2$分布"></a>$\chi^2$分布</h3><script type="math/tex; mode=display">
+X_1,X_2,\dots,X_n独立且服从N(0,1)\\
+\chi^2=X_1^2+X_2^2+\dots+X_n^2\sim\chi^2(n)</script><p>性质</p>
+<ol>
+<li>$E(\chi^2(n))=n,D(\chi^2(n))=2n$</li>
+<li>$X\sim\chi^2(n_1),Y\sim\chi^2(n_2)且X,Y独立,X+Y~\sim\chi^2(n_1+n_2)$</li>
+</ol>
+<p>卡方分布的上$\alpha$分位点</p>
+<p>$P\{\chi^2(n)&gt;\chi^2_\alpha(n)\}=\alpha$</p>
+<h3 id="t分布"><a href="#t分布" class="headerlink" title="t分布"></a>t分布</h3><script type="math/tex; mode=display">
+X\sim N(0,1),Y\sim\chi^2(n)\\
+t=\frac{X}{\sqrt{Y/n}}\sim t(n)</script><p>性质</p>
+<p>$E(t(n))=0$</p>
+<p>t分布的上$\alpha$分位点</p>
+<p>$P\{t(n)&gt;t_\alpha(n)\}=\alpha$</p>
+<h3 id="F分布"><a href="#F分布" class="headerlink" title="F分布"></a>F分布</h3><script type="math/tex; mode=display">
+X\sim \chi^2(n_1),Y\sim\chi^2(n_2)\\
+t=\frac{X/n_1}{Y/n_2}\sim F(n_1,n_2)</script><p>性质</p>
+<p>$F(n_1,n_2),\frac{1}{F}\sim F(n_2,n_1)$</p>
+<p>t分布的上$\alpha$分位点</p>
+<p>$P\{F(n_1,n_2),&gt;F_\alpha(n_1,n_2)\}=\alpha$</p>
+<p>$F_\alpha(n_1,n_2)=\frac{1}{F_{1-\alpha}(n_2,n_1)}$</p>
+<h3 id="正态总体的抽样分布定理"><a href="#正态总体的抽样分布定理" class="headerlink" title="正态总体的抽样分布定理"></a>正态总体的抽样分布定理</h3><script type="math/tex; mode=display">
+\bar X\sim N(\mu,\frac{\sigma^2}{n})\\
+\frac{\bar X-\mu}{\sigma/\sqrt{n}}\sim N(0,1)\\
+\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\mu)^2=\sum_{i=1}^n (\frac{X_i-\mu}{\sigma})^2\sim \chi^2(n)\\
+\frac{(n-1)S^2}{\sigma^2}\sim \chi^2(n-1)\\
+\frac{\bar X-\mu}{S/\sqrt n}=(\frac{\bar X-\mu}{\sigma/\sqrt{n}})/(\frac{\sqrt {n-1}S}{\sqrt{n-1}\sigma })\sim t(n-1)</script><script type="math/tex; mode=display">
+两个正态总体X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_1,\sigma_2^2)\\
+\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\sim N(0,1)\\
+\frac{n_2\sigma_2^2\sum_{i=1}^{n_2}(X_i-\mu_2)^2}{n_1\sigma_1^2\sum_{i=1}^{n_1}(X_i-\mu_1)^2}\sim F(n_1,n_2)\\
+\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma^2_2}\sim F(n_1-1,n_2-1)</script><h2 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h2><h3 id="矩估计法"><a href="#矩估计法" class="headerlink" title="矩估计法"></a>矩估计法</h3><script type="math/tex; mode=display">
+A_k=\frac{1}{n}\sum_{i=1}^n X_i^k依概率收敛于E(X^k)</script><h3 id="最大似然估计法"><a href="#最大似然估计法" class="headerlink" title="最大似然估计法"></a>最大似然估计法</h3><p>一个整体</p>
+<script type="math/tex; mode=display">
+L(\theta)=\left\{\begin{array}.p(x_1)p(x_2)\dots p(x_n),离散\\f(x_1)f(x_2)\dots f(x_n),连续\end{array}\right.\\
+解\frac{dlnL(\theta)}{d\theta}=0，所得解即为最大似然估计量值</script><p>两个整体</p>
+<script type="math/tex; mode=display">
+L(\theta_1,\theta_2)=\left\{\begin{array}.p(x_1)p(x_2)\dots p(x_n),离散\\f(x_1)f(x_2)\dots f(x_n),连续\end{array}\right.\\
+解\left\{\begin{array}.\frac{dlnL(\theta_1,\theta_2)}{d\theta_1}=0\\\frac{dlnL(\theta_1,\theta_2)}{d\theta_2}=0\end{array}\right.，所得解即为最大似然估计量值</script><p>特殊情况——似然函数单调</p>
+<p>使得似然函数取最大值的点就是最大似然估计值</p>
+<h3 id="估计量评选标准"><a href="#估计量评选标准" class="headerlink" title="估计量评选标准"></a>估计量评选标准</h3><p>无偏性：若$E(\hat\theta)=\theta$即是无偏的</p>
+<p>有效性：$D(\hat\theta)$越小越有效</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/课程笔记/" rel="tag"># 课程笔记</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/08/17/算法设计与分析/" rel="next" title="算法设计与分析笔记">
+                  <i class="fa fa-chevron-left"></i> 算法设计与分析笔记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/12/11/编译原理-笔记/" rel="prev" title="编译原理-笔记">
+                  编译原理-笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率论与数理统计笔记"><span class="nav-number">1.</span> <span class="nav-text">概率论与数理统计笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#随机事件及其概率"><span class="nav-number">1.1.</span> <span class="nav-text">随机事件及其概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随机事件的关系和运算"><span class="nav-number">1.1.1.</span> <span class="nav-text">随机事件的关系和运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个结论"><span class="nav-number">1.1.2.</span> <span class="nav-text">几个结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机变量及其分布"><span class="nav-number">1.2.</span> <span class="nav-text">随机变量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布函数"><span class="nav-number">1.2.1.</span> <span class="nav-text">分布函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型随机变量分布律"><span class="nav-number">1.2.2.</span> <span class="nav-text">离散型随机变量分布律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续型随机变量的概率密度"><span class="nav-number">1.2.3.</span> <span class="nav-text">连续型随机变量的概率密度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一维正态分布"><span class="nav-number">1.2.4.</span> <span class="nav-text">一维正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求Y-g-x-的分布律或概率分布"><span class="nav-number">1.2.5.</span> <span class="nav-text">求Y=g(x)的分布律或概率分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维随机变量及其分布"><span class="nav-number">1.3.</span> <span class="nav-text">二维随机变量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续型分布函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">连续型分布函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续型概率分布"><span class="nav-number">1.3.2.</span> <span class="nav-text">连续型概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型分布律"><span class="nav-number">1.3.3.</span> <span class="nav-text">离散型分布律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件分布"><span class="nav-number">1.3.4.</span> <span class="nav-text">条件分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求Z-g-x-y-的分布律或概率密度"><span class="nav-number">1.3.5.</span> <span class="nav-text">求Z=g(x,y)的分布律或概率密度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维正态分布"><span class="nav-number">1.3.6.</span> <span class="nav-text">二维正态分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机变量的数字特征"><span class="nav-number">1.4.</span> <span class="nav-text">随机变量的数字特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学期望"><span class="nav-number">1.4.1.</span> <span class="nav-text">数学期望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差"><span class="nav-number">1.4.2.</span> <span class="nav-text">方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差"><span class="nav-number">1.4.3.</span> <span class="nav-text">协方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关系数"><span class="nav-number">1.4.4.</span> <span class="nav-text">相关系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中心极限定理"><span class="nav-number">1.5.</span> <span class="nav-text">中心极限定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切比雪夫不等式"><span class="nav-number">1.5.1.</span> <span class="nav-text">切比雪夫不等式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大数定理"><span class="nav-number">1.5.2.</span> <span class="nav-text">大数定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中心极限定理-1"><span class="nav-number">1.5.3.</span> <span class="nav-text">中心极限定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本及抽样分布"><span class="nav-number">1.6.</span> <span class="nav-text">样本及抽样分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.6.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用统计量"><span class="nav-number">1.6.2.</span> <span class="nav-text">常用统计量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-2-分布"><span class="nav-number">1.6.3.</span> <span class="nav-text">$\chi^2$分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t分布"><span class="nav-number">1.6.4.</span> <span class="nav-text">t分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F分布"><span class="nav-number">1.6.5.</span> <span class="nav-text">F分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正态总体的抽样分布定理"><span class="nav-number">1.6.6.</span> <span class="nav-text">正态总体的抽样分布定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数估计"><span class="nav-number">1.7.</span> <span class="nav-text">参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩估计法"><span class="nav-number">1.7.1.</span> <span class="nav-text">矩估计法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然估计法"><span class="nav-number">1.7.2.</span> <span class="nav-text">最大似然估计法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#估计量评选标准"><span class="nav-number">1.7.3.</span> <span class="nav-text">估计量评选标准</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/1564282856-carbon.png"
+      alt="Paof Yueng">
+  <p class="site-author-name" itemprop="name">Paof Yueng</p>
+  <div class="site-description" itemprop="description">PAOFBLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/PaofYueng" title="GitHub &rarr; https://github.com/PaofYueng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PaofYueng</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+</body>
+</html>
