@@ -206,6 +206,709 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2021/09/19/AC自动机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2021/09/19/AC自动机/" class="post-title-link" itemprop="url">未命名</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2021-09-19 04:48:24 / 修改时间：04:51:23" itemprop="dateCreated datePublished" datetime="2021-09-19T04:48:24Z">2021-09-19</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn =  <span class="number">2</span>*<span class="number">1e6</span>+<span class="number">9</span>;</span><br><span class="line"><span class="keyword">int</span> trie[maxn][<span class="number">26</span>]; <span class="comment">//字典树</span></span><br><span class="line"><span class="keyword">int</span> cntword[maxn];  <span class="comment">//记录该单词出现次数</span></span><br><span class="line"><span class="keyword">int</span> fail[maxn];     <span class="comment">//失败时的回溯指针</span></span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertWords</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> root = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> next = s[i] - <span class="string">'a'</span>;</span><br><span class="line">        <span class="keyword">if</span>(!trie[root][next])</span><br><span class="line">            trie[root][next] = ++cnt;</span><br><span class="line">        root = trie[root][next];</span><br><span class="line">    &#125;</span><br><span class="line">    cntword[root]++;      <span class="comment">//当前节点单词数+1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getFail</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;      <span class="comment">//将第二层所有出现了的字母扔进队列</span></span><br><span class="line">        <span class="keyword">if</span>(trie[<span class="number">0</span>][i])&#123;</span><br><span class="line">            fail[trie[<span class="number">0</span>][i]] = <span class="number">0</span>;</span><br><span class="line">            q.push(trie[<span class="number">0</span>][i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//fail[now]    -&gt;当前节点now的失败指针指向的地方</span></span><br><span class="line">tire[now][i] -&gt; 下一个字母为i+<span class="string">'a'</span>的节点的下标为tire[now][i]</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;      <span class="comment">//查询26个字母</span></span><br><span class="line">            <span class="keyword">if</span>(trie[now][i])&#123;</span><br><span class="line">                <span class="comment">//如果有这个子节点为字母i+'a',则</span></span><br><span class="line"><span class="comment">//让这个节点的失败指针指向(((他父亲节点)的失败指针所指向的那个节点)的下一个节点)</span></span><br><span class="line">                <span class="comment">//有点绕,为了方便理解特意加了括号</span></span><br><span class="line"></span><br><span class="line">                fail[trie[now][i]] = trie[fail[now]][i];</span><br><span class="line">                q.push(trie[now][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span><span class="comment">//否则就让当前节点的这个子节点</span></span><br><span class="line">                <span class="comment">//指向当前节点fail指针的这个子节点</span></span><br><span class="line">                trie[now][i] = trie[fail[now]][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">0</span>,ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)&#123;    <span class="comment">//遍历文本串</span></span><br><span class="line">        now = trie[now][s[i]-<span class="string">'a'</span>];  <span class="comment">//从s[i]点开始寻找</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=now;j &amp;&amp; cntword[j]!=<span class="number">-1</span>;j=fail[j])&#123;</span><br><span class="line">            <span class="comment">//一直向下寻找,直到匹配失败(失败指针指向根或者当前节点已找过).</span></span><br><span class="line">            ans += cntword[j];</span><br><span class="line">            cntword[j] = <span class="number">-1</span>;    <span class="comment">//将遍历国后的节点标记,防止重复计算</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s ;</span><br><span class="line">        insertWords(s);</span><br><span class="line">    &#125;</span><br><span class="line">    fail[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    getFail();</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; query(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2021/09/14/数据结构-考研/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paof Yueng">
+      <meta itemprop="description" content="PAOFBLOG">
+      <meta itemprop="image" content="/images/1564282856-carbon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寻求力量之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2021/09/14/数据结构-考研/" class="post-title-link" itemprop="url">数据结构-考研</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2021-09-13 17:00:00" itemprop="dateCreated datePublished" datetime="2021-09-13T17:00:00Z">2021-09-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-15 13:39:30" itemprop="dateModified" datetime="2021-10-15T13:39:30Z">2021-10-15</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h1><p>一、总体要求 《数据结构》是计算机程序设计的重要理论技术基础，是计算机科学与技术学科的核心课程。要 求： 1.理解数据结构的基本概念；掌握数据的逻辑结构、存储结构及其差异，以及各种基本操作的实现。 2.掌握基本的数据处理原理和方法的基础上，能够分析算法的时间复杂度与空间复杂度。 3.能够选择合适的数据结构和算法策略进行问题求解，具备采用 C 或 C++或 JAVA 语言设计 与实现算法的能力。 </p>
+<p>二、内容 </p>
+<ol>
+<li>数据结构及算法的相关概念和术语 <ol>
+<li>数据结构及算法的概念 </li>
+<li>数据的逻辑结构和存储结构</li>
+<li>算法的定义及特性 </li>
+<li>算法时间复杂度和空间复杂度的分析方法 </li>
+</ol>
+</li>
+<li>线性表 <ol>
+<li>线性表的定义 </li>
+<li>线性表的基本操作及在顺序存储及链式存储上的实现 </li>
+<li>各种变形链表（循环链表、双向链表、带头结点的链表等）的表示和基本操作的实现 </li>
+<li>递归过程的特点及实现方法 </li>
+<li>栈和队列的基本概念；栈和队列的顺序存储结构、链式储存结构及其存储特点 </li>
+<li>栈和队列的应用 </li>
+<li>循环队列的判满、判空方法 </li>
+<li>特殊矩阵的压缩储存</li>
+</ol>
+</li>
+<li>广义表的基本概念、存储结构和基本操作 </li>
+<li>树和二叉树 <ol>
+<li>树与森林的基本概念 </li>
+<li>树与森林的存储结构及遍历 </li>
+<li>二叉树的定义及 6 大性质 </li>
+<li>二叉树的顺序储存与链式储存结构 </li>
+<li>二叉树的先序、中序、后序三种遍历方式的关系以及实现；层序遍历的实现</li>
+<li>线索二叉树的基本概念与构造方法 </li>
+<li>树与二叉树的应用：二叉排序树；二叉平衡树；哈夫曼树与哈夫曼编码 </li>
+</ol>
+</li>
+<li>图 <ol>
+<li>图的基本概念和术语 </li>
+<li>图的存储结构：邻接矩阵、邻接表、逆邻接表 </li>
+<li>遍历算法：深度优先搜索算法和广度优先搜索算法 </li>
+<li>应用：最小生成树；最短路径，拓扑排序和关键路径 </li>
+</ol>
+</li>
+<li>查找 <ol>
+<li>查找的基本概念；静态查找与动态查找 </li>
+<li>顺序查找、折半查找、索引查找 </li>
+<li>哈希查找 哈希函数的基本构造方法，解决地址冲突的基本策略 </li>
+<li>各种查找算法的时间复杂度和空间复杂度 </li>
+</ol>
+</li>
+<li>排序 （1）排序的基本概念 （2）插入排序 （3）简单选择排序 （4）希尔排序 （5）快速排序 （6）堆排序 （7）归并排序 （8）基数排序 （9）排序算法的比较 </li>
+</ol>
+<p>其中算法题分为阅读、修改和编写算法三类： </p>
+<p>(1)阅读算法：阅读指定算法，回答使用的数据结构、算法实现的功能或执行的结果； </p>
+<p>(2)修改算法：阅读指定算法，指出算法的错误并修正；指出算法的不足并改进；按给定功能填写 算法空缺部分；</p>
+<p> (3)编写算法：根据算法功能要求，选择或者设计合适的数据结构，用程序设计语言编写算法，实 现指定功能。 以上皆可分析给定或者设计的算法时空复杂度。</p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>考试内容：</p>
+<p>数据结构及算法的相关概念和术语 </p>
+<ol>
+<li>数据结构及算法的概念 </li>
+<li>数据的逻辑结构和存储结构</li>
+<li>算法的定义及特性 </li>
+<li>算法时间复杂度和空间复杂度的分析方法 </li>
+</ol>
+<h2 id="数据结构的基本概念"><a href="#数据结构的基本概念" class="headerlink" title="数据结构的基本概念"></a>数据结构的基本概念</h2><h3 id="基本概念和术语"><a href="#基本概念和术语" class="headerlink" title="基本概念和术语"></a>基本概念和术语</h3><ol>
+<li>数据，信息的载体</li>
+<li>数据元素，数据的基本单位</li>
+<li>数据对象，具有相同性质的数据元素的集合，例如整数集</li>
+<li>数据类型，一个值的集合和定义在此集合上的一组操作的总称<ol>
+<li>原子类型，不可再分</li>
+<li>结构类型，可以再分为若干数据类型</li>
+<li>抽象数据类型，抽象数据组织及与之相关的操作</li>
+</ol>
+</li>
+<li>数据结构，相互之间存在一种或多种特定关系的数据元素的集合，包括逻辑结构，存储结构和数据的运算。设计依赖于逻辑结构，实现依赖于存储结构。</li>
+</ol>
+<h3 id="数据结构三要素"><a href="#数据结构三要素" class="headerlink" title="数据结构三要素"></a>数据结构三要素</h3><ol>
+<li>数据的逻辑结构</li>
+<li>数据的存储结构，顺序，链式，索引，散列</li>
+<li>数据的运算</li>
+</ol>
+<h2 id="算法和算法评价"><a href="#算法和算法评价" class="headerlink" title="算法和算法评价"></a>算法和算法评价</h2><h3 id="算法的基本概念"><a href="#算法的基本概念" class="headerlink" title="算法的基本概念"></a>算法的基本概念</h3><p>对特定问题求解步骤的一种描述，指令的有限序列，每条指令代表一个或多个操作</p>
+<p>五个特性：</p>
+<ol>
+<li>有穷性：有穷时间，有穷步骤</li>
+<li>确定性：每条指令都有确切的含义，相同输入得到相同的输出</li>
+<li>可行性：操作都可由已经实现的基本运算执行有限次来实现</li>
+<li>输入</li>
+<li>输出</li>
+</ol>
+<p>好的算法</p>
+<ol>
+<li>正确性</li>
+<li>可读性</li>
+<li>健壮性</li>
+<li>效率与低存储量需求</li>
+</ol>
+<h3 id="算法效率的度量"><a href="#算法效率的度量" class="headerlink" title="算法效率的度量"></a>算法效率的度量</h3><ol>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+</ol>
+<p>好的程序设计=好的数据结构+好的算法</p>
+<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><h2 id="线性表的定义和基本操作"><a href="#线性表的定义和基本操作" class="headerlink" title="线性表的定义和基本操作"></a>线性表的定义和基本操作</h2><h3 id="线性表的定义"><a href="#线性表的定义" class="headerlink" title="线性表的定义"></a>线性表的定义</h3><p><strong>相同数据类型</strong>的n个数据元素的<strong>有限</strong>序列，前驱，后继，表头，表尾</p>
+<p>元素个数有限，逻辑上的顺序性，每个元素都是单个元素，数据类型相同存储空间相同，重点在于元素间的逻辑关系。</p>
+<h3 id="线性表的基本操作"><a href="#线性表的基本操作" class="headerlink" title="线性表的基本操作"></a>线性表的基本操作</h3><p>初始化，求表长，按值查找，按位查找，插入操作，删除操作，输出操作，判空操作，销毁操作</p>
+<h2 id="线性表的顺序表示"><a href="#线性表的顺序表示" class="headerlink" title="线性表的顺序表示"></a>线性表的顺序表示</h2><h3 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h3><p>逻辑顺序与其物理顺序相同，逻辑上相邻物理上也相邻。</p>
+<h3 id="顺序表上基本操作的实现"><a href="#顺序表上基本操作的实现" class="headerlink" title="顺序表上基本操作的实现"></a>顺序表上基本操作的实现</h3><p>插入，删除，按值查找</p>
+<h2 id="线性表的链式表示"><a href="#线性表的链式表示" class="headerlink" title="线性表的链式表示"></a>线性表的链式表示</h2><h3 id="单链表的定义"><a href="#单链表的定义" class="headerlink" title="单链表的定义"></a>单链表的定义</h3><p>数据域+指针域、</p>
+<p>头节点指向线性表的第一个元素，头节点是链表的第一个节点</p>
+<p>头节点优点：</p>
+<p>无需特别处理第一个元素，空表非空表操作也统一</p>
+<h3 id="单链表上基本操作的实现"><a href="#单链表上基本操作的实现" class="headerlink" title="单链表上基本操作的实现"></a>单链表上基本操作的实现</h3><p>头插，尾插，按序号查找，按值查找，插入节点，删除，求表长</p>
+<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3><p>两个指针分别指向前驱与后继</p>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><ol>
+<li>循环单链表</li>
+<li>循环双链表</li>
+</ol>
+<p>注：头节点也在环上</p>
+<h3 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h3><p>用数组实现</p>
+<h3 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h3><ol>
+<li>读写方式，顺序表可以顺序存取和随机存取，而链表只能顺序存取</li>
+<li>逻辑结构和物理结构，物理上是否相邻</li>
+<li>查找、插入和删除操作，可能可以折半查找</li>
+<li>空间分配</li>
+</ol>
+<p>选取存储结构，总而言之考虑删除插入是否频繁</p>
+<ol>
+<li>基于存储的考虑</li>
+<li>基于运算的考虑</li>
+<li>基于环境的考虑</li>
+</ol>
+<h1 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h1><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的基本概念"><a href="#栈的基本概念" class="headerlink" title="栈的基本概念"></a>栈的基本概念</h3><ol>
+<li><p>栈的定义</p>
+<p>只允许在一栈顶进行插入或删除操作的线性表。</p>
+</li>
+<li><p>栈的基本操作</p>
+<p>初始化，判空，进栈，出栈，读取栈顶元素，销毁栈</p>
+</li>
+</ol>
+<h3 id="栈的顺序存储结构"><a href="#栈的顺序存储结构" class="headerlink" title="栈的顺序存储结构"></a>栈的顺序存储结构</h3><ol>
+<li><p>顺序栈的实现</p>
+<p>数组+栈顶指针</p>
+</li>
+<li><p>顺序栈的基本运算</p>
+<p>进栈：指针先+1，在送值</p>
+<p>出栈：先取栈顶元素，指针再减一</p>
+<p><strong>栈空：s.top==-1</strong></p>
+<p><strong>栈满：s.top==maxsize-1</strong></p>
+<p>栈长：s.top+1</p>
+</li>
+<li><p>共享栈</p>
+<p>栈底分别设置在共享空间的两端，栈顶向共享空间中间延伸</p>
+</li>
+</ol>
+<h3 id="栈的链式存储结构"><a href="#栈的链式存储结构" class="headerlink" title="栈的链式存储结构"></a>栈的链式存储结构</h3><p>出栈入栈都在表头上操作</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="队列的概念"><a href="#队列的概念" class="headerlink" title="队列的概念"></a>队列的概念</h3><ol>
+<li><p>队列的定义</p>
+<p>先进先出，队头允许删除，队尾允许插入</p>
+</li>
+<li><p>基本操作</p>
+<p>初始化，判空，入队，出队，读队头</p>
+</li>
+</ol>
+<h3 id="队列的顺序存储"><a href="#队列的顺序存储" class="headerlink" title="队列的顺序存储"></a>队列的顺序存储</h3><ol>
+<li><p>队列的顺序存储</p>
+<p>数组+队头队尾指针</p>
+<p>存在存储空间仍有剩余，但队尾已经造成数组溢出</p>
+</li>
+<li><p>循环队列</p>
+<p>多出取余操作，但此时无法直接判断队空还是队满</p>
+<p>有三种处理方法：</p>
+<ol>
+<li>牺牲一个存储单元，约定<strong>队头指针在队尾指针的下一位置作为队满的标志</strong></li>
+<li>增加表示队内元素个数的标志</li>
+<li>区别删除和增加，若是删除导致的队头和队尾相同则是队空，反之为队满</li>
+</ol>
+</li>
+<li><p>循环队列的操作</p>
+</li>
+</ol>
+<h3 id="队列的链式存储结构"><a href="#队列的链式存储结构" class="headerlink" title="队列的链式存储结构"></a>队列的链式存储结构</h3><ol>
+<li><p>队列的链式存储</p>
+<p>头指针指向队头结点，尾指针指向队尾，<strong>使用带头节点的链式队列实现更方便</strong></p>
+</li>
+<li><p>链式队列的基本操作</p>
+</li>
+</ol>
+<h3 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h3><p>指两端都能进出的队列</p>
+<p>输出受限：两端可输入一端可输出<br>输入受限：两端可输出一端可输入</p>
+<h2 id="栈和队列的应用"><a href="#栈和队列的应用" class="headerlink" title="栈和队列的应用"></a>栈和队列的应用</h2><h3 id="栈在括号匹配中的应用"><a href="#栈在括号匹配中的应用" class="headerlink" title="栈在括号匹配中的应用"></a>栈在括号匹配中的应用</h3><ol>
+<li>初始设置一个空栈</li>
+<li>若是右括号，或者与栈顶匹配，出栈一个元素，或是不合法</li>
+<li>若是左括号，压入栈顶</li>
+</ol>
+<h3 id="栈在表达式求值中的应用"><a href="#栈在表达式求值中的应用" class="headerlink" title="栈在表达式求值中的应用"></a>栈在表达式求值中的应用</h3><p>可用于后缀表达式求解</p>
+<h3 id="栈在递归中的应用"><a href="#栈在递归中的应用" class="headerlink" title="栈在递归中的应用"></a>栈在递归中的应用</h3><p>保存现场</p>
+<h3 id="队列在层次遍历中的应用"><a href="#队列在层次遍历中的应用" class="headerlink" title="队列在层次遍历中的应用"></a>队列在层次遍历中的应用</h3><p>BFS实现依赖队列</p>
+<h3 id="队列在计算机系统中的应用"><a href="#队列在计算机系统中的应用" class="headerlink" title="队列在计算机系统中的应用"></a>队列在计算机系统中的应用</h3><p>缓冲区，资源竞争</p>
+<h2 id="特殊矩阵的压缩存储"><a href="#特殊矩阵的压缩存储" class="headerlink" title="特殊矩阵的压缩存储"></a>特殊矩阵的压缩存储</h2><h3 id="数组的定义"><a href="#数组的定义" class="headerlink" title="数组的定义"></a>数组的定义</h3><p>n个相同类型的数据元素构成的有限序列，每个数据元素成为一个数组元素，元素的序号称为下表，下标的取值范围称为数组的维界。</p>
+<p>数组是线性表的推广，一维可视作一个线性表，高维数组可视为定长线性表的线性表</p>
+<p>数组不能改变维数，除了初始化和销毁，只有存取元素和修改元素</p>
+<h3 id="数组的存储结构"><a href="#数组的存储结构" class="headerlink" title="数组的存储结构"></a>数组的存储结构</h3><p>数组的所有元素在内存中占用连续的内存空间</p>
+<p>一维</p>
+<script type="math/tex; mode=display">
+LOC(a_i)=LOC(a_0)+i\times L</script><p>多维分为行优先和列优先</p>
+<script type="math/tex; mode=display">
+行下标和列下标的范围[0,h_1],[0,h_2]\\
+行优先：LOC(a_{i,j})=LOC(a_{0,0})+[i\times (h_2+1)+j]\times L\\
+列优先：LOC(a_{i,j})=LOC(a_{0,0})+[j\times (h_1+1)+i]\times L</script><h3 id="矩阵的压缩存储"><a href="#矩阵的压缩存储" class="headerlink" title="矩阵的压缩存储"></a>矩阵的压缩存储</h3><ol>
+<li>对称矩阵，用一维数组保存主对角线和一个半区的数据</li>
+<li>三角矩阵，与对称矩阵相同，多记录一个常数项</li>
+<li>三对角矩阵，三条对角线上的数据按行优先的方式存放在一维数组</li>
+</ol>
+<h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p>对于每个非零元素记录其行号，列号和值。也可用十字链表法存储</p>
+<h1 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h1><h2 id="广义表的定义"><a href="#广义表的定义" class="headerlink" title="广义表的定义"></a>广义表的定义</h2><p>线性表的推广，也称为列表。每个元素可以时原子（单个元素）也可以是子表（广义表）。</p>
+<p>广义表非空时，第一个元素为表头，剩余元素称为表尾。</p>
+<h2 id="广义表的存储结构"><a href="#广义表的存储结构" class="headerlink" title="广义表的存储结构"></a>广义表的存储结构</h2><p>难以用顺序存储结构，往往用链式存储结构。</p>
+<h3 id="头尾链表存储表示"><a href="#头尾链表存储表示" class="headerlink" title="头尾链表存储表示"></a>头尾链表存储表示</h3><p>将数据元素分为两种类型，原子结点和表结点，封装在同一种数据类型中。</p>
+<p>当数据类型标识tag=1时，对象为表结点，结点内属性有表头指针，指向子表内部的第一个数据元素；与表尾指针，指向表内（与自己同层的）的下一个元素。</p>
+<p>当数据类型标识tag=0时，对象为原子结点，属性仅有值域。</p>
+<p>在这一种存储方式中，原子结点均被封装在一个表结点中，即即使有三个原子结点逻辑上同属一个子表，存储上他们也被封装在三个分别的子表中，且三个子表同属一个子表。</p>
+<h3 id="扩展线性表存储方法"><a href="#扩展线性表存储方法" class="headerlink" title="扩展线性表存储方法"></a>扩展线性表存储方法</h3><p>当数据类型标识tag=1时，对象为表结点，结点内属性有表头指针，指向子表内部的第一个数据元素；与表尾指针，指向表内（与自己同层的）的下一个元素。</p>
+<p>当数据类型标识tag=0时，对象为原子结点，结点内属性有值域，存储原子结点内容；与表尾指针，指向表内（与自己同层的）的下一个元素。</p>
+<p>与头尾链表存储表示不同，假设三个原子结点逻辑上同属一个子表，则存储上他们是由链表组织同层的三个原子结点。另外，在这种存储方法中，类似于头节点，每一个子表都需要被封装在一个表结点中，以区别自己是列表。</p>
+<h1 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h1><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><h3 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h3><p>树是以分支关系定义的层次结构。表示数据元素之间一对多的关系。</p>
+<ol>
+<li>有且仅有一个特定的称为根的节点</li>
+<li>当n&gt;1时，其余节点可分为m个互不相交的有限集T_1…T_m，其中每个集合本身又是一棵树，并且成为根的子树</li>
+</ol>
+<p>两个特点：</p>
+<ol>
+<li>树的根节点没有前驱，除根节点外所有节点有且只有一个前驱、</li>
+<li>树中所有节点可以有零个或多个后继</li>
+</ol>
+<h3 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h3><ol>
+<li><p>根A到K的唯一路径上的任意节点，称为K的祖先，即K时这条路径上任意节点的子孙，最靠近K的祖先称为K的双亲，即K是最靠近K的祖先的孩子，有相同双亲的结点称为兄弟</p>
+</li>
+<li><p>结点的度=孩子的个数，树的度=树中结点最大度数</p>
+</li>
+<li><p>度大于零的结点称为分支节点（非终端节点），度为0的结点称为叶子结点（终端节点）</p>
+</li>
+<li><p>结点的深度高度，根节点为第一层，它的子节点为第二层，以此类推。双亲在同一层结点称为堂兄弟。</p>
+<p>结点的深度是从根结点开始自顶向下逐层累加的</p>
+<p>结点的高度是从叶节点开始自底向上逐层累加的</p>
+<p>树的高度是树中结点的最大层数</p>
+</li>
+<li><p>有序树和无序树，各子树之间有顺序则成为有序树</p>
+</li>
+<li><p>路径和路径长度，路径是两个结点间所经过的结点序列，路径长度是路径上所经过的边的个数</p>
+</li>
+<li><p>森林，m棵互不相交的树的集合</p>
+</li>
+</ol>
+<h3 id="树的性质"><a href="#树的性质" class="headerlink" title="树的性质"></a>树的性质</h3><ol>
+<li>树中的结点数等于所有结点的度数之和加一</li>
+<li>度为m的树中第i层上至多有$m^{i-1}$个结点</li>
+<li>高度为h的m叉树至多有$(m^k-1)/(m-1)$个结点</li>
+<li>具有n个结点的m叉树的最小高度为$\lceil log_m(n(m-1)+1)\rceil$</li>
+</ol>
+<h2 id="二叉树的概念"><a href="#二叉树的概念" class="headerlink" title="二叉树的概念"></a>二叉树的概念</h2><h3 id="二叉树的定义及其主要特性"><a href="#二叉树的定义及其主要特性" class="headerlink" title="二叉树的定义及其主要特性"></a>二叉树的定义及其主要特性</h3><ol>
+<li><p>二叉树的定义</p>
+<p>每个结点至多有两棵子树，有序树，左右子树不能颠倒，二叉树的度可以不为2，例如空树，且二叉树中某结点即使只有一棵子树，也要区别其为左子树或右子树</p>
+</li>
+<li><p>几个特殊的二叉树</p>
+<ol>
+<li>满二叉树，高为h且含有$2^h-1$个结点的二叉树</li>
+<li>完全二叉树，每个结点都和同高度的二叉树中有一一对应的结点</li>
+<li>二叉排序树，左子树中所有的关键字都比根的关键字小，而右子树的关键字都比根的关键字大</li>
+<li>平衡二叉树，树上任意节点的左右子树的深度之差不超过1</li>
+</ol>
+</li>
+<li><p>二叉树的性质</p>
+<ol>
+<li>非空二叉树的叶子结点数等于度位2的结点数加1</li>
+<li>非空二叉树上的第k层至多有$2^{k-1}$个结点</li>
+<li>高度为h的二叉树至多有$2^h-1$个结点</li>
+<li>对于完全二叉树<ol>
+<li>结点i的双亲编号为$\lfloor i/2\rfloor$</li>
+<li>当$2i\le n$时，结点i的左孩子编号为2i，否则无左儿子</li>
+<li>当$2i+1\le n$时，结点i的左孩子编号为2i+1，否则无左儿子</li>
+<li>结点i所在层次为$\lfloor log_2i\rfloor+1$</li>
+</ol>
+</li>
+<li>具有n个结点的完全二叉树的高度为$\lceil log_2(n+1)\rceil$或$\lfloor log_2n\rfloor+1$</li>
+</ol>
+</li>
+</ol>
+<h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><ol>
+<li>顺序存储结构，完全二叉树的组织结构</li>
+<li>链式存储结构，左儿子指针域，数据，右儿子指针域</li>
+</ol>
+<h2 id="二叉树的遍历和线索二叉树"><a href="#二叉树的遍历和线索二叉树" class="headerlink" title="二叉树的遍历和线索二叉树"></a>二叉树的遍历和线索二叉树</h2><h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>访问树中的每个结点，使得每个结点均被访问一次</p>
+<ol>
+<li>先序，中序和后序遍历，序指根结点何时被访问</li>
+<li>递归算法和非递归算法的转换，利用栈来存储本次循环体完成后应该回到哪个结点</li>
+<li>层次遍历，需要队列</li>
+<li>由遍历序列构造二叉树<ol>
+<li>先序+中序，先序队列的第一个结点是整根树的根，而由此可在中序遍历中划分出左子树和右子树，</li>
+<li>中序+后序，同理</li>
+<li>层次+中序，层次遍历的第一个结点是整个树的根</li>
+</ol>
+</li>
+</ol>
+<h3 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h3><ol>
+<li><p>线索二叉树的基本概念</p>
+<p>遍历二叉树后得到一个线性序列，二叉树中空指针树为$2n_0+n_1=n_0+(n_2+1)+n_1=n+1$，可由这些空指针存放线性序列中前驱或后续的指针。</p>
+<p>规定若无左子树则左指针指向结点的前驱，若无右儿子则右指针指向后继，另外增加左右标识符，标志对应指针指向的是儿子节点还是前驱后继</p>
+<p>结构：左儿子，左标识符，数据，右标识符，右儿子</p>
+</li>
+<li><p>中序线索二叉树的构造</p>
+<p>递归实现</p>
+<ol>
+<li>参数中包括当前节点p的引用，与前驱的引用</li>
+<li><p>递归访问左子树</p>
+</li>
+<li><p>若当前结点左儿子为空，则将左儿子指针指向前驱的地址</p>
+</li>
+<li><p>若前驱的右儿子为空，则将前驱的右儿子置为p的地址</p>
+</li>
+<li>修改前驱为自身</li>
+<li>递归访问右子树</li>
+</ol>
+<p>此外还需要处理遍历的最后一个节点</p>
+</li>
+<li><p>中序线索二叉树的遍历</p>
+<p>考虑，在中序遍历中，根的后继都为右子树中的最左叶子</p>
+<p>循环以下过程</p>
+<ol>
+<li>找到最左叶节点</li>
+<li><ol>
+<li>若当前结点右儿子指向后继，则直接指向它的后继</li>
+<li>若当前结点右儿子，则指向右子树的最左叶子</li>
+</ol>
+</li>
+<li>若当前节点为空循环结束</li>
+</ol>
+</li>
+<li><p>先序线索二叉树和后序线索二叉树</p>
+<p>可将递归实现中的2视作访问左子树，345视作访问根，6视作访问右子树，将其重排即可实现先序与后序</p>
+</li>
+</ol>
+<h2 id="树，森林"><a href="#树，森林" class="headerlink" title="树，森林"></a>树，森林</h2><h3 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h3><ol>
+<li><p>双亲表示法</p>
+<p>每个结点指向其的双亲</p>
+</li>
+<li><p>孩子表示法</p>
+<p>每个结点的孩子组织成一个链表</p>
+</li>
+<li><p>孩子兄弟表示法</p>
+<p>又称二叉树表示法，每个结点左子树指向最左儿子，右儿子指向下一个兄弟。</p>
+</li>
+</ol>
+<h3 id="树、森林与二叉树的转化"><a href="#树、森林与二叉树的转化" class="headerlink" title="树、森林与二叉树的转化"></a>树、森林与二叉树的转化</h3><p>树转化为二叉树略去，森林只需要把每颗树的根结点作为其上一颗树的右儿子即可</p>
+<h3 id="树和森林的遍历"><a href="#树和森林的遍历" class="headerlink" title="树和森林的遍历"></a>树和森林的遍历</h3><ol>
+<li><p>树的遍历</p>
+<ol>
+<li>先根遍历，等同于对应二叉树的先根遍历</li>
+<li>后根遍历，等同于对应二叉树的中序遍历</li>
+</ol>
+</li>
+<li><p>森林的遍历</p>
+<ol>
+<li><p>先序遍历森林</p>
+<p>访问森林中第一棵树的根节点</p>
+<p>先序遍历第一棵树中根结点的子树森林</p>
+<p>先序遍历除了第一棵树之后剩余的树构成的子树森林</p>
+<p>等同于依次对每棵树进行先序遍历？</p>
+</li>
+<li><p>中序遍历森林</p>
+<p>中序遍历第一棵树中根结点的子树森林</p>
+<p>访问森林中第一棵树的根节点</p>
+<p>中序遍历除了第一棵树之后剩余的树构成的子树森林</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="树和二叉树的应用"><a href="#树和二叉树的应用" class="headerlink" title="树和二叉树的应用"></a>树和二叉树的应用</h2><h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><ol>
+<li><p>二叉排序树的定义</p>
+<p>若左子树非空则左子树上的所有结点的值小于根结点的值</p>
+<p>若右子树非空则右子树上的所有结点的值大于根结点的值</p>
+<p>左右子树也分别是一颗二叉排序树</p>
+</li>
+<li><p>二叉排序树的查找</p>
+<p>当前节点非空，与根结点比较值的大小</p>
+</li>
+<li><p>二叉排序树的输入</p>
+<p>采用引用，只需要再搜索的基础上，在当前节点为NULL的时候插入即可</p>
+</li>
+<li><p>二叉排序树的构造</p>
+<p>依次插入</p>
+</li>
+<li><p>二叉排序树的删除</p>
+<ol>
+<li>叶子节点可以直接删</li>
+<li>若结点z只有一颗子树，让子树代替z的位置即可</li>
+<li>若子树右两棵子树，则让z的直接前驱或直接后继结点代替z</li>
+</ol>
+</li>
+<li><p>二叉排序树的查找效率分析</p>
+<p>理想$O(log_2n)$，最差$O(n)$</p>
+</li>
+</ol>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><ol>
+<li><p>平衡二叉树的定义</p>
+<p>任意结点的左右子树高度差的绝对值不超过1的二叉树。左子树与右子树的高度差定义为该节点的平衡因子。</p>
+</li>
+<li><p>平衡二叉树的插入</p>
+<p>此处略去具体详细的步骤，思想在于当插入操作造成了某结点的平衡因子改变，这里以左子树为例。</p>
+<p>若该点由0变为1，不改变平衡性。</p>
+<p>当结点平衡因子由1到2，则左子树增长，</p>
+<p>若原左子树的平衡因子为1</p>
+<p>​    左子树的右子树增长不改变根结点的平衡因子</p>
+<p>​    若是原左子树的左子树增长则左子树的平衡因子由1到2，左子树的根结点需要调整，而非当前结点。</p>
+<p>故而，原左子树的平衡因子只能为0</p>
+<p>注意：原则是不改变二叉查找树的性质的情况下改变树的组织。设原左右子树的高度分别为h+1和h，将插入后的树细分为若干个结点和高为h或h-1的子树，即可简单地看出LL与LR旋转</p>
+</li>
+</ol>
+<h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><ol>
+<li><p>哈夫曼树的定义</p>
+<p>从树的根到任意结点的路径长度（经过的边数），与该节点上的权值的乘积称为带权路径长度。树中所有叶子结点的带权路径长度之和称之为该树的带权路径长度。</p>
+</li>
+<li><p>哈夫曼树的构造</p>
+<ol>
+<li>将这n个结点分别作为n棵只有一个节点的二叉树构成森林F</li>
+<li>从F中选取两个根节点权值最小的树作为新结点的左右子树，并将新节点新节点的权值设为左右子树权值之和。</li>
+<li>从F中删除刚才选出的两棵树，同时将得到的树加入F中</li>
+<li>重复2，3直到只剩下一棵树</li>
+</ol>
+</li>
+<li><p>哈夫曼编码</p>
+<p>若没有一个编码是另一个编码的前缀，则称这样的编码为前缀编码。有哈夫曼树可以得到哈夫曼编码</p>
+</li>
+</ol>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h2 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h2><h3 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h3><p>$G=(V,E)$其中G为图，V为顶点的有限非空集合，E为边的集合</p>
+<ol>
+<li><p>有向图</p>
+</li>
+<li><p>无向图</p>
+</li>
+<li><p>简单图，不存在重复边，不存在顶点到自身的边</p>
+</li>
+<li><p>完全图，任意两点间都存在边</p>
+</li>
+<li><p>子图，子图中的点集和边集都为图的点集和边集的子集。若子图点集与图的点集相等，则称为生成子图</p>
+</li>
+<li><p>连通、连通图和连通分量</p>
+<p>无向图中：</p>
+<p>若顶点v到顶点w中存在路径，则称v和w是连通的</p>
+<p>若图中任意两个点都是连通的，则称图为连通图。无向图中极小连通子图为连通分量</p>
+</li>
+<li><p>强连通图、强连通分量</p>
+<p>有向图中：</p>
+<p>若顶点v到顶点w存在路径，且w到v存在路径，则称v和w是强连通的</p>
+<p>若图中任意一对顶点都是强连通的则称图为强连通图，有向图中的极小强连通子图为有向图的强连通分量</p>
+</li>
+<li><p>生成树、生成森林</p>
+<p>生成树：极小连通子图，n-1条边</p>
+<p>生成森林：连通分量的生成树构成了非连通图的生成森林</p>
+</li>
+<li><p>顶点的度，入度和出度</p>
+<p>无向图中顶点所链接的边的数量即为顶点的度</p>
+<p>有向图中从顶点指向其他顶点的边的有向边数量为有向图的出度</p>
+<p>有向图中从其他顶点指向顶点的边的有向边数量为有向图的入度</p>
+</li>
+<li><p>边的权和网</p>
+<p>边上带有权值的图称为带权图，也称网</p>
+</li>
+<li><p>稠密图、稀疏图</p>
+<p>模拟的概念，一般$|E|&lt;|V|log|V|$称为稀疏图</p>
+</li>
+<li><p>路径、路径长度和回路</p>
+<p>路径：两点之间的顶点序列，序列中前一顶点存在边指向下一顶点。</p>
+<p>路径长度：路径上的边的边权的和</p>
+<p>回路：最后一个顶点和第一个定点相同的路径。也成为环</p>
+</li>
+<li><p>简单路径、简单回路</p>
+<p>路径序列中，顶点不重复出现的路径</p>
+</li>
+<li><p>距离，两点间的最短路径长度</p>
+</li>
+<li><p>有向树，一个顶点的入度为0，其他顶点的入度均为1</p>
+</li>
+</ol>
+<h2 id="图的存储及基本操作"><a href="#图的存储及基本操作" class="headerlink" title="图的存储及基本操作"></a>图的存储及基本操作</h2><h3 id="邻接矩阵法"><a href="#邻接矩阵法" class="headerlink" title="邻接矩阵法"></a>邻接矩阵法</h3><p>若顶点i到顶点j存在边，则$A[i][j]=1 or w_{ij}$</p>
+<h3 id="邻接表法"><a href="#邻接表法" class="headerlink" title="邻接表法"></a>邻接表法</h3><p>当图为稀疏图时，邻接矩阵法浪费了大量空间</p>
+<p>为每个顶点v都建立一个单链表，用于存储依附于v的边</p>
+<p>为每个顶点v都建立一个单链表，用于存储v的入边，这种链表的集合则称为你邻接表</p>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><p>与树的遍历的不同在于，可能会导致一个顶点被访问多次</p>
+<h3 id="图的应用"><a href="#图的应用" class="headerlink" title="图的应用"></a>图的应用</h3><p>prim, kruskal, dijkstra, floyd, 拓扑排序</p>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="查找的基本概念"><a href="#查找的基本概念" class="headerlink" title="查找的基本概念"></a>查找的基本概念</h2><ol>
+<li><p>查找，寻找符合某种条件的数据元素的过程</p>
+</li>
+<li><p>查找表，用于查找的数据集合，即被查找的数据集合。</p>
+<p>操作：</p>
+<ol>
+<li>查询某个特定的数据元素是否在查找表中</li>
+<li>检索满足条件的某个特定的数据元素的各种属性</li>
+<li>在查找表中插入一个数据元素</li>
+<li>在查找表中删除某个数据元素</li>
+</ol>
+</li>
+<li><p>静态查找表，只有操作1和2</p>
+</li>
+<li><p>关键字，唯一标识该元素的某个数据项的值</p>
+</li>
+<li><p>平均查找长度$ASL=\sum_{i=1}^{n}P_iC_i$</p>
+</li>
+</ol>
+<h2 id="顺序查找和折半查找"><a href="#顺序查找和折半查找" class="headerlink" title="顺序查找和折半查找"></a>顺序查找和折半查找</h2><p>折半查找要求有随机存取的特性</p>
+<p>分块检索，也称索引查找，建立索引表，在索引表中通过折半查找寻找可能存在的块，再在块中检索</p>
+<h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><h3 id="散列表的基本概念"><a href="#散列表的基本概念" class="headerlink" title="散列表的基本概念"></a>散列表的基本概念</h3><p>散列函数：Hash(key)=addr</p>
+<p>散列表：建立了关键字和存储地址之间的一种直接映射关系</p>
+<p>装填因子：关键字个数/哈希表长</p>
+<h3 id="散列函数的构造方法"><a href="#散列函数的构造方法" class="headerlink" title="散列函数的构造方法"></a>散列函数的构造方法</h3><ol>
+<li><p>直接定址法</p>
+<p>H(key)=key or H(key)=a*key+b</p>
+</li>
+<li><p>除留余数法</p>
+<p>H(key)=key%p</p>
+</li>
+<li><p>数字分析法</p>
+</li>
+<li><p>平方取中法</p>
+</li>
+</ol>
+<h3 id="处理冲突的方法"><a href="#处理冲突的方法" class="headerlink" title="处理冲突的方法"></a>处理冲突的方法</h3><ol>
+<li><p>开放定址法</p>
+<p>$H_i=(H(key)+d_i)\%m$</p>
+<ol>
+<li>线性探查法：$d_i=0,1,2\dots,k$，会导致大量元素在相邻的散列地址上聚集起来</li>
+<li>平方探查发：$d_i=0^2,1^2,-1^2,2^2,-2^2,\dots,k^2,-k^2$，要求散列表长度$4k+3$</li>
+<li>再散列法：准备两个散列函数，$d_i=Hash_2(key)$，当产生冲突时，$H_i=(H(key)+i\times Hash_2(key))\%m$</li>
+<li>伪随机序列法，$d_i=$伪随机数序列时</li>
+</ol>
+</li>
+<li><p>拉链法</p>
+<p>m个列表</p>
+</li>
+</ol>
+<h3 id="散列查找及性能分析"><a href="#散列查找及性能分析" class="headerlink" title="散列查找及性能分析"></a>散列查找及性能分析</h3><p>略</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h2><h3 id="排序的定义"><a href="#排序的定义" class="headerlink" title="排序的定义"></a>排序的定义</h3><p>将输入的关键字变为有序的</p>
+<p>算法稳定性，等大的关键字，重排后前后关系不变</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><p>稳定的</p>
+<h3 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h3><p>将搜索插入位置变为折半查找，稳定的</p>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>将线性表划分为若干个$L[i,i+d,i+2d,…,i+kd]$，逐渐减少d。不稳定</p>
+<h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>稳定</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>通过一趟排序，将待排记录分割成独立的两部分，其中一部分均比另一部分小。</p>
+<p>首先需要选取一个记录，作为<strong>枢纽</strong>，将比他小的都放于它前，比他大的放于他的后面，以他最后的落点为分界线，分为两个子序列，这一过程叫做<strong>一趟快速排序，也叫划分</strong></p>
+<p>不稳定</p>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>堆，一棵二叉树，其中每个结点值都不大于（或不小于）左右孩子的值，而堆顶元素也即最小值（或最大值）。</p>
+<p>关键两步，建堆与调整建新堆</p>
+<p>调整建新堆，在堆顶被输出后，选取最后一个元素充当临时堆，其后，在被影响的子树中，比较根与左右儿子的值，选取最小值充当子树的新根。递归完成这个过程。这一从堆顶到叶子的调整过程为“筛选”。</p>
+<p>建堆，将一个无序序列视作一个完全二叉树，只需从$\lfloor n/2\rfloor$开始进行筛选，即对每个分支节点与以其为根的子树进行筛选</p>
+<h2 id="归并排序和基数排序"><a href="#归并排序和基数排序" class="headerlink" title="归并排序和基数排序"></a>归并排序和基数排序</h2>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2021/07/03/操作系统-考研/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,7 +949,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-06 11:24:04" itemprop="dateModified" datetime="2021-07-06T11:24:04Z">2021-07-06</time>
+                <time title="修改时间：2021-09-28 04:25:32" itemprop="dateModified" datetime="2021-09-28T04:25:32Z">2021-09-28</time>
               </span>
             
           
@@ -265,13 +968,22 @@
           <blockquote>
 <p>考研真是麻烦的事啊啊啊啊</p>
 </blockquote>
+<h1 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h1><p>一、总体要求 主要考察学生对操作系统基本概念、原理的理解程度，重点考察操作系统的设计方法与实现技术， 同时能够具备运用所学的操作系统原理、方法与技术分析问题和解决问题的能力。 </p>
+<p>二、内容及比例 </p>
+<ol>
+<li>操作系统的基本概念<br>1) 批处理与多道程序设计<br>2) 分时系统与实时系统<br>3) 操作系统的基本类型与特征<br>4) 并发与并行的概念<br>5) 操作系统的层次结构与功能模块<br>6) 程序的并发执行与顺序执行 </li>
+<li>进程管理<br>1) 进程: 进程控制块、进程的几种基本状态与状态转换（进程的创建、进程的终止、进程的 阻塞与唤醒、进程的挂起与激活等）<br>2) 进程的同步与互斥：临界资源、临界区、进程同步与互斥问题、信号量机制以及 P、V 操 作、管程机制<br>3)  进程间通信：进程通信的类型（直接通信和间接通信方式）、消息传递系统中的几个问题、 消息缓冲队列通信机制<br>4) 线程与进程的调度:线程与进程的基本概念，调度的类型、调度队列模型、调度方式、进 程调度算法（先来先服务、短进程优先、时间片轮转、基于优先级的调度算法等）<br>5) 死锁:死锁的基本概念，死锁定理、死锁预防、死锁避免与处理死锁的基本方法、银行家算法<br>6) 综合应用：生产者消费者问题、读者和写者问题、哲学家进餐问题等 </li>
+<li>内存管理<br>1) 内存管理的需求：重定位、内存保护、内存共享<br>2) 程序的装入和链接：静态装入和可重定位装入、静态链接、动态链接、运行时动态链接。<br>3) 分区存储管理：分区方式（单一连续分区、固定分区、可变式分区）、分区分配算法（首 次适应算法、循环首次适应算法、最佳适应法、最坏适应法等）<br>4) 段式管理与页式管理：段、页、碎片等基本概念、段式管理与页式管理机制<br>5) 虚拟内存：局部性原理、虚拟内存概念、请求分段与请求分页、段页式管理、段页式地址 结构与地址转换、页面置换算法（OPT、先进先出、LRU、Clock、改进型 Clock 置换）、 抖动 </li>
+<li>设备管理<br>1) I/O 系统的：基本概念、I/O 控制方式（程序 I/0、中断、DMA、通道）、相关数据结构、 缓冲管理（单缓冲、双缓冲、循环缓冲、缓冲池）<br>2) 磁盘管理与磁盘调度算法：SSTF 算法，SCAN 算法，CSCAN 算法，N-STEP-SCAN 算法，FSCAN 算法<br>3) 设备分配、设备处理、虚拟设备，Spooling 系统 </li>
+<li>文件系统<br>1) 基本概念：文件和文件系统、目录、文件结构的物理结构和逻辑结构（顺序文件、索引顺 序文件、索引文件、HASH 文件）、文件共享（基于索引节点、基于符号链接实现文件共享）<br>2) 外存分配方法：连续分配、链接分配、索引分配<br>3) 目录管理：单级目录、二级目录、多级目录<br>4) 文件存储空间的管理技术：位示图、空闲链表、索引</li>
+</ol>
 <h1 id="操作系统引论"><a href="#操作系统引论" class="headerlink" title="操作系统引论"></a>操作系统引论</h1><h2 id="操作系统的目标与作用"><a href="#操作系统的目标与作用" class="headerlink" title="操作系统的目标与作用"></a>操作系统的目标与作用</h2><h3 id="操作系统的目标"><a href="#操作系统的目标" class="headerlink" title="操作系统的目标"></a>操作系统的目标</h3><ol>
 <li>有效性<ol>
 <li>提高系统资源利用率</li>
 <li>提升系统吞吐量</li>
+<li>方便性</li>
 </ol>
 </li>
-<li>方便性</li>
 <li>可扩充性</li>
 <li>开放性：符合国际标准，兼容性强</li>
 </ol>
@@ -659,7 +1371,7 @@
 <p>和进程的不同：</p>
 <ol>
 <li>管程为公共数据结构</li>
-<li>用于同步</li>
+<li>用于同</li>
 <li>为了解决共享资源的互斥</li>
 <li>被动工作</li>
 <li>管程不能与其调用者并发</li>
@@ -735,9 +1447,1275 @@
 <p>直接通过Send(Receiver,message)和Receive(Sender,message)收发消息</p>
 </li>
 <li><p>间接通信方式</p>
-<p>用心想作为共享</p>
+<p>用信箱作为共享数据结构的实体，用于存放消息。</p>
+<ol>
+<li>私有信箱：自己rw,其他w</li>
+<li>公有信箱：操作系统创建，核准进程使用，系统运行期间都存在</li>
+<li>共享信箱：某进程创建，可授权给别的的进程。</li>
+</ol>
 </li>
 </ol>
+<h3 id="消息传递系统实现的若干问题"><a href="#消息传递系统实现的若干问题" class="headerlink" title="消息传递系统实现的若干问题"></a>消息传递系统实现的若干问题</h3><ol>
+<li><p>通信链路</p>
+<p>面对连接和面对无链接</p>
+</li>
+<li><p>消息的格式</p>
+<p>定长or变长，有无消息头</p>
+</li>
+<li><p>进程同步方式</p>
+<ol>
+<li><p>发送进程阻塞，接收进程阻塞</p>
+<p>也称为汇合，用于紧密同步</p>
+</li>
+<li><p>发送进程不阻塞，接收进程阻塞</p>
+<p>应用最广，发送进程不阻塞以实现快速将多个消息发给多个目标</p>
+</li>
+<li><p>发送进程接收进程都不阻塞</p>
+<p>较常见，由于消息队列的存在，只要消息队列非空或非满就不阻塞</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="消息缓冲队列通信机制"><a href="#消息缓冲队列通信机制" class="headerlink" title="消息缓冲队列通信机制"></a>消息缓冲队列通信机制</h3><ol>
+<li><p>消息缓冲队列通信机制中的数据结构</p>
+<p>消息缓冲区：链表实现</p>
+<p>PCB有关通信的数据项：要存储消息队列的互斥信号量与资源信号量</p>
+</li>
+<li><p>发送原语</p>
+<p>按照消息大小申请缓冲区，复制入发送去-获取接收进程PID-插入缓冲区（互斥）</p>
+</li>
+<li><p>接受原语</p>
+</li>
+</ol>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="线程的基本概念"><a href="#线程的基本概念" class="headerlink" title="线程的基本概念"></a>线程的基本概念</h3><ol>
+<li><p>线程的引入</p>
+<p>进程：可拥有资源的独立单位，同时是可独立调度和分配的基本单位。由于拥有资源，进程的创建、撤销和切换代价过大。故而让进程成为资源分配的单位，线程作为调度的单位</p>
+</li>
+<li><p>线程和进程的比较</p>
+<p>在引入了线程的操作系统中，通常一个进程都拥有若干个线程、</p>
+<ol>
+<li><p>调度</p>
+<p>在同一进程中，线程的切换不会导致进程的切换，但不同的进程的线程切换时，会导致进程的切换</p>
+</li>
+<li><p>并发性</p>
+<p>一个进程有多个线程并发，减少了进程被阻塞的几率，提高了系统吞吐量</p>
+</li>
+<li><p>拥有资源</p>
+<p>一般而言，线程自己不拥有系统资源</p>
+</li>
+<li><p>系统开销</p>
+<p>由于不拥有资源（拥有资源少），保存的现场信息少，系统开销小</p>
+</li>
+</ol>
+</li>
+<li><p>线程的属性</p>
+<ol>
+<li>轻型实体</li>
+<li>独立调度和分派的基本单位</li>
+<li>可并发执行</li>
+<li>共享进程资源</li>
+</ol>
+</li>
+<li><p>线程的状态</p>
+<ol>
+<li>状态参数：寄存器状态，堆栈，线程运行状态，优先级，线程专用存储器，信号屏蔽</li>
+<li>线程运行状态：执行-就绪-阻塞</li>
+</ol>
+</li>
+<li><p>线程的创建和终止</p>
+<p>创建：存在初始线程</p>
+<p>终止： 自愿退出，错误或被其他进程终止。终止后并不立即释放所占有的资源，而在其他线程执行分离函数后才与资源分离</p>
+</li>
+<li><p>多线程OS中的进程</p>
+<p>作为资源分配的单位，可包括多个进程（最少一个），不再是一个可执行的实体</p>
+</li>
+</ol>
+<h3 id="线程间的同步和通信"><a href="#线程间的同步和通信" class="headerlink" title="线程间的同步和通信"></a>线程间的同步和通信</h3><ol>
+<li><p>互斥锁</p>
+</li>
+<li><p>条件变量</p>
+<p>互斥锁用于互斥进入数据段，条件变量用于线程的长期等待。进入不等同于占有，减少死锁可能性</p>
+</li>
+<li><p>信号量机制</p>
+<p>公有信号量：OS创建</p>
+<p>私有信号量：进程创建，进程被撤销时无法通知所有进程，故而存在风险</p>
+</li>
+</ol>
+<h3 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h3><ol>
+<li><p>内核支持线程</p>
+<p>线程操作都在内核空间内实现，内核空间存在线程控制块，内核知道线程的存在</p>
+<p>优点：</p>
+<ol>
+<li>内核能同时调度一个进程中的多个线程并行执行</li>
+<li>若进程中的一个线程被阻塞可以调度进程内的另一个线程</li>
+<li>内核支持线程具有很小的数据结构和堆栈，线程切换快，开销小</li>
+<li>内核本身也可多线程实现，提高系统的执行速度和效率</li>
+</ol>
+<p>缺点：线程切换时需要从用户态转到内核态，系统开销大</p>
+</li>
+<li><p>用户级线程</p>
+<p>线程操作与内核无关，内核完全不知道用户级线程的存在，调度仍以进程为单位，故而进程线程越多，每个线程被分配的进程时间越少。</p>
+<p>优点：</p>
+<ol>
+<li>进程切换不需要转换到内核空间</li>
+<li>调度算法可以是进程专有的</li>
+<li>实现与操作系统无关</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>线程被阻塞时整个进程都会被阻塞</li>
+<li>由于进程每次只被分配到一个处理机，故而同一时刻进程内只有一个线程在运行</li>
+</ol>
+</li>
+<li><p>组合方式</p>
+</li>
+</ol>
+<h3 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h3><ol>
+<li><p>内核支持线程的实现</p>
+<p>内核空间创建任务数据区PTDA，其中存储TCB。（进程变为了管理进程资源的PTDA）</p>
+</li>
+<li><p>用户级线程的实现</p>
+<ol>
+<li><p>运行时系统</p>
+<p>相当于一个放置于用户态的线程控制系统，是管理和控制线程的函数的集合，因此线程的切换不再需要进入内核。</p>
+</li>
+<li><p>内核控制线程</p>
+<p>上文提及用户级线程一个进程内的线程因为系统调用整个进程都将被阻塞，为了解决这个矛盾，内核提供了多个接口用于为进程中的线程提供服务，此接口被称为轻型进程LWP。当线程需要访问内核空间时将自身装载进LWP，进入内核空间后变为内核级线程。而原进程将不被阻塞。</p>
+</li>
+</ol>
+</li>
+<li><p>用户级线程和内核控制线程的连接</p>
+<p>一对一，多对一，多对多</p>
+</li>
+</ol>
+<h1 id="处理机调度与死锁"><a href="#处理机调度与死锁" class="headerlink" title="处理机调度与死锁"></a>处理机调度与死锁</h1><h2 id="处理机调度的层次"><a href="#处理机调度的层次" class="headerlink" title="处理机调度的层次"></a>处理机调度的层次</h2><ol>
+<li>作业调度（高级调度）</li>
+<li>存储器调度（中级调度）</li>
+<li>进程调度（低级调度）</li>
+</ol>
+<p>频率：低级调度&gt;中级调度&gt;高级调度。越高频调度算法就应该越简单</p>
+<h3 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a>高级调度</h3><ol>
+<li><p>作业与作业步</p>
+<ol>
+<li>作业：程序，数据和作业说明书</li>
+<li>作业步：每个作业都需要经过若干个相对独立又相互关联的顺序加工步骤才能得到结果，其中每一个加工步骤称为一个作业步。编译作业步-连结装配作业步-运行作业步</li>
+<li>作业流：有次序地存放若干个位于外存的作业的队列</li>
+</ol>
+</li>
+<li><p>作业控制快</p>
+<p>包含标识，用户信息，作业类型，作业状态，调度信息，资源需求等信息</p>
+<p>进入系统时，系统为每个作业建立一个JCB，根据作业类型分配在不同的后备队列，由作业调度程序调度，被调度到的作业将被进入内存</p>
+</li>
+<li><p>作业调度</p>
+<p>用户希望自己作业平均周转时间尽可能少，系统希望平均周转时间尽可能少</p>
+<p>需要考虑：决定接纳多少个作业，决定接纳哪些作业</p>
+</li>
+</ol>
+<h3 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a>低级调度</h3><ol>
+<li>低级调度的功能<ol>
+<li>保存处理机的进程信息</li>
+<li>按某种算法选取进程</li>
+<li>把处理器分配给进程</li>
+</ol>
+</li>
+<li>进程调度中的三个基本机制<ol>
+<li>排队器</li>
+<li>分派器</li>
+<li>上下文切换机制</li>
+</ol>
+</li>
+<li>进度调度方式<ol>
+<li>非抢占方式：当前进程在自愿退出后阻塞后才归还处理机</li>
+<li>抢占方式：调度程序暂停某个正在执行的进程，将它的处理机重新分配，原则：优先权原则，短作业优先原则，时间片原则</li>
+</ol>
+</li>
+</ol>
+<h3 id="中级调度"><a href="#中级调度" class="headerlink" title="中级调度"></a>中级调度</h3><p>为了节省内存，将暂时用不到的进程挂起，即调至外存等待。</p>
+<h2 id="调度队列模型对调度准则"><a href="#调度队列模型对调度准则" class="headerlink" title="调度队列模型对调度准则"></a>调度队列模型对调度准则</h2><h3 id="调度队列模型"><a href="#调度队列模型" class="headerlink" title="调度队列模型"></a>调度队列模型</h3><ol>
+<li>仅有进程调度的调度队列模型</li>
+<li>具有高级和低级调度的调度队列模型</li>
+<li>同时具备三级调度的调度队列模型</li>
+</ol>
+<h3 id="选择调度方式和调度算法的若干准则"><a href="#选择调度方式和调度算法的若干准则" class="headerlink" title="选择调度方式和调度算法的若干准则"></a>选择调度方式和调度算法的若干准则</h3><ol>
+<li><p>面向用户的准则</p>
+<ol>
+<li><p>周转时间短</p>
+<p>周转时间：作业提交到系统到作业完成为止的时间间隔</p>
+<p>带权周转时间：作业周转时间和系统为它提供服务的时间之比</p>
+</li>
+<li><p>响应时间快</p>
+</li>
+<li><p>截止时间保证</p>
+</li>
+<li><p>优先权原则</p>
+</li>
+</ol>
+</li>
+<li><p>面向系统的准则</p>
+<ol>
+<li>系统吞吐量高</li>
+<li>处理机利用率好</li>
+<li>各类资源平衡利用</li>
+</ol>
+</li>
+</ol>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><p>调度的实质是一种资源分配</p>
+<h3 id="先来先服务和短作业优先调度算法"><a href="#先来先服务和短作业优先调度算法" class="headerlink" title="先来先服务和短作业优先调度算法"></a>先来先服务和短作业优先调度算法</h3><ol>
+<li>先来先服务调度算法，有利于长作业</li>
+<li>短作业优先调度算法，有利于短作业，长作业可能被饿死</li>
+</ol>
+<h3 id="高优先权优先调度算法"><a href="#高优先权优先调度算法" class="headerlink" title="高优先权优先调度算法"></a>高优先权优先调度算法</h3><ol>
+<li><p>优先权调度算法的类型：非抢占式和抢占式</p>
+</li>
+<li><p>优先权的类型</p>
+<p>静态优先权：创建进程时确定，运行时不变</p>
+<ol>
+<li>进程类型，系统进程&gt;用户进程</li>
+<li>进程对资源的需求，占有资源少优先</li>
+<li>用户要求</li>
+</ol>
+<p>动态优先权：可变的</p>
+</li>
+<li><p>高响应比优先调度算法</p>
+<script type="math/tex; mode=display">
+R_p = \frac{等待时间+要求服务时间}{要求服务时间}=\frac{响应时间}{要求服务时间}</script></li>
+</ol>
+<p>可以体现：</p>
+<ol>
+<li>短作业优先</li>
+<li>等待时间越长，优先权越高，即先来先服务</li>
+<li>对于长作业，等待时间越长优先级也会越高</li>
+</ol>
+<h3 id="基于时间片的轮转调度算法"><a href="#基于时间片的轮转调度算法" class="headerlink" title="基于时间片的轮转调度算法"></a>基于时间片的轮转调度算法</h3><ol>
+<li>时间片轮转法<ol>
+<li>基本原理：先按先来先服务的原则排成一个队列，获得一次时间片后将进程移动至队列尾部</li>
+<li>时间片大小的确定：过短增加系统开销，过长无法满足交互式用户的需求，可取的大小是也略大于一次典型的交互所需要的时间</li>
+</ol>
+</li>
+<li>多级反馈队列调度算法<ol>
+<li>多个队列，越靠后的队列优先级越低但获得的时间片越长</li>
+<li>新进程先进入第一个队列的尾部，获得时间片后移动至下一个队列</li>
+<li>只有优先权高的队列为空时才运行优先权低的队列中的进程</li>
+</ol>
+</li>
+<li>多级反馈队列调度算法的性能<ol>
+<li>终端型作业用户，若在第一个队列完成则可满意</li>
+<li>短批处理作业用户，周转时间短</li>
+<li>长批作业处理用户，不会被饿死</li>
+</ol>
+</li>
+</ol>
+<h2 id="实时调度"><a href="#实时调度" class="headerlink" title="实时调度"></a>实时调度</h2><h3 id="实现实时调度的基本条件"><a href="#实现实时调度的基本条件" class="headerlink" title="实现实时调度的基本条件"></a>实现实时调度的基本条件</h3><ol>
+<li><p>提供必要的信息</p>
+<p>就绪时间，开始截止时间和完成截止时间，处理时间，资源要求，优先级</p>
+</li>
+<li><p>系统处理能力强</p>
+<script type="math/tex; mode=display">
+假设系统中由m个周期性的硬实时任务，他们的处理时间可以表示为C_i，周期时间表示为P_i，处理机数量N\\
+\sum_{i=1}^{m}\frac{C_i}{P_i}\le N</script></li>
+<li><p>采用抢占式调度机制</p>
+</li>
+<li><p>具有快速切换机制：对外部中断的快速响应能力。快速的任务分派能力</p>
+</li>
+</ol>
+<h3 id="实时调度算法的分类"><a href="#实时调度算法的分类" class="headerlink" title="实时调度算法的分类"></a>实时调度算法的分类</h3><ol>
+<li>非抢占式调度算法：非抢占式轮转调度算法，非抢占式优先调度算法</li>
+<li>抢占式调度算法<ol>
+<li>基于时钟中断的抢占式优先权调度算法，时钟中断到来时，调度算法才剥夺当前任务的执行</li>
+<li>立即抢占的优先权调度算法</li>
+</ol>
+</li>
+</ol>
+<h3 id="常用的几种实时调度算法"><a href="#常用的几种实时调度算法" class="headerlink" title="常用的几种实时调度算法"></a>常用的几种实时调度算法</h3><ol>
+<li><p>最早截至时间有限即EDF算法</p>
+<p>根据任务的开始截止时间来确定任务的优先级，越早优先权越高</p>
+<p>可抢占也可非抢占，抢占式灵活度更高更不容易错过任务。</p>
+</li>
+<li><p>最低松弛度优先即LLF算法</p>
+<p>松弛度=剩余时间-运行时间，一般都为抢占式</p>
+</li>
+</ol>
+<h2 id="产生死锁的原因与必要条件"><a href="#产生死锁的原因与必要条件" class="headerlink" title="产生死锁的原因与必要条件"></a>产生死锁的原因与必要条件</h2><h3 id="产生死锁的原因"><a href="#产生死锁的原因" class="headerlink" title="产生死锁的原因"></a>产生死锁的原因</h3><ol>
+<li>竞争资源引起的进程死锁<ol>
+<li>可剥夺与非剥夺性资源，区别能否强行收回，前者例如内存区，后者比如打印机</li>
+<li>竞争非剥夺性资源可能造成死锁</li>
+<li>竞争临时性资源，比如消息，进程通信可能造成死锁</li>
+</ol>
+</li>
+<li>进程推进顺序不当引起死锁</li>
+</ol>
+<h3 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a>产生死锁的必要条件</h3><ol>
+<li>互斥条件，即在一段时间内内某资源只由一个进程占用</li>
+<li>请求和保持条件，进程保持了至少一个资源，但又提出了新的资源请求</li>
+<li>不剥夺条件，资源在未使用完之前不能被剥夺</li>
+<li>环路等待条件，存在一个进程-资源的环形链</li>
+</ol>
+<h3 id="处理死锁的基本方法"><a href="#处理死锁的基本方法" class="headerlink" title="处理死锁的基本方法"></a>处理死锁的基本方法</h3><ol>
+<li>预防死锁，打破死锁的必要条件，一般条件过于严格，会降低系统吞吐量</li>
+<li>避免死锁，防止系统进入不安全状态，条件较弱</li>
+<li>检测死锁</li>
+<li>接触死锁，撤销或挂起一些进程</li>
+</ol>
+<h3 id="预防死锁"><a href="#预防死锁" class="headerlink" title="预防死锁"></a>预防死锁</h3><p>互斥条件是设备属性无法避免</p>
+<ol>
+<li><p>摒弃“请求和保持”条件</p>
+<p>进程必须一次性申请所有资源，简单易于实现且很安全，但资源由于可能存在闲置而被严重浪费</p>
+</li>
+<li><p>摒弃“不剥夺”条件</p>
+<p>当一个保持了某些资源的进程再提出新的资源请求而不能立即得到满足时，必须释放他已经保持了的所有资源。被迫释放可能会造成前段工作的失效</p>
+</li>
+<li><p>摒弃“环路等待条件”</p>
+<p>为所有资源按类型进程线性排队，并赋予不同的需要，必须严格按照资源需要递增的顺序提出请求。</p>
+<p>限制了新类型设备的增加，请求顺序和使用顺序的不同可能造成资源浪费，对用户编程提出了限制</p>
+</li>
+</ol>
+<h3 id="系统安全状态"><a href="#系统安全状态" class="headerlink" title="系统安全状态"></a>系统安全状态</h3><ol>
+<li><p>安全状态</p>
+<p>系统能按照某种进程顺序，来为每个进程分配其所需的资源直至满足每个进程对资源的最大需求，使每个进程都可顺利完成</p>
+</li>
+<li><p>由安全状态向不安全状态的转换</p>
+<p>如果不按照安全序列分配资源，就有进入不安全状态的可能性</p>
+</li>
+</ol>
+<h3 id="利用银行家算法避免死锁"><a href="#利用银行家算法避免死锁" class="headerlink" title="利用银行家算法避免死锁"></a>利用银行家算法避免死锁</h3><ol>
+<li><p>数据结构</p>
+<p>需要记录</p>
+<ol>
+<li>可利用资源向量Available，记录每类资源可用的数量</li>
+<li>最大需求矩阵Max，记录每个进程对每类资源的最大需求量</li>
+<li>分配矩阵Allocation，记录每个进程占有的每类资源的数量</li>
+<li>需求矩阵Need，记录每个进程对每类资源的需求量</li>
+</ol>
+</li>
+<li><p>银行家算法</p>
+<p>对于每次申请考虑以下问题</p>
+<ol>
+<li>需求是否合法$Request_i[j]\le Need[i,j]$，不合法则出错</li>
+<li>需求是否可满足$Request_i[j]\le Available[j]$，不满足则等待</li>
+<li>试探分配</li>
+<li>执行安全性算法，若结果安全才真的分配，若不安全则不完成此次分配，进程等待</li>
+</ol>
+</li>
+<li><p>安全性算法</p>
+<p>遍历所有进程，查看是否当前可用资源是否可满足某进程所需的剩余资源，若可满足，则收回该进程持有的所有资源并标记为完成。如果存在进程序列可让所有进程完成，则该分配安全</p>
+</li>
+</ol>
+<h2 id="死锁的检测与解除"><a href="#死锁的检测与解除" class="headerlink" title="死锁的检测与解除"></a>死锁的检测与解除</h2><h3 id="死锁的检测"><a href="#死锁的检测" class="headerlink" title="死锁的检测"></a>死锁的检测</h3><p>系统需要保存有关资源的请求与分配信息与检测死锁的有效算法</p>
+<ol>
+<li>资源分配图，资源指向进程指进程占用资源，进程指向资源指进程请求资源</li>
+<li>死锁定理，与安全性算法相似，若可以满足进程的所有需求，则释放进程所占有的资源</li>
+<li>死锁检测中的数据结构，与银行家算法类似</li>
+</ol>
+<h3 id="死锁的接触"><a href="#死锁的接触" class="headerlink" title="死锁的接触"></a>死锁的接触</h3><ol>
+<li>剥夺资源</li>
+<li>撤销进程</li>
+</ol>
+<p>而这两种方法代价都很大，故而我们可以先预处理出所有进程的撤销代价，每次选取代价最小的进程撤销</p>
+<h1 id="存储器管理"><a href="#存储器管理" class="headerlink" title="存储器管理"></a>存储器管理</h1><h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><h3 id="多级存储器结构"><a href="#多级存储器结构" class="headerlink" title="多级存储器结构"></a>多级存储器结构</h3><p>寄存器-主存-辅存</p>
+<p>可细分为</p>
+<p>寄存器-（高速缓存-主存-磁盘缓存）-（磁盘-可移动存储介质）</p>
+<h3 id="主存储器与寄存器"><a href="#主存储器与寄存器" class="headerlink" title="主存储器与寄存器"></a>主存储器与寄存器</h3><ol>
+<li><p>主存储器</p>
+<p>访问速度远低于CPU执行速率，CPU只能冲主存储器中获得指令与数据。</p>
+</li>
+<li><p>寄存器</p>
+<p>访问最快，能与CPU协调工作，但价格十分昂贵</p>
+</li>
+</ol>
+<h3 id="高速缓存与磁盘缓存"><a href="#高速缓存与磁盘缓存" class="headerlink" title="高速缓存与磁盘缓存"></a>高速缓存与磁盘缓存</h3><ol>
+<li><p>高速缓存</p>
+<p>局部性原理，存储部分主存内容，比主存访问速度快</p>
+</li>
+<li><p>磁盘缓存</p>
+<p>主存上的一个空间，用于暂存磁盘中读出和写入的数据</p>
+</li>
+</ol>
+<h2 id="程序的装入和链接"><a href="#程序的装入和链接" class="headerlink" title="程序的装入和链接"></a>程序的装入和链接</h2><p>编译-链接-装入模块-装入程序</p>
+<h3 id="程序的装入"><a href="#程序的装入" class="headerlink" title="程序的装入"></a>程序的装入</h3><ol>
+<li><p>绝对装入方式</p>
+<p>编译程序产生绝对地址的目标代码</p>
+</li>
+<li><p>可重定位装入方式</p>
+<p>装入时一次完成的，目标地址为装入地址和相对偏移的组合</p>
+</li>
+<li><p>动态运行时装入方式</p>
+<p>地址转换在真正执行时才进行，用于适配虚拟存储器机制</p>
+</li>
+</ol>
+<h3 id="程序的链接"><a href="#程序的链接" class="headerlink" title="程序的链接"></a>程序的链接</h3><ol>
+<li><p>静态链接</p>
+<p>链接时完成，以后不再分开</p>
+</li>
+<li><p>装入时动态链接</p>
+<p>边装入边链接</p>
+</li>
+<li><p>运行时动态链接</p>
+<p>真正用到时再装入</p>
+</li>
+</ol>
+<h2 id="连续分配方式"><a href="#连续分配方式" class="headerlink" title="连续分配方式"></a>连续分配方式</h2><h3 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h3><p>用于单用户单任务的从操作系统中，只分为系统区与用户区，用户区全部交给用户</p>
+<h3 id="固定分区分配"><a href="#固定分区分配" class="headerlink" title="固定分区分配"></a>固定分区分配</h3><ol>
+<li><p>划分分区的方式</p>
+<ol>
+<li>分区大小相等，缺乏灵活性，会造成浪费</li>
+<li>分区大小不等</li>
+</ol>
+</li>
+<li><p>内存分配</p>
+<p>按分区大小进行排序，并建立一个分区使用表标记分配情况</p>
+</li>
+</ol>
+<h3 id="动态分区分配"><a href="#动态分区分配" class="headerlink" title="动态分区分配"></a>动态分区分配</h3><ol>
+<li><p>分区分配中的数据结构</p>
+<p>空闲分区表与空闲分区链</p>
+</li>
+<li><p>分区分配算法</p>
+<ol>
+<li>首次适应算法，分配一个大小足够的空闲分区，高地址保留了大空闲区，低址会留下碎片 </li>
+<li>循环首次适应算法，从上次找到的空闲分区的下一个空闲分区开始查找，空闲分区更均匀，但缺少大空闲区</li>
+<li>最佳适应算法，分配满足需求的最小空闲分区，碎片过小导致无法使用</li>
+<li>最坏适应算法，分配满足需求的最大空闲分区，产生碎片概率小</li>
+<li>快速适应算法，分类搜索，将空闲分区按照不同大小分为多个链便于检索</li>
+</ol>
+</li>
+<li><p>分区分配操作</p>
+<ol>
+<li>分配内存，检索与分割</li>
+<li>回收内存，相邻则合并</li>
+</ol>
+</li>
+</ol>
+<h3 id="伙伴系统"><a href="#伙伴系统" class="headerlink" title="伙伴系统"></a>伙伴系统</h3><p>将空闲分区初始设置为$2^m$个字的空闲区，为进程分配一个长度为n的空间时，令$2^{k-1}\lt n \le2^k$ 寻找长度为$2^k$的空闲分区，若没有则寻找$2^{k+1}$，若仍然没有则寻找$2^{k+2}$，以此类推，直到找到最小的$2^j$长的空闲分区，将$2^k$分配给进程，剩余$2^{j-k}$放入对应链表。回收时，若回收将其放入$2^k$长度对应链表中，若已存在一个$2^k$的空闲区，则合并为$2^{k+1}$长的空闲分区，以此类推</p>
+<h3 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h3><p>建立以空间大小为关键字的哈希表用于检索。</p>
+<h3 id="可重定位分区分配"><a href="#可重定位分区分配" class="headerlink" title="可重定位分区分配"></a>可重定位分区分配</h3><ol>
+<li><p>动态重定位的引入</p>
+<p>当内存空间进行一次紧凑后，程序所在的物理地址发生了变化，为使程序不丢失，以逻辑地址代替物理地址，即重定位</p>
+</li>
+<li><p>动态重定位的实现</p>
+<p>用重定位寄存器存放一个基址，并以此计算出物理地址</p>
+</li>
+<li><p>动态重定位分区分配算法</p>
+<p>与非动态的区别在于紧凑时需要修改有关的数据结构</p>
+</li>
+</ol>
+<h3 id="对换"><a href="#对换" class="headerlink" title="对换"></a>对换</h3><ol>
+<li><p>对换的引入</p>
+<p>将暂时用不到的进程或程序和数据调到外存以腾出内存空间。如果对换是以进程为单位，则称之为进程对换，如果是以页或段为单位，则称部分对换。</p>
+</li>
+<li><p>对换空间的管理</p>
+<p>连续分配，分配与回收与动态分区方式相同。</p>
+</li>
+<li><p>进程的换出与换入</p>
+<ol>
+<li>换出，无足够内存时考虑，优先选择处于阻塞状态且优先级最低的进程移植外存，回收内存并修改PCB。</li>
+<li>换入，系统定时检查所有进程状态，找出就绪但已被换出的进程，将其中换出时间最久的进程换入，直至没有可换出的进程</li>
+</ol>
+</li>
+</ol>
+<h2 id="基本分页存储管理方式"><a href="#基本分页存储管理方式" class="headerlink" title="基本分页存储管理方式"></a>基本分页存储管理方式</h2><p>将一个进程直接分散地装入到许多不相邻接的分区中。</p>
+<h3 id="页面与页表"><a href="#页面与页表" class="headerlink" title="页面与页表"></a>页面与页表</h3><ol>
+<li>页面<ol>
+<li>将一个进程的逻辑地址空间分为若干个大小相等的片称为页面或页，把内存空间分成与页面大小相等的若干个存储块称为物理块或页框</li>
+<li>页面太小，虽然碎片少但页表过长占用内存，页面太大，提高换入换出效率，但碎片大</li>
+</ol>
+</li>
+<li>地址结构，页号+位移量</li>
+<li>页表，属于进程，一张用于将页号映射到物理块号的页面映像表</li>
+</ol>
+<h3 id="地址变换机构"><a href="#地址变换机构" class="headerlink" title="地址变换机构"></a>地址变换机构</h3><p>用于将逻辑地址转换为物理地址</p>
+<ol>
+<li><p>基本的地址变换机构</p>
+<p>系统中只设置一个页表寄存器PTR，用于存放页表在内存的基址与页表的长度，而对应的数据存储于PCB中，进程被调度时才将对应数据装入PTR。</p>
+<p>检查越界-页号变换-与位移量结合为物理地址</p>
+</li>
+<li><p>具有快表的地址变换机构</p>
+<p>CPU没存取一个数据要访问两次内存（页表，数据），为了提升地址变换速度，增设了快表(TLB)，作为页表的一个高速缓冲寄存器，只有在快表中没找到数据才查找页表，并从快表中淘汰一个数据用于存放新数据。局部性原理，快表中查到的概率大概为90% </p>
+</li>
+</ol>
+<h3 id="两级和多级页表"><a href="#两级和多级页表" class="headerlink" title="两级和多级页表"></a>两级和多级页表</h3><p>分页过多时，页表项数过多导致占用内存大，而且要求存储空间是连续的。</p>
+<p>解决方法：</p>
+<p>采用离散分配的方式，或只存放部分页表项到内存</p>
+<ol>
+<li><p>两级页表</p>
+<p>逻辑地址：外部页号，外部页内地址，页内地址。外部页号指向一个作为页表的物理块，减少搜索时间</p>
+</li>
+<li><p>多级页表</p>
+<p>32位两级，64位三级</p>
+</li>
+</ol>
+<h2 id="基本分段存储管理方式"><a href="#基本分段存储管理方式" class="headerlink" title="基本分段存储管理方式"></a>基本分段存储管理方式</h2><h3 id="分段存储管理方式的引入"><a href="#分段存储管理方式的引入" class="headerlink" title="分段存储管理方式的引入"></a>分段存储管理方式的引入</h3><p>目的：</p>
+<ol>
+<li>方便编程，将信息按照逻辑关系分离</li>
+<li>信息共享，段是逻辑单位，可让程序员将其作为分享的单位</li>
+<li>信息保护，信息为单位进行保护</li>
+<li>动态增长，适合不断增大的程序、而不需要划分新的单位</li>
+<li>动态链接，可以段为单位装入程序，实现动态链接</li>
+</ol>
+<h3 id="分段系统的基本原理"><a href="#分段系统的基本原理" class="headerlink" title="分段系统的基本原理"></a>分段系统的基本原理</h3><ol>
+<li><p>分段</p>
+<p>逻辑地址分为段号和段内地址，由于段内地址长度固定，段存在最大长度</p>
+</li>
+<li><p>段表</p>
+<p>段表中的需要存储每个段的长度与基址</p>
+</li>
+<li><p>地址变换机构</p>
+<p>检查段号是否越界-获取段长与基址-检查段内偏移是否越界-生成物理地址</p>
+</li>
+<li><p>分页和分段的主要区别</p>
+<ol>
+<li>页是物理单位，为了实现离散分配而存在，为系统服务。段是逻辑单位，含有一组有实际意义的信息，<strong>为程序员服务</strong></li>
+<li>页大小固定，段大小<strong>可变</strong></li>
+<li>分页是一维的，程序员只需要知道逻辑地址，而分段是二维的，程序员需要知道是哪个段以及段内地址</li>
+</ol>
+</li>
+</ol>
+<h3 id="信息共享"><a href="#信息共享" class="headerlink" title="信息共享"></a>信息共享</h3><p>将数据段和程序段分离，当程序被多个用户使用时，只需要给每个用户分配不同的数据段与一个程序段就可为多个用户服务</p>
+<p>可重入代码又称为纯代码，是一种运行中不会被改变的代码，只需要把局部数据的存储区与它分离就可做到</p>
+<h3 id="段页式存储管理方式"><a href="#段页式存储管理方式" class="headerlink" title="段页式存储管理方式"></a>段页式存储管理方式</h3><ol>
+<li><p>基本原理</p>
+<p>每个段分为若干个页（分配的单位变为了页而非字节），逻辑地址=段号+段内页号+页内地址</p>
+</li>
+<li><p>地址变换过程</p>
+<p>段号是否越界-取得段的页表-页号是否越界-组合物理地址</p>
+</li>
+</ol>
+<h2 id="虚拟存储器的基本概念"><a href="#虚拟存储器的基本概念" class="headerlink" title="虚拟存储器的基本概念"></a>虚拟存储器的基本概念</h2><p>两种可能出现的问题</p>
+<ol>
+<li>作业过大无法全部装入内存</li>
+<li>每次只能装入少量的作业，吞吐量下降</li>
+</ol>
+<h3 id="虚拟存储器的引入"><a href="#虚拟存储器的引入" class="headerlink" title="虚拟存储器的引入"></a>虚拟存储器的引入</h3><ol>
+<li><p>常规存储器管理方式的特征</p>
+<p>一次性：要求把作业一次性地把全部内容装入内存</p>
+<p>驻留性：装入内存后，在运行结束前都需要一直驻留在内存中</p>
+</li>
+<li><p>局部性原理</p>
+<p>几个论点：</p>
+<ol>
+<li>除了少数转移指令和过程调用指令，大部分是<strong>顺序执行</strong></li>
+<li>过程调用的深度一般不超过5</li>
+<li>循环结构会使少数代码被反复运行</li>
+<li>对数据结构的处理，使得操作被局限在很小的范围内</li>
+</ol>
+<p>两个方面：</p>
+<ol>
+<li>时间局限性，被运行到的指令在一段时间后可能被再次运行</li>
+<li>空间局限性，被访问的数据单元附近的数据单元可能也会被访问</li>
+</ol>
+</li>
+<li><p>虚拟存储器的定义</p>
+<p>由于局部性原理，无需将整个程序装入内存，只需要装入部分数据。当所需数据不在内存上而内存已满时需要置换页面。</p>
+<p>虚拟存储器：具有请求调入功能和置换功能，能从<strong>逻辑上</strong>对内存空间加以<strong>扩充</strong>的一种存储器系统</p>
+</li>
+</ol>
+<h3 id="虚拟存储器的实现方法"><a href="#虚拟存储器的实现方法" class="headerlink" title="虚拟存储器的实现方法"></a>虚拟存储器的实现方法</h3><p>需要实现局部调入的功能，依赖于离散分配的存储管理方式</p>
+<ol>
+<li><p>分页请求系统</p>
+<ol>
+<li><p>硬件支持</p>
+<p>请求分页的页表机构，页表需要增加若干标识</p>
+<p>缺页中断机构，当发现所需页不在内存中，需要中断调入页面</p>
+<p>地址变换结构，将逻辑地址变为内存或外存的物理地址</p>
+</li>
+<li><p>实现请求分页的软件</p>
+<p>实现页面置换和页面调入</p>
+</li>
+</ol>
+</li>
+<li><p>请求分段系统</p>
+<ol>
+<li>请求分段的段表机制</li>
+<li>缺段中断机构</li>
+<li>地址变换机构</li>
+</ol>
+</li>
+</ol>
+<h3 id="虚拟存储器的特征"><a href="#虚拟存储器的特征" class="headerlink" title="虚拟存储器的特征"></a>虚拟存储器的特征</h3><ol>
+<li>多次性，一个作业被分为多次调入内存</li>
+<li>对换性，允许将暂不使用的程序和数据，从内存调至外存的对换区</li>
+<li>虚拟性，逻辑上扩充内存容量</li>
+</ol>
+<h2 id="请求分页存储管理方式"><a href="#请求分页存储管理方式" class="headerlink" title="请求分页存储管理方式"></a>请求分页存储管理方式</h2><h3 id="请求分页中的硬件支持"><a href="#请求分页中的硬件支持" class="headerlink" title="请求分页中的硬件支持"></a>请求分页中的硬件支持</h3><ol>
+<li><p>页表机制</p>
+<p>页号，物理块号，状态位P，访问字段A，修改位M，外存地址</p>
+<p>状态位P：是否调入内存</p>
+<p>访问字段A：记录一段时间内被访问的次数</p>
+<p>外存地址：外存副本的位置</p>
+</li>
+<li><p>缺页中断机构</p>
+<p>指令执行完后检查是否有中断信号，有可能一条指令造成多次中断，要有保存多次中断的能力</p>
+</li>
+<li><p>地址变换机构</p>
+<p>页号&gt;页表长度？若是产生越界中断</p>
+<p>页表项在快表中？若是直接获取数据</p>
+<p>页在内存中？若是获取数据，若不是缺页中断</p>
+<p>缺页中断：</p>
+<p>内存是否满？是则选择一页换出</p>
+<p>换出页是否被修改？若是则需写回</p>
+</li>
+</ol>
+<h3 id="内存分配策略和分配算法"><a href="#内存分配策略和分配算法" class="headerlink" title="内存分配策略和分配算法"></a>内存分配策略和分配算法</h3><ol>
+<li><p>最小物理块数的确定，程序能运行的最小物理块数</p>
+</li>
+<li><p>物理块的分配策略</p>
+<ol>
+<li>固定分配局部置换，给予进程固定数量的物理块，让程序在这些内存物理块上运行</li>
+<li>可变分配全局置换，缺页中断时询问系统剩余的物理块</li>
+<li>可变分配局部置换，缺页中断时访问程序被分配的剩余物理块，若频繁缺页中断则增加分配的物理块</li>
+</ol>
+</li>
+<li><p>物理块分配算法</p>
+<ol>
+<li><p>平均分配算法</p>
+<p>$物理块/程序数$</p>
+</li>
+<li><p>按比例分配算法</p>
+<p>$b_i=\frac{S_i}{\sum_{i=1}^nS_i}m，S_i：程序所需页面数$</p>
+</li>
+<li><p>考虑优先权的分配算法</p>
+<p>物理块分为两部分，一部分按比例分配，另一部分则适量增加优先权高的进程</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="调页策略"><a href="#调页策略" class="headerlink" title="调页策略"></a>调页策略</h3><ol>
+<li><p>调入页面的时机</p>
+<ol>
+<li>预调页策略，一次调入若干个相邻的页，多用于进程的首次调入</li>
+<li>请求调页策略，一次调一页，造成较大的物理开销</li>
+</ol>
+</li>
+<li><p>确定从何处调入页面</p>
+<p>外存分为文件区和对换区，对换区是连续空间而文件区是离散空间</p>
+<ol>
+<li>系统拥有足够的对换区空间，全部从对换区调入</li>
+<li>系统缺少足够的对换区空间，不会被修改的文件从文件区调入，可能被修改的部分从对换区调入，例如程序段和数据段</li>
+<li>UNIX方式，未运行的页面都从文件区调入，被换出的页面从对换区调入</li>
+</ol>
+</li>
+<li><p>页面调入过程</p>
+<p>对用户透明</p>
+<p>保存CPU环境-分析原因-转入缺页中断处理程序-如果内存满则换出一页-换出页若被修改则需重新写入-调入页-修改状态位</p>
+</li>
+</ol>
+<h2 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h2><h3 id="最佳置换算法和先进先出置换算法"><a href="#最佳置换算法和先进先出置换算法" class="headerlink" title="最佳置换算法和先进先出置换算法"></a>最佳置换算法和先进先出置换算法</h3><ol>
+<li>最佳置换算法，将未来最晚被用到页面换出，实际不可行</li>
+<li>先进先出置换算法，最早调入的页面被换出</li>
+</ol>
+<h3 id="最近最久未使用-LRU-置换算法"><a href="#最近最久未使用-LRU-置换算法" class="headerlink" title="最近最久未使用(LRU)置换算法"></a>最近最久未使用(LRU)置换算法</h3><ol>
+<li><p>描述</p>
+<p>用最近的过去作为最近的将来的近似，选择最近最久未使用的页面予以淘汰</p>
+</li>
+<li><p>硬件支持</p>
+<ol>
+<li>寄存器，每个物理块对应一个寄存器，页面被使用时寄存器最高位置为1，每隔一段时间将所有寄存器中的数右移一位，每次淘汰寄存器中最小的淘汰。</li>
+<li>栈，每使用一个页面将其页号移动至栈顶，每次淘汰栈底元素</li>
+</ol>
+</li>
+</ol>
+<h3 id="Clock置换算法"><a href="#Clock置换算法" class="headerlink" title="Clock置换算法"></a>Clock置换算法</h3><p>LRU需求较多硬件需求，Clock作为LRU的近似算法</p>
+<ol>
+<li><p>简单的clock置换算法</p>
+<p>所有页面链接成循环队列，某页被访问则其访问位置1，选择一页访问位为0的换出，访问若为1，则置为0且不将其换出。此算法也叫最近未用算法(NRU)</p>
+</li>
+<li><p>改进型clock置换算法</p>
+<p>每个页面都有访问位A和修改位M</p>
+<ol>
+<li>扫描一遍寻找A=0,M=0，此次扫描不改变访问位</li>
+<li>寻找A=0,M=1作为淘汰页，将所有扫描过的页面的访问位置0</li>
+<li>重复第二步</li>
+</ol>
+<p>减少磁盘I/O，增加了缺页的开销</p>
+</li>
+</ol>
+<h3 id="其他置换算法"><a href="#其他置换算法" class="headerlink" title="其他置换算法"></a>其他置换算法</h3><ol>
+<li><p>最少使用LFU</p>
+</li>
+<li><p>页面缓冲算法</p>
+<p>采用FIFO，被淘汰的页放入两个链表，如果未被修改放入空闲链表，否则放入已修改页面的链表。取空闲链表的队首作为空闲物理块装入新读入的页面。淘汰页面时，将页面换出到空闲链表，给予暂留内存，二次淘汰的机会。被修改页面当数量达到一定数额后一起写回。</p>
+</li>
+</ol>
+<h2 id="请求分段存储管理方式"><a href="#请求分段存储管理方式" class="headerlink" title="请求分段存储管理方式"></a>请求分段存储管理方式</h2><h3 id="请求分段中的硬件支持"><a href="#请求分段中的硬件支持" class="headerlink" title="请求分段中的硬件支持"></a>请求分段中的硬件支持</h3><ol>
+<li><p>段表机制</p>
+<p>段名，段长，段基址，存取方式，访问位A，修改位M，存在位P，增补位，外存始址</p>
+<p>增补位：是否做过动态增长</p>
+</li>
+<li><p>缺段中断机构</p>
+<p>没有足够长的连续空闲区，但空闲容量足够，需要空区拼接，否则再淘汰其他段</p>
+</li>
+<li><p>地址变换机构</p>
+</li>
+</ol>
+<h3 id="分段的共享和保护"><a href="#分段的共享和保护" class="headerlink" title="分段的共享和保护"></a>分段的共享和保护</h3><ol>
+<li><p>共享段表</p>
+<p>增加一张共享段表，相比段表中增加若干项，共享进程计数，对于每个共享该段的进程的记录，包括：状态，进程名，进程号，段号，存取控制</p>
+</li>
+<li><p>共享段的分配和回收</p>
+<ol>
+<li>分配，对于第一次调用count置于1，否则count:=count+1，增加共享段表中新进程相关信息</li>
+<li>回收，count:=count-1，撤销共享段表中进程相关信息，若count为0收回该共享段的物理内存，取消共享段表中的该段对应表项。</li>
+</ol>
+</li>
+<li><p>分段保护</p>
+<ol>
+<li><p>越界检查</p>
+</li>
+<li><p>存取控制检查</p>
+</li>
+<li><p>环保护检查</p>
+<p>低标号的环优先级高</p>
+<p>一个程序可以访问驻留在相同环或较低特权环中的数据</p>
+<p>一个程序可以调用驻留在相同环或较高特权环中的服务</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="设备管理"><a href="#设备管理" class="headerlink" title="设备管理"></a>设备管理</h1><h2 id="I-O系统"><a href="#I-O系统" class="headerlink" title="I/O系统"></a>I/O系统</h2><h3 id="I-O设备"><a href="#I-O设备" class="headerlink" title="I/O设备"></a>I/O设备</h3><ol>
+<li>I/O设备的类型<ol>
+<li>按设备的使用特性分类，存储设备，输入输出设备</li>
+<li>按传输速率分类，低俗设备（键鼠），中速设备（打印机），高速设备（磁盘）</li>
+<li>按信息交换的单位分类，块设备（可寻址，DMA），字符设备（不可寻址，中断驱动）</li>
+<li>按设备的共享属性分类，独占设备，虚拟设备，共享设备</li>
+</ol>
+</li>
+<li>设备与控制器之间的接口<ol>
+<li>数据信号线，传输数据，有缓冲区</li>
+<li>控制信号线，控制信号</li>
+<li>状态信号线，当前状态的信号，正在读写或已完成读写</li>
+</ol>
+</li>
+</ol>
+<h3 id="设备控制器"><a href="#设备控制器" class="headerlink" title="设备控制器"></a>设备控制器</h3><p>控制一个或多个I/O设备，以实现I/O设备和计算机之间的数据交换。可编制用于控制不同的设备。可分为字符设备的控制器，与块设备的控制器</p>
+<ol>
+<li>设备控制器的基本功能<ol>
+<li>接受和识别命令</li>
+<li>数据交换，CPU与控制器之间，控制器和设备之间的数据交换，前者依赖数据总线</li>
+<li>标识和报告设备的状态</li>
+<li>地址标识，识别和控制每个设备的地址 </li>
+<li>数据缓冲，I/O设备低速而CPU和内存高速，故而需要设置缓冲区</li>
+<li>差错检测，采用重传的策略</li>
+</ol>
+</li>
+<li>设备控制器的组成<ol>
+<li>设备控制器与处理机的接口，数据线，地址线，控制线，数据寄存器，控制/状态寄存器</li>
+<li>设备控制器与设备的接口，一个接口连接一台设备，每个接口存在数据、控制和状态三种类型的信号</li>
+<li>I/O逻辑，对收到的命令译码</li>
+</ol>
+</li>
+</ol>
+<h3 id="I-O通道"><a href="#I-O通道" class="headerlink" title="I/O通道"></a>I/O通道</h3><ol>
+<li><p>I/O通道设备的引入</p>
+<p>为了减轻CPU负担而引入，通道是一种特殊的处理机，具有执行I/O指令的能力，与CPU共享内存</p>
+</li>
+<li><p>通道类型</p>
+<ol>
+<li>字节多路通道，时间片轮转，每个设备传输一个字节，低速设备</li>
+<li>数组选择通道，一段时间内一个设备独占，高速设备，低利用率</li>
+<li>数组多路通道，各设备分时并行传输，高速设备，高利用率</li>
+</ol>
+</li>
+<li><p>瓶颈问题</p>
+<p>若设备到存储器间只有一条通路，那假如通道或控制器任一被占用则不可正常传输</p>
+<p>解决方法，一个设备连接到多个控制器上，一个控制器连到多个通道上</p>
+</li>
+</ol>
+<h3 id="总线系统"><a href="#总线系统" class="headerlink" title="总线系统"></a>总线系统</h3><ol>
+<li>ISA和EISA总线<ol>
+<li>ISA总线，带宽八位</li>
+<li>EISA总线，带宽32位</li>
+</ol>
+</li>
+<li>局部总线，需求更高的传输速率，将设备通过局部总线控制器直接接到CPU总线上<ol>
+<li>VESA总线</li>
+<li>PCI总线</li>
+</ol>
+</li>
+</ol>
+<h2 id="I-O控制方式"><a href="#I-O控制方式" class="headerlink" title="I/O控制方式"></a>I/O控制方式</h2><h3 id="程序I-O方式"><a href="#程序I-O方式" class="headerlink" title="程序I/O方式"></a>程序I/O方式</h3><p>未就绪就原地等待</p>
+<h3 id="中断驱动I-O控制方式"><a href="#中断驱动I-O控制方式" class="headerlink" title="中断驱动I/O控制方式"></a>中断驱动I/O控制方式</h3><p>I/O就绪后对CPU发中断信号，数据以字节为单位，每完成一个单位中断一次</p>
+<h3 id="直接存储器访问-DMA-I-O控制方式"><a href="#直接存储器访问-DMA-I-O控制方式" class="headerlink" title="直接存储器访问(DMA)I/O控制方式"></a>直接存储器访问(DMA)I/O控制方式</h3><ol>
+<li><p>DMA控制方式的引入</p>
+<p>数据以数据块为单位，数据直接送往内存，仅在数据传输的开始与结束时需要CPU干预</p>
+</li>
+<li><p>DMA控制器的组成</p>
+<p>主机-DMA控制器接口，DMA控制器与块设备的接口，I/O控制逻辑</p>
+<p>主机-DMA控制器接口中的四类寄存器：</p>
+<ol>
+<li>命令/状态寄存器(CR)，接受I/O命令，控制信息，设备状态</li>
+<li>内存地址寄存器(MAR)，输入时，送入内存的地址；输出时，内存到设备的源地址</li>
+<li>数据寄存器(DR)，暂存数据</li>
+<li>数据计数器(DC)。存放本次CPU要读写的字(节)数</li>
+</ol>
+</li>
+<li><p>DMA工作过程</p>
+<p>设置MAR与DC初值-启动DMA传送命令-传送数据字-存储器地址增1，DC减1-传送数据直到DC=0</p>
+</li>
+</ol>
+<h3 id="I-O通道控制方式"><a href="#I-O通道控制方式" class="headerlink" title="I/O通道控制方式"></a>I/O通道控制方式</h3><ol>
+<li><p>I/O通道控制方式的引入</p>
+<p>为了实现离散的数据块的一次性读入，即对一组数据块的读(或写)及有关的控制和管理为单位的干预。具体的实现方法是将多条读写指令封装为一个通道程序，通道程序结束后再中断CPU</p>
+</li>
+<li><p>通道程序</p>
+<p>通道程序中含若干条指令，其中每条指令都包括：</p>
+<ol>
+<li>操作码，规定所做的操作</li>
+<li>内存地址，内存首址</li>
+<li>计数，字节数</li>
+<li>通道程序结束位P，表明通道程序是否结束，该条指令是不是通道程序的最后一个指令</li>
+<li>记录结束标志R，本条指令与下一条指令是否同属于一个记录</li>
+</ol>
+</li>
+</ol>
+<h2 id="缓冲管理"><a href="#缓冲管理" class="headerlink" title="缓冲管理"></a>缓冲管理</h2><h3 id="缓冲的引入"><a href="#缓冲的引入" class="headerlink" title="缓冲的引入"></a>缓冲的引入</h3><ol>
+<li>缓和CPU和I/O设备间的速度不匹配</li>
+<li>减少对CPU的中断频率</li>
+<li>提高CPU和I/O设备之间的并行性</li>
+</ol>
+<h3 id="单缓冲和双缓冲"><a href="#单缓冲和双缓冲" class="headerlink" title="单缓冲和双缓冲"></a>单缓冲和双缓冲</h3><ol>
+<li><p>单缓冲</p>
+<p>设置一个缓冲区，读写不可并行。</p>
+</li>
+<li><p>双缓冲</p>
+<p>设置两个缓冲区，当一个缓冲区装满后，I/O设备转去另一缓冲区，同时CPU取走第一缓冲区。</p>
+</li>
+</ol>
+<p>两台机器通信时如果仅为他们配置单缓冲，那么任一时刻都只能单向传输。为了实现双向数据传输，必须在两台机器都配置两个缓冲区，一个用作发送缓冲区，一个用作接收缓冲区。</p>
+<h3 id="循环缓冲"><a href="#循环缓冲" class="headerlink" title="循环缓冲"></a>循环缓冲</h3><p>为了速度相差过大的情况，设置多个缓冲区</p>
+<ol>
+<li><p>循环缓冲的组成</p>
+<ol>
+<li>多个缓冲区：空缓冲区R，满缓冲区G以及正在使用的工作缓冲区C</li>
+<li>多个指针：指示下一个满缓冲区，指示下一个空缓冲区，指示正在使用的缓冲区</li>
+</ol>
+</li>
+<li><p>循环缓冲区的使用</p>
+<ol>
+<li><p>Getbuf</p>
+<p>计算进程调用该过程使用Nextg所指示的缓冲区，将其变为Current指向的缓冲区，将NextG指向下一个G缓冲区。输入进程用Getbuf获取下一个R缓冲区</p>
+</li>
+<li><p>Releasebuf过程</p>
+<p>计算进程将数据提取完后调用该过程将其变为R缓冲区，输入进程装满缓冲区后调用该进程将其变为G缓冲区</p>
+</li>
+</ol>
+</li>
+<li><p>进程同步</p>
+<ol>
+<li>Nexti追上Nextg:输入速度大于计算速度，阻塞输入进程，直至有空缓冲区</li>
+<li>Nextg追上Nexti:计算速度大于输入速度，阻塞计算进程，直至有满缓冲区</li>
+</ol>
+</li>
+</ol>
+<h3 id="缓冲池"><a href="#缓冲池" class="headerlink" title="缓冲池"></a>缓冲池</h3><p>缓冲区为进程专属，利用率不高，故而公用缓冲池更为流行</p>
+<ol>
+<li><p>缓冲池的组成</p>
+<p>空缓冲区，装满输出数据的缓冲区，装满输入数据的缓冲区</p>
+<p>空缓冲队列emq，输入队列inq，输出队列outq</p>
+<p>用于收容输入数据的工作缓冲区</p>
+<p>用于提取输入数据的工作缓冲区</p>
+<p>用于收容输出数据的工作缓冲区</p>
+<p>用于提取输出数据的工作缓冲区</p>
+</li>
+<li><p>Getbuf过程Putbuf过程</p>
+<p>缓冲池中的队列本身是临界资源，多个进程在访问一个队列时，即应互斥， 又须同步</p>
+<p>为了互斥，应该每个队列设置一个互斥信号量MS(type)</p>
+<p>为了同步，应该每个队列设置一个资源信号量RS(type)</p>
+<p>对于getbuf，既要互斥地访问临界区，也要等待资源，需要wait(RS(type))</p>
+<p>对于putbuf，既要互斥地访问临界区，在放回资源后，需要signal(RS(type))。</p>
+</li>
+<li><p>缓冲区的工作方式</p>
+<p>收容输入，提取输入，收容输出提取输出共四种工作方式</p>
+<ol>
+<li>收容输入，输入进程取空缓冲队列的缓冲区，装满后放回输入队列</li>
+<li>提取输入，计算进程取输入队列的缓冲区，用完后放回空缓冲队列</li>
+<li>收容输出，收容输入同理</li>
+</ol>
+</li>
+</ol>
+<h2 id="设备分配"><a href="#设备分配" class="headerlink" title="设备分配"></a>设备分配</h2><p>设备的独立性，应用程序独立于具体使用的物理设备，为了实现设备独立性引入了逻辑设备和物理设备两个概念。用设备独立性软件实现</p>
+<p>设备分配必须由系统完成</p>
+<h3 id="设备分配中的数据结构"><a href="#设备分配中的数据结构" class="headerlink" title="设备分配中的数据结构"></a>设备分配中的数据结构</h3><ol>
+<li><p>设备控制表DCT</p>
+<p>为每个设备都配置一张设备控制表，用于记录本设备的情况</p>
+<ol>
+<li>设备类型，设备标识符</li>
+<li>设备队列队首指针，PCB按一定的策略</li>
+<li>设备状态，设备，控制器和通道是否忙</li>
+<li>与设备连接的控制器表指针，指向该设备所连接的控制器的控制表，如果连接多个控制器，应设置多个控制器表指针</li>
+<li>重复执行次数，如果传送失败，则需要重传，重传次数过多达到规定值则认为传送失败</li>
+</ol>
+</li>
+<li><p>控制器控制表。通道控制表和系统设备表</p>
+<ol>
+<li>控制器控制表COCT，控制器标识符，控制器状态，域控制器链接的通道表指针，控制器队列的队首指针，控制器队列的队尾指针</li>
+<li>通道控制表CHCT，通道标识符，通道状态，与通道连接的控制器表的首址，通道队列的队首指针，通道队列的队尾指针</li>
+<li>系统设备表，系统范围内的，记录了系统中全部设备的情况。每个设备占一个表目。表项有设备类型，设备标识符，设备控制表及设备驱动程序的入口</li>
+</ol>
+<h3 id="设备分配时应考虑的因素"><a href="#设备分配时应考虑的因素" class="headerlink" title="设备分配时应考虑的因素"></a>设备分配时应考虑的因素</h3><ol>
+<li><p>设备的固有属性</p>
+<ol>
+<li>独占设备，被系统分配后被独占，等进程释放设备后系统再分配。缺点在于设备得不到充分利用，而且还可能引起死锁</li>
+<li>共享设备，可同时分配给多个进程使用，需注意对访问的先后次序进行合理的调度</li>
+<li>可虚拟设备，使用虚拟技术将设备虚拟成多个设备，因而，可虚拟设备是可共享的设备。</li>
+</ol>
+</li>
+<li><p>设备分配算法</p>
+<p>先来先服务，优先级高者优先</p>
+</li>
+<li><p>设备分配中的安全性</p>
+<ol>
+<li><p>安全分配模式</p>
+<p>进程发出I/O请求后阻塞进程，直至I/O操作完成后才被唤醒，摒弃了“请求和保持”的条件，缺点是进程进展缓慢，CPU和I/O设备串行工作</p>
+</li>
+<li><p>不安全分配方式</p>
+<p>进程发出I/O请求后继续运行，需要时发出多个I/O请求。仅当进程所请求的设备已被另一进程占用时，请求进程才进入阻塞状态。优点，进程推进快，缺点可能造成死锁，需要进行对设备分配进行安全性计算</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="独占设备的分配程序"><a href="#独占设备的分配程序" class="headerlink" title="独占设备的分配程序"></a>独占设备的分配程序</h3><ol>
+<li><p>基本的设备分配程序</p>
+</li>
+<li><p>分配设备（需要计算设备分配安全性）-分配控制器-分配通道</p>
+</li>
+<li><p>设备分配程序的改进</p>
+<p>增加设备的独立性，进程应使用逻辑设备名请求I/O，即进程申请的是某类设备而非某台指定的设备。</p>
+<p>考虑多通路情况，为了防止出现“瓶颈”，设备可以连接多个控制器，按顺序查询是否有空闲，若无再将设备挂在控制器的等待队列</p>
+<h3 id="SPOOLing技术"><a href="#SPOOLing技术" class="headerlink" title="SPOOLing技术"></a>SPOOLing技术</h3><ol>
+<li><p>什么是SPOOLing</p>
+<p>因为多道程序技术带来的并发性，可以利用一个进程让CPU模拟外围控制器，将低速I/O设备的数据传送到磁盘上。</p>
+</li>
+<li><p>SPOOLing系统的组成</p>
+<ol>
+<li>输入井和输出井。磁盘上开辟的两个大存储空间，分别用于暂存I/O设备输入的数据和用于暂存用户程序的输出数据</li>
+<li>输入缓冲区和输出缓冲区，用于缓和CPU和磁盘之间的速度不匹配的矛盾，在内存中开辟的两个缓冲区。分别用于暂存输入设备送来的数据，以后再送给输入井和暂存从输出井送来的数据以后在传送给输出设备</li>
+<li>输入进程SPi和输出进程SP0，用两个进程模拟脱机I/O时的外围控制机。</li>
+</ol>
+<p>数据的流动在 设备-缓冲区(内存)-井(磁盘) 内进行整个过程由CPU(进程)调度</p>
+</li>
+<li><p>共享打印机</p>
+<p>利用SPOOLing技术可将独占的打印机改造成共享设备。提高设备利用率，降低用户使用难度</p>
+<p>当用户请求打印时</p>
+<ol>
+<li>输出进程在输出井中为之申请一个空闲磁盘块</li>
+<li>输出进程再为用户进程申请一张空白的用户请求答应表，用户填写要求后，将其挂入请求打印队列</li>
+</ol>
+<p>输出进程对打印机的操作</p>
+<ol>
+<li>若打印机空闲，则从请求打印队列取出一张请求答应表</li>
+<li>将数据传送到内存缓冲区</li>
+<li>打印机打印</li>
+</ol>
+</li>
+<li><p>SPOOLing系统的特点</p>
+<ol>
+<li>提高了I/O速度</li>
+<li>将独占设备改造为共享速度</li>
+<li>实现了虚拟设备功能</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="磁盘存储器的管理"><a href="#磁盘存储器的管理" class="headerlink" title="磁盘存储器的管理"></a>磁盘存储器的管理</h2><p>磁盘管理器的优点：容量大，存取速度快，可以实现随机存储</p>
+<h3 id="磁盘性能简述"><a href="#磁盘性能简述" class="headerlink" title="磁盘性能简述"></a>磁盘性能简述</h3><ol>
+<li><p>数据的组织和格式</p>
+<p>每个磁盘面有一个或两个<strong>磁盘面</strong>（磁盘面的上下平面），每个磁盘面分为若干个同心环，这种换称作<strong>磁道</strong>，磁道间需要有间隔，每条磁道上存储相同数目的二进制位，每条磁道逻辑上又被划分为若干个<strong>扇区</strong></p>
+<p>为了提高存储能力，现代磁盘不再让每个磁道拥有同样的扇区数，而是将磁道划分出若干个环带，同环带的磁道拥有相同的扇区数。</p>
+<p>磁盘低级格式化为控制信息区和数据区，每个扇区都包含两个字段：标识符字段，数据字段</p>
+<p>格式化完成后一般要对磁盘分区，在逻辑上每个分区就是一个独立的逻辑磁盘，每个分区的起始扇区和大小都记录在磁盘0扇区的主引导记录分区表所包含的分区表中</p>
+<p>高级格式化，设置一个引导块、空闲存储管理、根目录和一个空文件系统，同时在分区表中标识该分区所使用的文件系统</p>
+</li>
+<li><p>磁盘的类型</p>
+<ol>
+<li>固定头磁盘，每条磁道上都有读写磁头</li>
+<li>移动头磁盘，每一个盘面一个磁头，移动寻道</li>
+</ol>
+</li>
+<li><p>磁盘访问时间</p>
+<ol>
+<li>寻道时间$T_s$，移动磁头到指定磁道的时间</li>
+<li>旋转延迟时间$T_r$，等待指定扇区移动到磁头下的时间，一般用转速倒数的二分之一作为平均值</li>
+<li>传输时间$T_t$，等待磁头扫描完所需要读的数据在物理上的长度</li>
+</ol>
+<p>合计$T_a=T_s+\frac{1}{2r}+\frac{b}{rN}$，主要时间来自于寻道时间，应该逻辑上连续的数据放在物理上连续的位置</p>
+</li>
+</ol>
+<h3 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h3><ol>
+<li><p>先来先服务</p>
+</li>
+<li><p>最短寻道时间优先</p>
+<p>优先将磁头移动到离当前磁道最近的磁道上，可能导致饥饿</p>
+</li>
+<li><p>SCAN算法</p>
+<ol>
+<li>SCAN算法，将磁头移动到当前磁头移动方向上最近的磁道，没有则转向</li>
+<li>循环扫描(CSCAN)算法，为了避免在磁头刚移动的位置出现访问，导致等待时间过长，规定磁头单向移动，进行循环扫描，每次到达终点后回到起点再开始扫描</li>
+</ol>
+</li>
+<li><p>NstepSCAN和FSCAN算法</p>
+<ol>
+<li><p>NStepSCAN算法</p>
+<p>若某磁道上一直存在访问请求，可能导致磁头被该磁道垄断，为了避免，将磁盘请求队列粉煤若干个长度为N的队列，队列间采取先来先服务，队列内按SCAN算法</p>
+</li>
+<li><p>FSCAN算法</p>
+<p>分为两个队列，每次调度过程中新到的请求都放置于另一个队列中，所有新请求都推迟到下一次扫描</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><h2 id="文件和文件系统"><a href="#文件和文件系统" class="headerlink" title="文件和文件系统"></a>文件和文件系统</h2><h3 id="文件、记录和数据项"><a href="#文件、记录和数据项" class="headerlink" title="文件、记录和数据项"></a>文件、记录和数据项</h3><ol>
+<li><p>数据项</p>
+<ol>
+<li>基本数据项，原子数据，描述某种属性的字符集，应该有数据类型</li>
+<li>组合数据项，若干个基本数据项组成的</li>
+</ol>
+</li>
+<li><p>记录</p>
+<p>记录是一组相关<strong>数据项的集合</strong>，用于描述<strong>一个对象</strong>在某方面的属性。为了唯一标识一个记录，需要有不重复的关键字</p>
+</li>
+<li><p>文件</p>
+<p>有结构文件中，文件由<strong>若干个相关记录组成</strong></p>
+<p>无结构文件则被视作一个字符流</p>
+<p>文件在文件系统中是一个最大的数据单位，描述了一个对象集。一个文件必须要有一个文件名，用以用户访问。</p>
+<p>文件属性：</p>
+<ol>
+<li>文件类型</li>
+<li>文件长度</li>
+<li>文件的物理位置</li>
+<li>文件的建立时间</li>
+</ol>
+</li>
+</ol>
+<h3 id="文件类型和文件系统模型"><a href="#文件类型和文件系统模型" class="headerlink" title="文件类型和文件系统模型"></a>文件类型和文件系统模型</h3><ol>
+<li><p>文件类型</p>
+<ol>
+<li>用途分类：系统文件(x)、用户文件(rwx)和库文件(x)</li>
+<li>文件中的数据的形式分类：源文件、目标文件和可执行文件</li>
+<li>按存取控制分类：只执行文件，只读文件和读写文件</li>
+<li>按组织形式和处理方式分类：普通文件、目录文件和特殊文件（各类I/O设备）</li>
+</ol>
+</li>
+<li><p>文件系统模型</p>
+<p>用户-文件系统接口-对对象操纵和管理的软件集合-对象及其属性</p>
+<ol>
+<li>对象及其属性：文件、目录（文件名及其指针）和磁盘存储空间</li>
+<li>对对象操纵和管理的软件集合：<strong>文件管理系统核心</strong>，包括对对象存储空间的管理、对文件目录的管理、将文件的逻辑地址转换为物理地址的机制、对文件读写的管理、对文件的共享与保护等</li>
+<li>文件系统的接口：命令接口和程序接口（系统调用）</li>
+</ol>
+</li>
+</ol>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ol>
+<li><p>最基本文件操作</p>
+<ol>
+<li>创建文件：分配外存空间、目录中为其建立目录项。</li>
+<li>删除文件：删除目录中的目录项，回收存储空间</li>
+<li>读文件：给系统调用提供文件名和应读入的内存目标地址。系统去查找目录，找到指定目录项，找到外存中的位置，还需要一个控制读写</li>
+<li>写文件：同上</li>
+<li>截断文件：将文件的长度设置为零，放弃文件的原有内容</li>
+<li>设置文件的读写位置，实现随机存取</li>
+</ol>
+</li>
+<li><p>文件的打开和关闭操作</p>
+<p>打开：从外存拷贝到内存打开文件表的一个表目中，并返回表目的索引。</p>
+<p>关闭：从打开文件表中删除对应表目</p>
+</li>
+<li><p>其他文件操作</p>
+<p>对文件属性的操作</p>
+<p>目录的操作</p>
+</li>
+</ol>
+<h2 id="文件的逻辑结构"><a href="#文件的逻辑结构" class="headerlink" title="文件的逻辑结构"></a>文件的逻辑结构</h2><ol>
+<li>文件的逻辑结构，用户观点出发观察到的文件组织形式。</li>
+<li>文件的物理结构，文件在外存上的存储组织形式</li>
+</ol>
+<h3 id="文件逻辑结构的类型"><a href="#文件逻辑结构的类型" class="headerlink" title="文件逻辑结构的类型"></a>文件逻辑结构的类型</h3><ol>
+<li><p>有结构文件</p>
+<p>记录式文件：</p>
+<ol>
+<li>定长记录，每个记录的长度都是固定相同的</li>
+<li>各记录的长度不相同</li>
+</ol>
+<p>记录组织方式：</p>
+<ol>
+<li>顺序文件，按某种顺序形成。通常是定长记录</li>
+<li>索引文件，利用建立记录的索引表以加速检索速度</li>
+<li>索引顺序表</li>
+</ol>
+</li>
+<li><p>无结构文件</p>
+<p>即流式文件。采用读写指针指出下一个要访问的字符</p>
+</li>
+</ol>
+<h3 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h3><ol>
+<li><p>逻辑记录的排序</p>
+<p>串结构，顺序与关键字无关，通常按存入时间来决定先后排序</p>
+<p>顺序结构，按关键字排序，更快的检索速度</p>
+</li>
+<li><p>对顺序文件的读写操作</p>
+<p>即记录地址的差是记录的长度</p>
+</li>
+<li><p>顺序文件的优缺点</p>
+<p>批量读写快，查找修改单个记录慢</p>
+</li>
+</ol>
+<h3 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h3><p>建立索引表，用空间换取时间</p>
+<h3 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h3><p>为顺序文件建立索引表，克服了变长记录文件不便于直接存取的缺点，并可以通过索引表实现折半检索</p>
+<h3 id="直接文件和哈希文件"><a href="#直接文件和哈希文件" class="headerlink" title="直接文件和哈希文件"></a>直接文件和哈希文件</h3><ol>
+<li><p>直接文件</p>
+<p>记录键值本身就决定了记录的物理地址，组织直接文件的关键在于用什么方式进行从记录值到物理地址的转换。</p>
+</li>
+<li><p>哈希文件</p>
+<p>目前应用最为广泛的一种直接文件，利用哈希函数将记录键值转换为相应记录的地址</p>
+</li>
+</ol>
+<h2 id="外存分配方式"><a href="#外存分配方式" class="headerlink" title="外存分配方式"></a>外存分配方式</h2><h3 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h3><ol>
+<li>连续分配的方式，为每一个文件分配一组相邻接的盘块，可把逻辑文件中的记录顺序地存储到邻接的各物理盘块中。和内存动态分区一样可以用紧凑完成碎片的消除</li>
+<li>顺序分配的主要优缺点<ol>
+<li>顺序访问容易</li>
+<li>顺序访问速度快</li>
+<li>要求有连续的存储空间</li>
+<li>需要事先知道文件的长度</li>
+</ol>
+</li>
+</ol>
+<h3 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h3><p>通过在每个盘块上的链接指针将同属于一个文件的多个离散的盘块链接成一个链表</p>
+<ol>
+<li><p>隐式链接，目录中只存储开始盘块号和结束盘块号，下一个盘块指针存储在盘块中（等同于链表）。可靠性差，要求每个指针都不出错。</p>
+</li>
+<li><p>显式链接</p>
+<p>各物理块的指针显示地存放在内存的一张链接表中，该表在整个磁盘仅设置一张。该表称作文件分配表FAT</p>
+</li>
+</ol>
+<h3 id="FAT和NTFS技术"><a href="#FAT和NTFS技术" class="headerlink" title="FAT和NTFS技术"></a>FAT和NTFS技术</h3><ol>
+<li><p>FAT12，每个FAT表目长度为12($2^{12}$个表项)位，每个表目对应的外存存储空间即一簇可以为一个扇区（512B）、两个扇区、四个扇区、八个扇区等。增大簇的大小的同时，可能会造成更大的簇内零头。可将物理磁盘分为若干个逻辑磁盘，也称为卷</p>
+</li>
+<li><p>FAT16，每个FAT表母长度位16位，改善了FAT12，但改善得有限。每个簇的大小可以为128KB</p>
+</li>
+<li><p>FAT32，每个簇固定为4KB，最大存储空间为2TB，不再向下兼容</p>
+</li>
+<li><p>NTFS</p>
+<ol>
+<li><p>NTFS新特性：使用了64位的磁盘地址，更长的文件名与全路径名，系统容错，数据一致性。文件加密与压缩</p>
+</li>
+<li><p>磁盘组织</p>
+<p>以簇为磁盘空间分配和回收的基本单位。可以不需要知道盘块的大小。大多数情况下簇的大小为4KB</p>
+<p>逻辑簇号，以卷为单位，将整个卷中所有的簇按顺序进行简单的编号</p>
+<p>虚拟簇号，将属于某个文件的簇按顺序进行编号</p>
+</li>
+<li><p>文件的组织，不知道考不考，暂略</p>
+</li>
+</ol>
+<p>不向下兼容</p>
+</li>
+</ol>
+<h3 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h3><ol>
+<li><p>单级索引分配</p>
+<p>缺点：</p>
+<ol>
+<li>不能支持高校的直接存取</li>
+<li>FAT占用较大的内存空间</li>
+</ol>
+<p>为每个文件分配一个索引块，再将把分配给该文件的所有盘块号都记录在该索引块上。目录上存在对应索引块的指针</p>
+</li>
+<li><p>多级索引分配</p>
+<p>如果分配的盘块号已经装满了一个索引块，分配另一个索引块将以后分配的盘块号记录在其中，再通过建立索引的索引，将多个索引块组织起来</p>
+</li>
+<li><p>混合索引分配方式</p>
+<p>将多种索引分配方式相结合。再UNIX中使用。</p>
+<ol>
+<li>直接地址，iaddr(0)~iaddr(9)存放直接地址，用于小文件存储</li>
+<li>一次间接地址，iaddr(10)，即单级索引</li>
+<li>多次间接地址</li>
+</ol>
+</li>
+</ol>
+<h2 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h2><ol>
+<li>实现“按名存取”</li>
+<li>提高对目录的检索速度</li>
+<li>文件共享</li>
+<li>允许文件重名</li>
+</ol>
+<h3 id="文件控制块与索引结点"><a href="#文件控制块与索引结点" class="headerlink" title="文件控制块与索引结点"></a>文件控制块与索引结点</h3><p>为文件设置用于描述和控制的数据结构称之为“文件控制块FCB”。而人们把文件控制块的有序集合称为文件目录。通常，一个文件目录也被看作是一个文件称为目录文件。</p>
+<ol>
+<li><p>文件控制块</p>
+<ol>
+<li>基本信息类：文件名，文件物理位置，文件逻辑结构与文件物理结构</li>
+<li>存取控制信息类：文件的存取权限，核准用户的存取权限以及一般用户的存取权限</li>
+<li>使用信息类：文件的建立时间，上次修改时间及当前使用信息</li>
+</ol>
+</li>
+<li><p>索引结点</p>
+<ol>
+<li><p>索引结点的引入</p>
+<p>检索目录文件的过程只用到了文件名，其余的描述信息均可在检索时忽略。故而可以对FCB做一个索引表，其中只有文件名和索引节点编号，从而减少检索过程中对磁盘的读取的次数。</p>
+</li>
+<li><p>磁盘索引结点</p>
+<p>存放于磁盘上的索引结点。每个文件有唯一一个磁盘索引结点。</p>
+<p>包括：文件主标识符，文件类型，文件存取权限，文件物理地址，文件长度，文件连接计数及文件存取时间。</p>
+</li>
+<li><p>内存索引节点</p>
+<p>存放于内存上的索引结点。</p>
+<p>包括：索引结点编号，状态（指示是否上锁或修改），访问计数（共享数），文件所属文件系统的逻辑设备号及链接指针</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><ol>
+<li><p>单级目录结构</p>
+<p>整个文件系统之建立一个目录表。目录项中含的文件名，文件扩展名，文件长度，文件类型，文件物理地址及其他文件属性。此外为了标识目录项是否空闲，再增加一个状态位。</p>
+<p>优点：简单</p>
+<p>缺点：查找慢，不允许重名及不便于实现文件共享</p>
+</li>
+<li><p>两级目录</p>
+<p>为每一个用户建立一个单独的用户文件目录，再在系统中建立一个主目录用户。主用户目录包括文件名和指向用户目录的指针。</p>
+<p>优点：检索快，不同用户的文件可以重名及不同用户可用不同的文件名访问一个共享文件。</p>
+</li>
+<li><p>多级目录结构</p>
+<ol>
+<li><p>目录结构</p>
+<p>采用树的结构。</p>
+</li>
+<li><p>路径名</p>
+<p>根到叶子存在唯一的路径</p>
+</li>
+<li><p>当前目录</p>
+<p>相对路径，绝对路径</p>
+</li>
+<li><p>增加删除目录</p>
+<p>空目录直接删除，非空目录删除时目录内的文件均需删除</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="目录查询技术"><a href="#目录查询技术" class="headerlink" title="目录查询技术"></a>目录查询技术</h3><ol>
+<li>线性检索法，简单顺序检索当前目录。</li>
+<li>Hash方法</li>
+</ol>
+<h2 id="文件存储空间的管理"><a href="#文件存储空间的管理" class="headerlink" title="文件存储空间的管理"></a>文件存储空间的管理</h2><h3 id="空闲表法和空闲链表法"><a href="#空闲表法和空闲链表法" class="headerlink" title="空闲表法和空闲链表法"></a>空闲表法和空闲链表法</h3><ol>
+<li>空闲表<ol>
+<li>空闲表，内存的动态分配方式雷同，包括第一空闲盘块号，空闲盘块数</li>
+<li>存储空间的分配与回收，与内存的动态分配方式相似，但在外存管理中，常常用连续分配方式。</li>
+</ol>
+</li>
+<li>空闲链表法<ol>
+<li>空闲盘块链</li>
+<li>空闲盘区链</li>
+</ol>
+</li>
+</ol>
+<h3 id="位示图法"><a href="#位示图法" class="headerlink" title="位示图法"></a>位示图法</h3><ol>
+<li><p>位示图，为每一个盘块标识是否空闲。并将此用二维表格展示</p>
+</li>
+<li><p>盘块的分配</p>
+<p>顺序扫描位示图找到空闲，将其二维坐标转换为一维地址，修改位示图</p>
+</li>
+<li><p>盘块的回收</p>
+<p>将一维地址转换为位示图的二维坐标，修改位示图</p>
+</li>
+</ol>
+<h3 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h3><p>用一个盘块存储空闲盘块号，其中存储空闲盘块数，一个用于存储空闲盘块号的盘块的地址，剩余空间用于存储空闲盘块的盘块号。</p>
 
         
       
@@ -1384,184 +3362,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/07/微机系统笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Paof Yueng">
-      <meta itemprop="description" content="PAOFBLOG">
-      <meta itemprop="image" content="/images/1564282856-carbon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寻求力量之旅">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/08/07/微机系统笔记/" class="post-title-link" itemprop="url">微机系统笔记</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-08-06 16:51:35" itemprop="dateCreated datePublished" datetime="2020-08-06T16:51:35Z">2020-08-06</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-13 15:23:21" itemprop="dateModified" datetime="2020-08-13T15:23:21Z">2020-08-13</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="微机系统笔记"><a href="#微机系统笔记" class="headerlink" title="微机系统笔记"></a>微机系统笔记</h1>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/08/07/微机系统笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://paofyueng.github.io/2020/08/04/计算方法笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Paof Yueng">
-      <meta itemprop="description" content="PAOFBLOG">
-      <meta itemprop="image" content="/images/1564282856-carbon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寻求力量之旅">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/08/04/计算方法笔记/" class="post-title-link" itemprop="url">计算方法笔记</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-08-03 16:27:38" itemprop="dateCreated datePublished" datetime="2020-08-03T16:27:38Z">2020-08-03</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-12 02:19:31" itemprop="dateModified" datetime="2020-08-12T02:19:31Z">2020-08-12</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="计算方法笔记"><a href="#计算方法笔记" class="headerlink" title="计算方法笔记"></a>计算方法笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>课程内容较少，对于数学知识掌握的要求较低，更偏实际操作，减低误差及时间复杂度。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/08/04/计算方法笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1614,7 +3414,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1728,11 +3528,11 @@
       
     
       
+    
+      
+    
+      
         
-      
-    
-      
-    
       
     
       
